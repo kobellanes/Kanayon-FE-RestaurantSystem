@@ -22,7 +22,7 @@ function Header(props) {
 
                                 <li className="nav-item px-2"><a className="nav-link fw-medium active" aria-current="page"
                                     href="/">Home</a></li>
-                                <li className="nav-item px-2"><a className="nav-link fw-medium" href="#">About Us</a></li>
+                                <li className="nav-item px-2"><a className="nav-link fw-medium" href="/about">About Us</a></li>
                                 <li className="nav-item px-2"><a className="nav-link fw-medium" href="#">Order Now</a></li>
                                 <li className="nav-item px-2"><a className="nav-link fw-medium" href="#">Login/Register</a></li>
                             </ul>

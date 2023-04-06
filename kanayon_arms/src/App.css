@@ -47,3 +47,69 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-smart {
+  background: rgb(111, 153, 140);
+}
+
+.AboutUs {
+  padding: 80px 0;
+}
+
+.p-25 {
+  padding: 100px;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.AboutUs h3 {
+  color: rgb(115, 115, 121);
+  font-size: 28px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  margin-left: 80px;
+}
+
+.AboutUs h1 {
+  font-size: 38px;
+  color: rgb(49, 48, 48);
+  font-weight: 700;
+  line-height: 40px;
+  margin-bottom: 15px;
+
+}
+
+.AboutUs p {
+  font-size: 20px;
+  color: rgb(105, 102, 102);
+  font-weight: 300;
+}
+
+.AboutUs__btn {
+  margin-top: 35px;
+}
+
+.AboutUs__img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.AboutUs__img img {
+  width: 100%;
+}
+
+.btn.btn-smart {
+  color: #5e5f61;
+
+}
+
+.img-fluid {
+  margin-top: 130px;
+}

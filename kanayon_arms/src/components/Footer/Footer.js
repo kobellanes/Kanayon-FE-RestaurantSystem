@@ -3,7 +3,7 @@ import "./Footer.css"
 const Footer = () => {
     return (
         <>
-            <div className="main-footer">
+            <div className="main-footer mt-5">
                 <div className="container">
                     <div className="row">
                         {/*Column1 */}
@@ -18,11 +18,11 @@ const Footer = () => {
                         {/* Column2 */}
                         <div className="col">
 
-                            <h4>ORDER</h4>
+                            <h4>Help & Support</h4>
                             <ul className="list-unstyled">
-                                <li>SOLO</li>
-                                <li>SINGLE RICE</li>
-                                <li>UNLI RICE</li>
+                                <li>How to order</li>
+                                <li>Shipping Info</li>
+                                <li>Guides</li>
 
 
                             </ul>
