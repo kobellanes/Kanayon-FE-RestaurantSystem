@@ -3,8 +3,8 @@ import React from 'react';
 function Admin() {
     return (
         <>
-            <nav className="d-none d-md-block bg-white sidebar p-2">
-                <div className='container-fluid'>
+            <nav className="d-none d-md-block bg-light sidebar p-2">
+                <div className='container-fluid mt-5 pt-5'>
                     <div className='m-2'>
                         <span className='brand-name fs-4'>Kanayon Inasal</span>
                     </div>
