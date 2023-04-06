@@ -18,11 +18,11 @@ const Footer = () => {
                         {/* Column2 */}
                         <div className="col">
 
-                            <h4>ORDER</h4>
+                            <h4>Quick Links</h4>
                             <ul className="list-unstyled">
-                                <li>SOLO</li>
-                                <li>SINGLE RICE</li>
-                                <li>UNLI RICE</li>
+                                <li>About Us</li>
+                                <li>Login/Register</li>
+                                <li>Order Now</li>
 
 
                             </ul>
