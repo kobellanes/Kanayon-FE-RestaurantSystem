@@ -19,12 +19,6 @@ const Footer = () => {
                         <div className="col">
 
 
-                            <h4>Help & Support</h4>
-                            <ul className="list-unstyled">
-                                <li>How to order</li>
-                                <li>Shipping Info</li>
-                                <li>Guides</li>
-
                             <h4>Quick Links</h4>
                             <ul className="list-unstyled">
                                 <li>About Us</li>
