@@ -127,3 +127,8 @@
 .carousel-caption p {
   color: #282c34;
 }
+
+.nav-link:hover {
+  background-color: #b8421e;
+  color: white !important;
+}

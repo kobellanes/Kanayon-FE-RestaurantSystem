@@ -4,8 +4,8 @@ function Admin() {
     return (
         <>
             <div className="container-fluid">
-                <div className="row min-vh-100 flex-column flex-md-row">
-                    <aside className="col-12 col-md-3 col-xl-2 p-0 bg-light">
+                <div className="row min-vh-100 m-0 flex-column flex-md-row">
+                    <aside className="col-12 col-md-3 col-xl-2 p-0 m-0 bg-light">
                         <nav className="navbar navbar-expand-md navbar-light bd-dark flex-md-column flex-row align-items-center py-2 text-start sticky-top "
                             id="sidebar">
                             <div className="text-center p-3">
@@ -15,7 +15,7 @@ function Admin() {
                                 <span class="navbar-toggler-icon"></span>
                             </button>
 
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                                 <ul className="navbar-nav flex-column justify-content-center">
                                     <li className="nav-item">
                                         <a href="#" className="nav-link active py-3 mt-3">
