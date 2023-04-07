@@ -6,7 +6,8 @@ function UserPage() {
         <>
             <main>
                 <div className="w-50 mx-auto mt-5">
-                    <div className="card card-shadow py-3">
+                    <div className="border border-dark rounded p-3">
+                        <h1>List of Users</h1>
                         <hr />
                         <div className="container-fluid">
                             <div className="row">

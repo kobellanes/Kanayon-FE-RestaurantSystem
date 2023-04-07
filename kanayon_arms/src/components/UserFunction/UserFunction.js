@@ -27,7 +27,7 @@ function UserFunction() {
                 users.length > 0 ?
                     users.map((users, index) => {
                         return (
-                            <div className="col-12 d-flex justify-content-around mt-1">
+                            <div className="col-12 d-flex justify-content-around mt-3">
                                 <div className="w-100 ms-1">
 
                                     {
