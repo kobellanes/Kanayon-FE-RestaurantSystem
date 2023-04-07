@@ -131,4 +131,5 @@
 .nav-link:hover {
   background-color: #b8421e;
   color: white !important;
+  border-radius: 5px;
 }
