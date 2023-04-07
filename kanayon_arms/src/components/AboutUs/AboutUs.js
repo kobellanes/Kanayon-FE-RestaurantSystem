@@ -1,8 +1,11 @@
 import React from 'react';
 import kanayon from '../../assets/kanayon.jpg';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 function AboutUs(props) {
     return (
         <>
+            <Header></Header>
             <div className="AboutUs">
                 <div className="container">
                     <div className="row">
@@ -32,6 +35,7 @@ function AboutUs(props) {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </>
     );
 }

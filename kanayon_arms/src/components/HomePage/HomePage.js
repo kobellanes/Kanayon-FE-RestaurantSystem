@@ -1,9 +1,18 @@
 import React from 'react';
 import menu from '../../assets/menu.jpg';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import AboutUs from '../AboutUs/AboutUs';
+import Admin from '../Admin/Admin';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function HomePage() {
     return (
         <>
+            <Header>
+
+            </Header>
+
             <div id="carouselExampleCaptions" className="carousel slide">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -49,6 +58,7 @@ function HomePage() {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
+            <Footer></Footer>
         </>
     );
 }
