@@ -18,7 +18,7 @@ function Admin() {
                             <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                                 <ul className="navbar-nav flex-column justify-content-center">
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link active py-3 mt-3">
+                                        <a href="/userlist" className="nav-link active py-3 mt-3">
                                             <i className="fa-solid fa-users fs-5 me-3"></i>
                                             <span>List of Users</span>
                                         </a>
