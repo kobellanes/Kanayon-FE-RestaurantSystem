@@ -1,7 +1,7 @@
 .offcanvas {
     position: absolute;
     top: 50%;
-    left: 158%;
+    left: 155%;
     transform: translate(-50%, -50%);
     max-width: 100%;
 }
