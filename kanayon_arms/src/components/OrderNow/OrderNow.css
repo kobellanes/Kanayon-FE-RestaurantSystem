@@ -1,8 +1,34 @@
-.offcanvas {
+/* .offcanvas {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1050;
+} */
+
+h1 {
+    text-align: center;
+    color: #921E1E;
+}
+
+.card-title {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.card {
+    background-color: #C23031;
+}
+
+.img-thumbnail {
+    border-color: #921E1E;
+    background-color: #FFAD01;
+}
+
+.card-tex {
+    color: white;
 }
