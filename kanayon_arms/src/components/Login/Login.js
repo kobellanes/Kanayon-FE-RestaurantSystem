@@ -3,17 +3,17 @@ import "./Login.css"
 import logo from '../../assets/logo.jpg';
 
 const backgroundImage = {
-    backgroundImage: "url(" + require('../../assets/login.jpg') + ")",
+    backgroundImage: "url(" + require('../../assets/background.png') + ")",
     backgroundPosition: 'center',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
 }
 
 const Login = () => {
     return (
         <>
-            <main className="login container-fluid bg-black bg-gradient">
+            <main className="login container-fluid bg-black bg-gradient pt-4">
 
-                <div className="wrapper">
+                <div className="wrapper py-0 pt-2">
 
                     <div className="container main affecting1 d-flex justify-content-center align-items-center ">
                         <div className="row affecting2 rounded-4 shadow p-2 mb-5 position-relative">
@@ -22,9 +22,10 @@ const Login = () => {
                                 <img className="rounded-pill try" src={logo} />
                             </span>
 
-                            <div className="col-md-6 side-image rounded-2`" style={backgroundImage}>
+                            <div className="col-md-6 side-image rounded-2" style={backgroundImage}>
+
                                 <div className="text affecting3 position-absolute text-md-center">
-                                    <p className="fs-5 fst-italic fw-normal text-light">Kanayon Inasal</p>
+                                    <p className="fs-5 fst-italic fw-normal text-light">Ala Eh! Bat ga kasarap dine!</p>
                                 </div>
                             </div>
 
