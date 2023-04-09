@@ -23,8 +23,7 @@ function Header(props) {
                                     href="/">Home</a></li>
                                 <li className="nav-item px-2"><a className="nav-link fw-medium" href="/about">About Us</a></li>
                                 <li className="nav-item px-2"><a className="nav-link fw-medium" href="/ordernow">Order Now</a></li>
-                                <li className="nav-item px-2"><a className="nav-link fw-medium" href="/admin">Login/Register</a></li>
-                                <li className="nav-item px-2"><a className="nav-link fw-medium" href="/login">Trial</a></li>
+                                <li className="nav-item px-2"><a className="nav-link fw-medium" href="/login">Login/Register</a></li>
                             </ul>
                         </div>
                     </div>
