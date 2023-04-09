@@ -51,8 +51,10 @@ const Login = () => {
                                     </div>
 
                                     <div className="signin text-center fs-6 mt-5">
-                                        <span className="fw-light text-dark">Don't have an account yet? <a className="fw-bold text-dark" href="#">Register here</a></span>
+                                        <span className="fw-light text-dark">Don't have an account yet? <a className="fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Register here</a></span>
+
                                     </div>
+
 
                                 </div>
 
@@ -65,6 +67,16 @@ const Login = () => {
                 </div>
 
             </main>
+
+            <div className="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                <div className="offcanvas-header">
+                    <h5 className="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div className="offcanvas-body">
+                    ...
+                </div>
+            </div>
         </>
     );
 }
