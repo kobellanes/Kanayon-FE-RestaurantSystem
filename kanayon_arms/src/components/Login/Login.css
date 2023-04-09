@@ -1,0 +1,101 @@
+.login {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    padding: 0 20px 0 20px;
+}
+
+.affecting1 {
+    min-height: 100vh;
+}
+
+.affecting2 {
+    width: 800px;
+    height: 500px;
+    background: #fff;
+}
+
+.side-image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.affecting3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.try {
+    width: 150px;
+    height: 150px;
+}
+
+.input-box {
+    width: 330px;
+    box-sizing: border-box;
+}
+
+.affecting4 {
+    height: 50px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+.input-box .input-field label {
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-field .input:focus~label {
+    top: -15px;
+}
+
+.input-field .input:valid~label {
+    top: -15px;
+    color: #5d5076;
+
+}
+
+.input-field .input:focus,
+.input-field .input:valid {
+    border-bottom: 1px solid #743ae1;
+}
+
+span a {
+    text-decoration: none;
+    transition: .5s;
+}
+
+span a:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+    .side-image {
+        height: 130px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .affecting3 {
+        top: 70%;
+    }
+
+    .affecting3 p {
+        font-size: 17px;
+    }
+
+    .affecting2 {
+        max-width: 420px;
+        width: 100%;
+    }
+}

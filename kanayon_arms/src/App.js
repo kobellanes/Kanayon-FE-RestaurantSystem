@@ -5,6 +5,7 @@ import Admin from './components/Admin/Admin';
 import AboutUs from './components/AboutUs/AboutUs';
 import UserPage from './components/UserPage/UserPage';
 import OrderNow from './components/OrderNow/OrderNow';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="admin" element={<Admin />} />
           <Route path="userlist" element={<UserPage />} />
           <Route path="ordernow" element={<OrderNow />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>
