@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="row">
                         {/*Column1 */}
                         <div className="col">
-                            <h4>Kanayon Inasal</h4>
+                            <h4>KANAYON INASAL</h4>
                             <ul className="list-unstyled">
                                 <li>Kanayon Inasal is a semi-casual </li>
                                 <li>reataurant typewhich serves </li>
@@ -18,11 +18,10 @@ const Footer = () => {
                         {/* Column2 */}
                         <div className="col">
 
-                            <h4>Quick Links</h4>
+                            <h4>LOCATION</h4>
                             <ul className="list-unstyled">
-                                <li>About Us</li>
-                                <li>Login/Register</li>
-                                <li>Order Now</li>
+                                <li>Brgy. Pagaspas</li>
+                                <li>Tanauan, 4232 Batangas</li>
 
 
                             </ul>
@@ -34,8 +33,8 @@ const Footer = () => {
                             <h4>CONTACT</h4>
                             <ul className="list-unstyled">
                                 <li>0939 490 3638</li>
-                                <li>Brgy. Pagaspas</li>
-                                <li>Tanauan, 4232 Batangas</li>
+
+
 
                             </ul>
                         </div>
