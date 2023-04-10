@@ -1,6 +1,6 @@
 .main-footer {
     color: white;
-    background-color: rgb(111, 153, 140);
+    background-color: #212529;
     padding-top: 3em;
     position: relative;
     bottom: 0;
@@ -9,4 +9,14 @@
 
 .col-sm {
     margin-left: 25em;
+    color: #b5bdc4;
+}
+
+.col h4 {
+    color: #b5bdc4;
+
+}
+
+.list-unstyled li {
+    color: #b5bdc4;
 }
