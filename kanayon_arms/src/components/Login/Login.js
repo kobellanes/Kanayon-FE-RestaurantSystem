@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Login.css"
 import logo from '../../assets/logo.jpg';
-
+import Header from '../Header/Header';
 const backgroundImage = {
     backgroundImage: "url(" + require('../../assets/background.png') + ")",
     backgroundPosition: 'center',
@@ -11,9 +11,10 @@ const backgroundImage = {
 const Login = () => {
     return (
         <>
-            <main className="login container-fluid bg-black bg-gradient pt-4">
+            <Header></Header>
+            <main className="login container-fluid bg-black bg-gradient pt-5">
 
-                <div className="wrapper py-0 pt-2">
+                <div className="wrapper py-0 pt-4">
 
                     <div className="container main affecting1 d-flex justify-content-center align-items-center ">
                         <div className="row affecting2 rounded-4 shadow p-2 mb-5 position-relative">
@@ -78,6 +79,7 @@ const Login = () => {
                 </div>
             </div>
         </>
+
     );
 }
 export default Login;

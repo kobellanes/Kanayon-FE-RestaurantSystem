@@ -3,7 +3,7 @@ import "./Footer.css"
 const Footer = () => {
     return (
         <>
-            <div className="main-footer">
+            <div className="mt-4 main-footer">
                 <div className="container">
                     <div className="row">
                         {/*Column1 */}
@@ -32,7 +32,7 @@ const Footer = () => {
 
                             <h4>CONTACT</h4>
                             <ul className="list-unstyled">
-                                <li>0939 490 3638</li>
+                                <li>(+63) 939 490 3638</li>
 
 
 
