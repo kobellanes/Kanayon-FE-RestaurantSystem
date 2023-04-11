@@ -81,8 +81,13 @@ span a:hover {
 }
 
 @media only screen and (max-width: 768px) {
+    .try {
+        height: 100px;
+        width: 100px;
+    }
+
     .side-image {
-        height: 130px;
+        height: 140px;
         border-radius: 10px 10px 0 0;
     }
 
@@ -92,6 +97,7 @@ span a:hover {
 
     .affecting3 p {
         font-size: 17px;
+        text-align: center;
     }
 
     .affecting2 {

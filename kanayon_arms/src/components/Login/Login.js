@@ -12,9 +12,9 @@ const Login = () => {
     return (
         <>
             <Header></Header>
-            <main className="login container-fluid bg-black bg-gradient pt-5">
+            <main className="login container-fluid bg-black bg-gradient pt-5 pb-0">
 
-                <div className="wrapper py-0 pt-4">
+                <div className="wrapper py-0 pt-3">
 
                     <div className="container main affecting1 d-flex justify-content-center align-items-center ">
                         <div className="row affecting2 rounded-4 shadow p-2 mb-5 position-relative">
@@ -26,7 +26,7 @@ const Login = () => {
                             <div className="col-md-6 side-image rounded-2" style={backgroundImage}>
 
                                 <div className="text affecting3 position-absolute text-md-center">
-                                    <p className="fs-5 fst-italic fw-normal text-light">Ala Eh! Bat ga kasarap dine!</p>
+                                    <p className="fs-5 fst-italic fw-normal text-light">Ala Eh! Ay bat ga kasarap dine!</p>
                                 </div>
                             </div>
 
