@@ -16,7 +16,7 @@ function AboutUs(props) {
                             <p>Our barrio's grilled chicken or alson known as chicken inasal wins the heart of every villager in our barangay, founded in September 10, 2022. Kanayon Inasal got its name from the term Kanayon which means "fellow local" that makes its name tattoed on the mind of every customer we serve. The idea came about when the founder, Tatay Mio felt the need and the urge to feed and inspire people with this dish they so loved, chicken inasal. His family put a lot of effort into serving the best and quality food they could offer. from selecting the freshest meat up to adding the special, flavorful and authentic ingredients make our inasal become different from the others. Kanayon inasal is perfect for the budget concious or what we called the budgetaian because of its cheap price for a complete dinnner or lunch. Our restaurant is a simple store with a simple dream that puts a lot of hardwork and determination that focuses its people and continues to grow vigorously.</p>
 
                             <div className="AboutUs__btn">
-                                <a href="" className="btn btn-smart">READ MORE</a>
+                                <a href="ordernow" className="btn btn-smart">ORDER NOW</a>
 
                             </div>
                         </div>
