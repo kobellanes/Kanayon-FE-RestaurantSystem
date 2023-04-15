@@ -1,10 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
+import "./AdminNavBar.css"
+import UserPage from '../UserPage/UserPage';
 
 function AdminNavbar() {
+
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
     return (
         <>
-            <div className="container-fluid">
-                <div className="row min-vh-100 m-0 flex-column flex-md-row">
+            <body>
+                <div className="main-container d-flex">
+                    <div className="menu" onClick={toggleSidebar}>
+                        <button type="button" className="btn btn-outline-dark">MENU</button>
+                    </div>
+
+                    {isSidebarOpen && (
+                        <div className="sidebar">
+                            <div className="header-box">
+                                <a href="/admin" className="text-decoration-none d-block">
+                                    <span className="bg-white text-dark rounded shadow px-2 me-2">Kanayon</span>
+                                    <span className="text-white">Inasal</span>
+                                </a>
+                            </div>
+
+                            <ul className="list-unstyled px-2">
+                                <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-house fs-5 me-3"></i>Dashboard</a></li>
+                                <li className=""><a href="/userlist" className="text-decoration-none d-block"><i className="fa-solid fa-users fs-5 me-3"></i>List of Users</a></li>
+                                <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-basket-shopping fs-5 me-3"></i>List of Orders</a></li>
+                                <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-boxes-stacked fs-5 me-3"></i>Inventory Analysis</a></li>
+                            </ul>
+
+                            <hr className="h-color mx-3" />
+
+                            <ul className="list-unstyled px-2">
+                                <li className=""><a href="/" className="text-decoration-none d-block"><i className="fa-solid fa-right-from-bracket fs-5 me-3"></i>Log Out</a></li>
+                            </ul>
+                        </div>
+                    )}
+                    <div className="content">
+                        <UserPage></UserPage>
+                    </div>
+                </div>
+            </body >
+
+            {/* <div className="container-fluid">
+                <div className="row min-vh-100 m-0 flex-start flex-md-row">
                     <aside className="col-12 col-md-3 col-xl-2 p-0 m-0 bg-light">
                         <nav className="navbar navbar-expand-md navbar-light bd-dark flex-md-column flex-row align-items-center py-2 text-start sticky-top "
                             id="sidebar">
@@ -46,7 +90,7 @@ function AdminNavbar() {
                         </nav>
                     </aside>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
