@@ -21,15 +21,15 @@ function AdminNavbar() {
                     {isSidebarOpen && (
                         <div className="sidebar">
                             <div className="header-box">
-                                <h1 className="fs-4 mt-3">
+                                <a href="/admin" className="text-decoration-none d-block">
                                     <span className="bg-white text-dark rounded shadow px-2 me-2">Kanayon</span>
                                     <span className="text-white">Inasal</span>
-                                </h1>
+                                </a>
                             </div>
 
                             <ul className="list-unstyled px-2">
                                 <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-house fs-5 me-3"></i>Dashboard</a></li>
-                                <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-users fs-5 me-3"></i>List of Users</a></li>
+                                <li className=""><a href="/userlist" className="text-decoration-none d-block"><i className="fa-solid fa-users fs-5 me-3"></i>List of Users</a></li>
                                 <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-basket-shopping fs-5 me-3"></i>List of Orders</a></li>
                                 <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-boxes-stacked fs-5 me-3"></i>Inventory Analysis</a></li>
                             </ul>
@@ -37,7 +37,7 @@ function AdminNavbar() {
                             <hr className="h-color mx-3" />
 
                             <ul className="list-unstyled px-2">
-                                <li className=""><a href="#" className="text-decoration-none d-block"><i className="fa-solid fa-right-from-bracket fs-5 me-3"></i>Log Out</a></li>
+                                <li className=""><a href="/" className="text-decoration-none d-block"><i className="fa-solid fa-right-from-bracket fs-5 me-3"></i>Log Out</a></li>
                             </ul>
                         </div>
                     )}
