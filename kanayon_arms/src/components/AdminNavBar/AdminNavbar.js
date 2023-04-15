@@ -12,7 +12,7 @@ function AdminNavbar() {
 
     return (
         <>
-            <body>
+            <body className="mnq">
                 <div className="main-container d-flex">
                     <div className="menu" onClick={toggleSidebar}>
                         <button type="button" className="btn btn-outline-dark">MENU</button>
@@ -55,11 +55,10 @@ function AdminNavbar() {
                             <div className="text-center p-3">
                                 <a href="/admin" className="navbar-brand mx-0 font-weight-bold fs-3 text-nowrap">Kanayon Inasal</a>
                             </div>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
                             </button>
-
-                            <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+                            <div className="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                                 <ul className="navbar-nav flex-column justify-content-center">
                                     <li className="nav-item">
                                         <a href="/userlist" className="nav-link active py-3 mt-3">
