@@ -2,6 +2,7 @@ import React from 'react';
 import "./Login.css"
 import logo from '../../assets/logo.jpg';
 import Header from '../Header/Header';
+
 const backgroundImage = {
     backgroundImage: "url(" + require('../../assets/background.png') + ")",
     backgroundPosition: 'center',

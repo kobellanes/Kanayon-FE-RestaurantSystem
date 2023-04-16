@@ -3,7 +3,6 @@ import menu from '../../assets/menu.jpg';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import AboutUs from '../AboutUs/AboutUs';
-import Admin from '../Admin/Admin';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function HomePage() {

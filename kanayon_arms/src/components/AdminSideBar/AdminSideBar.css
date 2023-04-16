@@ -1,0 +1,20 @@
+.dese_side ul li:hover {
+    background-color: brown;
+    border-radius: 5px;
+}
+
+.dese_side ul li:hover a {
+    color: white;
+    font-weight: 700;
+}
+
+.dese_active {
+    background-color: brown;
+    border-radius: 5px;
+    color: white;
+}
+
+.dese_custom-size {
+    width: 30px;
+    height: 30px;
+}
