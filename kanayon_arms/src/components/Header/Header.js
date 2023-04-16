@@ -6,7 +6,7 @@ import logo from '../../assets/logo.jpg';
 function Header() {
     return (
         <>
-            <main className="llanesk-header">
+            <main className="llanesk-header pb-5">
                 <header className="llanesk-header-start d-flex align-items-center">
 
                     <div className="llanesk-navb-text m-0 ms-5 mt-5 d-flex justify-content-center align-items-center">
