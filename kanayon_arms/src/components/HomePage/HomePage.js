@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import './HomePage.css';
 
 const backgroundImage = {
-    backgroundImage: "url(" + require('../../assets/background.jpg') + ")",
+    backgroundImage: "url(" + require('../../bghome.jpg') + ")",
     backgroundPosition: 'center',
     backgroundSize: 'cover'
 }
@@ -36,7 +36,7 @@ function HomePage() {
                     </div>
 
                 </div>
-            </section>
+            </section >
 
 
             <Footer></Footer>
