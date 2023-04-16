@@ -2,11 +2,11 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage/HomePage';
-import Admin from './components/Admin/Admin';
 import AboutUs from './components/AboutUs/AboutUs';
 import UserPage from './components/UserPage/UserPage';
 import OrderNow from './components/OrderNow/OrderNow';
 import Login from './components/Login/Login';
+import AdminSideBar from './components/AdminSideBar/AdminSideBar';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="about" element={<AboutUs />} />
-          <Route path="admin" element={<Admin />} />
+          <Route path="admin" element={<AdminSideBar />} />
           <Route path="userlist" element={<UserPage />} />
           <Route path="ordernow" element={<OrderNow />} />
           <Route path="login" element={<Login />} />
