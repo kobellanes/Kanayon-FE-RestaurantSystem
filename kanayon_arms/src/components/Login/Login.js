@@ -49,7 +49,7 @@ function Login() {
 
                                     <div className="mt-md-5">
                                         <div className="mt-4 text-center">
-                                            <span className="llanesk-register fw-light text-dark">Don't have an account yet? <a className="fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Register here</a></span>
+                                            <span className="llanesk-register fw-light text-dark ">Don't have an account yet? <a className="llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Register here</a></span>
 
                                         </div>
                                     </div>
