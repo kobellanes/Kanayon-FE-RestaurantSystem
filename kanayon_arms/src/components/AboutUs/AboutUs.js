@@ -2,7 +2,8 @@ import React from 'react';
 import kanayon from '../../assets/logo.jpg';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-function AboutUs(props) {
+
+function AboutUs() {
     return (
         <>
             <Header></Header>

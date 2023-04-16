@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminNavbar from '../AdminNavBar/AdminNavBar';
+import AdminNavbar from '../AdminNavBar/AdminNavbar';
 
 function Admin() {
     return (
