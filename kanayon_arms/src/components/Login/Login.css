@@ -65,12 +65,12 @@
     border-bottom: 1px solid #743ae1;
 }
 
-span a {
+.llanesk-register .llanesk-reg {
     text-decoration: none;
     transition: .5s;
 }
 
-span a:hover {
+.llanesk-register .llanesk-reg:hover {
     text-decoration: underline;
     color: #000;
 }
