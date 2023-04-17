@@ -14,7 +14,7 @@ function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-6 col-lg-3 mb-3">
-                            <img className="llanesk-logofoot mb-2" src={logotext}></img>
+                            <img className="llanesk-logofoot mb-2" src={require('../../assets/KanayonFooter.png')}></img>
                             <ul className="list-unstyled mb-md-4 mb-lg-0 text-light llanesk-list">
                                 <li>We serve Chicken Inasal, Pork BBQ, </li>
                                 <li> Pork Liempo just for you!</li>
