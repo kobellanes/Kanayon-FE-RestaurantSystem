@@ -15,9 +15,9 @@ function HomePage() {
 
             </Header>
 
-            <section className="py-0">
+            <section className="mt-5">
 
-                <div className="container-fluid">
+                <div className="container">
 
                     <div className="row h-100">
 
@@ -29,19 +29,25 @@ function HomePage() {
 
                                     <div className="carousel-item active">
                                         <div className="col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={customers2} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img1.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
                                         <div className="col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={customers3} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img2.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
                                         <div className="col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={Customers4} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img3.png')} alt="..." />
+                                        </div>
+                                    </div>
+
+                                    <div className="carousel-item">
+                                        <div className="col-12 mb-3 mb-md-0">
+                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img4.png')} alt="..." />
                                         </div>
                                     </div>
 
