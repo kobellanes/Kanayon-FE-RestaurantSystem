@@ -6,12 +6,7 @@ import customers3 from '../../assets/customers3.jpg';
 import customers2 from '../../assets/customers2.jpg';
 import customers1 from '../../assets/customers1.jpg';
 import Customers4 from '../../assets/customers4.jpg';
-
-const backgroundImage = {
-    backgroundImage: "url(" + require('../../bghome.jpg') + ")",
-    backgroundPosition: 'center',
-    backgroundSize: 'cover'
-}
+import slide1 from '../../assets/homeslide.jpg';
 
 function HomePage() {
     return (
@@ -22,7 +17,9 @@ function HomePage() {
 
             <section id="home" className="austriak-bg d-flex align-items-center">
                 <div className="py-11 bg-light-gradient border-bottom border-white border-5"></div>
-                <div className="bg-holder overlay overlay-light" style={backgroundImage}> </div>
+                <div className="bg-holder overlay overlay-light"> </div>
+
+                <img src={slide1}></img>
 
                 <div className="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
                     <div className="row">

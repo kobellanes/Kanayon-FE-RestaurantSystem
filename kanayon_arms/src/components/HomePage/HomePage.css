@@ -1,3 +1,7 @@
 .austriak-bg {
-    background-color: #020202;
+    background-image: url(../../assets/bghome.jpg);
+    height: 850px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
