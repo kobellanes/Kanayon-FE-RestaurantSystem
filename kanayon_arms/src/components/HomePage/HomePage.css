@@ -6,6 +6,15 @@
 }
 
 .dese_img {
-    height: 400px;
+    height: 350px;
     width: 1325px;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    .dese_img {
+        height: 150px;
+        width: 768px;
+        border-radius: 5px;
+    }
 }
