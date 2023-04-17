@@ -6,7 +6,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import UserPage from './components/UserPage/UserPage';
 import OrderNow from './components/OrderNow/OrderNow';
 import Login from './components/Login/Login';
-import AdminSideBar from './components/AdminSideBar/AdminSideBar';
+import UserList from './components/UserList/UserList';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="about" element={<AboutUs />} />
-          <Route path="admin" element={<AdminSideBar />} />
+          <Route path="admin" element={<UserList />} />
           <Route path="userlist" element={<UserPage />} />
           <Route path="ordernow" element={<OrderNow />} />
           <Route path="login" element={<Login />} />

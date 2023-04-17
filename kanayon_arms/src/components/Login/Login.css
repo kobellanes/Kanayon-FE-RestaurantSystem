@@ -1,7 +1,6 @@
 .llanesk-login {
     font-family: 'Poppins', sans-serif;
-    min-height: 80vh;
-
+    min-height: 50vh;
 }
 
 .llanesk-row {
@@ -79,11 +78,6 @@
     .llanesk-badge {
         height: 100px;
         width: 100px;
-    }
-
-    .llanesk-side-img {
-        height: 140px;
-        border-radius: 10px 10px 0 0;
     }
 
     .llanesk-text {
