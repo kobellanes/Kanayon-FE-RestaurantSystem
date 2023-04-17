@@ -1,12 +1,9 @@
 import React from 'react';
-import AdminSideBar from '../AdminSideBar/AdminSideBar';
+import AdminSideBar from '../AdminSideBar/Admin';
 
 function UserList() {
     return (
         <>
-            <AdminSideBar>
-                <h1 className="me-5 pe-5">Try</h1>
-            </AdminSideBar>
 
 
 

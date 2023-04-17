@@ -1,7 +1,9 @@
-import React from 'react';
-import UserFunction from '../UserFunction/UserFunction';
+import React, { useState } from 'react';
+import "./Admin.css"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function UserPage() {
+function AdminSideBar() {
+
     return (
         <>
             <div className="dese-adminnav-main main-container d-flex">
@@ -13,8 +15,8 @@ function UserPage() {
                     </div>
 
                     <ul className="list-unstyled px-2">
-                        <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
-                        <li className="active"><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
+                        <li className="active"><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
+                        <li className=""><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
                         <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
                             <span><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</span>
                             <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
@@ -36,27 +38,12 @@ function UserPage() {
                 </div>
 
                 <div className="dese-adminnav-content content">
-                    <main>
-                        <div className="w-50 mx-auto mt-5">
-                            <div className="border border-dark rounded p-3">
-                                <h1>List of Users</h1>
-                                <hr />
-                                <div className="container-fluid">
-                                    <div className="row">
-                                        <UserFunction />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
+
                 </div>
             </div >
-
-
-            {/* <AdminNavbar></AdminNavbar> */}
 
         </>
     );
 }
 
-export default UserPage;
+export default AdminSideBar;
