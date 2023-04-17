@@ -39,6 +39,8 @@ function HomePage() {
                 </div>
             </section >
 
+            <section></section>
+            
             <section>
 
                 <div className="austria-container">
