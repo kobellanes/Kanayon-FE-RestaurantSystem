@@ -27,7 +27,7 @@ function AboutUs() {
 
                 <div className="container">
                     <div className="row">
-                        <div className="col-6 p-25">
+                        <div className="austriak-col-6 col-6 p-25">
 
 
                             <h1>KANAYON INASAL</h1>
@@ -43,7 +43,7 @@ function AboutUs() {
 
                         </div>
 
-                        <div className="col-6">
+                        <div className="austriak-col-6 col-6">
                             <div className="AboutUs__img">
                                 <img className="img-fluid" src={kanayon} width="450" alt="Kanayon" />
                                 <img className="img-fluid pic" src={paa} width="450" alt="Kanayon" />
