@@ -28,25 +28,25 @@ function HomePage() {
                                 <div className="carousel-inner">
 
                                     <div className="carousel-item active">
-                                        <div className="col-12 mb-3 mb-md-0">
+                                        <div className="dese_images col-12 mb-3 mb-md-0">
                                             <img className="dese_img img-fluid" src={require('../../assets/carousel-img1.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
-                                        <div className="col-12 mb-3 mb-md-0">
+                                        <div className="dese_images col-12 mb-3 mb-md-0">
                                             <img className="dese_img img-fluid" src={require('../../assets/carousel-img2.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
-                                        <div className="col-12 mb-3 mb-md-0">
+                                        <div className="dese_images col-12 mb-3 mb-md-0">
                                             <img className="dese_img img-fluid" src={require('../../assets/carousel-img3.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
-                                        <div className="col-12 mb-3 mb-md-0">
+                                        <div className="dese_images col-12 mb-3 mb-md-0">
                                             <img className="dese_img img-fluid" src={require('../../assets/carousel-img4.png')} alt="..." />
                                         </div>
                                     </div>
@@ -67,8 +67,8 @@ function HomePage() {
 
             </section>
 
-            <section id="home" className="austriak-bg d-flex align-items-center">
-                <div className="py-11 bg-light-gradient border-bottom border-white border-5"></div>
+            <section className="austriak-bg d-flex mb-5">
+                <div className=" bg-light-gradient border-bottom border-white border-5"></div>
                 <div className="bg-holder overlay overlay-light"> </div>
 
                 <img src={slide1}></img>
