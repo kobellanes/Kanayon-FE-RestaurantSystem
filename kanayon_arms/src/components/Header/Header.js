@@ -4,7 +4,7 @@ import './Header.css';
 function Header() {
     return (
         <>
-            <main className="llanesk-header">
+            <main className="llanesk-header mt-1">
 
                 <div className="llanesk-navb-text ms-5 mt-2 d-flex justify-content-center align-items-center" data-navbar-on-scroll="data-navbar-on-scroll">
                     <div className="d-flex align-items-center mt-1">
