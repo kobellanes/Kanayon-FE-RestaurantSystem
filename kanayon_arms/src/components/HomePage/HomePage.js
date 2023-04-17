@@ -11,7 +11,7 @@ function HomePage() {
 
             </Header>
 
-            <section id="home" className="austriak-bg d-flex align-items-center">
+            {/* <section id="home" className="austriak-bg d-flex align-items-center">
                 <div className="py-11 bg-light-gradient border-bottom border-white border-5"></div>
                 <div className="bg-holder overlay overlay-light"> </div>
 
@@ -34,6 +34,8 @@ function HomePage() {
 
                 </div>
             </section >
+
+            <section></section> */}
 
 
             <Footer></Footer>
