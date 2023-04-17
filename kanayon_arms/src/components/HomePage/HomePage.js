@@ -40,7 +40,7 @@ function HomePage() {
             </section >
 
             <section></section>
-            
+
             <section>
 
                 <div className="austria-container">

@@ -2,13 +2,14 @@ import React from 'react';
 import "./Login.css"
 import logo from '../../assets/logo.jpg';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function Login() {
     return (
         <>
             <Header></Header>
 
-            <main className="llanesk-login container-fluid pt-4 pb-0">
+            <main className="llanesk-login container-fluid pt-5 pb-0">
 
                 <div className="py-0 mt-5">
 
@@ -76,6 +77,7 @@ function Login() {
                     ...
                 </div>
             </div>
+            <Footer></Footer>
         </>
 
     );
