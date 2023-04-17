@@ -11,6 +11,12 @@ h1 {
     color: #921E1E;
 }
 
+h4 {
+    text-align: center;
+    color: #921E1E;
+}
+
+
 .card-title {
     color: white;
 }
@@ -26,7 +32,7 @@ p {
 
 .img-thumbnail {
     border-color: #921E1E;
-    background-color: #FFAD01;
+    background-color: #212529;
 }
 
 .card-tex {
