@@ -1,0 +1,54 @@
+.dese-adminnav-main {
+    background: #fefefe;
+    justify-content: start;
+}
+
+#side_nav {
+    background-color: #000;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.dese-adminnav-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.dese-logotext {
+    width: 140px;
+    height: 25px;
+}
+
+.dese-adminnav-content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.dese-adminnav-sidebar li.active {
+    background: #fefefe;
+    border-radius: 8px;
+}
+
+.dese-adminnav-sidebar li.active a {
+    color: black;
+}
+
+.dese-adminnav-sidebar li.active a:hover {
+    color: black;
+}
+
+.dese-adminnav-sidebar li a {
+    color: #fefefe;
+}
+
+.dese-adminnav-sidebar li a:hover {
+    color: #FFF600;
+}
+
+.dese-admin-nav-logout {
+    color: #fefefe;
+}
+
+.dese-admin-nav-logout:hover {
+    color: #FFF600;
+}
