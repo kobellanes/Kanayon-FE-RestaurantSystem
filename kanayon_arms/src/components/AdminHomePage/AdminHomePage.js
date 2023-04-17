@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import "./Admin.css"
+import "./AdminHomePage.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function AdminSideBar() {
+function AdminHomePage() {
 
     return (
         <>
@@ -46,4 +46,4 @@ function AdminSideBar() {
     );
 }
 
-export default AdminSideBar;
+export default AdminHomePage;
