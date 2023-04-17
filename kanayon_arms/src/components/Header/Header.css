@@ -157,8 +157,9 @@
         height: 75px;
     }
 
-    .llanesk-logotext {
-        display: none;
+    .llanesk-navb-text img {
+        width: 120px;
+        height: 30px;
     }
 
 
