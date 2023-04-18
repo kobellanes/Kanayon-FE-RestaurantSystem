@@ -1,4 +1,6 @@
 import React from 'react';
+import StockListCreate from '../StockListCreate/StockListCreate';
+import StockListItem from '../StockListItem/StockListItem';
 
 function StockList() {
     return (
@@ -36,7 +38,17 @@ function StockList() {
 
                 <div className="dese-adminnav-content content">
                     <main>
-
+                        <div className="w-50 mx-auto mt-2">
+                            <div className="card card-shadow py-3">
+                                <StockListCreate />
+                                <hr />
+                                <div className="container-fluid">
+                                    <div className="row">
+                                        <StockListItem />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </main>
                 </div>
             </div >
