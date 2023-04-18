@@ -4,9 +4,9 @@ import './Header.css';
 function Header() {
     return (
         <>
-            <main className="llanesk-header pb-3">
+            <main className="llanesk-header mt-1">
 
-                <div className="llanesk-navb-text ms-5 mt-3 d-flex justify-content-center align-items-center" data-navbar-on-scroll="data-navbar-on-scroll">
+                <div className="llanesk-navb-text ms-5 mt-2 d-flex justify-content-center align-items-center" data-navbar-on-scroll="data-navbar-on-scroll">
                     <div className="d-flex align-items-center mt-1">
                         <img className="rounded-pill llanesk-logo" src={require('../../assets/logo.jpg')}></img>
                         <img className="llanesk-logotext" src={require('../../assets/text.png')}></img>

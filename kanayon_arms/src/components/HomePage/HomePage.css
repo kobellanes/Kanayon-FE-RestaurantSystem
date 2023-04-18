@@ -5,8 +5,13 @@
     background-size: cover;
 }
 
+.dese_images img {
+    height: 100%;
+}
+
 .dese_img {
     height: 350px;
+    width: 90%;
     border-radius: 5px;
 }
 

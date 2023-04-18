@@ -11,7 +11,7 @@ function AdminHomePage() {
                     <div className="dese-adminnav-header-box header-box px-2 pt-3 pb-4 d-flex flex-row align-items-center">
                         <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../assets/logo.jpg')}></img>
                         <img className="dese-logotext mt-2" src={require('../../assets/text.png')}></img>
-                        <button className="dese-adminnav-close-btn d-md-none d-block btn close-btn px-1 py-0 text-white"><i className="fa-solid fa-bars me-2"></i></button>
+
                     </div>
 
                     <ul className="list-unstyled px-2">

@@ -2,8 +2,26 @@ import React from 'react';
 import "./Login.css"
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
+
+    const notifySuccess = () => {
+        toast.success('You Successfully Created an Account!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+
+    }
+
+
     return (
         <>
             <Header></Header>
@@ -34,7 +52,7 @@ function Login() {
                                     </header>
 
                                     <div className="llanesk-input-field d-flex flex-column position-relative px-2">
-                                        <input type="text llanesk-text" className="input llanesk-input bg-light bg-gradient mb-4 " id="email" required autocomplete="on" />
+                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4" id="email" required autocomplete="on" />
                                         <label className="position-absolute fs-6" for="email">Email</label>
                                     </div>
 
@@ -49,7 +67,7 @@ function Login() {
 
                                     <div className="mt-md-5">
                                         <div className="mt-4 text-center">
-                                            <span className="llanesk-register fw-light text-dark ">Don't have an account yet? <a className="llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Register here</a></span>
+                                            <span className="llanesk-register fw-light text-dark ">Don't have an account yet? <a className="llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Register here</a></span>
 
                                         </div>
                                     </div>
@@ -67,15 +85,79 @@ function Login() {
 
             </main>
 
-            <div className="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-                <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
+                <div className="offcanvas-header mb-0 pb-2">
+                    <h5 className="offcanvas-title fw-bolder fs-3">Registration Form</h5>
+                    <button type="button" className="btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div className="offcanvas-body">
-                    ...
-                </div>
-            </div>
+
+                <div className="offcanvas-body small p-0">
+
+                    <h6 className="text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
+
+                    <div className="container px-3">
+                        <form className="form-signup">
+
+                            <div className="mt-4 form-group">
+                                <div className="row">
+                                    <div className="text-center">
+                                        <input className="form-control" type="text" name="firstname" placeholder="First name" required />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="row">
+                                    <div className="text-center">
+                                        <input className="form-control" type=" text" name="lastname" placeholder="Last name" required />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control col-8" type="email" name="email" placeholder="Email Address" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control l col-8" type="password" name="password" placeholder="New Password" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control col-8" type="number" name="number" placeholder="GCash Number" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <label className="text-start">
+                                    <input className="me-2" type="checkbox" name="check" required />
+                                    By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
+                                </label>
+
+                            </div>
+
+                            <div className="col-12 text-center mt-4 ">
+                                <button onClick={notifySuccess} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
+                                <ToastContainer />
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div >
+            </div >
+
+
             <Footer></Footer>
         </>
 
