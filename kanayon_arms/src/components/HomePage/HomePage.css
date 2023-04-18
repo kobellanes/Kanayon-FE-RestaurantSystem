@@ -22,3 +22,24 @@
         border-radius: 5px;
     }
 }
+
+.col-lg-8 h1.austria {
+    color: antiquewhite;
+    font-size: 80px;
+    margin-left: 780px;
+    font-style: initial;
+}
+
+.col-lg-8 span {
+    color: #E45E12;
+    margin-left: 65px;
+}
+
+.container-austria {
+    text-align: center;
+    color: antiquewhite;
+}
+
+.text-800 h4 {
+    color: #E45E12;
+}
