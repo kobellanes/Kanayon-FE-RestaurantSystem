@@ -40,6 +40,23 @@
     color: antiquewhite;
 }
 
-.text-800 h4 {
+.bg-300 h4 {
+    color: antiquewhite;
+    font-size: 58px;
+    font-style: oblique;
+}
+
+.bg-300 h1 {
     color: #E45E12;
+    margin-top: 18px;
+    font-style: italic;
+    font-size: 30px;
+}
+
+.bg-300 p {
+    font-style: italic;
+    color: antiquewhite;
+    font-size: 36px;
+    text-align: justify;
+    margin-top: 18px;
 }
