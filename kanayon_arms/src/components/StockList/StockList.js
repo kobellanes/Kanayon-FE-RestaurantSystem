@@ -1,7 +1,6 @@
 import React from 'react';
-import UserFunction from '../UserFunction/UserFunction';
 
-function UserPage() {
+function StockList() {
     return (
         <>
             <div className="dese-adminnav-main main-container d-flex">
@@ -9,13 +8,13 @@ function UserPage() {
                     <div className="dese-adminnav-header-box header-box px-2 pt-3 pb-4 d-flex flex-row align-items-center">
                         <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../assets/logo.jpg')}></img>
                         <img className="dese-logotext mt-2" src={require('../../assets/text.png')}></img>
-                        <button className="dese-adminnav-close-btn d-md-none d-block btn close-btn px-1 py-0 text-white"><i className="fa-solid fa-bars me-2"></i></button>
+
                     </div>
 
                     <ul className="list-unstyled px-2">
                         <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
-                        <li className="active"><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
-                        <li className=""><a href="/stocklist" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
+                        <li className=""><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
+                        <li className="active"><a href="/stocklist" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
                             <span><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</span>
                             <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
                         </a>
@@ -37,26 +36,13 @@ function UserPage() {
 
                 <div className="dese-adminnav-content content">
                     <main>
-                        <div className="w-50 mx-auto mt-5">
-                            <div className="border border-dark rounded p-3">
-                                <h1>List of Users</h1>
-                                <hr />
-                                <div className="container-fluid">
-                                    <div className="row">
-                                        <UserFunction />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </main>
                 </div>
             </div >
-
-
-            {/* <AdminNavbar></AdminNavbar> */}
 
         </>
     );
 }
 
-export default UserPage;
+export default StockList;
