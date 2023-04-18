@@ -5,8 +5,7 @@ import './HomePage.css';
 import customers3 from '../../assets/customers3.jpg';
 import customers2 from '../../assets/customers2.jpg';
 import customers1 from '../../assets/customers1.jpg';
-import Customers4 from '../../assets/customers4.jpg';
-import slide1 from '../../assets/homeslide.jpg';
+// import slide1 from '../../assets/homeslide.jpg';
 
 function HomePage() {
     return (
@@ -71,18 +70,13 @@ function HomePage() {
                 <div className=" bg-light-gradient border-bottom border-white border-5"></div>
                 <div className="bg-holder overlay overlay-light"> </div>
 
-                <img src={slide1}></img>
+                {/* <img src={slide1}></img> */}
 
-                <div className="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+                <div className="container-austria">
                     <div className="row">
                         <div className="col-lg-8">
-                            <h1>WELCOME TO <span>KANAYON INASAL</span></h1>
+                            <h1 className="austria">KANAYON <span>INASAL</span></h1>
                             <h2>Good food choices are good investments.</h2>
-
-                            <div className="HomePage__btn">
-                                <a href="about" className="btn btn-about">ABOUT US</a>
-
-                            </div>
                         </div>
 
 
