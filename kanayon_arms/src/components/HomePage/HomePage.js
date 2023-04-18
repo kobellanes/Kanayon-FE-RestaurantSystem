@@ -15,13 +15,13 @@ function HomePage() {
 
             </Header>
 
-            <section className="mt-5">
+            <section className="dese_home-first mt-5">
 
                 <div className="container">
 
-                    <div className="row h-100">
+                    <div className="row">
 
-                        <div className="">
+                        <div className="text-center">
 
                             <div className="carousel slide" id="dese_carousel" data-bs-ride="carousel" data-bs-interval="3000">
 

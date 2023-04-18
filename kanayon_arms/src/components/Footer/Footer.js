@@ -16,8 +16,9 @@ function Footer() {
                         <div className="col-6 col-lg-3 mb-3">
                             <img className="llanesk-logofoot mb-2" src={require('../../assets/KanayonFooter.png')}></img>
                             <ul className="list-unstyled mb-md-4 mb-lg-0 text-light llanesk-list">
-                                <li>We serve Chicken Inasal, Pork BBQ, </li>
-                                <li> Pork Liempo just for you!</li>
+                                <li>We serve Chicken Inasal,  </li>
+                                <li>Pork BBQ and Pork Liempo</li>
+                                <li> Just for you!</li>
                                 <li> <b> Tuloy Ang Bange! Tara Tikme!</b> </li>
                             </ul>
                         </div>
@@ -25,9 +26,9 @@ function Footer() {
                         <div className="col-6 col-lg-3 mb-3">
                             <h5 className="lh-lg fw-bolder llanesk-headline">Explore</h5>
                             <ul className="list-unstyled mb-md-4 mb-lg-0">
-                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-none" href="/about">About Us</a></li>
-                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-none" href="/ordernow">Order Now</a></li>
-                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-none" href="/login">Register Now!</a></li>
+                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-underline" href="/about">About Us</a></li>
+                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-underline" href="/ordernow">Order Now</a></li>
+                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-underline" href="/login">Register Now!</a></li>
                             </ul>
                         </div>
 
@@ -60,7 +61,7 @@ function Footer() {
                                     stroke-linejoin="round">
                                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                     <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg><span>kanayoninasal@gmail.com</span>
+                                </svg><span>@gmail.com</span>
                             </p>
 
                             <br></br>
@@ -84,50 +85,6 @@ function Footer() {
                     </div>
                 </div>
             </main >
-            {/* <div className="mt-4 container">
-                <div className="row">
-
-                    <div className="col">
-                        <h4>KANAYON INASAL</h4>
-                        <ul className="list-unstyled">
-                            <li>Kanayon Inasal is a semi-casual </li>
-                            <li>reataurant typewhich serves </li>
-                            <li>Chicken Inasal, Pork BBQ, and Pork Liempo</li>
-                        </ul>
-                    </div>
-
-                    <div className="col">
-
-                        <h4>LOCATION</h4>
-                        <ul className="list-unstyled">
-                            <li>Brgy. Pagaspas</li>
-                            <li>Tanauan, 4232 Batangas</li>
-
-
-                        </ul>
-                    </div>
-
-
-                    <div className="col">
-
-                        <h4>CONTACT</h4>
-                        <ul className="list-unstyled">
-                            <li>(+63) 939 490 3638</li>
-
-
-
-                        </ul>
-                    </div>
-
-
-                </div>
-                <hr />
-                <div className="row">
-                    <p className="col-sm">
-                        &copy;{new Date().getFullYear()} KANAYON INASAL | All right reserved | Terms Of Service | Privacy
-                    </p>
-                </div>
-            </div> */}
 
         </>
     );

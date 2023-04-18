@@ -1,8 +1,14 @@
-.head h3 {
-    color: antiquewhite;
-    margin-left: 840px;
-    font-size: 60px;
-    margin-bottom: 50px;
+.austriak-aboutus {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dongle', sans-serif;
+    font-family: 'League Spartan', sans-serif;
+
+}
+
+.austriak-aboutus-title {
+    color: #fff;
+
 }
 
 
@@ -21,7 +27,7 @@
     margin-bottom: 150px;
 }
 
-.btn-smart {
+.austriak-btn-smart {
     color: antiquewhite;
     background-color: #E45E12;
     margin-top: 80px;
@@ -30,7 +36,7 @@
     margin-bottom: 15px;
 }
 
-.img-fluid {
+.austriak-img-fluid {
     border-radius: 20px;
     margin-top: 30px;
     margin-left: 80px;
@@ -43,18 +49,6 @@
     font-size: 50px;
     font-style: oblique;
 
-}
-
-.carousel-caption h5 {
-    color: antiquewhite;
-    font-size: 30px;
-
-
-}
-
-.carousel-caption p {
-    color: antiquewhite;
-    font-size: 20px;
 }
 
 .austria_img {
