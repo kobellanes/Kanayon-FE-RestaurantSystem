@@ -95,11 +95,11 @@ function HomePage() {
 
                             <div className="bg-300 p-4 h-100 d-flex flex-column justify-content-center">
 
-                                <h4 className="text-800 text-white">Unli rice na binabalik balikan, Halina dine Kanayon!</h4>
+                                <h4 className="text-800">Unli rice na binabalik balikan, Halina dine Kanayon!</h4>
 
-                                <h1 className="fw-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Delicious Food To fit your lifestyle.</h1>
+                                <h1 className="fw-bold">Delicious Food To fit your lifestyle.</h1>
 
-                                <p className="mb-5 fs-1 text-white">One of the reasons that people enjoy coming to a great restaurant is that when an extraordinary meal is placed in front of them, they feel honored, respected, and even a little bit loved.</p>
+                                <p className="mb-5">One of the reasons that people enjoy coming to a great restaurant is that when an extraordinary meal is placed in front of them, they feel honored, respected, and even a little bit loved.</p>
                             </div>
 
                         </div>
