@@ -2,8 +2,26 @@ import React from 'react';
 import "./Login.css"
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
+
+    const notifySuccess = () => {
+        toast.success('You Successfully Created an Account!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+
+    }
+
+
     return (
         <>
             <Header></Header>
@@ -34,7 +52,7 @@ function Login() {
                                     </header>
 
                                     <div className="llanesk-input-field d-flex flex-column position-relative px-2">
-                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4 " id="email" required autocomplete="on" />
+                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4" id="email" required autocomplete="on" />
                                         <label className="position-absolute fs-6" for="email">Email</label>
                                     </div>
 
@@ -68,54 +86,74 @@ function Login() {
             </main>
 
             <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
-                <div className="offcanvas-header ">
-                    <h5 className="offcanvas-title">Registration Form</h5>
-                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <div className="offcanvas-header mb-0 pb-2">
+                    <h5 className="offcanvas-title fw-bolder fs-3">Registration Form</h5>
+                    <button type="button" className="btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div className="offcanvas-body">
-                    <form class="row g-3">
-                        <div class="col-md-4">
-                            <label for="validationDefault01" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="validationDefault01" value="Mark" required />
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationDefault02" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="validationDefault02" value="Otto" required />
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationDefaultUsername" class="form-label">Username</label>
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                                <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required />
+
+                <div className="offcanvas-body small p-0">
+
+                    <h6 className="text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
+
+                    <div className="container px-3">
+                        <form className="form-signup">
+
+                            <div className="mt-4 form-group">
+                                <div className="row">
+                                    <div className="text-center">
+                                        <input className="form-control" type="text" name="firstname" placeholder="First name" required />
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="validationDefault03" class="form-label">City</label>
-                            <input type="text" class="form-control" id="validationDefault03" required />
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationDefault04" class="form-label">State</label>
-                            <select class="form-select" id="validationDefault04" required >
-                                <option selected disabled value="">Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="validationDefault05" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="validationDefault05" required />
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
-                                <label class="form-check-label" for="invalidCheck2">
-                                    Agree to terms and conditions
+
+                            <div className="mt-4 form-group">
+                                <div className="row">
+                                    <div className="text-center">
+                                        <input className="form-control" type=" text" name="lastname" placeholder="Last name" required />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control col-8" type="email" name="email" placeholder="Email Address" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control l col-8" type="password" name="password" placeholder="New Password" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control col-8" type="number" name="number" placeholder="GCash Number" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <label className="text-start">
+                                    <input className="me-2" type="checkbox" name="check" required />
+                                    By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
                                 </label>
+
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Submit form</button>
-                        </div>
-                    </form>
+
+                            <div className="col-12 text-center mt-4 ">
+                                <button onClick={notifySuccess} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
+                                <ToastContainer />
+                            </div>
+
+                        </form>
+
+
+                    </div>
                 </div >
             </div >
 
