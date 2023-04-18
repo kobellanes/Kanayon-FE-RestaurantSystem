@@ -27,26 +27,29 @@ function UserFunction() {
                 users.length > 0 ?
                     users.map((users, index) => {
                         return (
-                            <div className="col-12 d-flex justify-content-around mt-3">
-                                <div className="w-100 ms-1">
+                            <main>
+                                <div className="col-12 d-flex justify-content-around mt-3">
+                                    <div className="w-100 ms-1">
+                                        {
+                                            users.isBan == 1 ?
+                                                <h3 className="text-start text-decoration-line-through">{users.user_name}</h3>
+                                                :
+                                                <h3 className="text-start">{users.user_name}</h3>
+                                        }
+                                    </div>
 
-                                    {
-                                        users.isBan == 1 ?
-                                            <h3 className="text-start text-decoration-line-through">{users.user_name}</h3>
-                                            :
-                                            <h3 className="text-start ">{users.user_name}</h3>
-                                    }
+
+                                    <div className="">
+                                        {
+                                            users.isBan == 0 ?
+                                                <button onClick={() => BanUser(index)} className="btn btn-danger ms-5">BAN</button>
+                                                :
+                                                <button disabled onClick={() => BanUser(index)} className="btn btn-danger ms-5">BAN</button>
+                                        }
+                                    </div>
+
                                 </div>
-
-
-                                {
-                                    users.isBan == 0 ?
-                                        <button onClick={() => BanUser(index)} className="btn btn-danger">BAN</button>
-                                        :
-                                        <button disabled onClick={() => BanUser(index)} className="btn btn-danger">BAN</button>
-                                }
-
-                            </div>
+                            </main >
                         )
                     })
                     :

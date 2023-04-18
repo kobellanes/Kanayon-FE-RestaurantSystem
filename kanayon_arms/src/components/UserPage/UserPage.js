@@ -36,25 +36,30 @@ function UserPage() {
                 </div>
 
                 <div className="dese-adminnav-content content">
-                    <main>
-                        <div className="w-50 mx-auto mt-5">
+                    <main className="container-fluid ">
+                        <div className="mx-auto mt-2">
                             <div className="border border-dark rounded p-3">
                                 <h1>List of Users</h1>
                                 <hr />
+
                                 <div className="container-fluid">
-                                    <div className="row">
-                                        <UserFunction />
-                                    </div>
+                                    <table className="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th className="ms-5">Function</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <UserFunction />
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </main>
                 </div>
             </div >
-
-
-            {/* <AdminNavbar></AdminNavbar> */}
-
         </>
     );
 }

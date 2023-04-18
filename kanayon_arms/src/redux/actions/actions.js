@@ -6,3 +6,17 @@ export const setUsers = (users) => {
         payload: users,
     };
 }
+
+export const setStocks = (stocks) => {
+    return {
+        type: ActionTypes.SET_STOCKS,
+        payload: stocks,
+    };
+}
+
+export const getStock = (stock) => {
+    return {
+        type: ActionTypes.GET_STOCK,
+        payload: stock,
+    };
+}
