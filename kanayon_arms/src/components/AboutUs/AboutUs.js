@@ -20,9 +20,9 @@ function AboutUs() {
     return (
         <>
             <Header></Header>
-            <div className="AboutUs">
-                <div className="head">
-                    <h3>ABOUT US</h3>
+            <section className="austriak-aboutus mt-5">
+                <div className="container-fluid d-flex justify-content-center align-items-center text-center">
+                    <h1 className="austriak-aboutus-title text-center align-items-center fw-bold">Get to know us</h1>
                 </div>
 
                 <div className="container">
@@ -32,7 +32,7 @@ function AboutUs() {
 
                             <h1>KANAYON INASAL</h1>
 
-                            <p>Our barrio's grilled chicken or alson known as chicken inasal wins the heart of every villager in our barangay, founded in September 10, 2022. Kanayon Inasal got its name from the term Kanayon which means "fellow local" that makes its name tattoed on the mind of every customer we serve.</p>
+                            <p>Our barrio's grilled chicken or also known as chicken inasal wins the heart of every villager in our barangay, founded in September 10, 2022. Kanayon Inasal got its name from the term Kanayon which means "fellow local" that makes its name tattoed on the mind of every customer we serve.</p>
 
 
                             <p>The idea came about when the founder, Tatay Mio felt the need and the urge to feed and inspire people with this dish they so loved, chicken inasal. His family put a lot of effort into serving the best and quality food they could offer, from selecting the freshest meat up to adding the special, flavorful and authentic ingredients make our inasal become different from the others.</p>
@@ -45,9 +45,9 @@ function AboutUs() {
 
                         <div className="austriak-col-6 col-6">
                             <div className="AboutUs__img">
-                                <img className="img-fluid" src={kanayon} width="450" alt="Kanayon" />
-                                <img className="img-fluid pic" src={paa} width="450" alt="Kanayon" />
-                                <img className="img-fluid pic2" src={pecho} width="450" alt="Kanayon" />
+                                <img className="austriak-img-fluid img-fluid" src={kanayon} width="450" alt="Kanayon" />
+                                <img className="austriak-img-fluid img-fluid pic" src={paa} width="450" alt="Kanayon" />
+                                <img className="austriak-img-fluid img-fluid pic2" src={pecho} width="450" alt="Kanayon" />
                             </div>
                         </div>
 
@@ -149,11 +149,11 @@ function AboutUs() {
                     </div>
 
                     <div className="AboutUs__btn">
-                        <a href="ordernow" className="btn btn-smart btn btn-dark">ORDER NOW</a>
+                        <a href="ordernow" className="btn austriak-btn-smart btn-smart btn btn-dark">ORDER NOW</a>
 
                     </div>
                 </div >
-            </div>
+            </section>
             <Footer></Footer>
         </>
     );

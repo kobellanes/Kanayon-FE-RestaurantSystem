@@ -6,10 +6,9 @@ function Header() {
         <>
             <main className="llanesk-header mt-1">
 
-                <div className="llanesk-navb-text ms-5 mt-2 d-flex justify-content-center align-items-center" data-navbar-on-scroll="data-navbar-on-scroll">
+                <div className="llanesk-navb-text ms-5 mt-2 d-flex justify-content-center align-items-center px-5" data-navbar-on-scroll="data-navbar-on-scroll">
                     <div className="d-flex align-items-center mt-1">
                         <img className="rounded-pill llanesk-logo" src={require('../../assets/logo.jpg')}></img>
-                        <img className="llanesk-logotext" src={require('../../assets/text.png')}></img>
                     </div>
 
 
@@ -18,22 +17,22 @@ function Header() {
                         <div className="container-fluid llanesk-navb-items align-items-center d-none d-xl-flex d-lg-flex justify-content-end me-lg-5">
 
                             <div className="llanesk-item fs-4 d-flex flex-row">
-                                <a href="/" className="llanesk-links fa-solid fa-house d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
-                                <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex" href="/">Home</a>
+                                <a href="/" className="llanesk-links fa-solid fa-house d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-1"></a>
+                                <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/">Home</a>
                             </div>
 
                             <div className="llanesk-item fs-4 d-flex flex-row">
-                                <a href="about" className="llanesk-links fa-solid fa-address-card d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
-                                <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex" href="/about">About</a>
+                                <a href="about" className="llanesk-links fa-solid fa-address-card d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-1"></a>
+                                <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/about">About</a>
                             </div>
 
                             <div className="llanesk-item fs-4 d-flex flex-row">
-                                <a href="ordernow" className="llanesk-links fa-solid fa-cart-shopping d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
-                                <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex" href="/ordernow">Order Now</a>
+                                <a href="ordernow" className="llanesk-links fa-solid fa-cart-shopping d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-1"></a>
+                                <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/ordernow">Order Now</a>
                             </div>
 
                             <div className="llanesk-item-button fs-4">
-                                <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-6 text-light align-items-center" href="/login" type="button">Login/Register</a>
+                                <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" href="/login" type="button">Login/Register</a>
                             </div>
 
                         </div>
@@ -49,25 +48,30 @@ function Header() {
                         <div className="llanesk-modal m-0 modal-dialog">
                             <div className="llanesk-modal-content modal-content overflow-y-scroll">
 
-                                <div className="llanesk-m-header modal-header d-flex text-white my-0 mx-auto py-4 justify-content-center">
-                                    <img className="rounded-pill llanesk-logos" src={require('../../assets/logo.jpg')}></img>
-                                    <img className="llanesk-modalpic align-items-center mt-2" src={require('../../assets/text.png')}></img>
+                                <div className="llanesk-m-header modal-header d-flex text-white my-0 pt-4 justify-content-center mx-auto me-5">
+                                    <h2 className="text-white llanesk-modal-text">Kanayon Inasal</h2>
                                     <button type="button" className="llanesk-btn-close btn-close pb-3 pe-2" data-bs-dismiss="modal" aria-label="Close"><i
                                         className="fa-solid fa-xmark fs-5 text-light"></i></button>
                                 </div>
 
                                 <div className="llanesk-modal-body modal-body mx-auto mt-5 pt-5">
 
-                                    <div className="llanesk-modal-line d-flex py-2">
-                                        <i className="fa-solid fa-house fs-2 ps-2 pb-1 me-3"></i><a className="text-decoration-none fs-6" href="/">Home</a>
+                                    <div className="llanesk-modal-line container-fluid pt-2">
+                                        <ul className="list-unstyled">
+                                            <li className=""><a href="/" className="text-decoration-none fs-2 pb-1 me-3 d-block"><i className="fa-solid fa-house me-2"></i>Home</a></li>
+                                        </ul>
                                     </div>
 
-                                    <div className="llanesk-modal-line d-flex py-2">
-                                        <i className="fa-solid fa-address-card fs-2 ps-2 pb-1 me-3"></i><a className="text-decoration-none fs-6" href="/about">About Us</a>
+                                    <div className="llanesk-modal-line container-fluid pt-2">
+                                        <ul className="list-unstyled">
+                                            <li className=""><a href="/about" className="text-decoration-none fs-2 pb-1 me-3 d-block"><i className="fa-solid fa-address-card me-2"></i>About Us</a></li>
+                                        </ul>
                                     </div>
 
-                                    <div className="llanesk-modal-line d-flex py-2">
-                                        <i className="fa-solid fa-cart-shopping fs-2 ps-2 pb-1 me-3"></i> <a className="text-decoration-none fs-6" href="/ordernow">Order Now</a>
+                                    <div className="llanesk-modal-line container-fluid pt-2">
+                                        <ul className="list-unstyled">
+                                            <li className=""><a href="/ordernow" className="text-decoration-none fs-2 pb-1 me-3 d-block"><i className="fa-solid fa-cart-shopping me-2"></i>Order Now</a></li>
+                                        </ul>
                                     </div>
 
                                     <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
