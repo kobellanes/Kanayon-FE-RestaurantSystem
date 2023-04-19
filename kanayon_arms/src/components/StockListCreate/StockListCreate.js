@@ -61,7 +61,7 @@ function StockListCreate() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12">
-                        <h1>Stock List</h1>
+                        <h1 className="text-white">Stock List</h1>
                     </div>
                     <div className="col-12">
                         <div className="form-group">

@@ -62,11 +62,11 @@ function StockListItem() {
                                 <div className="w-100 ms-1">
                                     {
                                         stock.isSold == 1 ?
-                                            <h3 className="text-start text-decoration-line-through">{stock.stock_name}</h3>
+                                            <h3 className="text-start text-decoration-line-through text-white">{stock.stock_name}</h3>
                                             :
-                                            <h3 className="text-start ">{stock.stock_name}</h3>
+                                            <h3 className="text-start text-white">{stock.stock_name}</h3>
                                     }
-                                    <p className="text-start text-dark">{stock.stock_price}</p>
+                                    <p className="text-start text-dark text-white">{stock.stock_price}</p>
                                 </div>
 
                                 <div className="d-flex">
