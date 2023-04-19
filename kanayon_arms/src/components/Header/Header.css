@@ -12,7 +12,6 @@
 
 .llanesk-con {
     width: 100%;
-    padding: 0px;
 }
 
 .llanesk-links {
@@ -20,11 +19,11 @@
 }
 
 .llanesk-links:hover {
-    color: #FFF600;
+    color: #E45E12;
 }
 
 .llanesk-log:hover {
-    color: white;
+    color: #fefefe;
 }
 
 .llanesk-navb-text img {
@@ -84,14 +83,11 @@
 
 .llanesk-modal-body {
     width: 88%;
-    flex: unset;
 }
 
 .llanesk-modal-line {
     width: 100%;
     margin-bottom: 50px;
-    cursor: pointer;
-    transition: all .5s ease;
     border-bottom: 1px solid #fefefe;
     color: #fefefe;
 }
@@ -110,7 +106,7 @@
 }
 
 .llanesk-modal-line li a:hover {
-    color: yellow;
+    color: #E45E12;
 }
 
 .llanesk-navb-button {
@@ -138,11 +134,7 @@
 }
 
 .llanesk-mobile-modal-footer i:hover {
-    color: #FFF600;
-}
-
-.llanesk-header-icons {
-    font-family: 'Shadows Into Light Two', cursive;
+    color: #E45E12;
 }
 
 @media(max-width: 470px) {

@@ -1,5 +1,4 @@
 .llanesk-login {
-    font-family: 'Poppins', sans-serif;
     min-height: 0vh;
 }
 
@@ -78,8 +77,8 @@
     position: fixed;
     width: 30%;
     top: 20%;
-    bottom: 20%;
-    left: 40%;
+    bottom: 8%;
+    left: 35%;
     transform: translate(10%, 10%);
     min-height: 100px;
     max-height: 580px;
@@ -89,10 +88,18 @@
     font-size: 20px;
 }
 
+@media only screen and (max-width:1400px) {
+    .llanesk-offcanvas {
+        width: 40%;
+        left: 30%;
+    }
+
+}
+
 @media only screen and (max-width: 768px) {
     .llanesk-badge {
-        height: 100px;
-        width: 100px;
+        height: 80px;
+        width: 80px;
     }
 
     .llanesk-text {
@@ -106,5 +113,18 @@
     .llanesk-row {
         max-width: 420px;
         width: 100%;
+    }
+
+    .llanesk-offcanvas {
+        width: 50%;
+        left: 25%;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .llanesk-offcanvas {
+        width: 70%;
+        left: 15%;
     }
 }
