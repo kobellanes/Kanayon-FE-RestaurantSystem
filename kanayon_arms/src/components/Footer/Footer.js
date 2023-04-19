@@ -1,17 +1,12 @@
 import React from 'react';
 import "./Footer.css"
-import logotext from '../../assets/KanayonFooter.png';
 
 function Footer() {
     return (
         <>
             <main className="llanesk-footer mt-5 mx-auto">
 
-                <div className="d-flex align-items-center justify-content-center">
-
-                </div>
-
-                <div className="container">
+                <div className="container justify-content-center align-items-center text-center">
                     <div className="row">
                         <div className="col-6 col-lg-3 mb-3">
                             <img className="llanesk-logofoot mb-2" src={require('../../assets/KanayonFooter.png')}></img>
@@ -59,13 +54,13 @@ function Footer() {
                                 <svg className="feather feather-mail me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
                                     <polyline points="22,6 12,13 2,6"></polyline>
                                 </svg><span>@gmail.com</span>
                             </p>
 
-                            <br></br>
-                            <br></br>
 
                         </div>
 

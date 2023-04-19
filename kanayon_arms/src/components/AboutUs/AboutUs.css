@@ -1,57 +1,84 @@
 .austriak-aboutus {
     margin: 0;
     padding: 0;
-    font-family: 'Dongle', sans-serif;
-    font-family: 'League Spartan', sans-serif;
-
 }
 
 .austriak-aboutus-title {
-    color: #fff;
-
+    font-size: 50px;
 }
 
+.austriak-aboutus-border {
+    border-bottom: 4px solid #fefefe;
+    width: 10%;
+}
 
 .austriak-col-6 h1 {
     color: #E45E12;
-    font-size: 50px;
-    margin-bottom: 40px;
+    font-size: 40px;
 }
 
 .austriak-col-6 p {
-    color: antiquewhite;
-    font-style: italic;
-    font-size: 25px;
+    font-size: 28px;
     text-align: justify;
-    margin-right: 10px;
-    margin-bottom: 150px;
 }
 
-.austriak-btn-smart {
-    color: antiquewhite;
-    background-color: #E45E12;
-    margin-top: 80px;
-    margin-left: 590px;
-    font-size: 30px;
-    margin-bottom: 15px;
+.austriak-aboutus-btn {
+    background-color: #e46e2a;
 }
 
-.austriak-img-fluid {
-    border-radius: 20px;
-    margin-top: 30px;
-    margin-left: 80px;
-    height: 300px;
-    margin-bottom: 120px;
+.austriak-aboutus-img-fluid {
+    height: 370px;
+    width: 65%;
 }
 
 .last-austriak h1 {
     color: #e46e2a;
     font-size: 50px;
     font-style: oblique;
-
 }
 
-.austria_img {
-    height: 540px;
-    width: 1300px;
+.austria-aboutus-img {
+    height: 650px;
+    width: 60%;
+}
+
+@media(max-width: 1400px) {
+    .austriak-col-6 p {
+        font-size: 25px;
+        text-align: justify;
+    }
+}
+
+@media(max-width: 1200px) {
+    .austriak-col-6 p {
+        font-size: 20px;
+        text-align: justify;
+    }
+
+    .austriak-aboutus-img-fluid {
+        height: 300px;
+    }
+
+    .last-austriak h1 {
+        font-size: 35px;
+    }
+
+    .austria-aboutus-img {
+        height: 450px;
+    }
+}
+
+@media(max-width: 992px) {
+
+    .austriak-aboutus-img-fluid {
+        width: 50%;
+    }
+
+    .last-austriak h1 {
+        font-size: 28px;
+    }
+
+    .austria-aboutus-img {
+        height: 300px;
+    }
 }

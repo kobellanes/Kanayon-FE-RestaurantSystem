@@ -67,7 +67,7 @@ function Login() {
 
                                     <div className="mt-md-5">
                                         <div className="mt-4 text-center">
-                                            <span className="llanesk-register fw-light text-dark ">Don't have an account yet? <a className="llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Register here</a></span>
+                                            <span className="llanesk-register fw-light text-dark">Don't have an account yet?<a className="ps-1 llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Register here</a></span>
 
                                         </div>
                                     </div>
@@ -87,13 +87,13 @@ function Login() {
 
             <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
                 <div className="offcanvas-header mb-0 pb-2">
-                    <h5 className="offcanvas-title fw-bolder fs-3">Registration Form</h5>
+                    <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Registration Form</h3>
                     <button type="button" className="btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
                 <div className="offcanvas-body small p-0">
 
-                    <h6 className="text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
+                    <h6 className="llanesk-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
 
                     <div className="container px-3">
                         <form className="form-signup">
