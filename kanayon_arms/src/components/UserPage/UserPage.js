@@ -38,22 +38,12 @@ function UserPage() {
                 <div className="dese-adminnav-content content">
                     <main className="container-fluid ">
                         <div className="mx-auto mt-2">
-                            <div className="border border-dark rounded p-3">
-                                <h1>List of Users</h1>
+                            <div className="p-3">
+                                <h1 className="dese_title container-fluid text-start fs-2 fw-bold">LIST OF USERS</h1>
                                 <hr />
 
                                 <div className="container-fluid">
-                                    <table className="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th className="ms-5">Function</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <UserFunction />
-                                        </tbody>
-                                    </table>
+                                    <UserFunction />
                                 </div>
                             </div>
                         </div>
