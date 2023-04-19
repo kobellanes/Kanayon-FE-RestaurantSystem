@@ -7,6 +7,8 @@ import OrderNow from './components/OrderNow/OrderNow';
 import Login from './components/Login/Login';
 import AdminHomePage from './components/AdminHomePage/AdminHomePage';
 import UserPage from './components/UserPage/UserPage';
+import StockList from './components/StockList/StockList';
+
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
           <Route path="ordernow" element={<OrderNow />} />
           <Route path="login" element={<Login />} />
           <Route path="userlist" element={<UserPage />} />
+          <Route path="stocklist" element={<StockList />} />
         </Routes>
       </BrowserRouter>
     </>
