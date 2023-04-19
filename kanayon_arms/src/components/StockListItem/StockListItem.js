@@ -37,6 +37,16 @@ function StockListItem() {
         dispatch(setStocks(newStock));
     }
 
+    const retrieveStock = index => {
+        const newStock = [...stocks];
+        const stock = newStock.at(index);
+
+        stock.isSold = 0;
+        newStock.splice(index, 1, stock);
+
+        dispatch(setStocks(newStock));
+    }
+
     const deleteStock = index => {
         const newStock = [...stocks];
         console.log("Before Deletion", newStock);
@@ -83,7 +93,7 @@ function StockListItem() {
                                     stock.isSold == 0 ?
                                         <button onClick={() => soldStock(index)} className="btn btn-dark mt-3">SOLD OUT</button>
                                         :
-                                        <button disabled onClick={() => soldStock(index)} className="btn btn-dark mt-3">SOLD OUT</button>
+                                        <button onClick={() => retrieveStock(index)} className="btn btn-success mt-3">Retrieve</button>
                                 }
 
                             </div>

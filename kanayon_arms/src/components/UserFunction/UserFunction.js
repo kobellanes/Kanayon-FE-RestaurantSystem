@@ -16,7 +16,19 @@ function UserFunction() {
         newUser.splice(index, 1, user);
 
         dispatch(setUsers(newUser));
+
     }
+
+    const RetrieveUser = index => {
+        const newUser = [...users];
+        const user = newUser.at(index);
+
+        user.isBan = 0;
+        newUser.splice(index, 1, user);
+
+        dispatch(setUsers(newUser));
+    }
+
 
     useEffect(() => {
 
@@ -52,10 +64,13 @@ function UserFunction() {
                                 <h3 className="text-start text-decoration-line-through text-body-tertiary fs-6 fw-light">{users.address}</h3>
                                 :
                                 <h3 className="text-start fs-6 fw-normal">{users.address}</h3>}</td>
-                            <td className="dese_function text-center">{users.isBan == 0 ?
-                                <button onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>
-                                :
-                                <button disabled onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>}</td>
+                            <td className="dese_function text-center">
+                                {users.isBan == 0 ?
+                                    <button onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>
+                                    :
+                                    <button onClick={() => RetrieveUser(index)} className="dese_button btn btn-success">RETRIEVE</button>
+                                }
+                            </td>
                         </tr>
                     ))}
                 </tbody>

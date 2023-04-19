@@ -16,12 +16,12 @@ function StockList() {
                     <ul className="list-unstyled px-2">
                         <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
                         <li className=""><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
-                        <li className="active"><a href="/stocklist" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
-                            <span><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</span>
+                        <li className="active"><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
+                        <li className=""><a href="#" className="text-decoration-none px-3 py-2  d-flex justify-content-between">
+                            <span><i className="fa-solid fa-basket-shopping me-2"></i>Order List</span>
                             <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
                         </a>
                         </li>
-                        <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-basket-shopping me-2"></i>Order List</a></li>
                         <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-money-check-dollar me-2"></i>Inventory Analysis</a></li>
                     </ul>
 
