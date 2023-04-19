@@ -38,16 +38,17 @@ function StockList() {
 
                 <div className="dese-adminnav-content content">
                     <main>
-                        <div className="w-50 mx-auto mt-2">
-                            <div className="card card-shadow py-3">
+                        <div className="container w-100 mx-auto mt-2">
+                            <div className="container w-xl-50 w-md-100 w-sm-100 card card-shadow py-3">
                                 <StockListCreate />
-                                <hr />
-                                <div className="container-fluid">
-                                    <div className="row">
-                                        <StockListItem />
-                                    </div>
+                            </div>
+
+                            <div className="container-fluid">
+                                <div className="row">
+                                    <StockListItem />
                                 </div>
                             </div>
+
                         </div>
                     </main>
                 </div>
