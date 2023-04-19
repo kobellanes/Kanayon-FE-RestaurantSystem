@@ -30,7 +30,7 @@ function UserFunction() {
                         <th>EMAIL ADDRESS</th>
                         <th>GCASH NUMBER</th>
                         <th>ADDRESS</th>
-                        <th>FUNCTION</th>
+                        <th className="text-center">FUNCTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +52,7 @@ function UserFunction() {
                                 <h3 className="text-start text-decoration-line-through text-body-tertiary fs-6 fw-light">{users.address}</h3>
                                 :
                                 <h3 className="text-start fs-6 fw-normal">{users.address}</h3>}</td>
-                            <td className="dese_function">{users.isBan == 0 ?
+                            <td className="dese_function text-center">{users.isBan == 0 ?
                                 <button onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>
                                 :
                                 <button disabled onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>}</td>

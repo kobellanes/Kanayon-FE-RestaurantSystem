@@ -37,7 +37,7 @@ function UserPage() {
 
                 <div className="dese-adminnav-content content">
                     <main className="container-fluid ">
-                        <div className="mx-auto mt-2">
+                        <div className="mt-2">
                             <div className="p-3">
                                 <h1 className="dese_title container-fluid text-start fs-2 fw-bold">LIST OF USERS</h1>
                                 <hr />
