@@ -262,7 +262,7 @@ function OrderNow() {
                                                                     </div>
                                                                 </div>
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"> <img src={require('../../assets/softdrinks.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucidoml_card card-span h-100 text-white"> <img src={require('../../assets/softdrinks.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">SOFTDRINKS</h5>

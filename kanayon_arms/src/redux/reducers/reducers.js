@@ -20,7 +20,7 @@ const userInitialState = {
         },
         {
             id: 1,
-            user_name: "SkyLucido",
+            user_name: "Sky Lucido",
             email_add: "skyers@gmail.com",
             gcash_num: "09164261711",
             address: "Brgy. Bangag, Tanauan City, Batangas",

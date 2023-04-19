@@ -55,31 +55,35 @@ function StockListItem() {
                 stocks.length > 0 ?
                     stocks.map((stock, index) => {
                         return (
-                            <div className="col-12 d-flex justify-content-around mt-1">
-                                <div className="w-100 ms-1">
+                            <div className="card card shadow col-xl-3 col-md-4 col-sm-6 d-flex justify-content-around mt-5 m-2 p-4">
+                                {/* <div className="card border border-dark p-5 py-5">
 
+                                </div> */}
+                                <div className="w-100 ms-1">
                                     {
                                         stock.isSold == 1 ?
                                             <h3 className="text-start text-decoration-line-through">{stock.stock_name}</h3>
                                             :
                                             <h3 className="text-start ">{stock.stock_name}</h3>
                                     }
-                                    <p className="text-start">{stock.stock_price}</p>
+                                    <p className="text-start text-dark">{stock.stock_price}</p>
                                 </div>
-                                {
-                                    stock.isEdit == 0 ?
-                                        <button className="btn btn-success" onClick={() => editStock(index)}>EDIT</button>
-                                        :
-                                        <button disabled className="btn btn-success" onClick={() => editStock(index)}>EDIT</button>
-                                }
-                                <button onClick={() => deleteStock(index)} className="btn btn-danger mx-1">DELETE</button>
 
+                                <div className="d-flex">
+                                    {
+                                        stock.isEdit == 0 ?
+                                            <button className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
+                                            :
+                                            <button disabled className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
+                                    }
+                                    <button onClick={() => deleteStock(index)} className="btn btn-danger ms-5">DELETE</button>
+                                </div>
 
                                 {
                                     stock.isSold == 0 ?
-                                        <button onClick={() => soldStock(index)} className="btn btn-primary">COMPLETE</button>
+                                        <button onClick={() => soldStock(index)} className="btn btn-dark mt-3">SOLD OUT</button>
                                         :
-                                        <button disabled onClick={() => soldStock(index)} className="btn btn-primary">COMPLETE</button>
+                                        <button disabled onClick={() => soldStock(index)} className="btn btn-dark mt-3">SOLD OUT</button>
                                 }
 
                             </div>
