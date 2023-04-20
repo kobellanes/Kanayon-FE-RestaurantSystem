@@ -34,7 +34,7 @@ function Login() {
                         <div className="row llanesk-row rounded-4 shadow p-2 mb-5 position-relative">
 
                             <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill z-2">
-                                <img className="rounded-pill llanesk-badge" src={require('../../assets/logo.jpg')} />
+                                <img className="rounded-pill llanesk-badge" src={require('../../../assets/logo.jpg')} />
                             </span>
 
                             <div className="col-md-6 llanesk-side-img rounded-2">
@@ -154,9 +154,8 @@ function Login() {
 
 
                     </div>
-                </div >
-            </div >
-
+                </div>
+            </div>
 
             <Footer></Footer>
         </>

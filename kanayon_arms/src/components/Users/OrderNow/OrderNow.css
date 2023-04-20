@@ -1,0 +1,38 @@
+.lucidom-ordernow-title {
+    font-size: 45px;
+}
+
+.lucidom-ordernow-border {
+    border-bottom: 4px solid #fefefe;
+    width: 20%;
+}
+
+.lucidom-ordernow-featured {
+    font-size: 25px;
+}
+
+.lucidom-ordernow-orderpage {
+    background-color: green;
+    width: 25%;
+    padding: 20px;
+    font-size: 25px;
+    color: #fefefe;
+}
+
+.lucidom-ordernow-orderpage:hover {
+    background-color: lightgreen;
+    color: black;
+}
+
+.lucidom-ordernow-orderlist {
+    background-color: blue;
+    width: 25%;
+    padding: 20px;
+    font-size: 25px;
+    color: #fefefe;
+}
+
+.lucidom-ordernow-orderlist:hover {
+    background-color: lightblue;
+    color: black;
+}

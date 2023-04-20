@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { setUsers } from '../../redux/actions/actions';
+import { setUsers } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 function UserFunction() {

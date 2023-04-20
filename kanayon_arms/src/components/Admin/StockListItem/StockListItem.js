@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { setStocks, getStock } from '../../redux/actions/actions';
+import { setStocks, getStock } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 function StockListItem() {
@@ -72,21 +72,33 @@ function StockListItem() {
                                 <div className="w-100 ms-1">
                                     {
                                         stock.isSold == 1 ?
-                                            <h3 className="text-start text-decoration-line-through text-body-secondary">{stock.stock_name}</h3>
+                                            <>
+                                                <h3 className="text-start text-decoration-line-through text-white">{stock.stock_name}</h3>
+                                                <p className="text-start text-dark text-white text-decoration-line-through">{stock.stock_price}</p>
+                                            </>
                                             :
-                                            <h3 className="text-start text-white">{stock.stock_name}</h3>
+                                            <>
+                                                <h3 className="text-start text-white">{stock.stock_name}</h3>
+                                                <p className="text-start text-dark text-white">{stock.stock_price}</p>
+                                            </>
                                     }
-                                    <p className="text-start text-dark text-white">{stock.stock_price}</p>
+
                                 </div>
 
-                                <div className="d-flex">
+                                <div className="d-flex text-center justify-content-center align-items-center">
                                     {
                                         stock.isEdit == 0 ?
-                                            <button className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
+                                            <>
+                                                <button className="btn btn-success me-2" onClick={() => editStock(index)}>EDIT</button>
+                                                <button onClick={() => deleteStock(index)} className="btn btn-danger">DELETE</button>
+                                            </>
                                             :
-                                            <button disabled className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
+                                            <>
+                                                <button disabled className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
+                                                <button disabled className="btn btn-danger ms-5">DELETE</button>
+                                            </>
                                     }
-                                    <button onClick={() => deleteStock(index)} className="btn btn-danger ms-5">DELETE</button>
+
                                 </div>
 
                                 {
