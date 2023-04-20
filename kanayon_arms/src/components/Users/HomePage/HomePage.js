@@ -2,10 +2,6 @@ import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './HomePage.css';
-import customers3 from '../../assets/customers3.jpg';
-import customers2 from '../../assets/customers2.jpg';
-import customers1 from '../../assets/customers1.jpg';
-// import slide1 from '../../assets/homeslide.jpg';
 
 function HomePage() {
     return (
@@ -30,25 +26,25 @@ function HomePage() {
 
                                     <div className="carousel-item active">
                                         <div className="dese_images col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img1.png')} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../../assets/carousel-img1.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
                                         <div className="dese_images col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img2.png')} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../../assets/carousel-img2.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
                                         <div className="dese_images col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img3.png')} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../../assets/carousel-img3.png')} alt="..." />
                                         </div>
                                     </div>
 
                                     <div className="carousel-item">
                                         <div className="dese_images col-12 mb-3 mb-md-0">
-                                            <img className="dese_img img-fluid" src={require('../../assets/carousel-img4.png')} alt="..." />
+                                            <img className="dese_img img-fluid" src={require('../../../assets/carousel-img4.png')} alt="..." />
                                         </div>
                                     </div>
 
@@ -108,7 +104,7 @@ function HomePage() {
                         <div className="col-md-6">
 
                             <div className="card card-span h-100 text-white">
-                                <img className="card-img h-100" src={customers1}
+                                <img className="card-img h-100" src={require('../../../assets/customers1.jpg')}
                                     alt="Customers" />
 
                                 <div className="card-img-overlay bg-dark-gradient">
@@ -121,13 +117,13 @@ function HomePage() {
                     <div className="row h-100 g-2 py-1">
                         <div className="col-md-4">
                             <div className="card card-span h-100 text-white"><img className="card-img h-100"
-                                src={customers3} alt="Customers" />
+                                src={require('../../../assets/customers2.jpg')} alt="Customers" />
                                 <div className="card-img-overlay bg-dark-gradient">
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="card card-span h-100 text-white"><img className="card-img h-100" src={customers3}
+                            <div className="card card-span h-100 text-white"><img className="card-img h-100" src={require('../../../assets/customers3.jpg')}
                                 alt="Customers" />
                                 <div className="card-img-overlay bg-dark-gradient">
 
@@ -136,7 +132,7 @@ function HomePage() {
                         </div>
                         <div className="col-md-4">
                             <div className="card card-span h-100 text-white"><img className="card-img h-100"
-                                src={customers2} alt="Customers" />
+                                src={require('../../../assets/customers4.jpg')} alt="Customers" />
                                 <div className="card-img-overlay bg-dark-gradient">
 
                                 </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./AdminHomePage.css"
+import "./HomePage.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function AdminHomePage() {
@@ -9,8 +9,8 @@ function AdminHomePage() {
             <div className="dese-adminnav-main main-container d-flex">
                 <div className="dese-adminnav-sidebar sidebar" id="side_nav">
                     <div className="dese-adminnav-header-box header-box px-2 pt-3 pb-4 d-flex flex-row align-items-center">
-                        <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../assets/logo.jpg')}></img>
-                        <img className="dese-logotext mt-2" src={require('../../assets/text.png')}></img>
+                        <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../../assets/logo.jpg')}></img>
+                        <h5 className="text-light mt-2 ms-2">Hello Admin!</h5>
 
                     </div>
 

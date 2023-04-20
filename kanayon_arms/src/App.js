@@ -1,13 +1,13 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './components/HomePage/HomePage';
-import AboutUs from './components/AboutUs/AboutUs';
-import OrderNow from './components/OrderNow/OrderNow';
-import Login from './components/Login/Login';
-import AdminHomePage from './components/AdminHomePage/AdminHomePage';
-import UserPage from './components/UserPage/UserPage';
-import StockList from './components/StockList/StockList';
+import HomePage from './components/Users/HomePage/HomePage';
+import AboutUs from './components/Users/AboutUs/AboutUs';
+import OrderNow from './components/Users/OrderNow/OrderNow';
+import Login from './components/Users/Login/Login';
+import AdminHomePage from './components/Admin/HomePage/HomePage';
+import UserPage from './components/Admin/UserList/UserList';
+import StockList from './components/Admin/StockList/StockList';
 
 
 function App() {

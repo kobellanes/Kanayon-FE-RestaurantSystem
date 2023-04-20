@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setStocks, getStock } from '../../redux/actions/actions';
+import { setStocks, getStock } from '../../../redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 function StockListCreate() {
@@ -41,7 +41,7 @@ function StockListCreate() {
             stock_name: stockTitle,
             stock_price: stockPrice,
             isEdit: 0,
-            isComplete: 0,
+            isSold: 0,
         })
         dispatch(setStocks(newStock));
         setStockTitle('');

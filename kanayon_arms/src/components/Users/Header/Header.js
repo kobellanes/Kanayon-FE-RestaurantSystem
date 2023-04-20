@@ -8,7 +8,7 @@ function Header() {
 
                 <div className="llanesk-navb-text ms-0 ms-lg-5 mt-2 d-flex justify-content-center align-items-center px-4 px-lg-5" data-navbar-on-scroll="data-navbar-on-scroll">
                     <div className="d-flex align-items-center mt-1">
-                        <img className="rounded-pill llanesk-logo" src={require('../../assets/logo.jpg')}></img>
+                        <img className="rounded-pill llanesk-logo" src={require('../../../assets/logo.jpg')}></img>
                     </div>
 
 
@@ -89,8 +89,7 @@ function Header() {
                     </div>
                 </div>
 
-
-            </main >
+            </main>
 
         </>
     );

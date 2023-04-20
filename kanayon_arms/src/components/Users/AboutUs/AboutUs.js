@@ -2,15 +2,6 @@ import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './AboutUs.css';
-import customer2 from '../../assets/customers2.jpg';
-import customer3 from '../../assets/customers3.jpg';
-import customer4 from '../../assets/customers4.jpg';
-import customer5 from '../../assets/customers5.jpg';
-import customer6 from '../../assets/customers6.jpg';
-import customer7 from '../../assets/customers7.jpg';
-import customer8 from '../../assets/customers8.jpg';
-import customer9 from '../../assets/customers9.jpg';
-import customer10 from '../../assets/customers10.jpg';
 
 function AboutUs() {
     return (
@@ -29,7 +20,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../assets/customers1.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/customers1.jpg')} alt="Kanayon" />
                     </div>
 
                 </div>
@@ -41,7 +32,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../assets/paa.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/paa.jpg')} alt="Kanayon" />
 
                     </div>
 
@@ -53,7 +44,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-start">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../assets/logo.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/logo.jpg')} alt="Kanayon" />
 
                     </div>
 
@@ -80,56 +71,56 @@ function AboutUs() {
 
                             <div className="carousel-item active">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={require('../../assets/customers2.jpg')} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers2.jpg')} alt="..." />
 
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer3} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers3.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer4} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers4.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer5} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers5.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer6} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers6.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer7} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers7.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer8} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers8.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer9} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers9.jpg')} alt="..." />
                                 </div>
                             </div>
 
                             <div className="carousel-item">
                                 <div className="col-12 mb-3 mb-md-0">
-                                    <img className="austria-aboutus-img img-fluid" src={customer10} alt="..." />
+                                    <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers10.jpg')} alt="..." />
                                 </div>
                             </div>
 

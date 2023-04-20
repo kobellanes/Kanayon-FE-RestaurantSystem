@@ -1,21 +1,22 @@
 import React from 'react';
-import UserFunction from '../UserFunction/UserFunction';
+import StockListCreate from '../StockListCreate/StockListCreate';
+import StockListItem from '../StockListItem/StockListItem';
 
-function UserPage() {
+function StockList() {
     return (
         <>
             <div className="dese-adminnav-main main-container d-flex">
                 <div className="dese-adminnav-sidebar sidebar" id="side_nav">
                     <div className="dese-adminnav-header-box header-box px-2 pt-3 pb-4 d-flex flex-row align-items-center">
-                        <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../assets/logo.jpg')}></img>
-                        <img className="dese-logotext mt-2" src={require('../../assets/text.png')}></img>
-                        <button className="dese-adminnav-close-btn d-md-none d-block btn close-btn px-1 py-0 text-white"><i className="fa-solid fa-bars me-2"></i></button>
+                        <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../../assets/logo.jpg')}></img>
+                        <h5 className="text-light mt-2 ms-2">Hello Admin!</h5>
+
                     </div>
 
                     <ul className="list-unstyled px-2">
                         <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
-                        <li className="active"><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
-                        <li className=""><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
+                        <li className=""><a href="/userlist" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-users me-2"></i>List of Users</a></li>
+                        <li className="active"><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
                         <li className=""><a href="#" className="text-decoration-none px-3 py-2  d-flex justify-content-between">
                             <span><i className="fa-solid fa-basket-shopping me-2"></i>Order List</span>
                             <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
@@ -23,6 +24,7 @@ function UserPage() {
                         </li>
                         <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-money-check-dollar me-2"></i>Inventory Analysis</a></li>
                     </ul>
+
                     <div>
                         <hr className="text-white mt-2" />
                         <div className="nav-item px-4">
@@ -35,22 +37,25 @@ function UserPage() {
                 </div>
 
                 <div className="dese-adminnav-content content">
-                    <main className="container-fluid ">
-                        <div className="mt-2">
-                            <div className="p-3">
-                                <h1 className="dese_title text-dark container-fluid text-start fs-2 fw-bold">LIST OF USERS</h1>
-                                <hr />
+                    <main>
+                        <div className="container w-100 mx-auto mt-2">
+                            <div className="container w-xl-50 w-md-100 w-sm-100 card card-shadow py-3">
+                                <StockListCreate />
+                            </div>
 
-                                <div className="container-fluid">
-                                    <UserFunction />
+                            <div className="container-fluid">
+                                <div className="row">
+                                    <StockListItem />
                                 </div>
                             </div>
+
                         </div>
                     </main>
                 </div>
             </div >
+
         </>
     );
 }
 
-export default UserPage;
+export default StockList;
