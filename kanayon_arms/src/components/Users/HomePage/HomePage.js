@@ -10,11 +10,9 @@ function HomePage() {
 
             </Header>
 
-
-
             <section className="dese_home-first mt-5">
 
-                <div className="container">
+                <div className="container pt-3">
 
                     <div className="row">
 

@@ -1,38 +1,53 @@
-.lucidom-ordernow-title {
+.llanesk-ordernow {
+    margin: 0;
+    padding: 0;
+}
+
+.llanesk-ordernow-title {
     font-size: 45px;
 }
 
-.lucidom-ordernow-border {
+.llanesk-ordernow-border {
     border-bottom: 4px solid #fefefe;
     width: 20%;
+    border-radius: 50px;
 }
 
-.lucidom-ordernow-featured {
+.llanesk-ordernow-featured {
     font-size: 25px;
 }
 
-.lucidom-ordernow-orderpage {
+.llanesk-ordernow-orderpage {
     background-color: green;
-    width: 25%;
-    padding: 20px;
+    width: 35%;
+    padding: 30px;
     font-size: 25px;
     color: #fefefe;
 }
 
-.lucidom-ordernow-orderpage:hover {
+.llanesk-ordernow-orderpage:hover {
     background-color: lightgreen;
     color: black;
 }
 
-.lucidom-ordernow-orderlist {
+.llanesk-ordernow-orderlist {
     background-color: blue;
-    width: 25%;
-    padding: 20px;
+    width: 35%;
     font-size: 25px;
     color: #fefefe;
 }
 
-.lucidom-ordernow-orderlist:hover {
+.llanesk-ordernow-orderlist:hover {
     background-color: lightblue;
     color: black;
+}
+
+.llanesk-ordernow-featuredpic:hover {
+
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.llanesk-ordernow-featuredlabel {
+    font-size: 20px;
 }

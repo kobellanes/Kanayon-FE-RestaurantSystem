@@ -26,9 +26,9 @@ function Login() {
         <>
             <Header></Header>
 
-            <main className="llanesk-login container-fluid pt-5 pb-0">
+            <main className="llanesk-login container-fluid pt-4 pb-0">
 
-                <div className="py-0 mt-5">
+                <div className="py-0">
 
                     <div className="d-flex justify-content-center align-items-center mt-5 pt-1">
                         <div className="row llanesk-row rounded-4 shadow p-2 mb-5 position-relative">
