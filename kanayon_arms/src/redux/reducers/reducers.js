@@ -91,7 +91,6 @@ export const getStockReducer = (state = {}, { type, payload }) => {
     }
 }
 
-
 const orderInitialState = {
     orders: [
         {
@@ -125,6 +124,41 @@ export const setOrderReducer = (state = orderInitialState, { type, payload }) =>
     switch (type) {
         case ActionTypes.SET_ORDERS:
             return { ...state, orders: payload };
+        default:
+            return state;
+    }
+}
+
+
+const adminInitialState = {
+    admin: [
+        {
+            id: 1,
+            email: "kobe@gmail.com",
+            password: "1234"
+        },
+        {
+            id: 2,
+            email: "monique@gmail.com",
+            password: "1234"
+        },
+        {
+            id: 3,
+            email: "kyla@gmail.com",
+            password: "1234"
+        },
+        {
+            id: 4,
+            email: "sky@gmail.com",
+            password: "1234"
+        },
+    ]
+}
+
+export const setAdminReducer = (state = adminInitialState, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.SET_ADMIN:
+            return { ...state, admin: payload };
         default:
             return state;
     }

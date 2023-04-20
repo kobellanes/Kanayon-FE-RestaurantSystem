@@ -73,11 +73,11 @@
     position: fixed;
     width: 30%;
     top: 20%;
-    bottom: 8%;
+    bottom: 15%;
     left: 35%;
     transform: translate(10%, 10%);
     min-height: 100px;
-    max-height: 580px;
+    max-height: 500px;
 }
 
 .llanesk-register-signup {

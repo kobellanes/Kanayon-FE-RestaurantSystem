@@ -27,3 +27,10 @@ export const setOrders = (orders) => {
         payload: orders,
     };
 }
+
+export const setAdmin = (admin) => {
+    return {
+        type: ActionTypes.SET_ADMIN,
+        payload: admin,
+    }
+}

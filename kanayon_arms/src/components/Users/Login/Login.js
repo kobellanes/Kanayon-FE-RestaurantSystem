@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 
+
     const notifySuccess = () => {
         toast.success('You Successfully Created an Account!', {
             position: "top-right",
@@ -100,21 +101,12 @@ function Login() {
 
                             <div className="mt-4 form-group">
                                 <div className="row">
-                                    <div className="text-center">
-                                        <input className="form-control" type="text" name="firstname" placeholder="First name" required />
-
+                                    <div className="text-center d-flex flex-row">
+                                        <input className="form-control w-50 me-2" type="text" name="firstname" placeholder="First name" required />
+                                        <input className="form-control w-50 ms-2" type=" text" name="lastname" placeholder="Last name" required />
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="mt-4 form-group">
-                                <div className="row">
-                                    <div className="text-center">
-                                        <input className="form-control" type=" text" name="lastname" placeholder="Last name" required />
-                                    </div>
-                                </div>
-                            </div>
-
 
                             <div className="mt-4 form-group">
                                 <div className="text-center">
@@ -145,7 +137,7 @@ function Login() {
 
                             </div>
 
-                            <div className="col-12 text-center mt-4 ">
+                            <div className="col-12 text-center my-4">
                                 <button onClick={notifySuccess} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
                                 <ToastContainer />
                             </div>
