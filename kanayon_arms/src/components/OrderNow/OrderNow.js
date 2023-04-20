@@ -52,7 +52,7 @@ function OrderNow() {
                                                         <div className="carousel-item active" data-bs-interval="10000">
                                                             <div className="row h-100 align-items-center g-2">
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"><img src={require('../../assets/liempo.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"><img src={require('../../assets/liempo.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">LIEMPO</h5>
@@ -83,7 +83,7 @@ function OrderNow() {
                                             <div className="tab-pane fade show active" id="pills-kchicken" role="tabpanel" aria-labelledby="pills-kchicken-tab">
                                                 <div className="row h-100 align-items-center g-2">
                                                     <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                        <div className="card card-span h-100 text-white"><img src={require('../../assets/paa.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                        <div className="lucid-card card card-span h-100 text-white"><img src={require('../../assets/paa.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                             <div className="card-img-overlay ps-0"> </div>
                                                             <div className="card-body ps-0 bg-200">
                                                                 <h5 className="fw-bold text-1000 text-truncate">PAA INASAL</h5>
@@ -104,7 +104,7 @@ function OrderNow() {
                                                     </div>
 
                                                     <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                        <div className="card card-span h-100 text-white"><img src={require('../../assets/pecho.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                        <div className="lucid-card card card-span h-100 text-white"><img src={require('../../assets/pecho.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                             <div className="card-img-overlay ps-0"> </div>
                                                             <div className="card-body ps-0 bg-200">
                                                                 <h5 className="fw-bold text-1000 text-truncate">PECHO INASAL</h5>
@@ -135,7 +135,7 @@ function OrderNow() {
                                                         <div className="carousel-item active" data-bs-interval="10000">
                                                             <div className="row h-100 align-items-center g-2">
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"><img src={require('../../assets/barbeque.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"><img src={require('../../assets/barbeque.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">PORK BARBEQUE</h5>
@@ -170,7 +170,7 @@ function OrderNow() {
                                                         <div className="carousel-item active" data-bs-interval="10000">
                                                             <div className="row h-100 align-items-center g-2">
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"><img src={require('../../assets/sisig.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"><img src={require('../../assets/sisig.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">SISIG</h5>
@@ -203,7 +203,7 @@ function OrderNow() {
                                                         <div className="carousel-item active" data-bs-interval="10000">
                                                             <div className="row h-100 align-items-center g-2">
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"><img src={require('../../assets/talong.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"><img src={require('../../assets/talong.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">ENSALADANG TALONG</h5>
@@ -227,7 +227,7 @@ function OrderNow() {
                                                         <div className="carousel-item active" data-bs-interval="10000">
                                                             <div className="row h-100 align-items-center g-2">
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"> <img src={require('../../assets/halohalo.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"> <img src={require('../../assets/halohalo.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">HALO-HALO</h5>
@@ -251,7 +251,7 @@ function OrderNow() {
                                                         <div className="carousel-item active" data-bs-interval="10000">
                                                             <div className="row h-100 align-items-center g-2">
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"> <img src={require('../../assets/icetea.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"> <img src={require('../../assets/icetea.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">ICE TEA</h5>
@@ -262,7 +262,7 @@ function OrderNow() {
                                                                     </div>
                                                                 </div>
                                                                 <div className="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
-                                                                    <div className="card card-span h-100 text-white"> <img src={require('../../assets/softdrinks.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                    <div className="lucid-card card card-span h-100 text-white"> <img src={require('../../assets/softdrinks.jpg')} className="img-thumbnail card card-span text-white card-img-top" alt="..."></img>
                                                                         <div className="card-img-overlay ps-0"> </div>
                                                                         <div className="card-body ps-0 bg-200">
                                                                             <h5 className="fw-bold text-1000 text-truncate">SOFTDRINKS</h5>
