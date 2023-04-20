@@ -1,40 +1,38 @@
-.offcanvas {
-    position: absolute;
-    top: 50%;
-    left: 155%;
-    transform: translate(-50%, -50%);
-    max-width: 100%;
+.lucidom-ordernow-title {
+    font-size: 45px;
 }
 
-h1 {
-    text-align: center;
-    color: #921E1E;
+.lucidom-ordernow-border {
+    border-bottom: 4px solid #fefefe;
+    width: 20%;
 }
 
-h4 {
-    text-align: center;
-    color: #921E1E;
+.lucidom-ordernow-featured {
+    font-size: 25px;
 }
 
-
-.card-title {
-    color: white;
+.lucidom-ordernow-orderpage {
+    background-color: green;
+    width: 25%;
+    padding: 20px;
+    font-size: 25px;
+    color: #fefefe;
 }
 
-p {
-    color: white;
+.lucidom-ordernow-orderpage:hover {
+    background-color: lightgreen;
+    color: black;
 }
 
-.card {
-    position: relative;
-    background-color: #C23031;
+.lucidom-ordernow-orderlist {
+    background-color: blue;
+    width: 25%;
+    padding: 20px;
+    font-size: 25px;
+    color: #fefefe;
 }
 
-.img-thumbnail {
-    border-color: #921E1E;
-    background-color: #212529;
-}
-
-.card-tex {
-    color: white;
+.lucidom-ordernow-orderlist:hover {
+    background-color: lightblue;
+    color: black;
 }
