@@ -8,6 +8,7 @@ import Login from './components/Users/Login/Login';
 import AdminHomePage from './components/Admin/HomePage/HomePage';
 import UserPage from './components/Admin/UserList/UserList';
 import StockList from './components/Admin/StockList/StockList';
+import OrderList from './components/Admin/OrderList/OrderList';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="userlist" element={<UserPage />} />
           <Route path="stocklist" element={<StockList />} />
+          <Route path="orderlist" element={<OrderList />} />
         </Routes>
       </BrowserRouter>
     </>
