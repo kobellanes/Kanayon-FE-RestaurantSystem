@@ -72,7 +72,7 @@ function StockListItem() {
                                 <div className="w-100 ms-1">
                                     {
                                         stock.isSold == 1 ?
-                                            <h3 className="text-start text-decoration-line-through text-white">{stock.stock_name}</h3>
+                                            <h3 className="text-start text-decoration-line-through text-body-secondary">{stock.stock_name}</h3>
                                             :
                                             <h3 className="text-start text-white">{stock.stock_name}</h3>
                                     }
@@ -93,7 +93,7 @@ function StockListItem() {
                                     stock.isSold == 0 ?
                                         <button onClick={() => soldStock(index)} className="btn btn-dark mt-3">SOLD OUT</button>
                                         :
-                                        <button onClick={() => retrieveStock(index)} className="btn btn-success mt-3">Retrieve</button>
+                                        <button onClick={() => retrieveStock(index)} className="btn btn-success mt-3">RETRIEVE</button>
                                 }
 
                             </div>

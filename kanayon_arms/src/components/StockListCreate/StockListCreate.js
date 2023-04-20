@@ -72,7 +72,7 @@ function StockListCreate() {
                                 value={stockTitle}
                                 onChange={(e) => setStockTitle(e.target.value)}
                                 className="form-control"
-                                placeholder="Enter title" />
+                                placeholder="Enter Meal" />
                         </div>
                     </div>
                     <div className="col-12 mt-1">
@@ -84,7 +84,7 @@ function StockListCreate() {
                                 value={stockPrice}
                                 onChange={(e) => SetStockPrice(e.target.value)}
                                 className="form-control"
-                                placeholder="Enter price" />
+                                placeholder="Enter Price" />
                         </div>
                     </div>
                     <div className="col-12 mt-2 d-flex justify-content-end">
