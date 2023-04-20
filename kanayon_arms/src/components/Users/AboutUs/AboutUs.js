@@ -15,7 +15,7 @@ function AboutUs() {
 
                 <div className="container-fluid mt-4 d-flex flex-column flex-lg-row mx-lg-5 px-5 me-md-5 mb-5" >
                     <div className="austriak-col-6 col-lg-6 col-12 align-items-center mb-4">
-                        <h1 className="mb-3 fw-bolder">KANAYON INASAL</h1>
+                        <h1 className="mb-3 fw-bolder text-center">KANAYON INASAL</h1>
                         <p className="fw-light text-light"> Our barrio's grilled chicken or also known as chicken inasal wins the heart of every villager in our barangay, founded in September 10, 2022. Kanayon Inasal got its name from the term Kanayon which means "fellow local" that makes its name tattooed on the mind of every customer we serve.</p>
                     </div>
 
@@ -53,16 +53,11 @@ function AboutUs() {
 
             <section className="mx-5">
                 <div className="last-austriak pb-3">
-                    <h1>Our family gets a little bigger every time you come by.</h1>
+                    <h1 className="text-center">Our family gets a little bigger every time you come by.</h1>
                 </div>
 
 
                 <div id="carouselExampleCaptions" className="carousel slide container-fluid justify-content-center align-items-center text-center">
-                    <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
 
 
                     <div className="carousel slide" id="austria_carousel" data-bs-ride="carousel" data-bs-interval="2000">

@@ -85,12 +85,12 @@ function StockListItem() {
 
                                 </div>
 
-                                <div className="d-flex">
+                                <div className="d-flex text-center justify-content-center align-items-center">
                                     {
                                         stock.isEdit == 0 ?
                                             <>
-                                                <button className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
-                                                <button onClick={() => deleteStock(index)} className="btn btn-danger ms-5">DELETE</button>
+                                                <button className="btn btn-success me-2" onClick={() => editStock(index)}>EDIT</button>
+                                                <button onClick={() => deleteStock(index)} className="btn btn-danger">DELETE</button>
                                             </>
                                             :
                                             <>
