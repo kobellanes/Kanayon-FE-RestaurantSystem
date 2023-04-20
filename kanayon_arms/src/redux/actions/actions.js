@@ -20,3 +20,10 @@ export const getStock = (stock) => {
         payload: stock,
     };
 }
+
+export const setOrders = (orders) => {
+    return {
+        type: ActionTypes.SET_ORDERS,
+        payload: orders,
+    };
+}
