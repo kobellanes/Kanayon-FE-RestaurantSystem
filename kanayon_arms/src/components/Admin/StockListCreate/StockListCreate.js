@@ -63,7 +63,15 @@ function StockListCreate() {
                     <div className="col-12">
                         <h1 className="text-dark">Stock List</h1>
                     </div>
-                    <div className="col-12">
+                    <div className="col-12 mt-1">
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Add Photo" />
+                        </div>
+                    </div>
+                    <div className="col-12 mt-1">
                         <div className="form-group">
                             <input
                                 type="text"
@@ -87,11 +95,12 @@ function StockListCreate() {
                                 placeholder="Enter Price" />
                         </div>
                     </div>
+
                     <div className="col-12 mt-2 d-flex justify-content-end">
 
                         {
                             singleStock.stock_name == null ?
-                                <button onClick={() => addStock()} className="btn btn-primary">ADD</button>
+                                <button onClick={() => addStock()} className="btn btn-success"><i class="fa-solid fa-plus"></i></button>
                                 :
                                 <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
                         }

@@ -89,12 +89,12 @@ function StockListItem() {
                                     {
                                         stock.isEdit == 0 ?
                                             <>
-                                                <button className="btn btn-success me-2" onClick={() => editStock(index)}>EDIT</button>
+                                                <button className="btn btn-primary me-2" onClick={() => editStock(index)}>EDIT</button>
                                                 <button onClick={() => deleteStock(index)} className="btn btn-danger">DELETE</button>
                                             </>
                                             :
                                             <>
-                                                <button disabled className="btn btn-success ms-3" onClick={() => editStock(index)}>EDIT</button>
+                                                <button disabled className="btn btn-primary ms-3" onClick={() => editStock(index)}>EDIT</button>
                                                 <button disabled className="btn btn-danger ms-5">DELETE</button>
                                             </>
                                     }
