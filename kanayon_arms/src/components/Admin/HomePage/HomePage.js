@@ -38,6 +38,9 @@ function AdminHomePage() {
                 </div>
 
                 <div className="dese-adminnav-content content">
+                    <h4 className="austriahd">Welcome Admin!</h4>
+                    <p className="kylaadmin">You'll feel at home in no time.</p>
+
 
                 </div>
             </div >
