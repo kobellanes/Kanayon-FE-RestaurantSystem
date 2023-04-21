@@ -135,22 +135,26 @@ const accountsInitialState = {
         {
             id: 1,
             email: "kobe@gmail.com",
-            password: "1234"
+            password: "1234",
+            isInvalid: 0
         },
         {
             id: 2,
             email: "monique@gmail.com",
-            password: "1234"
+            password: "1234",
+            isInvalid: 0
         },
         {
             id: 3,
             email: "kyla@gmail.com",
-            password: "1234"
+            password: "1234",
+            isInvalid: 0
         },
         {
             id: 4,
             email: "sky@gmail.com",
-            password: "1234"
+            password: "1234",
+            isInvalid: 0
         },
     ]
 }

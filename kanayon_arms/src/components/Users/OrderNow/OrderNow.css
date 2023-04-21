@@ -42,8 +42,11 @@
     color: black;
 }
 
-.llanesk-ordernow-featuredpic:hover {
+.llanesk-ordernow-featuredpic {
+    transition: all .5s ease;
+}
 
+.llanesk-ordernow-featuredpic:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
