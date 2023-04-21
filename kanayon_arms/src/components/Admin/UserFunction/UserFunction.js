@@ -42,7 +42,7 @@ function UserFunction() {
                         <th>EMAIL ADDRESS</th>
                         <th>GCASH NUMBER</th>
                         <th>ADDRESS</th>
-                        <th className="text-center">FUNCTION</th>
+                        <th className="text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>

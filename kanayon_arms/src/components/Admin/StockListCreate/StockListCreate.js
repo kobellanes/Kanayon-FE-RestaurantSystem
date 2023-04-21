@@ -61,7 +61,7 @@ function StockListCreate() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12">
-                        <h1 className="text-white">Stock List</h1>
+                        <h1 className="text-dark">Stock List</h1>
                     </div>
                     <div className="col-12">
                         <div className="form-group">
@@ -72,7 +72,7 @@ function StockListCreate() {
                                 value={stockTitle}
                                 onChange={(e) => setStockTitle(e.target.value)}
                                 className="form-control"
-                                placeholder="Enter title" />
+                                placeholder="Enter Meal" />
                         </div>
                     </div>
                     <div className="col-12 mt-1">
@@ -84,7 +84,7 @@ function StockListCreate() {
                                 value={stockPrice}
                                 onChange={(e) => SetStockPrice(e.target.value)}
                                 className="form-control"
-                                placeholder="Enter price" />
+                                placeholder="Enter Price" />
                         </div>
                     </div>
                     <div className="col-12 mt-2 d-flex justify-content-end">

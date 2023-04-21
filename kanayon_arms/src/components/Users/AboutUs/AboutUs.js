@@ -20,7 +20,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/customers1.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/family.jpg')} alt="Kanayon" />
                     </div>
 
                 </div>
@@ -32,7 +32,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/paa.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/owner.jpg')} alt="Kanayon" />
 
                     </div>
 
@@ -60,14 +60,13 @@ function AboutUs() {
                 <div id="carouselExampleCaptions" className="carousel slide container-fluid justify-content-center align-items-center text-center">
 
 
-                    <div className="carousel slide" id="austria_carousel" data-bs-ride="carousel" data-bs-interval="2000">
+                    <div className="carousel slide" id="austria_carousel" data-bs-ride="carousel" data-bs-interval="1500">
 
                         <div className="carousel-inner">
 
                             <div className="carousel-item active">
                                 <div className="col-12 mb-3 mb-md-0">
                                     <img className="austria-aboutus-img img-fluid" src={require('../../../assets/customers2.jpg')} alt="..." />
-
                                 </div>
                             </div>
 
@@ -134,7 +133,7 @@ function AboutUs() {
 
 
                 <div className="justify-content-center align-items-center text-center mt-5 pb-3">
-                    <a href="ordernow" className="austriak-aboutus-btn btn btn-dark fs-2">ORDER NOW!!</a>
+                    <a href="ordernow" className="austriak-aboutus-btn btn btn-dark fs-2"><i class="fa-solid fa-basket-shopping"></i> Ordew Now</a>
 
                 </div>
             </section>
