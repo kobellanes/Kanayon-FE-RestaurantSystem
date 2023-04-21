@@ -1,11 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Login.css"
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
+
 
 function Login() {
+    const accounts = useSelector((state) => state.allAccounts.account);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const signin = () => {
+        accounts.map((account, index) => {
+            const adminEmail = account.email;
+            const adminPassword = account.password;
+
+
+            if (email == adminEmail && password == adminPassword) {
+                console.log('success');
+                window.location.href = '/admin';
+
+            } else {
+                console.log('invalid');
+
+                setEmail('');
+                setPassword('');
+
+
+            }
+        });
+    }
+
+    const notifyDanger = () => {
+        toast.danger('Try', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+
+    }
 
 
     const notifySuccess = () => {
@@ -52,18 +93,20 @@ function Login() {
 
                                     </header>
 
-                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2">
-                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4" id="email" required autocomplete="on" />
+                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 form-group">
+                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required autocomplete="on" />
                                         <label className="position-absolute fs-6" for="email">Email</label>
                                     </div>
 
-                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2">
-                                        <input type="password" className="input llanesk-input bg-light bg-gradient mb-4" id="password" required />
+                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 form-group">
+                                        <input type="password" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
                                         <label className="position-absolute fs-6" for="password">Password</label>
                                     </div>
 
+
+
                                     <div className="llanesk-input-field mt-3 d-flex flex-column position-relative px-2">
-                                        <a href="/admin" className="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Sign in</a>
+                                        <button className="btn btn-primary" onClick={() => signin()} tabindex="-1" role="button" aria-disabled="true">Sign in</button>
                                     </div>
 
                                     <div className="mt-md-5">
@@ -84,7 +127,7 @@ function Login() {
 
                 </div>
 
-            </main>
+            </main >
 
             <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
                 <div className="offcanvas-header mb-0 pb-2">

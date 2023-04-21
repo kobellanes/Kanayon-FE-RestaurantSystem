@@ -28,9 +28,9 @@ export const setOrders = (orders) => {
     };
 }
 
-export const setAdmin = (admin) => {
+export const setAccounts = (accounts) => {
     return {
-        type: ActionTypes.SET_ADMIN,
-        payload: admin,
+        type: ActionTypes.SET_ACCOUNTS,
+        payload: accounts,
     }
 }

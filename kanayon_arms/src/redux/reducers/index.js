@@ -1,4 +1,4 @@
-import { getStockReducer, setAdminReducer, setOrderReducer, setStockReducer, setUserReducer } from "./reducers";
+import { getStockReducer, setAccountsReducer, setOrderReducer, setStockReducer, setUserReducer } from "./reducers";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
@@ -8,7 +8,7 @@ const reducers = combineReducers({
 
     allOrders: setOrderReducer,
 
-    allAdmin: setAdminReducer,
+    allAccounts: setAccountsReducer,
 });
 
 export default reducers;

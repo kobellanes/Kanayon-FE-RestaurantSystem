@@ -5,5 +5,5 @@ export const ActionTypes = {
 
     SET_ORDERS: "SET_ORDERS",
 
-    SET_ADMIN: "SET_ADMIN"
+    SET_ACCOUNTS: "SET_ACCOUNTS"
 }

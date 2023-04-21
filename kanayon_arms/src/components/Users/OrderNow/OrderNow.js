@@ -13,7 +13,7 @@ function OrderNow() {
             <section className="llanesk-ordernow m-5 px-5 pb-4">
 
                 <div className="container-fluid d-flex flex-column justify-content-center align-items-center text-center pt-2">
-                    <h1 className="llanesk-ordernow-title fw-bold pb-2 text-light">KANAYON INASAL MENU</h1>
+                    <h1 className="llanesk-ordernow-title fw-light pb-2 text-light">KANAYON INASAL MENU</h1>
                     <div className="llanesk-ordernow-border mb-3 text-center"></div>
 
                     <div className="d-flex flex-row mt-4 col-12 justify-content-center">

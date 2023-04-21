@@ -130,8 +130,8 @@ export const setOrderReducer = (state = orderInitialState, { type, payload }) =>
 }
 
 
-const adminInitialState = {
-    admin: [
+const accountsInitialState = {
+    account: [
         {
             id: 1,
             email: "kobe@gmail.com",
@@ -155,10 +155,10 @@ const adminInitialState = {
     ]
 }
 
-export const setAdminReducer = (state = adminInitialState, { type, payload }) => {
+export const setAccountsReducer = (state = accountsInitialState, { type, payload }) => {
     switch (type) {
-        case ActionTypes.SET_ADMIN:
-            return { ...state, admin: payload };
+        case ActionTypes.SET_ACCOUNTS:
+            return { ...state, account: payload };
         default:
             return state;
     }
