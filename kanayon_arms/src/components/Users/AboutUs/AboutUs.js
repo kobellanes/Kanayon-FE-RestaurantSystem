@@ -20,7 +20,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/family.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/owner.jpg')} alt="Kanayon" />
                     </div>
 
                 </div>
@@ -32,7 +32,7 @@ function AboutUs() {
                     </div>
 
                     <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end">
-                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/owner.jpg')} alt="Kanayon" />
+                        <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/founder.jpg')} alt="Kanayon" />
 
                     </div>
 
@@ -133,7 +133,8 @@ function AboutUs() {
 
 
                 <div className="justify-content-center align-items-center text-center mt-5 pb-3">
-                    <a href="ordernow" className="austriak-aboutus-btn btn fs-2 text-light fw-light"><i class="fa-solid fa-basket-shopping"></i> Order Now</a>
+                
+                    <a href="ordernow" className="austriak-aboutus-btn btn btn-dark fs-2"><i class="fa-solid fa-basket-shopping me-2"></i> Ordew Now</a>
 
                 </div>
             </section>

@@ -1,7 +1,6 @@
 .dese_home-first {
     margin: 0;
     padding: 0;
-
 }
 
 .austriak-bg {
@@ -15,9 +14,9 @@
     border-radius: 5px;
 }
 
-.col-lg-8 h1.austria {
+/* .col-lg-8 h1.austria {
     color: antiquewhite;
-    font-size: 80px;
+    font-size: 70px;
     margin-left: 780px;
     font-style: initial;
 }
@@ -25,7 +24,7 @@
 .col-lg-8 span {
     color: #E45E12;
     margin-left: 65px;
-}
+} */
 
 .container-austria {
     text-align: center;
@@ -34,27 +33,76 @@
 
 .bg-300 h4 {
     color: antiquewhite;
-    font-size: 58px;
-    font-style: oblique;
+    font-size: 45px;
 }
 
 .bg-300 h1 {
     color: #E45E12;
     margin-top: 18px;
-    font-style: italic;
     font-size: 30px;
 }
 
 .bg-300 p {
-    font-style: italic;
     color: antiquewhite;
-    font-size: 36px;
+    font-size: 25px;
     text-align: justify;
     margin-top: 18px;
 }
 
+.dese-h1 h1 {
+    color: #E45E12;
+    margin-top: 18px;
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 1199px) {
+    .bg-300 h4 {
+        text-align: center;
+    }
+
+    .bg-300 h1 {
+        text-align: center;
+    }
+
+    .bg-300 p {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .bg-300 h4 {
+        color: antiquewhite;
+        font-size: 40px;
+        font-style: oblique;
+        text-align: center;
+    }
+
+    .bg-300 h1 {
+        color: #E45E12;
+        margin-top: 18px;
+        font-style: italic;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .bg-300 p {
+        font-style: italic;
+        color: antiquewhite;
+        font-size: 27px;
+        text-align: justify;
+        margin-top: 18px;
+        text-align: center;
+    }
+}
+
 @media only screen and (max-width: 576px) {
     .dese_img {
-        height: 250px;
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .dese_img {
+        height: 140px;
     }
 }
