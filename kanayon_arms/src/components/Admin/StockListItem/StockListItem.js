@@ -65,7 +65,7 @@ function StockListItem() {
                 stocks.length > 0 ?
                     stocks.map((stock, index) => {
                         return (
-                            <div className="card card shadow col-xl-3 col-md-4 col-sm-6 d-flex justify-content-around mt-5 m-2 p-4">
+                            <div className="card card shadow col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-around mt-5 m-2 p-4">
                                 {/* <div className="card border border-dark p-5 py-5">
 
                                 </div> */}
@@ -73,13 +73,13 @@ function StockListItem() {
                                     {
                                         stock.isSold == 1 ?
                                             <>
-                                                <h3 className="text-start text-decoration-line-through text-white">{stock.stock_name}</h3>
-                                                <p className="text-start text-dark text-white text-decoration-line-through">{stock.stock_price}</p>
+                                                <h3 className="text-start text-decoration-line-through text-dark">{stock.stock_name}</h3>
+                                                <p className="text-start text-dark text-decoration-line-through">{stock.stock_price}</p>
                                             </>
                                             :
                                             <>
-                                                <h3 className="text-start text-white">{stock.stock_name}</h3>
-                                                <p className="text-start text-dark text-white">{stock.stock_price}</p>
+                                                <h3 className="text-start text-dark">{stock.stock_name}</h3>
+                                                <p className="text-start text-dark">{stock.stock_price}</p>
                                             </>
                                     }
 
