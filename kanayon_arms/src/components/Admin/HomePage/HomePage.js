@@ -10,7 +10,7 @@ function AdminHomePage() {
                 <div className="dese-adminnav-sidebar sidebar" id="side_nav">
                     <div className="dese-adminnav-header-box header-box px-2 pt-3 pb-4 d-flex flex-row align-items-center">
                         <img className="dese-adminnav-logo rounded-pill ms-2" src={require('../../../assets/logo.jpg')}></img>
-                        <h5 className="text-light mt-2 ms-2">Hello Admin!</h5>
+                        <h5 className="text-light mt-2 ms-2 fw-light">Hello Admin!</h5>
 
                     </div>
 
@@ -38,6 +38,9 @@ function AdminHomePage() {
                 </div>
 
                 <div className="dese-adminnav-content content">
+                    <h4 className="austriahd">Welcome Admin!</h4>
+                    <p className="kylaadmin">You'll feel at home in no time.</p>
+
 
                 </div>
             </div >

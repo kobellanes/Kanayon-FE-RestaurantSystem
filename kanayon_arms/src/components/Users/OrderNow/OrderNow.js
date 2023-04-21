@@ -17,8 +17,8 @@ function OrderNow() {
                     <div className="llanesk-ordernow-border mb-3 text-center"></div>
 
                     <div className="d-flex flex-row mt-4 col-12 justify-content-center">
-                        <a href="#" className="llanesk-ordernow-orderpage btn col-4 fw-light mx-xl-4 mx-3 fw-bold p-4" tabindex="-1" role="button" aria-disabled="true"><i class="fa-brands fa-shopify me-2"></i>ORDER HERE</a>
-                        <a href="#" className="llanesk-ordernow-orderlist btn col-4 fw-light mx-xl-4 mx-3 fw-bold p-4" tabindex="-1" role="button" aria-disabled="true"><i class="fa-sharp fa-solid fa-magnifying-glass-plus me-2"></i>VIEW ORDER LIST</a>
+                        <a href="#" className="llanesk-ordernow-orderpage btn col-4 fw-light mx-xl-4 mx-3 fw-light p-4" tabindex="-1" role="button" aria-disabled="true"><i class="fa-brands fa-shopify me-2"></i>ORDER HERE</a>
+                        <a href="#" className="llanesk-ordernow-orderlist btn col-4 fw-light mx-xl-4 mx-3 fw-light p-4" tabindex="-1" role="button" aria-disabled="true"><i class="fa-sharp fa-solid fa-magnifying-glass-plus me-2"></i>VIEW ORDER LIST</a>
                     </div>
 
                 </div>

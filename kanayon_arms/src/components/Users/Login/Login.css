@@ -72,12 +72,13 @@
 .llanesk-offcanvas {
     position: fixed;
     width: 30%;
-    top: 20%;
-    bottom: 15%;
+    top: 16%;
     left: 35%;
     transform: translate(10%, 10%);
     min-height: 100px;
     max-height: 500px;
+    transition: all .3s ease;
+
 }
 
 .llanesk-register-signup {

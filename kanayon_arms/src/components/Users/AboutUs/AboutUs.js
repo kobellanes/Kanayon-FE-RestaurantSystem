@@ -133,6 +133,7 @@ function AboutUs() {
 
 
                 <div className="justify-content-center align-items-center text-center mt-5 pb-3">
+                
                     <a href="ordernow" className="austriak-aboutus-btn btn btn-dark fs-2"><i class="fa-solid fa-basket-shopping me-2"></i> Ordew Now</a>
 
                 </div>
