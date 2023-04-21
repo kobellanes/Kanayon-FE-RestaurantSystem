@@ -4,4 +4,6 @@ export const ActionTypes = {
     GET_STOCK: "GET_STOCKS",
 
     SET_ORDERS: "SET_ORDERS",
+
+    SET_ACCOUNTS: "SET_ACCOUNTS"
 }

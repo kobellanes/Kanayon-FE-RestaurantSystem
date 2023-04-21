@@ -91,7 +91,6 @@ export const getStockReducer = (state = {}, { type, payload }) => {
     }
 }
 
-
 const orderInitialState = {
     orders: [
         {
@@ -125,6 +124,41 @@ export const setOrderReducer = (state = orderInitialState, { type, payload }) =>
     switch (type) {
         case ActionTypes.SET_ORDERS:
             return { ...state, orders: payload };
+        default:
+            return state;
+    }
+}
+
+
+const accountsInitialState = {
+    account: [
+        {
+            id: 1,
+            email: "kobe@gmail.com",
+            password: "1234"
+        },
+        {
+            id: 2,
+            email: "monique@gmail.com",
+            password: "1234"
+        },
+        {
+            id: 3,
+            email: "kyla@gmail.com",
+            password: "1234"
+        },
+        {
+            id: 4,
+            email: "sky@gmail.com",
+            password: "1234"
+        },
+    ]
+}
+
+export const setAccountsReducer = (state = accountsInitialState, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.SET_ACCOUNTS:
+            return { ...state, account: payload };
         default:
             return state;
     }

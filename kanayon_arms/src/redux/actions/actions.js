@@ -27,3 +27,10 @@ export const setOrders = (orders) => {
         payload: orders,
     };
 }
+
+export const setAccounts = (accounts) => {
+    return {
+        type: ActionTypes.SET_ACCOUNTS,
+        payload: accounts,
+    }
+}

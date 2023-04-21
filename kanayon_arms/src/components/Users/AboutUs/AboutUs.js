@@ -10,7 +10,7 @@ function AboutUs() {
             <section className="austriak-aboutus mt-5 pb-5">
                 <div className="container-fluid d-flex flex-column justify-content-center align-items-center text-center">
                     <h1 className="austriak-aboutus-title text-center align-items-center fw-light text-light pb-2">Get to know us</h1>
-                    <div className="austriak-aboutus-border mb-5"></div>
+                    <div className="austriak-aboutus-border mb-5 "></div>
                 </div>
 
                 <div className="container-fluid mt-4 d-flex flex-column flex-lg-row mx-lg-5 px-5 me-md-5 mb-5" >

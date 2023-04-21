@@ -9,24 +9,120 @@ function OrderNow() {
             <Header>
 
             </Header>
-            <section className="m-5 px-5">
 
-                <div className="container-fluid d-flex flex-column justify-content-center align-items-center text-center">
-                    <h1 className="lucidom-ordernow-title fw-bold pb-2 text-light">KANAYON INASAL MENU</h1>
-                    <div className="lucidom-ordernow-border mb-3 text-center"></div>
+            <section className="llanesk-ordernow m-5 px-5 pb-4">
 
-                    <div className="d-flex flex-row mt-4 col-12 align-items-center justify-content-center text-center">
-                        <a href="#" className="lucidom-ordernow-orderpage btn col-4 fw-light mx-5 fw-bold" tabindex="-1" role="button" aria-disabled="true"><i class="fa-brands fa-shopify me-2"></i>ORDER HERE</a>
-                        <a href="#" className="lucidom-ordernow-orderlist btn col-4 fw-light mx-5 fw-bold" tabindex="-1" role="button" aria-disabled="true"><i class="fa-sharp fa-solid fa-magnifying-glass-plus me-2"></i>VIEW ORDER LIST</a>
+                <div className="container-fluid d-flex flex-column justify-content-center align-items-center text-center pt-2">
+                    <h1 className="llanesk-ordernow-title fw-light pb-2 text-light">KANAYON INASAL MENU</h1>
+                    <div className="llanesk-ordernow-border mb-3 text-center"></div>
+
+                    <div className="d-flex flex-row mt-4 col-12 justify-content-center">
+                        <a href="#" className="llanesk-ordernow-orderpage btn col-4 fw-light mx-xl-4 mx-3 fw-bold p-4" tabindex="-1" role="button" aria-disabled="true"><i class="fa-brands fa-shopify me-2"></i>ORDER HERE</a>
+                        <a href="#" className="llanesk-ordernow-orderlist btn col-4 fw-light mx-xl-4 mx-3 fw-bold p-4" tabindex="-1" role="button" aria-disabled="true"><i class="fa-sharp fa-solid fa-magnifying-glass-plus me-2"></i>VIEW ORDER LIST</a>
                     </div>
 
                 </div>
 
-                <div className="col-12 text-center">
-                    <h4 className="lucidom-ordernow-featured fw-light text-light mt-4 col-6 mx-5">Featured Items</h4>
+                <div className="mx-xl-5 px-xl-5 mt-4">
+                    <div className="container-fluid d-flex mx-xl-5 px-xl-5">
+                        <div className="container-fluid mx-xl-4 text-center text-xl-start">
+                            <h4 className="llanesk-ordernow-featured fw-light text-light mt-4">Featured Items</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mx-xl-5 px-xl-5">
+                    <div className="mx-xl-5">
+                        <div className="row g-4 mt-3 px-xl-5 mx-xl-5">
+                            <div className="col-12 col-lg-6 col-xl-3">
+
+                                <div className="">
+                                    <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img>
+                                    <h4 className="llanesk-ordernow-featuredlabel mt-2 text-light fw-light text-center">Paa Inasal</h4>
+                                </div>
+                            </div>
+
+                            <div className="col-12 col-lg-6 col-xl-3">
+                                <div className="">
+                                    <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img>
+                                    <h4 className="llanesk-ordernow-featuredlabel mt-2 text-light fw-light text-center">Liempo</h4>
+                                </div>
+
+                            </div>
+
+                            <div className="col-12 col-lg-6 col-xl-3">
+                                <div className="">
+                                    <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img>
+                                    <h4 className="llanesk-ordernow-featuredlabel mt-2 text-light fw-light text-center">Pork Barbecue</h4>
+                                </div>
+
+                            </div>
+
+                            <div className="col-12 col-lg-6 col-xl-3">
+                                <div className="">
+                                    <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img>
+                                    <h4 className="llanesk-ordernow-featuredlabel mt-2 text-light fw-light text-center">Halo-Halo</h4>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
 
 
+
+                {/* <div className="mx-5 px-5 mt-4">
+                    <div className="container-fluid px-5 mx-5">
+                        <div className="mx-5 pe-5">
+
+                            <div className="container-fluid d-flex flex-row pe-5 col-12 justify-content-between">
+                                <div className="d-flex flex-column col-lg-6">
+                                    <a href="#">
+                                        <img className="img-fluid llanesk-ordernow-featuredpic col-xl-11 col-lg-12 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img>
+                                    </a>
+
+                                    <h4 className="llanesk-ordernow-featuredlabel col-xl-11 col-lg-12 mt-2 text-light fw-light text-center">Paa Inasal</h4>
+                                </div>
+
+                                <div className="d-flex flex-column col-lg-6">
+                                    <a href="#">
+                                        <img className="img-fluid llanesk-ordernow-featuredpic col-xl-11 col-lg-12 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img>
+                                    </a>
+
+                                    <h4 className="llanesk-ordernow-featuredlabel col-xl-11 col-lg-12 mt-2 text-light fw-light text-center">Liempo</h4>
+                                </div>
+
+                                <div className="d-flex flex-column col-lg-6">
+                                    <a href="#">
+                                        <img className="img-fluid llanesk-ordernow-featuredpic col-xl-11 col-lg-6 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img>
+                                    </a>
+
+                                    <h4 className="llanesk-ordernow-featuredlabel col-xl-11 col-lg-6 mt-2 text-light fw-light text-center">Pork Barbecue</h4>
+                                </div>
+
+                                <div className="d-flex flex-column col-lg-6">
+                                    <a href="#">
+                                        <img className="img-fluid llanesk-ordernow-featuredpic col-xl-11 col-lg-6 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/pecho.jpg')} alt="Pecho"></img>
+                                    </a>
+
+                                    <h4 className="llanesk-ordernow-featuredlabel col-xl-11 col-lg-6 mt-2 text-light fw-light text-center">Pecho Inasal</h4>
+                                </div>
+
+                                <div className="d-flex flex-column ">
+                                    <a href="#">
+                                        <img className=" img-fluid llanesk-ordernow-featuredpic col-xl-11 col-lg-6 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img>
+                                    </a>
+
+                                    <h4 className="llanesk-ordernow-featuredlabel col-xl-11 col-lg-6 mt-2 text-light fw-light text-center">Halo-Halo</h4>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div> */}
 
 
                 {/* <div className="col-12">

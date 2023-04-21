@@ -40,7 +40,7 @@ function Footer() {
                         <div className="col-6 col-lg-3 ms-auto">
                             <h5 className="lh-lg fw-bolder llanesk-headline">Contact Us</h5>
 
-                            <p>
+                            <p className="text-light">
                                 <svg className="feather feather-phone me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -50,7 +50,7 @@ function Footer() {
                                 </svg><span>(+63) 939 490 3638</span>
                             </p>
 
-                            <p>
+                            <p className="text-light">
                                 <svg className="feather feather-mail me-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -74,7 +74,7 @@ function Footer() {
                     <div className="border-bottom border-3"></div>
 
                     <div className="col-md-12">
-                        <div className="text-center justify-content-center">
+                        <div className="text-center justify-content-center text-light">
                             <p> &copy;{new Date().getFullYear()} KANAYON INASAL - All Rights Reserved | Terms Of Service | Privacy Policy </p>
                         </div>
                     </div>
