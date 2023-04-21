@@ -24,7 +24,13 @@
 }
 
 .austriak-aboutus-btn {
-    background-color: #e46e2a;
+    background-color: #810034;
+    transition: all .5s ease;
+}
+
+.austriak-aboutus-btn:hover {
+    background-color: #E42428;
+    transform: scale(1.2);
 }
 
 .austriak-aboutus-img-fluid {

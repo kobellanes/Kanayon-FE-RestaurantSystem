@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./Login.css"
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
+
 
 
 function Login() {
@@ -13,11 +13,11 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const signin = () => {
+
+    const signin = () => {   //This Function still has some errors I'll get back to it in backend
         accounts.map((account, index) => {
             const adminEmail = account.email;
             const adminPassword = account.password;
-
 
             if (email == adminEmail && password == adminPassword) {
                 console.log('success');
@@ -25,13 +25,14 @@ function Login() {
 
             } else {
                 console.log('invalid');
-
                 setEmail('');
                 setPassword('');
 
-
             }
+
         });
+
+
     }
 
     const notifyDanger = () => {
@@ -103,10 +104,8 @@ function Login() {
                                         <label className="position-absolute fs-6" for="password">Password</label>
                                     </div>
 
-
-
                                     <div className="llanesk-input-field mt-3 d-flex flex-column position-relative px-2">
-                                        <button className="btn btn-primary" onClick={() => signin()} tabindex="-1" role="button" aria-disabled="true">Sign in</button>
+                                        <a href="/admin" className="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Sign in</a>
                                     </div>
 
                                     <div className="mt-md-5">
@@ -132,7 +131,7 @@ function Login() {
             <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
                 <div className="offcanvas-header mb-0 pb-2">
                     <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Registration Form</h3>
-                    <button type="button" className="btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" className="llanesk-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
                 <div className="offcanvas-body small p-0">
@@ -180,7 +179,7 @@ function Login() {
 
                             </div>
 
-                            <div className="col-12 text-center my-4">
+                            <div className="col-12 text-center py-4">
                                 <button onClick={notifySuccess} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
                                 <ToastContainer />
                             </div>
@@ -191,8 +190,6 @@ function Login() {
                     </div>
                 </div>
             </div>
-
-            <Footer></Footer>
         </>
 
     );

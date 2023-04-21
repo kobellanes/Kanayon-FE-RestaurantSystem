@@ -16,12 +16,24 @@
 
 .llanesk-links {
     color: #fefefe;
+    transition: all .5s ease;
 }
 
 .llanesk-links:hover {
     color: #E45E12;
     transform: scale(1.2);
 }
+
+.llanesk-links i {
+    color: #fefefe;
+    transition: all .5s ease;
+}
+
+.llanesk-links i:hover {
+    color: #E45E12;
+    transform: scale(1.2);
+}
+
 
 .llanesk-log:hover {
     color: #fefefe;
@@ -106,6 +118,7 @@
 
 .llanesk-modal-line li a {
     color: #fefefe;
+    transition: all .5s ease;
 }
 
 .llanesk-modal-line li a:hover {
@@ -136,7 +149,13 @@
 
 .llanesk-mobile-modal-footer a {
     color: #fefefe;
+    transition: all .5s ease;
 }
+
+.llanesk-mobile-modal-footer i {
+    transition: all .5s ease;
+}
+
 
 .llanesk-mobile-modal-footer i:hover {
     color: #E45E12;

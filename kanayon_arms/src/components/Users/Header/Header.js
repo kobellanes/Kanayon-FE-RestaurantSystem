@@ -38,7 +38,7 @@ function Header() {
                         </div>
                     </div>
 
-                    <div className="llanesk-mobile-toggler fs-1 fw-light mobile-toggler d-lg-none">
+                    <div className="llanesk-mobile-toggler fs-1 fw-light mobile-toggler d-lg-none mx-3">
                         <a className="llanesk-links text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#navbModal">
                             <i className="fa-solid fa-bars"></i>
                         </a>
@@ -77,7 +77,7 @@ function Header() {
                                     <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
                                 </div>
 
-                                <div className="llanesk-mobile-modal-footer mobile-modal-footer d-flex justify-content-center mt-5 fs-2">
+                                <div className="llanesk-mobile-modal-footer mobile-modal-footer d-flex justify-content-center my-5 fs-2">
 
                                     <a target="_blank" href="https://www.instagram.com/explore/locations/106845685483113/kanayon-inasal/"><i className="fa-brands fa-instagram me-5"></i></a>
                                     <a target="_blank" href="https://www.facebook.com/kanayoninasal"><i className="fa-brands fa-facebook ms-5"></i></a>
