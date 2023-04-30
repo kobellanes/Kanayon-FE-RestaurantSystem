@@ -1,0 +1,21 @@
+.dese-add-menu .dese-menu {
+    text-decoration: none;
+    transition: .5s;
+}
+
+.dese-add-menu .dese-menu:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+#offcanvas {
+    position: fixed;
+    width: 100%;
+    top: 16%;
+    left: 50%;
+    transform: translate(20%, 10%);
+    min-height: 100px;
+    max-height: 500px;
+    transition: all .3s ease;
+
+}

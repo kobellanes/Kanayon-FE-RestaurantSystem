@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { setStocks, getStock } from '../../../redux/actions/actions';
+import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 
 function StockListCreate() {
@@ -47,6 +48,21 @@ function StockListCreate() {
         setStockTitle('');
         SetStockPrice('');
     }
+
+    const notifySuccess = () => {
+        toast.success('You Successfully Added a Product!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+
+    }
+
     useEffect(() => {
 
         if (singleStock.stock_name != null) {
@@ -63,50 +79,76 @@ function StockListCreate() {
                     <div className="col-12">
                         <h1 className="text-dark">Stock List</h1>
                     </div>
-                    <div className="col-12 mt-1">
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Add Photo" />
-                        </div>
-                    </div>
-                    <div className="col-12 mt-1">
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="title"
-                                id="title"
-                                value={stockTitle}
-                                onChange={(e) => setStockTitle(e.target.value)}
-                                className="form-control"
-                                placeholder="Enter Meal" />
-                        </div>
-                    </div>
-                    <div className="col-12 mt-1">
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="stock_price"
-                                id="stock_price"
-                                value={stockPrice}
-                                onChange={(e) => SetStockPrice(e.target.value)}
-                                className="form-control"
-                                placeholder="Enter Price" />
-                        </div>
-                    </div>
 
-                    <div className="col-12 mt-2 d-flex justify-content-end">
-
-                        {
-                            singleStock.stock_name == null ?
-                                <button onClick={() => addStock()} className="btn btn-success"><i class="fa-solid fa-plus"></i></button>
-                                :
-                                <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
-                        }
+                    <div className="mt-md-5">
+                        <div className="mt-4 text-center">
+                            <span className="dese-add-menu fw-light text-dark">Hello Admin! Want to add a product?<a className="ps-1 dese-menu fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Click Here</a></span>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
+                <div className="offcanvas-header mb-0 pb-2">
+                    <h3 className="dese-offcanvas-title offcanvas-title fw-bolder text-dark">Registration Form</h3>
+                    <button type="button" className="dese-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div className="offcanvas-body small p-0">
+
+                    <h6 className="dese-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
+
+                    <div className="container px-3">
+                        <form className="form-signup">
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Add Photo" />
+                                </div>
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input
+                                        type="text"
+                                        name="title"
+                                        id="title"
+                                        value={stockTitle}
+                                        onChange={(e) => setStockTitle(e.target.value)}
+                                        className="form-control"
+                                        placeholder="Enter Meal" />
+                                </div>
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input
+                                        type="text"
+                                        name="stock_price"
+                                        id="stock_price"
+                                        value={stockPrice}
+                                        onChange={(e) => SetStockPrice(e.target.value)}
+                                        className="form-control"
+                                        placeholder="Enter Price" />
+                                </div>
+                            </div>
+
+                            <div className="col-12 mt-2 d-flex justify-content-end">
+
+                                {
+                                    singleStock.stock_name == null ?
+                                        <button onClick={() => addStock()} className="btn btn-success"><i class="fa-solid fa-plus"></i></button>
+                                        :
+                                        <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div >
         </>
     );
 }

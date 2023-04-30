@@ -29,6 +29,14 @@ function UserFunction() {
         dispatch(setUsers(newUser));
     }
 
+    const deleteUser = index => {
+        const newUser = [...users];
+        console.log("Before Deletion", newUser);
+        newUser.splice(index, 1);
+        console.log("After Deletion", newUser);
+
+        dispatch(setUsers(newUser));
+    }
 
     useEffect(() => {
 
@@ -66,9 +74,15 @@ function UserFunction() {
                                 <h3 className="text-start fs-6 fw-normal">{users.address}</h3>}</td>
                             <td className="dese_function text-center">
                                 {users.isBan == 0 ?
-                                    <button onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>
+                                    <>
+                                        <button onClick={() => BanUser(index)} className="dese_button btn btn-danger">BAN</button>
+                                        <button disabled onClick={() => deleteUser(index)} className="btn btn-primary mx-1">DELETE</button>
+                                    </>
                                     :
-                                    <button onClick={() => RetrieveUser(index)} className="dese_button btn btn-success">RETRIEVE</button>
+                                    <>
+                                        <button onClick={() => RetrieveUser(index)} className="dese_button btn btn-success">RETRIEVE</button>
+                                        <button onClick={() => deleteUser(index)} className="btn btn-primary mx-1">DELETE</button>
+                                    </>
                                 }
                             </td>
                         </tr>
