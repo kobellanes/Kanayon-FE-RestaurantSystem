@@ -18,7 +18,7 @@
 }
 
 .llanesk-ordernow-orderpage {
-    background-color: green;
+    background-color: #E45E12;
     width: 35%;
     padding: 30px;
     font-size: 25px;
@@ -26,20 +26,20 @@
 }
 
 .llanesk-ordernow-orderpage:hover {
-    background-color: lightgreen;
-    color: black;
+    background-color: #E42428;
+    color: white;
 }
 
 .llanesk-ordernow-orderlist {
-    background-color: blue;
+    background-color: #E45E12;
     width: 35%;
     font-size: 25px;
     color: #fefefe;
 }
 
 .llanesk-ordernow-orderlist:hover {
-    background-color: lightblue;
-    color: black;
+    background-color: #E42428;
+    color: white;
 }
 
 .llanesk-ordernow-featuredpic {
