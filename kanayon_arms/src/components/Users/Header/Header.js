@@ -4,30 +4,31 @@ import './Header.css';
 function Header() {
     return (
         <>
-            <main className="llanesk-header pb-2">
+            <main className="llanesk-header pt-1 pb-0 ps-1">
 
-                <div className="llanesk-navb-text ms-0 ms-lg-5 mt-2 d-flex justify-content-center align-items-center px-4 px-lg-5">
+                <div className="llanesk-navb-text ms-0 mx-lg-0 mt-2 d-flex justify-content-center align-items-center px-4 px-lg-5"
+                    data-navbar-on-scroll="data-navbar-on-scroll">
                     <div className="d-flex align-items-center mt-1">
                         <img className="rounded-pill llanesk-logo" src={require('../../../assets/logo.jpg')}></img>
                     </div>
 
 
-                    <div className="llanesk-con me-5">
+                    <div className="llanesk-con">
 
-                        <div className="container-fluid llanesk-navb-items align-items-center d-none d-xl-flex d-lg-flex justify-content-end me-lg-5">
+                        <div className="container-fluid llanesk-navb-items align-items-center d-none d-xl-flex d-lg-flex justify-content-end">
 
                             <div className="llanesk-item fs-4 d-flex flex-row">
-                                <a href="/" className="llanesk-links fa-solid fa-house d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-1"></a>
+                                <a href="/" className="llanesk-links fa-solid fa-house d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
                                 <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/">Home</a>
                             </div>
 
                             <div className="llanesk-item fs-4 d-flex flex-row">
-                                <a href="about" className="llanesk-links fa-solid fa-address-card d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-1"></a>
+                                <a href="about" className="llanesk-links fa-solid fa-address-card d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
                                 <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/about">About</a>
                             </div>
 
                             <div className="llanesk-item fs-4 d-flex flex-row">
-                                <a href="ordernow" className="llanesk-links fa-solid fa-cart-shopping d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-1"></a>
+                                <a href="ordernow" className="llanesk-links fa-solid fa-cart-shopping d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
                                 <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/ordernow">Order Now</a>
                             </div>
 
@@ -38,7 +39,7 @@ function Header() {
                         </div>
                     </div>
 
-                    <div className="llanesk-mobile-toggler fs-1 fw-light mobile-toggler d-lg-none mx-3">
+                    <div className="llanesk-mobile-toggler fs-1 fw-light mobile-toggler d-lg-none px-3">
                         <a className="llanesk-links text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#navbModal">
                             <i className="fa-solid fa-bars"></i>
                         </a>

@@ -14,7 +14,8 @@
 }
 
 .austriak-col-6 h1 {
-    color: #E45E12;
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #fbf39b;
     font-size: 40px;
 }
 
@@ -24,13 +25,14 @@
 }
 
 .austriak-aboutus-btn {
-    background-color: #810034;
+    background-color: green;
     transition: all .5s ease;
 }
 
 .austriak-aboutus-btn:hover {
-    background-color: #E42428;
+    background-color: lightgreen;
     transform: scale(1.2);
+    color: black;
 }
 
 .austriak-aboutus-img-fluid {
@@ -39,9 +41,9 @@
 }
 
 .last-austriak h1 {
-    color: #e46e2a;
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #fbf39b;
     font-size: 50px;
-    font-style: oblique;
 }
 
 .austria-aboutus-img {
