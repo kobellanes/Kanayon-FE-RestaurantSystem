@@ -3,116 +3,69 @@
     padding: 0;
 }
 
-.austriak-bg {
-    height: 850px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
+.llanesk-homepage-border1 {
+    border-bottom: 10px solid #fbf39b;
+    border-radius: 0 0 100px 100px;
+    width: 100%;
+    height: 30px;
+}
+
+.llanesk-homepage-border2 {
+    border-bottom: 10px solid #fbf39b;
+    border-radius: 0 0 100px 100px;
+    width: 90%;
+    height: 30px;
+}
+
+.llanesk-homepage-border3 {
+    border-bottom: 10px solid #fbf39b;
+    border-radius: 0 0 100px 100px;
+    width: 80%;
+    height: 30px;
 }
 
 .dese_img {
-    border-radius: 5px;
+    height: 350px;
 }
 
-/* .col-lg-8 h1.austria {
-    color: antiquewhite;
-    font-size: 70px;
-    margin-left: 780px;
-    font-style: initial;
+.llanesk-homepage-s2 {
+    border-bottom: 4px solid #fefefe;
 }
 
-.col-lg-8 span {
-    color: #E45E12;
-    margin-left: 65px;
-} */
-
-.container-austria {
-    text-align: center;
-    color: antiquewhite;
+.llanesk-homepage-s2-cont h1 {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 65px;
 }
 
-.bg-300 h4 {
-    color: antiquewhite;
-    font-size: 45px;
+.llanesk-homepage-s2-cont p {
+    font-size: 23px;
 }
 
-.bg-300 h1 {
-    color: #E45E12;
-    margin-top: 18px;
-    font-size: 30px;
+.llanesk-homepage-s3-customers img {
+    width: 100%;
+    height: 260px;
 }
 
-.bg-300 p {
-    color: antiquewhite;
-    font-size: 25px;
-    text-align: justify;
-    margin-top: 18px;
+.llanesk-homepage-s3-cont h1 {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 65px;
 }
 
-.dese-h1 h1 {
-    color: #E45E12;
-    margin-top: 18px;
-    font-size: 50px;
+.llanesk-homepage-s3-cont p {
+    font-size: 23px;
 }
 
-.dese-parag {
-    font-size: 25px;
+.austriak-homepage-s3-btn {
+    width: 200px;
+    background-color: green;
+    transition: all .5s ease;
+    color: white;
 }
 
-.dese-parag1 {
-    font-size: 25px;
-}
-
-/* @media only screen and (max-width: 1199px) {
-    .bg-300 h4 {
-        text-align: center;
-    }
-
-    .bg-300 h1 {
-        text-align: center;
-    }
-
-    .bg-300 p {
-        text-align: center;
-    }
-} */
-
-@media only screen and (max-width: 768px) {
-    .bg-300 h4 {
-        color: antiquewhite;
-        font-size: 35px;
-        text-align: center;
-    }
-
-    .bg-300 h1 {
-        color: #E45E12;
-        margin-top: 18px;
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .bg-300 p {
-        color: antiquewhite;
-        font-size: 22px;
-        text-align: justify;
-        margin-top: 18px;
-        text-align: center;
-    }
-
-    .dese-h1 h1 {
-        color: #E45E12;
-        margin-top: 18px;
-        font-size: 35px;
-    }
-
-    .dese-parag {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .dese-parag1 {
-        font-size: 20px;
-    }
+.austriak-homepage-s3-btn:hover {
+    background-color: lightgreen;
+    transform: scale(1.2);
+    color: black;
 }
 
 @media only screen and (max-width: 576px) {
@@ -120,41 +73,6 @@
         height: 120px;
     }
 
-    .bg-300 h4 {
-        color: antiquewhite;
-        font-size: 25px;
-        text-align: center;
-    }
-
-    .bg-300 h1 {
-        color: #E45E12;
-        margin-top: 18px;
-        font-size: 17px;
-        text-align: center;
-    }
-
-    .bg-300 p {
-        color: antiquewhite;
-        font-size: 22px;
-        text-align: justify;
-        margin-top: 18px;
-        text-align: center;
-    }
-
-    .dese-h1 h1 {
-        color: #E45E12;
-        margin-top: 18px;
-        font-size: 35px;
-    }
-
-    .dese-parag {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .dese-parag1 {
-        font-size: 20px;
-    }
 }
 
 @media only screen and (max-width: 414px) {

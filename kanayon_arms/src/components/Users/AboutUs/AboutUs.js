@@ -7,6 +7,7 @@ function AboutUs() {
     return (
         <>
             <Header></Header>
+
             <section className="austriak-aboutus mt-5 pb-5">
                 <div className="container-fluid d-flex flex-column justify-content-center align-items-center text-center">
                     <h1 className="austriak-aboutus-title text-center align-items-center fw-light text-light pb-2">Get to know us</h1>
@@ -53,7 +54,7 @@ function AboutUs() {
 
             <section className="mx-5">
                 <div className="last-austriak pb-3">
-                    <h1 className="text-center">Our family gets a little bigger every time you come by.</h1>
+                    <h1 className="text-center">Our family gets a little bigger every time you come by</h1>
                 </div>
 
 
