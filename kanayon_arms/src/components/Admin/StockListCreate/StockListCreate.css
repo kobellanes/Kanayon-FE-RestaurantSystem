@@ -1,21 +1,38 @@
-.dese-add-menu .dese-menu {
-    text-decoration: none;
-    transition: .5s;
-}
-
-.dese-add-menu .dese-menu:hover {
+.dese-btn-add a:hover {
     text-decoration: underline;
-    color: #000;
 }
 
-#offcanvas {
+.dese-offcanvas {
     position: fixed;
-    width: 100%;
+    width: 30%;
     top: 16%;
-    left: 50%;
-    transform: translate(20%, 10%);
+    left: 35%;
+    transform: translate(10%, 10%);
     min-height: 100px;
     max-height: 500px;
     transition: all .3s ease;
 
+}
+
+@media only screen and (max-width:1400px) {
+    .dese-offcanvas {
+        width: 40%;
+        left: 30%;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .dese-offcanvas {
+        width: 50%;
+        left: 25%;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .dese-offcanvas {
+        width: 70%;
+        left: 15%;
+    }
 }
