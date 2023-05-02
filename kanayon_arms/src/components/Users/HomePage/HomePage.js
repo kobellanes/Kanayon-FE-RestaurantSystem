@@ -154,9 +154,40 @@ function HomePage() {
                     </section>
 
 
+                    <section className="gallery">
+                        <div className="container-lg">
+                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
+                                <div className="austcol">
+                                    <img className="austriapc" src={require('../../../assets/bbqpic.jpg')} />
+                                </div>
+                                <div className="austcol">
+                                    <img className="austriapc" src={require('../../../assets/grilledliem.jpg')} />
+                                </div>
+                                <div className="austcol">
+                                    <img className="austriapc" src={require('../../../assets/halox2.jpg')} />
+                                </div>
+                                <div className="austcol">
+                                    <img className="austriapc" src={require('../../../assets/chickengrl.jpg')} />
+                                </div>
+                            </div>
+
+                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5">
+                                <div className="austriakccol">
+                                    <p className="kylacol">
+                                        Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes - where each bite is a journey to foodie paradise!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+
+
                 </div >
 
-            </div>
+            </div >
             <Footer></Footer>
         </>
     );
