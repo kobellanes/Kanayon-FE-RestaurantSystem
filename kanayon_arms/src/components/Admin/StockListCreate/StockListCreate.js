@@ -8,6 +8,7 @@ function StockListCreate() {
     const dispatch = useDispatch();
     const [stockTitle, setStockTitle] = useState('');
     const [stockPrice, SetStockPrice] = useState('');
+    const [stockQuantity, SetStockQuantity] = useState('');
     const singleStock = useSelector((state) => state.getStock)
     const stocks = useSelector((state) => state.allStocks.stocks)
 
@@ -27,6 +28,7 @@ function StockListCreate() {
                 id: -2,
                 stock_name: null,
                 stock_price: null,
+                stock_quantity: null,
                 isEdit: 0,
                 isComplete: 0,
             };
@@ -42,12 +44,14 @@ function StockListCreate() {
             id: Math.floor(Math.random() * 20000),
             stock_name: stockTitle,
             stock_price: stockPrice,
+            stock_quantity: stockQuantity,
             isEdit: 0,
             isSold: 0,
         })
         dispatch(setStocks(newStock));
         setStockTitle('');
         SetStockPrice('');
+        SetStockQuantity('');
     }
 
     const notifySuccess = () => {
@@ -69,6 +73,7 @@ function StockListCreate() {
         if (singleStock.stock_name != null) {
             setStockTitle(singleStock.stock_name);
             SetStockPrice(singleStock.stock_price);
+            SetStockQuantity(singleStock.stock_quantity);
             console.log(singleStock);
         }
 
@@ -135,6 +140,10 @@ function StockListCreate() {
                                 <div className="text-center">
                                     <input
                                         type="number"
+                                        name="quantity"
+                                        id="quantity"
+                                        value={stockQuantity}
+                                        onChange={(e) => SetStockQuantity(e.target.value)}
                                         className="form-control"
                                         placeholder="Quantity" />
                                 </div>
