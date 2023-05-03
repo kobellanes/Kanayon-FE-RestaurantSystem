@@ -60,6 +60,7 @@ const stockInitialState = {
             id: 1,
             stock_name: "Paa Inasal",
             stock_price: "Price: ₱99.00",
+            stock_quantity: "Quantity: 50",
             isEdit: 0,
             isSold: 0,
         },
@@ -67,6 +68,7 @@ const stockInitialState = {
             id: 2,
             stock_name: "Pecho Inasal",
             stock_price: "Price: ₱109.00",
+            stock_quantity: "Quantity: 50",
             isEdit: 0,
             isSold: 0,
         }

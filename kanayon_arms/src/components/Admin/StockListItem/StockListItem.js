@@ -75,11 +75,13 @@ function StockListItem() {
                                             <>
                                                 <h3 className="text-start text-decoration-line-through text-dark">{stock.stock_name}</h3>
                                                 <p className="text-start text-dark text-decoration-line-through">{stock.stock_price}</p>
+                                                <p className="text-start text-dark text-decoration-line-through">{stock.stock_quantity}</p>
                                             </>
                                             :
                                             <>
                                                 <h3 className="text-start text-dark">{stock.stock_name}</h3>
                                                 <p className="text-start text-dark">{stock.stock_price}</p>
+                                                <p className="text-start text-dark">{stock.stock_quantity}</p>
                                             </>
                                     }
 

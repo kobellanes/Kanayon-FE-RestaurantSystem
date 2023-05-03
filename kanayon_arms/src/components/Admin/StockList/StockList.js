@@ -1,4 +1,5 @@
 import React from 'react';
+import "../StockList/StockList.css"
 import StockListCreate from '../StockListCreate/StockListCreate';
 import StockListItem from '../StockListItem/StockListItem';
 
@@ -22,7 +23,7 @@ function StockList() {
                             <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
                         </a>
                         </li>
-                        <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-money-check-dollar me-2"></i>Inventory Analysis</a></li>
+                        <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
                     </ul>
 
                     <div>
@@ -38,13 +39,11 @@ function StockList() {
 
                 <div className="dese-adminnav-content content">
                     <main>
-                        <div className="container w-100 mx-auto mt-2">
-                            <div className="container w-xl-50 w-md-100 w-sm-100 card card-shadow py-3">
+                        <div className="container w-100 mt-4">
+                            <h1>Stock List</h1>
+                            <div className="container w-xl-50 w-md-100 w-sm-100 card card-shadow py-3 mt-4">
                                 <StockListCreate />
-                            </div>
-
-                            <div className="container-fluid">
-                                <div className="row">
+                                <div className="dese-stock row">
                                     <StockListItem />
                                 </div>
                             </div>
