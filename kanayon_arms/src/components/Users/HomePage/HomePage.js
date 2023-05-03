@@ -158,16 +158,16 @@ function HomePage() {
                         <div className="container-lg">
                             <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
                                 <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/bbqpic.jpg')} />
+                                    <img className="austriapc" src={require('../../../assets/1KatakamtakamS4.jpg')} />
                                 </div>
                                 <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/grilledliem.jpg')} />
+                                    <img className="austriapc" src={require('../../../assets/2KatakamtakamS4.jpg')} />
                                 </div>
                                 <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/halox2.jpg')} />
+                                    <img className="austriapc" src={require('../../../assets/3KatakamtakamS4.jpg')} />
                                 </div>
                                 <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/chickengrl.jpg')} />
+                                    <img className="austriapc" src={require('../../../assets/4KatakamtakamS4.jpg')} />
                                 </div>
                             </div>
 
