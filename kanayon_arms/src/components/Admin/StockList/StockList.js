@@ -1,5 +1,5 @@
 import React from 'react';
-import "./StockList.css"
+import "../StockList/StockList.css"
 import StockListCreate from '../StockListCreate/StockListCreate';
 import StockListItem from '../StockListItem/StockListItem';
 

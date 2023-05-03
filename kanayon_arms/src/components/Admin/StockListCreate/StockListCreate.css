@@ -3,7 +3,7 @@
     width: 30%;
     top: 16%;
     left: 35%;
-    transform: translate(10%, 10%);
+    transform: translate(10%, 40%);
     min-height: 100px;
     max-height: 450px;
     transition: all .3s ease;
