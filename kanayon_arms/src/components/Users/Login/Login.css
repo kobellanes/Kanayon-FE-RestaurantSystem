@@ -36,7 +36,6 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-
 .llanesk-box .llanesk-input-field label {
     top: 10px;
     left: 10px;
@@ -72,11 +71,11 @@
 .llanesk-offcanvas {
     position: fixed;
     width: 30%;
-    top: 16%;
+    top: 17%;
     left: 35%;
     transform: translate(10%, 10%);
-    min-height: 100px;
-    max-height: 500px;
+    min-height: 560px;
+    max-height: 560px;
     transition: all .3s ease;
 
 }

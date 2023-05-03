@@ -3,67 +3,141 @@ import "./Login.css"
 import Header from '../Header/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from 'react-redux';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import http from '../../../../src/http';
+import { setAccounts } from '../../../redux/actions/actions';
 
 function Login() {
+    const dispatch = useDispatch();
     const accounts = useSelector((state) => state.allAccounts.account);
 
+    //SIGNIN
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    //CREATE
+    const [isFirst, setisFirst] = useState('');
+    const [isLast, setisLast] = useState('');
+    const [isEmail, setisEmail] = useState('');
+    const [isPassword, setisPassword] = useState('');
+    const [isConfirmPassword, setisConfirmPassword] = useState('');
+    const [isGcash, setisGcash] = useState('');
 
-    const signin = () => {   //This Function still has some errors I'll get back to it in backend
-        accounts.map((account, index) => {
-            const adminEmail = account.email;
-            const adminPassword = account.password;
+    const Login = (e) => {
+        http.get('accounts').then(result => {
+            dispatch(setAccounts(result.data));
 
-            if (email == adminEmail && password == adminPassword) {
-                console.log('success');
-                window.location.href = '/admin';
+            const newAccount = result.data;
 
-            } else {
-                console.log('invalid');
+            let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
+            if (ind != -1) {
+                const user_id = newAccount[ind].id;
+                const user_status = newAccount[ind].isStatus;
+                console.log(user_id);
+                console.log(user_status);
+                localStorage.setItem("user_id", user_id);
+                localStorage.setItem("user_status", user_status);
+
+                if (user_status == "ADMIN") {
+                    window.location.href = '/admin';
+                } else {
+                    window.location.href = '/';
+                }
+            } else {    //WRONG PASSWORD OR EMAIL
+                alert('Invalid Email or Password!');    //Alert will be changed
                 setEmail('');
                 setPassword('');
-
             }
 
-        });
-
-
+        }).catch(error => console.log(error.message));
     }
 
-    const notifyDanger = () => {
-        toast.danger('Try', {
-            position: "top-right",
+    const Create = (e) => {
+        e.preventDefault();
+
+        http.get('accounts').then(result => {
+            dispatch(setAccounts(result.data));
+            const newAccount = result.data;
+
+            if (isFirst == "" || isLast == "" || isEmail == "" || isPassword == "" || isConfirmPassword == "" || isGcash == "") {
+                alert("Fields cannot be empty!"); //ALERT TO BE CHANGED!
+            }
+
+            const account = {
+                isFirst: isFirst,
+                isLast: isLast,
+                isEmail: isEmail,
+                isPassword: isPassword,
+                isGcash: isGcash,
+                isStatus: "ACTIVE",
+            }
+
+            if (isPassword == isConfirmPassword) {
+                http.post('accounts', account).then((result) => {
+
+                    let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
+                    if (ind != -1) {
+                        notifyError(result.data.message);
+                        setisEmail('');
+                    } else {
+                        if (result.data.prompt == 1) {
+                            notifySuccess(result.data.message);
+                            newAccount.push(account);
+
+                            dispatch(setAccounts(newAccount));
+                            setisFirst('');
+                            setisLast('');
+                            setisEmail('');         //EMAIL MUST BE CHECKED
+                            setisPassword('');
+                            setisConfirmPassword('');
+                            setisGcash('');         //GCASH MUST BE CHECKED
+                            //Checkbox must be unchecked
+
+                            http.get('accounts').then(result => {
+                                dispatch(setAccounts(result.data));
+
+                            }).catch(err => console.log(err.message));
+                        }
+                    }
+
+                });
+            } else {
+                setisPassword('');
+                setisConfirmPassword('');
+                alert("Password didn't match");  //Alert will be changed
+            }
+        });
+    }
+
+    const notifySuccess = (message) => {
+        toast.success(message, {
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "dark",
+            theme: "light",
         });
-
     }
 
-
-    const notifySuccess = () => {
-        toast.success('You Successfully Created an Account!', {
-            position: "top-right",
+    const notifyError = (message) => {
+        toast.error(message, {
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "dark",
+            theme: "light",
         });
-
     }
 
+    const handleSubmit = event => {
+        event.preventDefault();
+    };
 
     return (
         <>
@@ -94,18 +168,20 @@ function Login() {
 
                                     </header>
 
+
+
                                     <div className="llanesk-input-field d-flex flex-column position-relative px-2 form-group">
-                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required autocomplete="on" />
-                                        <label className="position-absolute fs-6" for="email">Email</label>
+                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required autoComplete="on" />
+                                        <label className="position-absolute fs-6" htmlFor="email">Email</label>
                                     </div>
 
                                     <div className="llanesk-input-field d-flex flex-column position-relative px-2 form-group">
                                         <input type="password" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
-                                        <label className="position-absolute fs-6" for="password">Password</label>
+                                        <label className="position-absolute fs-6" htmlFor="password">Password</label>
                                     </div>
 
                                     <div className="llanesk-input-field mt-3 d-flex flex-column position-relative px-2">
-                                        <a href="/admin" className="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Sign in</a>
+                                        <a onClick={Login} className="btn btn-primary" tabIndex="-1" role="button" aria-disabled="true">Sign in</a>
                                     </div>
 
                                     <div className="mt-md-5">
@@ -128,7 +204,7 @@ function Login() {
 
             </main >
 
-            <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
+            <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1">
                 <div className="offcanvas-header mb-0 pb-2">
                     <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Registration Form</h3>
                     <button type="button" className="llanesk-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -144,29 +220,36 @@ function Login() {
                             <div className="mt-4 form-group">
                                 <div className="row">
                                     <div className="text-center d-flex flex-row">
-                                        <input className="form-control w-50 me-2" type="text" name="firstname" placeholder="First name" required />
-                                        <input className="form-control w-50 ms-2" type=" text" name="lastname" placeholder="Last name" required />
+                                        <input className="form-control w-50 me-2" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First name" required />
+                                        <input className="form-control w-50 ms-2" value={isLast} onChange={(e) => setisLast(e.target.value)} type=" text" name="lastname" placeholder="Last name" required />
                                     </div>
                                 </div>
                             </div>
 
                             <div className="mt-4 form-group">
                                 <div className="text-center">
-                                    <input className="form-control col-8" type="email" name="email" placeholder="Email Address" required />
+                                    <input className="form-control col-8" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
                                 </div>
 
                             </div>
 
                             <div className="mt-4 form-group">
                                 <div className="text-center">
-                                    <input className="form-control l col-8" type="password" name="password" placeholder="New Password" required />
+                                    <input className="form-control l col-8" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="New Password" required />
                                 </div>
 
                             </div>
 
                             <div className="mt-4 form-group">
                                 <div className="text-center">
-                                    <input className="form-control col-8" type="number" name="number" placeholder="GCash Number" required />
+                                    <input className="form-control l col-8" type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required />
                                 </div>
 
                             </div>
@@ -180,8 +263,7 @@ function Login() {
                             </div>
 
                             <div className="col-12 text-center py-4">
-                                <button onClick={notifySuccess} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
-                                <ToastContainer />
+                                <button onClick={Create} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
                             </div>
 
                         </form>
