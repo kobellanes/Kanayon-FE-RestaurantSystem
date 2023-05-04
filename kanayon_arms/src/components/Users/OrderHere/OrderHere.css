@@ -1,38 +1,56 @@
-.LucidoML-ordernow {
+.LucidoML-orderhere {
     margin: 0;
     padding: 0;
 }
 
-span {
+.LucidoML-orderhere-title {
+    font-size: 45px;
+    text-align: center;
+}
+
+.LucidoML-orderhere-span {
     color: white;
 }
 
-h4 {
+.LucidoML-orderhere-h4 {
     text-align: center;
     color: #921E1E;
 }
 
-
-.card-title {
-    color: white;
-}
-
-.img-thumbnail {
+.LucidoML-orderhere-img-thumbnail {
     border-color: #921E1E;
     background-color: #FFAD01;
     background-color: #212529;
 }
 
-h1 {
+.LucidoML-orderhere-h1 {
     text-align: center;
     color: #921E1E;
 }
 
+.LucidoML-orderhere-orderhere {
+    background-color: green;
+    width: 35%;
+    padding: 30px;
+    font-size: 25px;
+    color: #fefefe;
+}
 
-p {
+.LucidoML-orderhere-orderhere:hover {
+    background-color: lightgreen;
     color: white;
 }
 
+
+
+
+
+/* p {
+    color: white;
+}
+.card-title {
+    color: white;
+}
 .card {
     background-color: #C23031;
-}
+} */
