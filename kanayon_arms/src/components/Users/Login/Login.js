@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import http from '../../../../src/http';
 import { setAccounts } from '../../../redux/actions/actions';
+import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber, isPossiblePhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 function Login() {
     const dispatch = useDispatch();
@@ -21,22 +23,13 @@ function Login() {
     //CREATE
     const [isFirst, setisFirst] = useState('');
     const [isLast, setisLast] = useState('');
-    const [prompt1, setPrompt1] = useState('');
-
     const [isEmail, setisEmail] = useState('');
-    const [prompt2, setPrompt2] = useState('');
-
     const [isPassword, setisPassword] = useState('');
-    const [prompt3, setPrompt3] = useState('');
-
     const [isConfirmPassword, setisConfirmPassword] = useState('');
-    const [prompt4, setPrompt4] = useState('');
-
     const [isGcash, setisGcash] = useState('');
-    const [prompt5, setPrompt5] = useState('');
-
-    const [isCheck, setisCheck] = useState('');
-    const [prompt6, setPrompt6] = useState('');
+    const [error, setError] = useState(false);
+    const [prompt1, setPrompt1] = useState('');
+    const [prompt2, setPrompt2] = useState('');
 
     const Login = (e) => {
         const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -76,7 +69,10 @@ function Login() {
 
                 }).catch(error => console.log(error.message));
             }
-
+        } else if (!regEx.test(email) && email != "" && password == "") {
+            setMessage("* Please complete email address following '@'. ");
+            setMessage2('* Please fill out the password field.');
+            setInvprompt('');
         } else if (!regEx.test(email) && email != "") {
             setMessage("* Please complete email address following '@'. ");
             setMessage2('');
@@ -96,70 +92,81 @@ function Login() {
     const Create = (e) => {
         e.preventDefault();
         const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+        if (isFirst.length == 0 || isLast.length == 0 || isEmail.length == 0 || isPassword.length == 0 || isConfirmPassword.length == 0 || isGcash.length == 0) {
+            setError(true);
+        } else {
+            if (regEx.test(isEmail)) {
+                setPrompt1('');
+                if (regExp.test(isPassword)) {
+                    http.get('accounts').then(result => {
+                        dispatch(setAccounts(result.data));
+                        const newAccount = result.data;
+
+                        const account = {
+                            isFirst: isFirst,
+                            isLast: isLast,
+                            isEmail: isEmail,
+                            isPassword: isPassword,
+                            isGcash: isGcash,
+                            isStatus: "ACTIVE",
+                        }
+
+                        if (isPassword == isConfirmPassword) {
+                            http.post('accounts', account).then((result) => {
+
+                                let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
+                                if (ind != -1) {
+                                    notifyError(result.data.message);
+                                    setisEmail('');
+                                    setError(false);
+                                    setPrompt1('');
+                                    setPrompt2('');
+                                } else {
+                                    if (result.data.prompt == 1) {
+                                        notifySuccess(result.data.message);
+                                        newAccount.push(account);
+
+                                        dispatch(setAccounts(newAccount));
+                                        setisFirst('');
+                                        setisLast('');
+                                        setisEmail('');
+                                        setisPassword('');
+                                        setisConfirmPassword('');
+                                        setisGcash('');         //GCASH MUST BE CHECKED
+
+                                        //NO PROMPT
+                                        setPrompt1('');
+                                        setPrompt2('');
+                                        setError(false);
 
 
-        if (isFirst == "" || isLast == "" && isEmail == "" && isPassword == "" && isConfirmPassword == "" && isGcash == "" && isCheck == false) {
-            setPrompt1('* Please fill out the all name fields.');
-            setPrompt2('* Please fill out the email address field.');
-            setPrompt3('* Please fill out the new password field.');
-            setPrompt4('* Please fill out the confirm password field.');
-            setPrompt5('* Please fill out the gcash number field.');
-            setPrompt6('* You need to agree to our terms and conditions')
+                                        http.get('accounts').then(result => {
+                                            dispatch(setAccounts(result.data));
+
+                                        }).catch(err => console.log(err.message));
+                                    }
+                                }
+
+                            });
+                        } else {
+                            setisPassword('');
+                            setisConfirmPassword('');
+                            alert("* Password didn't match.");  //Alert will be changed
+                        }
+                    });
+                } else if (!regExp.test(isPassword)) {
+                    setPrompt2("* Please enter atleast eight characters containing at least one letter and one number.");
+                }
+
+
+            } else if (!regEx.test(isEmail) && isEmail != "") {
+                setPrompt1("* Please complete email address following '@'.");
+            }
         }
 
 
-        http.get('accounts').then(result => {
-            dispatch(setAccounts(result.data));
-            const newAccount = result.data;
-
-            // if (isFirst == "" || isLast == "" || isEmail == "" || isPassword == "" || isConfirmPassword == "" || isGcash == "") {
-            //     alert("Fields cannot be empty!"); //ALERT TO BE CHANGED!
-            // }
-
-            const account = {
-                isFirst: isFirst,
-                isLast: isLast,
-                isEmail: isEmail,
-                isPassword: isPassword,
-                isGcash: isGcash,
-                isStatus: "ACTIVE",
-            }
-
-            if (isPassword == isConfirmPassword) {
-                http.post('accounts', account).then((result) => {
-
-                    let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
-                    if (ind != -1) {
-                        notifyError(result.data.message);
-                        setisEmail('');
-                    } else {
-                        if (result.data.prompt == 1) {
-                            notifySuccess(result.data.message);
-                            newAccount.push(account);
-
-                            dispatch(setAccounts(newAccount));
-                            setisFirst('');
-                            setisLast('');
-                            setisEmail('');         //EMAIL MUST BE CHECKED
-                            setisPassword('');
-                            setisConfirmPassword('');
-                            setisGcash('');         //GCASH MUST BE CHECKED
-                            //Checkbox must be unchecked
-
-                            http.get('accounts').then(result => {
-                                dispatch(setAccounts(result.data));
-
-                            }).catch(err => console.log(err.message));
-                        }
-                    }
-
-                });
-            } else {
-                setisPassword('');
-                setisConfirmPassword('');
-                alert("Password didn't match");  //Alert will be changed
-            }
-        });
     }
 
     const notifySuccess = (message) => {
@@ -229,9 +236,9 @@ function Login() {
                                         <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-center fw-light ">{message2}</h6>
                                     </div>
 
-                                    <h6 className="text-center llanesk-login-prompt mt-0 pb-3 text-danger text-wrap fw-bold">{invprompt}</h6>
+                                    <h6 className="text-center llanesk-login-prompt mt-0 pb-2 text-danger text-wrap fw-bold">{invprompt}</h6>
 
-                                    <div className="llanesk-input-field mt-3 d-flex flex-column position-relative px-2">
+                                    <div className="llanesk-input-field mt- d-flex flex-column position-relative px-2">
                                         <a onClick={Login} className="btn btn-primary" tabIndex="-1" role="button" aria-disabled="true">Sign in</a>
                                     </div>
 
@@ -277,59 +284,80 @@ function Login() {
                                 </div>
                             </div>
 
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
+                            {error && ((isFirst.length <= 0) || (isLast.length <= 0)) ?
+                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out all the name fields.</h6>
+                                : ""
+                            }
 
-                            <div className="mt-4 form-group">
+                            <div className="mt-3 form-group">
                                 <div className="text-center">
                                     <input className="form-control col-8" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
                                 </div>
 
                             </div>
 
-                            <h6 className="llanesk-login-prompt mt-2  text-danger text-wrap fw-light text-center">{prompt2}</h6>
+                            {error && isEmail.length <= 0 ?
+                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the email address field.</h6>
+                                : ""
+                            }
 
-                            <div className="mt-4 form-group">
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
+
+
+                            <div className="mt-3 form-group">
                                 <div className="text-center">
-                                    <input className="form-control l col-8" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="New Password" required />
+                                    <input className="form-control l col-8" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password: min-8 Characters, at least 1 letter and 1 number" required />
                                 </div>
 
                             </div>
 
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt3}</h6>
+                            {error && isPassword.length <= 0 ?
+                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the password field.</h6>
+                                : ""
+                            }
 
-                            <div className="mt-4 form-group">
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt2}</h6>
+
+                            <div className="mt-3 form-group">
                                 <div className="text-center">
                                     <input className="form-control l col-8" type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
                                 </div>
 
                             </div>
 
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt4}</h6>
+                            {error && isConfirmPassword.length <= 0 ?
+                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the confirm password field.</h6>
+                                : ""
+                            }
 
-                            <div className="mt-4 form-group">
+                            <div className="mt-3 form-group ">
                                 <div className="text-center">
-                                    <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required />
+                                    <PhoneInput
+                                        defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={isGcash => setisGcash(isGcash)} placeholder=" GCash Number" />
+                                    {isGcash && isValidPhoneNumber(isGcash) ? "Yes it is" : "No it is Not"}
+
+                                    {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
                                 </div>
 
                             </div>
 
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt5}</h6>
+                            {error && isGcash.length <= 0 ?
+                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the gcash number field.</h6>
+                                : ""
+                            }
 
-                            <div className="mt-4 form-group">
-                                <label className="text-start">
-                                    <input value={isCheck} onChange={(e) => setisCheck(e.target.value)} className="me-2" type="checkbox" name="check" required />
-                                    By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
-                                </label>
-
-                            </div>
-
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt6}</h6>
-
-                            <div className="col-12 text-center py-4">
+                            <div className="col-12 text-center py-3">
                                 <button onClick={Create} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
                             </div>
 
                         </form>
+
+                        <div className="mt-1 pb-3 form-group text-center">
+                            <label className="">
+                                By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
+                            </label>
+
+                        </div>
 
 
                     </div>
