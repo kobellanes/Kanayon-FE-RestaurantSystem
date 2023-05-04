@@ -1,0 +1,38 @@
+.LucidoML-ordernow {
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    color: white;
+}
+
+h4 {
+    text-align: center;
+    color: #921E1E;
+}
+
+
+.card-title {
+    color: white;
+}
+
+.img-thumbnail {
+    border-color: #921E1E;
+    background-color: #FFAD01;
+    background-color: #212529;
+}
+
+h1 {
+    text-align: center;
+    color: #921E1E;
+}
+
+
+p {
+    color: white;
+}
+
+.card {
+    background-color: #C23031;
+}
