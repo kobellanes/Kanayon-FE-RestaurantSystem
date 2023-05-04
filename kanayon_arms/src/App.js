@@ -9,6 +9,7 @@ import AdminHomePage from './components/Admin/HomePage/HomePage';
 import UserPage from './components/Admin/UserList/UserList';
 import StockList from './components/Admin/StockList/StockList';
 import OrderList from './components/Admin/OrderList/OrderList';
+import OrderHere from './components/Users/OrderHere/OrderHere';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="admin" element={<AdminHomePage />} />
           <Route path="ordernow" element={<OrderNow />} />
+          <Route path="orderhere" element={<OrderHere />} />
           <Route path="login" element={<Login />} />
           <Route path="userlist" element={<UserPage />} />
           <Route path="stocklist" element={<StockList />} />
