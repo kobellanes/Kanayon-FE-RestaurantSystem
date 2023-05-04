@@ -16,24 +16,26 @@ function Login() {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [message2, setMessage2] = useState('');
+    const [invprompt, setInvprompt] = useState('');
 
     //CREATE
     const [isFirst, setisFirst] = useState('');
+    const [isLast, setisLast] = useState('');
     const [prompt1, setPrompt1] = useState('');
 
-    const [isLast, setisLast] = useState('');
+    const [isEmail, setisEmail] = useState('');
     const [prompt2, setPrompt2] = useState('');
 
-    const [isEmail, setisEmail] = useState('');
+    const [isPassword, setisPassword] = useState('');
     const [prompt3, setPrompt3] = useState('');
 
-    const [isPassword, setisPassword] = useState('');
+    const [isConfirmPassword, setisConfirmPassword] = useState('');
     const [prompt4, setPrompt4] = useState('');
 
-    const [isConfirmPassword, setisConfirmPassword] = useState('');
+    const [isGcash, setisGcash] = useState('');
     const [prompt5, setPrompt5] = useState('');
 
-    const [isGcash, setisGcash] = useState('');
+    const [isCheck, setisCheck] = useState('');
     const [prompt6, setPrompt6] = useState('');
 
     const Login = (e) => {
@@ -42,6 +44,7 @@ function Login() {
             if (password == "") {
                 setMessage2("* Please fill out the password field.");
                 setMessage('');
+                setInvprompt('');
             } else {
                 http.get('accounts').then(result => {
                     dispatch(setAccounts(result.data));
@@ -63,7 +66,8 @@ function Login() {
                             window.location.href = '/';
                         }
                     } else {    //WRONG PASSWORD OR EMAIL
-                        alert('Invalid Email or Password!');    //Alert will be changed
+                        // alert('Invalid Email or Password!');    //Alert will be changed
+                        setInvprompt('Invalid Email or Password!');
                         setMessage('');
                         setMessage2('');
                         setEmail('');
@@ -75,28 +79,42 @@ function Login() {
 
         } else if (!regEx.test(email) && email != "") {
             setMessage("* Please complete email address following '@'. ");
+            setMessage2('');
+            setInvprompt('');
         } else if (email == "" && password == "") {
             setMessage("* Please fill out the email address field.");
             setMessage2("* Please fill out the password field.");
+            setInvprompt('');
         } else if (email == "") {
             setMessage("* Please fill out the email address field.");
             setMessage2('');
+            setInvprompt('');
         }
 
     }
 
     const Create = (e) => {
         e.preventDefault();
+        const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
+
+        if (isFirst == "" || isLast == "" && isEmail == "" && isPassword == "" && isConfirmPassword == "" && isGcash == "" && isCheck == false) {
+            setPrompt1('* Please fill out the all name fields.');
+            setPrompt2('* Please fill out the email address field.');
+            setPrompt3('* Please fill out the new password field.');
+            setPrompt4('* Please fill out the confirm password field.');
+            setPrompt5('* Please fill out the gcash number field.');
+            setPrompt6('* You need to agree to our terms and conditions')
+        }
 
 
         http.get('accounts').then(result => {
             dispatch(setAccounts(result.data));
             const newAccount = result.data;
 
-            if (isFirst == "" || isLast == "" || isEmail == "" || isPassword == "" || isConfirmPassword == "" || isGcash == "") {
-                alert("Fields cannot be empty!"); //ALERT TO BE CHANGED!
-            }
+            // if (isFirst == "" || isLast == "" || isEmail == "" || isPassword == "" || isConfirmPassword == "" || isGcash == "") {
+            //     alert("Fields cannot be empty!"); //ALERT TO BE CHANGED!
+            // }
 
             const account = {
                 isFirst: isFirst,
@@ -202,14 +220,16 @@ function Login() {
                                     <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-3 form-group">
                                         <input type="text" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
                                         <label className="position-absolute fs-6" htmlFor="email">Email</label>
-                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-wrap fw-light">{message}</h6>
+                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-center fw-light">{message}</h6>
                                     </div>
 
                                     <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
                                         <input type="password" className="input llanesk-input bg-light bg-gradient mb-2 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
                                         <label className="position-absolute fs-6" htmlFor="password">Password</label>
-                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-wrap fw-light">{message2}</h6>
+                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-center fw-light ">{message2}</h6>
                                     </div>
+
+                                    <h6 className="text-center llanesk-login-prompt mt-0 pb-3 text-danger text-wrap fw-bold">{invprompt}</h6>
 
                                     <div className="llanesk-input-field mt-3 d-flex flex-column position-relative px-2">
                                         <a onClick={Login} className="btn btn-primary" tabIndex="-1" role="button" aria-disabled="true">Sign in</a>
@@ -257,12 +277,16 @@ function Login() {
                                 </div>
                             </div>
 
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
+
                             <div className="mt-4 form-group">
                                 <div className="text-center">
                                     <input className="form-control col-8" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
                                 </div>
 
                             </div>
+
+                            <h6 className="llanesk-login-prompt mt-2  text-danger text-wrap fw-light text-center">{prompt2}</h6>
 
                             <div className="mt-4 form-group">
                                 <div className="text-center">
@@ -271,12 +295,16 @@ function Login() {
 
                             </div>
 
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt3}</h6>
+
                             <div className="mt-4 form-group">
                                 <div className="text-center">
                                     <input className="form-control l col-8" type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
                                 </div>
 
                             </div>
+
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt4}</h6>
 
                             <div className="mt-4 form-group">
                                 <div className="text-center">
@@ -285,13 +313,17 @@ function Login() {
 
                             </div>
 
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt5}</h6>
+
                             <div className="mt-4 form-group">
                                 <label className="text-start">
-                                    <input className="me-2" type="checkbox" name="check" required />
+                                    <input value={isCheck} onChange={(e) => setisCheck(e.target.value)} className="me-2" type="checkbox" name="check" required />
                                     By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
                                 </label>
 
                             </div>
+
+                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt6}</h6>
 
                             <div className="col-12 text-center py-4">
                                 <button onClick={Create} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
