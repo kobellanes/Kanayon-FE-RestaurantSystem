@@ -14,46 +14,81 @@ function Login() {
     //SIGNIN
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [message2, setMessage2] = useState('');
 
     //CREATE
     const [isFirst, setisFirst] = useState('');
+    const [prompt1, setPrompt1] = useState('');
+
     const [isLast, setisLast] = useState('');
+    const [prompt2, setPrompt2] = useState('');
+
     const [isEmail, setisEmail] = useState('');
+    const [prompt3, setPrompt3] = useState('');
+
     const [isPassword, setisPassword] = useState('');
+    const [prompt4, setPrompt4] = useState('');
+
     const [isConfirmPassword, setisConfirmPassword] = useState('');
+    const [prompt5, setPrompt5] = useState('');
+
     const [isGcash, setisGcash] = useState('');
+    const [prompt6, setPrompt6] = useState('');
 
     const Login = (e) => {
-        http.get('accounts').then(result => {
-            dispatch(setAccounts(result.data));
+        const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        if (regEx.test(email)) {
+            if (password == "") {
+                setMessage2("* Please fill out the password field.");
+                setMessage('');
+            } else {
+                http.get('accounts').then(result => {
+                    dispatch(setAccounts(result.data));
 
-            const newAccount = result.data;
+                    const newAccount = result.data;
 
-            let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
-            if (ind != -1) {
-                const user_id = newAccount[ind].id;
-                const user_status = newAccount[ind].isStatus;
-                console.log(user_id);
-                console.log(user_status);
-                localStorage.setItem("user_id", user_id);
-                localStorage.setItem("user_status", user_status);
+                    let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
+                    if (ind != -1) {
+                        const user_id = newAccount[ind].id;
+                        const user_status = newAccount[ind].isStatus;
+                        console.log(user_id);
+                        console.log(user_status);
+                        localStorage.setItem("user_id", user_id);
+                        localStorage.setItem("user_status", user_status);
 
-                if (user_status == "ADMIN") {
-                    window.location.href = '/admin';
-                } else {
-                    window.location.href = '/';
-                }
-            } else {    //WRONG PASSWORD OR EMAIL
-                alert('Invalid Email or Password!');    //Alert will be changed
-                setEmail('');
-                setPassword('');
+                        if (user_status == "ADMIN") {
+                            window.location.href = '/admin';
+                        } else {
+                            window.location.href = '/';
+                        }
+                    } else {    //WRONG PASSWORD OR EMAIL
+                        alert('Invalid Email or Password!');    //Alert will be changed
+                        setMessage('');
+                        setMessage2('');
+                        setEmail('');
+                        setPassword('');
+                    }
+
+                }).catch(error => console.log(error.message));
             }
 
-        }).catch(error => console.log(error.message));
+        } else if (!regEx.test(email) && email != "") {
+            setMessage("* Please complete email address following '@'. ");
+        } else if (email == "" && password == "") {
+            setMessage("* Please fill out the email address field.");
+            setMessage2("* Please fill out the password field.");
+        } else if (email == "") {
+            setMessage("* Please fill out the email address field.");
+            setMessage2('');
+        }
+
     }
 
     const Create = (e) => {
         e.preventDefault();
+
+
 
         http.get('accounts').then(result => {
             dispatch(setAccounts(result.data));
@@ -135,10 +170,6 @@ function Login() {
         });
     }
 
-    const handleSubmit = event => {
-        event.preventDefault();
-    };
-
     return (
         <>
             <Header></Header>
@@ -168,16 +199,16 @@ function Login() {
 
                                     </header>
 
-
-
-                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 form-group">
-                                        <input type="email" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required autoComplete="on" />
+                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-3 form-group">
+                                        <input type="text" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
                                         <label className="position-absolute fs-6" htmlFor="email">Email</label>
+                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-wrap fw-light">{message}</h6>
                                     </div>
 
-                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 form-group">
-                                        <input type="password" className="input llanesk-input bg-light bg-gradient mb-4 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
+                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
+                                        <input type="password" className="input llanesk-input bg-light bg-gradient mb-2 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
                                         <label className="position-absolute fs-6" htmlFor="password">Password</label>
+                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-wrap fw-light">{message2}</h6>
                                     </div>
 
                                     <div className="llanesk-input-field mt-3 d-flex flex-column position-relative px-2">
