@@ -16,8 +16,6 @@ function Login() {
     //SIGNIN
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const [message2, setMessage2] = useState('');
     const [invprompt, setInvprompt] = useState('');
 
     //CREATE
@@ -27,144 +25,132 @@ function Login() {
     const [isPassword, setisPassword] = useState('');
     const [isConfirmPassword, setisConfirmPassword] = useState('');
     const [isGcash, setisGcash] = useState('');
-    const [error, setError] = useState(false);
     const [prompt1, setPrompt1] = useState('');
     const [prompt2, setPrompt2] = useState('');
 
     const Login = (e) => {
-        const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-        if (regEx.test(email)) {
-            if (password == "") {
-                setMessage2("* Please fill out the password field.");
-                setMessage('');
-                setInvprompt('');
-            } else {
-                http.get('accounts').then(result => {
-                    dispatch(setAccounts(result.data));
+        e.preventDefault();
 
-                    const newAccount = result.data;
+        // const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;           //EMAIL ADD
+        // if (regEx.test(email)) {
+        //     if (password == "") {
+        //         setMessage2("* Please fill out the password field.");
+        //         setMessage('');
+        //         setInvprompt('');
+        //     } else {
 
-                    let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
-                    if (ind != -1) {
-                        const user_id = newAccount[ind].id;
-                        const user_status = newAccount[ind].isStatus;
-                        console.log(user_id);
-                        console.log(user_status);
-                        localStorage.setItem("user_id", user_id);
-                        localStorage.setItem("user_status", user_status);
+        http.get('accounts').then(result => {
+            dispatch(setAccounts(result.data));
 
-                        if (user_status == "ADMIN") {
-                            window.location.href = '/admin';
-                        } else {
-                            window.location.href = '/';
-                        }
-                    } else {    //WRONG PASSWORD OR EMAIL
-                        // alert('Invalid Email or Password!');    //Alert will be changed
-                        setInvprompt('Invalid Email or Password!');
-                        setMessage('');
-                        setMessage2('');
-                        setEmail('');
-                        setPassword('');
-                    }
+            const newAccount = result.data;
 
-                }).catch(error => console.log(error.message));
+            let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
+            if (ind != -1) {
+                const user_id = newAccount[ind].id;
+                const user_status = newAccount[ind].isStatus;
+                console.log(user_id);
+                console.log(user_status);
+                localStorage.setItem("user_id", user_id);
+                localStorage.setItem("user_status", user_status);
+
+                if (user_status == "ADMIN") {
+                    window.location.href = '/admin';
+                } else {
+                    window.location.href = '/';
+                }
+            } else {   //WRONG PASSWORD OR EMAIL
+                // alert('Invalid Email or Password!');    //Alert will be changed
+                setInvprompt('Invalid Email or Password!');
+                setEmail('');
+                setPassword('');
             }
-        } else if (!regEx.test(email) && email != "" && password == "") {
-            setMessage("* Please complete email address following '@'. ");
-            setMessage2('* Please fill out the password field.');
-            setInvprompt('');
-        } else if (!regEx.test(email) && email != "") {
-            setMessage("* Please complete email address following '@'. ");
-            setMessage2('');
-            setInvprompt('');
-        } else if (email == "" && password == "") {
-            setMessage("* Please fill out the email address field.");
-            setMessage2("* Please fill out the password field.");
-            setInvprompt('');
-        } else if (email == "") {
-            setMessage("* Please fill out the email address field.");
-            setMessage2('');
-            setInvprompt('');
-        }
+
+        }).catch(error => console.log(error.message));
+
+        //     }
+        // } else if (!regEx.test(email) && email != "" && password == "") {
+        //     setMessage("* Please complete email address following '@'. ");
+        //     setMessage2('* Please fill out the password field.');
+        //     setInvprompt('');
+        // } else if (!regEx.test(email) && email != "") {
+        //     setMessage("* Please complete email address following '@'. ");
+        //     setMessage2('');
+        //     setInvprompt('');
+        // } else if (email == "" && password == "") {
+        //     setMessage("* Please fill out the email address field.");
+        //     setMessage2("* Please fill out the password field.");
+        //     setInvprompt('');
+        // } else if (email == "") {
+        //     setMessage("* Please fill out the email address field.");
+        //     setMessage2('');
+        //     setInvprompt('');
+        // }
 
     }
 
     const Create = (e) => {
         e.preventDefault();
-        const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
         const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-        if (isFirst.length == 0 || isLast.length == 0 || isEmail.length == 0 || isPassword.length == 0 || isConfirmPassword.length == 0 || isGcash.length == 0) {
-            setError(true);
-        } else {
-            if (regEx.test(isEmail)) {
-                setPrompt1('');
-                if (regExp.test(isPassword)) {
-                    http.get('accounts').then(result => {
-                        dispatch(setAccounts(result.data));
-                        const newAccount = result.data;
+        if (regExp.test(isPassword)) {
+            http.get('accounts').then(result => {
+                dispatch(setAccounts(result.data));
+                const newAccount = result.data;
 
-                        const account = {
-                            isFirst: isFirst,
-                            isLast: isLast,
-                            isEmail: isEmail,
-                            isPassword: isPassword,
-                            isGcash: isGcash,
-                            isStatus: "ACTIVE",
-                        }
-
-                        if (isPassword == isConfirmPassword) {
-                            http.post('accounts', account).then((result) => {
-
-                                let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
-                                if (ind != -1) {
-                                    notifyError(result.data.message);
-                                    setisEmail('');
-                                    setError(false);
-                                    setPrompt1('');
-                                    setPrompt2('');
-                                } else {
-                                    if (result.data.prompt == 1) {
-                                        notifySuccess(result.data.message);
-                                        newAccount.push(account);
-
-                                        dispatch(setAccounts(newAccount));
-                                        setisFirst('');
-                                        setisLast('');
-                                        setisEmail('');
-                                        setisPassword('');
-                                        setisConfirmPassword('');
-                                        setisGcash('');         //GCASH MUST BE CHECKED
-
-                                        //NO PROMPT
-                                        setPrompt1('');
-                                        setPrompt2('');
-                                        setError(false);
-
-
-                                        http.get('accounts').then(result => {
-                                            dispatch(setAccounts(result.data));
-
-                                        }).catch(err => console.log(err.message));
-                                    }
-                                }
-
-                            });
-                        } else {
-                            setisPassword('');
-                            setisConfirmPassword('');
-                            alert("* Password didn't match.");  //Alert will be changed
-                        }
-                    });
-                } else if (!regExp.test(isPassword)) {
-                    setPrompt2("* Please enter atleast eight characters containing at least one letter and one number.");
+                const account = {
+                    isFirst: isFirst,
+                    isLast: isLast,
+                    isEmail: isEmail,
+                    isPassword: isPassword,
+                    isGcash: 1111111,
+                    isStatus: "ACTIVE",
                 }
 
+                if (isPassword == isConfirmPassword) {
+                    http.post('accounts', account).then((result) => {
 
-            } else if (!regEx.test(isEmail) && isEmail != "") {
-                setPrompt1("* Please complete email address following '@'.");
-            }
+                        let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
+                        if (ind != -1) {
+                            notifyError(result.data.message);
+                            setisEmail('');
+
+                        } else {
+                            if (result.data.prompt == 1) {
+                                notifySuccess(result.data.message);
+                                newAccount.push(account);
+
+                                dispatch(setAccounts(newAccount));
+                                setisFirst('');
+                                setisLast('');
+                                setisEmail('');
+                                setisPassword('');
+                                setisConfirmPassword('');
+                                // setisGcash('');         //GCASH MUST BE CHECKED
+
+                                //NO PROMPT
+                                setPrompt1('');
+                                setPrompt2('');
+
+                                http.get('accounts').then(result => {
+                                    dispatch(setAccounts(result.data));
+
+                                }).catch(err => console.log(err.message));
+                            }
+                        }
+
+                    });
+                } else {
+                    setisPassword('');
+                    setisConfirmPassword('');
+                    setPrompt1("* Password didn't match.");
+                    setPrompt2("* Password didn't match.");
+                }
+            });
+        } else if (!regExp.test(isPassword)) {
+            setPrompt1("* Please enter atleast eight characters containing at least one letter and one number.");
         }
+
+
 
 
     }
@@ -224,23 +210,34 @@ function Login() {
 
                                     </header>
 
-                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-3 form-group">
-                                        <input type="text" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
-                                        <label className="position-absolute fs-6" htmlFor="email">Email</label>
-                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-center fw-light">{message}</h6>
-                                    </div>
+                                    {/* FORM SIGN IN */}
+                                    <form className="pt-4" onSubmit={Login}>
+                                        <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
+                                            <input type="email" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
+                                            <label className="position-absolute fs-6 ms-1" htmlFor="email"><i className="fa-solid fa-envelope me-1"></i>Email</label>
 
-                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
-                                        <input type="password" className="input llanesk-input bg-light bg-gradient mb-2 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
-                                        <label className="position-absolute fs-6" htmlFor="password">Password</label>
-                                        <h6 className="llanesk-login-prompt mt-0 pt-0 text-danger text-center fw-light ">{message2}</h6>
-                                    </div>
+                                        </div>
 
-                                    <h6 className="text-center llanesk-login-prompt mt-0 pb-2 text-danger text-wrap fw-bold">{invprompt}</h6>
+                                        <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
+                                            <input type="password" className="input llanesk-input bg-light bg-gradient mb-2 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
+                                            <label className="position-absolute fs-6 ms-1" htmlFor="password"><i className="fa-solid fa-lock me-1"></i>Password</label>
 
-                                    <div className="llanesk-input-field mt- d-flex flex-column position-relative px-2">
-                                        <a onClick={Login} className="btn btn-primary" tabIndex="-1" role="button" aria-disabled="true">Sign in</a>
-                                    </div>
+                                        </div>
+
+                                        {
+                                            invprompt && email.length <= 0 && password.length <= 0 ?
+                                                <h6 className="text-center llanesk-login-prompt mt-0 pb-2 text-danger text-wrap fw-bold">{invprompt}</h6>
+                                                :
+                                                ""
+                                        }
+
+                                        <div className="llanesk-input-field d-flex flex-column position-relative px-2">
+                                            <input className="btn btn-primary" type="submit" value="Sign In" />
+                                        </div>
+
+                                    </form>
+
+                                    {/* FORM EXIT */}
 
                                     <div className="mt-md-5">
                                         <div className="mt-4 text-center">
@@ -273,7 +270,10 @@ function Login() {
                     <h6 className="llanesk-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
 
                     <div className="container px-3">
-                        <form className="form-signup">
+
+                        {/* FORM REGISTER */}
+
+                        <form className="form-signup" onSubmit={Create}>
 
                             <div className="mt-4 form-group">
                                 <div className="row">
@@ -284,25 +284,12 @@ function Login() {
                                 </div>
                             </div>
 
-                            {error && ((isFirst.length <= 0) || (isLast.length <= 0)) ?
-                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out all the name fields.</h6>
-                                : ""
-                            }
-
                             <div className="mt-3 form-group">
                                 <div className="text-center">
                                     <input className="form-control col-8" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
                                 </div>
 
                             </div>
-
-                            {error && isEmail.length <= 0 ?
-                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the email address field.</h6>
-                                : ""
-                            }
-
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
-
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
@@ -311,12 +298,12 @@ function Login() {
 
                             </div>
 
-                            {error && isPassword.length <= 0 ?
-                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the password field.</h6>
-                                : ""
+                            {
+                                prompt1 && isPassword == "" ?
+                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
+                                    :
+                                    ""
                             }
-
-                            <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt2}</h6>
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
@@ -325,9 +312,11 @@ function Login() {
 
                             </div>
 
-                            {error && isConfirmPassword.length <= 0 ?
-                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the confirm password field.</h6>
-                                : ""
+                            {
+                                prompt2 && isConfirmPassword == "" ?
+                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt2}</h6>
+                                    :
+                                    ""
                             }
 
                             <div className="mt-3 form-group ">
@@ -336,18 +325,15 @@ function Login() {
                                         defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={isGcash => setisGcash(isGcash)} placeholder=" GCash Number" />
                                     {isGcash && isValidPhoneNumber(isGcash) ? "Yes it is" : "No it is Not"}
 
-                                    {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
+
                                 </div>
 
                             </div>
 
-                            {error && isGcash.length <= 0 ?
-                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please fill out the gcash number field.</h6>
-                                : ""
-                            }
+                            {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
 
-                            <div className="col-12 text-center py-3">
-                                <button onClick={Create} className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" type="submit">Sign Up</button>
+                            <div className="col-12 text-center py-4">
+                                <input type="submit" className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" value="Sign Up"></input>
                             </div>
 
                         </form>
