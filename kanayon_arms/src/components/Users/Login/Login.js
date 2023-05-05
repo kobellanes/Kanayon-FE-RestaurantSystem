@@ -8,6 +8,10 @@ import http from '../../../../src/http';
 import { setAccounts } from '../../../redux/actions/actions';
 import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber, isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import { InputMask } from "primereact/inputmask";
 
 function Login() {
     const dispatch = useDispatch();
@@ -93,65 +97,70 @@ function Login() {
         const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
         if (regExp.test(isPassword)) {
-            http.get('accounts').then(result => {
-                dispatch(setAccounts(result.data));
-                const newAccount = result.data;
+            if (isGcash.length != 0) {
+                http.get('accounts').then(result => {
+                    dispatch(setAccounts(result.data));
+                    const newAccount = result.data;
 
-                const account = {
-                    isFirst: isFirst,
-                    isLast: isLast,
-                    isEmail: isEmail,
-                    isPassword: isPassword,
-                    isGcash: 1111111,
-                    isStatus: "ACTIVE",
-                }
+                    const account = {
+                        isFirst: isFirst,
+                        isLast: isLast,
+                        isEmail: isEmail,
+                        isPassword: isPassword,
+                        isGcash: isGcash,
+                        isStatus: "ACTIVE",
+                    }
 
-                if (isPassword == isConfirmPassword) {
-                    http.post('accounts', account).then((result) => {
+                    if (isPassword == isConfirmPassword) {
+                        http.post('accounts', account).then((result) => {
 
-                        let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
-                        if (ind != -1) {
-                            notifyError(result.data.message);
-                            setisEmail('');
-
-                        } else {
-                            if (result.data.prompt == 1) {
-                                notifySuccess(result.data.message);
-                                newAccount.push(account);
-
-                                dispatch(setAccounts(newAccount));
-                                setisFirst('');
-                                setisLast('');
+                            let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
+                            if (ind != -1) {
+                                notifyError(result.data.message);
                                 setisEmail('');
-                                setisPassword('');
-                                setisConfirmPassword('');
-                                // setisGcash('');         //GCASH MUST BE CHECKED
 
-                                //NO PROMPT
-                                setPrompt1('');
-                                setPrompt2('');
+                            } else {
+                                if (result.data.prompt == 1) {
+                                    notifySuccess(result.data.message);
+                                    newAccount.push(account);
 
-                                http.get('accounts').then(result => {
-                                    dispatch(setAccounts(result.data));
+                                    dispatch(setAccounts(newAccount));
+                                    setisFirst('');
+                                    setisLast('');
+                                    setisEmail('');
+                                    setisPassword('');
+                                    setisConfirmPassword('');
+                                    setisGcash('');         //GCASH MUST BE CHECKED
 
-                                }).catch(err => console.log(err.message));
+                                    //NO PROMPT
+                                    setPrompt1('');
+                                    setPrompt2('');
+
+                                    http.get('accounts').then(result => {
+                                        dispatch(setAccounts(result.data));
+
+                                    }).catch(err => console.log(err.message));
+                                }
                             }
-                        }
 
-                    });
-                } else {
-                    setisPassword('');
-                    setisConfirmPassword('');
-                    setPrompt1("* Password didn't match.");
-                    setPrompt2("* Password didn't match.");
-                }
-            });
+                        });
+                    } else {
+                        setisPassword('');
+                        setisConfirmPassword('');
+                        setPrompt1("* Password didn't match.");
+                        setPrompt2("* Password didn't match.");
+                    }
+                });
+
+            } else {
+                alert('Fill up gcash');
+            }
+
         } else if (!regExp.test(isPassword)) {
             setPrompt1("* Please enter atleast eight characters containing at least one letter and one number.");
+            setisPassword('');
+            setisConfirmPassword('');
         }
-
-
-
 
     }
 
@@ -213,7 +222,9 @@ function Login() {
                                     {/* FORM SIGN IN */}
                                     <form className="pt-4" onSubmit={Login}>
                                         <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
+
                                             <input type="email" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
+
                                             <label className="position-absolute fs-6 ms-1" htmlFor="email"><i className="fa-solid fa-envelope me-1"></i>Email</label>
 
                                         </div>
@@ -232,7 +243,7 @@ function Login() {
                                         }
 
                                         <div className="llanesk-input-field d-flex flex-column position-relative px-2">
-                                            <input className="btn btn-primary" type="submit" value="Sign In" />
+                                            <input className="btn btn-primary fw-bold" type="submit" value="Sign In" />
                                         </div>
 
                                     </form>
@@ -261,13 +272,13 @@ function Login() {
 
             <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1">
                 <div className="offcanvas-header mb-0 pb-2">
-                    <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Registration Form</h3>
+                    <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Register</h3>
                     <button type="button" className="llanesk-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
                 <div className="offcanvas-body small p-0">
 
-                    <h6 className="llanesk-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary">Join Our Community, Parine't Sumali Kanayon!</h6>
+                    <h6 className="llanesk-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary fw-light">Parine't Sumali, Pusong Kanayon!</h6>
 
                     <div className="container px-3">
 
@@ -278,22 +289,22 @@ function Login() {
                             <div className="mt-4 form-group">
                                 <div className="row">
                                     <div className="text-center d-flex flex-row">
-                                        <input className="form-control w-50 me-2" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First name" required />
-                                        <input className="form-control w-50 ms-2" value={isLast} onChange={(e) => setisLast(e.target.value)} type=" text" name="lastname" placeholder="Last name" required />
+                                        <input className="llanesk-login-form-control form-control w-50 me-2 fw-light" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First name" required />
+                                        <input className="llanesk-login-form-control form-control w-50 ms-2 fw-light" value={isLast} onChange={(e) => setisLast(e.target.value)} type=" text" name="lastname" placeholder="Last name" required />
                                     </div>
                                 </div>
                             </div>
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
-                                    <input className="form-control col-8" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
+                                    <input className="llanesk-login-form-control form-control col-8 fw-light" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
                                 </div>
 
                             </div>
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
-                                    <input className="form-control l col-8" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password: min-8 Characters, at least 1 letter and 1 number" required />
+                                    <input className="llanesk-login-form-control form-control l col-8 fw-light" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password: min-8 Characters, at least 1 letter and 1 number" required />
                                 </div>
 
                             </div>
@@ -307,7 +318,7 @@ function Login() {
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
-                                    <input className="form-control l col-8" type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
+                                    <input className="llanesk-login-form-control form-control l col-8 " type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Repeat Password" required />
                                 </div>
 
                             </div>
@@ -320,25 +331,59 @@ function Login() {
                             }
 
                             <div className="mt-3 form-group ">
-                                <div className="text-center">
-                                    <PhoneInput
-                                        defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={isGcash => setisGcash(isGcash)} placeholder=" GCash Number" />
-                                    {isGcash && isValidPhoneNumber(isGcash) ? "Yes it is" : "No it is Not"}
+                                <div className="text-center d-flex flex-row align-items-center">
 
+                                    <div className="col-12">
+                                        <InputMask type="tel" className="InputMask form-control rounded-2 opacity-75 mb-2" value={isGcash} onChange={(e) => setisGcash(e.target.value)}
+                                            mask="+63 999 999 9999"
+                                            slotChar="+63             "
+                                            placeholder="+63"
+                                            removeMaskOnSubmit={true}
+                                            required
+                                        >
+                                        </InputMask>
+                                    </div>
+
+                                    <div className="llanesk-login-validate">
+
+                                        {
+                                            isGcash.length <= 0 ?
+                                                ""
+                                                :
+                                                isGcash && isValidPhoneNumber(isGcash) ?
+                                                    <i className="text-success fa-solid fa-check"></i>
+                                                    :
+                                                    <i className="text-danger fa-solid fa-x"></i>
+                                        }
+                                    </div>
 
                                 </div>
 
+                                {
+                                    isGcash.length <= 0 ?
+                                        <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please input a valid Gcash number</h6>
+                                        :
+                                        ""
+                                }
+
                             </div>
+
+                            {/* <PhoneInput
+
+                                        defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={(e) => setisGcash(e.target.value)} placeholder=" Gash Number"
+                                        mask="+63" /> */}
+
+
 
                             {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
 
-                            <div className="col-12 text-center py-4">
+                            <div className="col-12 text-center py-3">
                                 <input type="submit" className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" value="Sign Up"></input>
                             </div>
 
                         </form>
 
-                        <div className="mt-1 pb-3 form-group text-center">
+                        <div className="mt-3 pb-3 form-group text-center">
                             <label className="">
                                 By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
                             </label>
@@ -347,8 +392,8 @@ function Login() {
 
 
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
         </>
 
     );

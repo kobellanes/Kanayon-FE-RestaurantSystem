@@ -41,15 +41,17 @@
     left: 10px;
     pointer-events: none;
     transition: .5s;
+
 }
 
 .llanesk-input-field .input:focus~label {
     top: -15px;
+    color: gray;
 }
 
 .llanesk-input-field .input:valid~label {
     top: -15px;
-    color: #5d5076;
+    color: black;
 }
 
 .llanesk-input-field .input:focus,
@@ -86,14 +88,20 @@
     font-size: 20px;
 }
 
-.phoneInput {
+.InputMask {
     width: 100%;
+    height: 39px;
 }
 
-.PhoneInputInput {
-    height: 40px;
-    border-radius: 8px;
-    border: 1px solid rgba(222, 226, 230, 1);
+.llanesk-login-form-control:hover {
+    border: 1px solid #56ADF2;
+    transition: .2s ease;
+
+}
+
+.llanesk-login-validate {
+    position: relative;
+    left: -6%;
 }
 
 @media only screen and (max-width:1400px) {
