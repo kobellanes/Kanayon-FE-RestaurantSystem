@@ -29,8 +29,10 @@ function Login() {
     const [isPassword, setisPassword] = useState('');
     const [isConfirmPassword, setisConfirmPassword] = useState('');
     const [isGcash, setisGcash] = useState('');
+    const [error, setError] = useState('');
     const [prompt1, setPrompt1] = useState('');
     const [prompt2, setPrompt2] = useState('');
+    const [prompt3, setPrompt3] = useState('');
 
     const Login = (e) => {
         e.preventDefault();
@@ -95,71 +97,103 @@ function Login() {
     const Create = (e) => {
         e.preventDefault();
         const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        const letters = /^[A-Za-z]+$/;
 
-        if (regExp.test(isPassword)) {
-            if (isGcash.length != 0) {
-                http.get('accounts').then(result => {
-                    dispatch(setAccounts(result.data));
-                    const newAccount = result.data;
+        if ((letters.test(isFirst)) && letters.test(isLast) && isValidPhoneNumber(isGcash)) {
 
-                    const account = {
-                        isFirst: isFirst,
-                        isLast: isLast,
-                        isEmail: isEmail,
-                        isPassword: isPassword,
-                        isGcash: isGcash,
-                        isStatus: "ACTIVE",
-                    }
+            if (regExp.test(isPassword)) {
 
-                    if (isPassword == isConfirmPassword) {
-                        http.post('accounts', account).then((result) => {
+                if ((isGcash.length != 0) && (isValidPhoneNumber(isGcash))) {
+                    http.get('accounts').then(result => {
+                        dispatch(setAccounts(result.data));
+                        const newAccount = result.data;
 
-                            let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
-                            if (ind != -1) {
-                                notifyError(result.data.message);
-                                setisEmail('');
+                        const account = {
+                            isFirst: isFirst,
+                            isLast: isLast,
+                            isEmail: isEmail,
+                            isPassword: isPassword,
+                            isGcash: isGcash,
+                            isStatus: "ACTIVE",
+                        }
 
-                            } else {
-                                if (result.data.prompt == 1) {
-                                    notifySuccess(result.data.message);
-                                    newAccount.push(account);
+                        if (isPassword == isConfirmPassword) {
+                            http.post('accounts', account).then((result) => {
 
-                                    dispatch(setAccounts(newAccount));
-                                    setisFirst('');
-                                    setisLast('');
+                                let ind = newAccount.findIndex((acc) => acc.isEmail == isEmail);
+
+                                if (ind != -1) {
+                                    notifyError(result.data.message);
                                     setisEmail('');
-                                    setisPassword('');
-                                    setisConfirmPassword('');
-                                    setisGcash('');         //GCASH MUST BE CHECKED
 
-                                    //NO PROMPT
-                                    setPrompt1('');
-                                    setPrompt2('');
+                                } else {
 
-                                    http.get('accounts').then(result => {
-                                        dispatch(setAccounts(result.data));
+                                    if (result.data.prompt == 1) {
+                                        notifySuccess(result.data.message);
+                                        newAccount.push(account);
 
-                                    }).catch(err => console.log(err.message));
+                                        dispatch(setAccounts(newAccount));
+                                        setisFirst('');
+                                        setisLast('');
+                                        setisEmail('');
+                                        setisPassword('');
+                                        setisConfirmPassword('');
+                                        setisGcash('');         //GCASH MUST BE CHECKED
+
+                                        //NO PROMPT
+                                        setPrompt1('');
+                                        setPrompt2('');
+                                        setError('');
+
+                                        http.get('accounts').then(result => {
+                                            dispatch(setAccounts(result.data));
+
+                                        }).catch(err => console.log(err.message));
+                                    }
                                 }
-                            }
 
-                        });
-                    } else {
-                        setisPassword('');
-                        setisConfirmPassword('');
-                        setPrompt1("* Password didn't match.");
-                        setPrompt2("* Password didn't match.");
-                    }
-                });
+                            });
 
-            } else {
-                alert('Fill up gcash');
+                        } else {
+                            setisPassword('');
+                            setisConfirmPassword('');
+                            setPrompt1("* Password didn't match.");
+                            setPrompt2("* Password didn't match.");
+                        }
+                    });
+
+                }
+                // else if ((isGcash.length == 0) || (!(isValidPhoneNumber(isGcash)))) {
+                //     setisGcash('');
+                //     setPrompt3("* Please input a valid Gcash number");
+
+                // }
+
+            } else if (!regExp.test(isPassword)) {
+                setPrompt1("* Please enter atleast eight characters containing at least one letter and one number.");
+                setPrompt2("* Please enter atleast eight characters containing at least one letter and one number.");
+                setisPassword('');
+                setisConfirmPassword('');
             }
 
-        } else if (!regExp.test(isPassword)) {
-            setPrompt1("* Please enter atleast eight characters containing at least one letter and one number.");
-            setisPassword('');
-            setisConfirmPassword('');
+            // if ((letters.test(isFirst)) && letters.test(isLast) && isValidPhoneNumber(isGcash))
+
+        } else if ((!(letters.test(isFirst) && letters.test(isLast))) && (isGcash.length == 0) || (!(isValidPhoneNumber(isGcash)))) {
+            setisFirst('');
+            setisLast('');
+            setError("* Your name cannot have numbers.");
+            setPrompt3("* Please input a valid Gcash number");
+
+        } else if (!(letters.test(isFirst) && letters.test(isLast))) {
+            setisFirst('');
+            setisLast('');
+            setError("* Your name cannot have numbers.");
+        }
+
+        else if ((isGcash.length == 0) || (!(isValidPhoneNumber(isGcash)))) {
+            setisGcash('');
+            setPrompt3("* Please input a valid Gcash number");
+
         }
 
     }
@@ -289,11 +323,18 @@ function Login() {
                             <div className="mt-4 form-group">
                                 <div className="row">
                                     <div className="text-center d-flex flex-row">
-                                        <input className="llanesk-login-form-control form-control w-50 me-2 fw-light" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First name" required />
-                                        <input className="llanesk-login-form-control form-control w-50 ms-2 fw-light" value={isLast} onChange={(e) => setisLast(e.target.value)} type=" text" name="lastname" placeholder="Last name" required />
+                                        <input className="llanesk-login-form-control form-control w-50 me-2 fw-light" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First Name" required />
+                                        <input className="llanesk-login-form-control form-control w-50 ms-2 fw-light" value={isLast} onChange={(e) => setisLast(e.target.value)} type="text" name="lastname" placeholder="Last Name" required />
                                     </div>
                                 </div>
                             </div>
+
+                            {
+                                error && (isFirst == "" || isLast == "") ?
+                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{error}</h6>
+                                    :
+                                    ""
+                            }
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
@@ -334,11 +375,13 @@ function Login() {
                                 <div className="text-center d-flex flex-row align-items-center">
 
                                     <div className="col-12">
+
                                         <InputMask type="tel" className="InputMask form-control rounded-2 opacity-75 mb-2" value={isGcash} onChange={(e) => setisGcash(e.target.value)}
                                             mask="+63 999 999 9999"
                                             slotChar="+63             "
                                             placeholder="+63"
                                             removeMaskOnSubmit={true}
+
                                             required
                                         >
                                         </InputMask>
@@ -360,20 +403,21 @@ function Login() {
                                 </div>
 
                                 {
-                                    isGcash.length <= 0 ?
-                                        <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Please input a valid Gcash number</h6>
-                                        :
+                                    isGcash.length != 0 && isValidPhoneNumber(isGcash) ?
                                         ""
+                                        : isGcash.length != 0 ?
+                                            <h6 className="llanesk-login-prompt mt-0 text-danger text-wrap fw-light text-center">* Please input a valid Gcash number.</h6>
+                                            :
+                                            <h6 className="llanesk-login-prompt mt-0 text-danger text-wrap fw-light text-center">{prompt3}</h6>
                                 }
+
+
 
                             </div>
 
                             {/* <PhoneInput
-
                                         defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={(e) => setisGcash(e.target.value)} placeholder=" Gash Number"
                                         mask="+63" /> */}
-
-
 
                             {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
 

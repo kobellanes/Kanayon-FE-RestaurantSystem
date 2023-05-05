@@ -45,19 +45,16 @@
 }
 
 .llanesk-input-field .input:focus~label {
-    top: -15px;
+    top: -12px;
     color: gray;
 }
+
 
 .llanesk-input-field .input:valid~label {
     top: -15px;
     color: black;
 }
 
-.llanesk-input-field .input:focus,
-.llanesk-input-field .input:valid {
-    border-bottom: 1px solid #743ae1;
-}
 
 .llanesk-login-prompt {
     font-size: 14px;
