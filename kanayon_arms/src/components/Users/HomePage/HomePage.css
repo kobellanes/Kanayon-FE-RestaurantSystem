@@ -94,10 +94,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    margin-left: 70px;
-    width: 100vh;
-    padding: 10px 0px;
+    margin-top: 40px;
+    margin-left: 75px;
+    width: 1500px;
+
+
 }
 
 .gallery .austcol {
@@ -125,7 +126,22 @@
 }
 
 .austriakccol {
-    background-color: azure;
-    padding: 0px 0px;
-    margin: 0px 0px 0px 1100px;
+    margin-left: 30px;
+
+}
+
+p.kylacol {
+    color: #f8f8f8;
+    font-size: 23px;
+    margin-top: 20px;
+    text-align: justify;
+
+}
+
+h1.kylah1 {
+    color: #f8f8f8;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 60px;
+    margin-top: 30px;
+    margin-left: 23px;
 }
