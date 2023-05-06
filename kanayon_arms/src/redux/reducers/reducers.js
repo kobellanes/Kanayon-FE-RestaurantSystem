@@ -7,7 +7,7 @@ const userInitialState = {
             user_name: "Khenn Kobe Llanes",
             email_add: "khennkobe@gmail.com",
             gcash_num: "09934726287",
-            address: "Brgy. Ilog, Sto. Tomas, Batangas",
+            address: "Brgy. San Vicente, Sto. Tomas, Batangas",
             isBan: 0,
         },
         {
@@ -15,7 +15,7 @@ const userInitialState = {
             user_name: "Kyla Ciara Austria",
             email_add: "kylaciara@gmail.com",
             gcash_num: "09998867891",
-            address: "Brgy. Looban, Tanauan City, Batangas",
+            address: "Brgy. Darasa, Tanauan City, Batangas",
             isBan: 0,
         },
         {
@@ -23,7 +23,7 @@ const userInitialState = {
             user_name: "Sky Lucido",
             email_add: "skyers@gmail.com",
             gcash_num: "09164261711",
-            address: "Brgy. Bangag, Tanauan City, Batangas",
+            address: "Brgy. Natatas, Tanauan City, Batangas",
             isBan: 0,
         },
         {
@@ -31,7 +31,7 @@ const userInitialState = {
             user_name: "Monique Aira Desengano",
             email_add: "moniqueaira@gmail.com",
             gcash_num: "09557265172",
-            address: "Brgy. Puyat, Tanauan City, Batangas",
+            address: "Brgy. Pagaspas, Tanauan City, Batangas",
             isBan: 0,
         },
         {
