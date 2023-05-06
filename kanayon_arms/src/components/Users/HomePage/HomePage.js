@@ -142,7 +142,7 @@ function HomePage() {
                                             </p>
                                         </div>
 
-                                        <div className="justify-content-center align-items-center text-center pt-2">
+                                        <div className="justify-content-center align-items-center text-center pt-2 mb-3">
                                             <a href="about" className="austriak-homepage-s3-btn btn fs-4 fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Read More</a>
                                         </div>
                                     </div>
@@ -153,10 +153,40 @@ function HomePage() {
 
                     </section>
 
+                    <section className="austriak-homepage-s4">
+                        <div className="mt-3">
+                            <div className="row">
+                                <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center mb-3">
+                                    <div className="col-6">
+                                        <div className="austria_firstcol row row-cols-2">
+                                            <div className="col">
+                                                <img className="austriapc" src={require('../../../assets/1KatakamtakamS4.jpg')} />
+                                            </div>
+                                            <div className="col">
+                                                <img className="austriapc" src={require('../../../assets/2KatakamtakamS4.jpg')} />
+                                            </div>
+                                            <div className="col">
+                                                <img className="austriapc mt-2" src={require('../../../assets/3KatakamtakamS4.jpg')} />
+                                            </div>
+                                            <div className="col">
+                                                <img className="austriapc mt-2" src={require('../../../assets/4KatakamtakamS4.jpg')} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="austriakccol">
+                                            <h1 className="kylah1">"Satisfy your cravings, elevate your taste buds only at Kanayon Inasal"</h1>
+                                            <p className="kylacol text-light fw-light px-xxl-5">
+                                                Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes where each bite is a journey to foodie paradise!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-
-
-                    <section className="gallery">
+                    {/* <section className="gallery">
                         <div className=" container-lg">
                             <div className="row gy-4">
                                 <div className="col-md-6">
@@ -185,41 +215,7 @@ function HomePage() {
                                 </div>
                             </div>
                         </div>
-                    </section>
-
-
-
-
-
-                    {/* <section className="gallery">
-                        <div className="container-lg">
-                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/1KatakamtakamS4.jpg')} />
-                                </div>
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/2KatakamtakamS4.jpg')} />
-                                </div>
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/3KatakamtakamS4.jpg')} />
-                                </div>
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/4KatakamtakamS4.jpg')} />
-                                </div>
-                            </div>
-
-                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5">
-                                <div className="austriakccol">
-                                    <p className="kylacol">
-                                        Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes - where each bite is a journey to foodie paradise!
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </section> */}
-
 
 
                 </div >
