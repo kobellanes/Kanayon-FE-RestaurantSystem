@@ -60,7 +60,7 @@ function StockListItem() {
                         return (
                             <div className="bg-black border-5 card card shadow col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 mt-3 p-4">
                                 <div className="card border border-dark p-5 pb-5 mb-3">
-                                    <img src={menus.menu_pic}></img>
+                                    <img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
                                 </div>
 
                                 <div className="">
