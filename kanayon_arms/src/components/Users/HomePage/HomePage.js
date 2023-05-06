@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import './HomePage.css';
 
 function HomePage() {
+
     return (
         <>
             <Header>
@@ -13,7 +14,6 @@ function HomePage() {
                 <div className="container-fluid px-5">
 
                     <section className="dese_home-first mt-5 pt-2">
-
 
                         <div className="row">
 

@@ -9,6 +9,9 @@ import AdminHomePage from './components/Admin/HomePage/HomePage';
 import UserPage from './components/Admin/UserList/UserList';
 import StockList from './components/Admin/StockList/StockList';
 import OrderList from './components/Admin/OrderList/OrderList';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import OrderHere from './components/Users/OrderHere/OrderHere';
 
 
@@ -16,6 +19,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer></ToastContainer>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

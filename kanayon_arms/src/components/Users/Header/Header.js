@@ -2,6 +2,13 @@ import React from 'react';
 import './Header.css';
 
 function Header() {
+    const user_status = localStorage.getItem("user_status");
+    const logout = (e) => {
+        localStorage.clear();
+
+        window.location.href = '/'
+    }
+
     return (
         <>
             <main className="llanesk-header pt-1 pb-0 ps-1">
@@ -32,9 +39,17 @@ function Header() {
                                 <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/ordernow">Order Now</a>
                             </div>
 
-                            <div className="llanesk-item-button fs-4">
-                                <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" href="/login" type="button">Login/Register</a>
-                            </div>
+                            {
+                                user_status == "ACTIVE" ?
+                                    <div className="llanesk-item-button1 fs-4">
+                                        <a onClick={logout} className="llanesk-log2 text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" type="button">Logout</a>
+                                    </div>
+                                    :
+                                    <div className="llanesk-item-button2 fs-4">
+                                        <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" href="/login" type="button">Login/Register</a>
+                                    </div>
+                            }
+
 
                         </div>
                     </div>
@@ -45,7 +60,7 @@ function Header() {
                         </a>
                     </div>
 
-                    <div className="llanesk-mainmod modal fade" id="navbModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="llanesk-mainmod modal fade" id="navbModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="llanesk-modal m-0 modal-dialog">
                             <div className="llanesk-modal-content modal-content overflow-y-scroll">
 
@@ -75,7 +90,14 @@ function Header() {
                                         </ul>
                                     </div>
 
-                                    <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
+                                    {
+                                        user_status == "ACTIVE" ?
+                                            <a onClick={logout} className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Logout</a>
+                                            :
+                                            <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
+                                    }
+
+
                                 </div>
 
                                 <div className="llanesk-mobile-modal-footer mobile-modal-footer d-flex justify-content-center my-5 fs-2">

@@ -84,7 +84,7 @@ function StockListCreate() {
                 <div className="row">
                     <div className="mt-md-3">
                         <div className="text-end">
-                            <button className="dese-btn-add btn btn-success btn-lg rounded-pill"><a className="dese-menu fw-bold text-light text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i class="fa-solid fa-plus"></i></a></button>
+                            <button className="dese-btn-add btn btn-success btn-lg rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
                 </div>

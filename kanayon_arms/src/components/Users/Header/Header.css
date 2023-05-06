@@ -60,7 +60,23 @@
     cursor: pointer;
 }
 
-.llanesk-item-button a {
+.llanesk-item-button1 a {
+    background-color: #810034;
+    border: 2px solid #810034;
+    border-radius: 25px;
+    width: 170px;
+    height: 50px;
+    transition: all .5s ease;
+}
+
+
+.llanesk-item-button1 a:hover {
+    border: 2px solid #E42428;
+    background-color: #E42428;
+    transform: scale(1.2);
+}
+
+.llanesk-item-button2 a {
     background-color: #810034;
     border: 2px solid #810034;
     border-radius: 25px;
@@ -69,7 +85,8 @@
     transition: all .5s ease;
 }
 
-.llanesk-item-button a:hover {
+
+.llanesk-item-button2 a:hover {
     border: 2px solid #E42428;
     background-color: #E42428;
     transform: scale(1.2);
