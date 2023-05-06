@@ -6,21 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 
 function StockListCreate() {
-    const user_id = localStorage.getItem("user_id");
-
-    useEffect(() => {
-        if (user_id == null) {
-            window.location.href = '/login'
-        } else {
-
-        }
-    }, []);
-
-    const logout = (e) => {
-        localStorage.clear();
-
-        window.location.href = '/'
-    }
 
     const dispatch = useDispatch();
     const [menu_pic, setMenu_pic] = useState('');
