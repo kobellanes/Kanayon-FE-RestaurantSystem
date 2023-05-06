@@ -96,7 +96,7 @@ function Login() {
 
     const Create = (e) => {
         e.preventDefault();
-        const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        const regExp = /.{8,}/;
         const letters = /^[A-Za-z]+$/;
 
         if ((letters.test(isFirst)) && letters.test(isLast) && isValidPhoneNumber(isGcash)) {
@@ -162,16 +162,15 @@ function Login() {
                         }
                     });
 
-                }
-                // else if ((isGcash.length == 0) || (!(isValidPhoneNumber(isGcash)))) {
-                //     setisGcash('');
-                //     setPrompt3("* Please input a valid Gcash number");
+                } else if ((isGcash.length == 0) || (!(isValidPhoneNumber(isGcash)))) {
+                    setisGcash('');
+                    setPrompt3("* Please input a valid Gcash number");
 
-                // }
+                }
 
             } else if (!regExp.test(isPassword)) {
-                setPrompt1("* Please enter atleast eight characters containing at least one letter and one number.");
-                setPrompt2("* Please enter atleast eight characters containing at least one letter and one number.");
+                setPrompt1("* Password must be at least 8 characters. We recommend your password have at least one uppercase letter, one lowercase letter, one number, and one special character.");
+                setPrompt2("* Password must be at least 8 characters. We recommend your password have at least one uppercase letter, one lowercase letter, one number, and one special character.");
                 setisPassword('');
                 setisConfirmPassword('');
             }
@@ -344,11 +343,37 @@ function Login() {
                             </div>
 
                             <div className="mt-3 form-group">
-                                <div className="text-center">
-                                    <input className="llanesk-login-form-control form-control l col-8 fw-light" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password: min-8 Characters, at least 1 letter and 1 number" required />
+                                <div className="text-center d-flex flex-row align-items-center">
+                                    <input className="llanesk-login-form-control form-control l col-12 fw-light" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password" required />
+
+                                    <div className="llanesk-login-validate col-0">
+
+                                        {
+                                            isPassword.length <= 0 ?
+                                                ""
+                                                :
+                                                isPassword.length <= 7 ?
+                                                    <i className="text-danger fa-solid fa-x"></i>
+                                                    :
+                                                    <i className="text-success fa-solid fa-check"></i>
+                                        }
+                                    </div>
+
                                 </div>
 
                             </div>
+
+                            {
+                                isPassword.length <= 0 ?
+                                    ""
+                                    : isPassword.length <= 7 ?
+                                        <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Password must contain at least 8 characters.</h6>
+                                        :
+                                        ""
+
+                            }
+
+                            {/* SHOW PASSWORD FEATURE NEXT TIME<i className="fa-regular fa-eye-slash" id="togglePassword"></i> */}
 
                             {
                                 prompt1 && isPassword == "" ?
@@ -358,11 +383,35 @@ function Login() {
                             }
 
                             <div className="mt-3 form-group">
-                                <div className="text-center">
-                                    <input className="llanesk-login-form-control form-control l col-8 " type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Repeat Password" required />
+                                <div className="text-center d-flex flex-row align-items-center">
+                                    <input className="llanesk-login-form-control form-control l col-12 " type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Repeat Password" required />
+
+                                    <div className="llanesk-login-validate col-0">
+
+                                        {
+                                            isConfirmPassword.length <= 0 ?
+                                                ""
+                                                :
+                                                isConfirmPassword == isPassword ?
+                                                    <i className="text-success fa-solid fa-check"></i>
+                                                    :
+                                                    <i className="text-danger fa-solid fa-x"></i>
+
+                                        }
+                                    </div>
                                 </div>
 
                             </div>
+
+                            {
+                                isConfirmPassword.length <= 0 ?
+                                    ""
+                                    : isConfirmPassword != isPassword ?
+                                        <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Password is not the same.</h6>
+                                        :
+                                        ""
+
+                            }
 
                             {
                                 prompt2 && isConfirmPassword == "" ?
@@ -376,7 +425,7 @@ function Login() {
 
                                     <div className="col-12">
 
-                                        <InputMask type="tel" className="InputMask form-control rounded-2 opacity-75 mb-2" value={isGcash} onChange={(e) => setisGcash(e.target.value)}
+                                        <InputMask type="tel" className="InputMask form-control rounded-2 opacity-75 mb-1" value={isGcash} onChange={(e) => setisGcash(e.target.value)}
                                             mask="+63 999 999 9999"
                                             slotChar="+63             "
                                             placeholder="+63"
@@ -421,13 +470,13 @@ function Login() {
 
                             {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
 
-                            <div className="col-12 text-center py-3">
+                            <div className="col-12 text-center py-4">
                                 <input type="submit" className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" value="Sign Up"></input>
                             </div>
 
                         </form>
 
-                        <div className="mt-3 pb-3 form-group text-center">
+                        <div className="mt-2 pb-3 form-group text-center">
                             <label className="">
                                 By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
                             </label>
