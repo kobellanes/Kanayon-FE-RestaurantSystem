@@ -154,7 +154,44 @@ function HomePage() {
                     </section>
 
 
+
+
                     <section className="gallery">
+                        <div className=" container-lg">
+                            <div className="row gy-4">
+                                <div className="col-md-6">
+                                    <div className="row gy-4 row-cols-2">
+                                        <div className="col">
+                                            <img className="austriapc" src={require('../../../assets/1KatakamtakamS4.jpg')} />
+                                        </div>
+                                        <div className="col">
+                                            <img className="austriapc" src={require('../../../assets/2KatakamtakamS4.jpg')} />
+                                        </div>
+                                        <div className="col">
+                                            <img className="austriapc" src={require('../../../assets/3KatakamtakamS4.jpg')} />
+                                        </div>
+                                        <div className="col">
+                                            <img className="austriapc" src={require('../../../assets/4KatakamtakamS4.jpg')} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="kylac col-md-6">
+                                    <div className="austriakccol">
+                                        <h1 className="kylah1">"Satisfy your cravings, elevate your taste buds only at Kanayon Inasal"</h1>
+                                        <p className="kylacol text-light fw-light  px-xxl-5">
+                                            Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes where each bite is a journey to foodie paradise!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
+                    {/* <section className="gallery">
                         <div className="container-lg">
                             <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
                                 <div className="austcol">
@@ -181,7 +218,7 @@ function HomePage() {
                             </div>
                         </div>
 
-                    </section>
+                    </section> */}
 
 
 
