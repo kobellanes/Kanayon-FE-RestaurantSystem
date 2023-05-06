@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import http from '../../../../src/http';
+import http from '../../../http';
 import { setAccounts } from '../../../redux/actions/actions';
 import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber, isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';

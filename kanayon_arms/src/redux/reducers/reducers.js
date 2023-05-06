@@ -58,20 +58,32 @@ const stockInitialState = {
     stocks: [
         {
             id: 1,
-            stock_name: "Paa Inasal",
-            stock_price: "Price: ₱99.00",
-            stock_quantity: "Quantity: 50",
-            isEdit: 0,
-            isSold: 0,
+            menu_pic: "",
+            menu_name: "Paa Inasal",
+            menu_price: "₱99.00",
+            menu_quantity: "50",
+            menu_isEdit: 0,
+            menu_isSold: 0,
         },
         {
             id: 2,
-            stock_name: "Pecho Inasal",
-            stock_price: "Price: ₱109.00",
-            stock_quantity: "Quantity: 50",
-            isEdit: 0,
-            isSold: 0,
-        }
+            menu_pic: "",
+            menu_name: "Paa Inasal",
+            menu_price: "₱99.00",
+            menu_quantity: "50",
+            menu_isEdit: 0,
+            menu_isSold: 0,
+        },
+        {
+            id: 3,
+            menu_pic: "",
+            menu_name: "Paa Inasal",
+            menu_price: "₱99.00",
+            menu_quantity: "50",
+            menu_isEdit: 0,
+            menu_isSold: 0,
+        },
+
     ]
 }
 

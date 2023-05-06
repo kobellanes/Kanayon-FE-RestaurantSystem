@@ -6,49 +6,59 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function StockListCreate() {
     const dispatch = useDispatch();
+    const [stockPic, setStockPic] = useState('');
     const [stockTitle, setStockTitle] = useState('');
     const [stockPrice, SetStockPrice] = useState('');
     const [stockQuantity, SetStockQuantity] = useState('');
+
     const singleStock = useSelector((state) => state.getStock)
     const stocks = useSelector((state) => state.allStocks.stocks)
 
-    const updateStock = () => {
+    // const updateStock = () => {
+    //     const newStock = [...stocks];
+    //     let idn = newStock.findIndex((stock) => stock.isEdit == 1)
+
+    //     if (idn != -1) {
+    //         const updateStock = newStock.at(idn);
+    //         updateStock.stock_name = stockTitle;
+    //         updateStock.stock_price = stockPrice;
+    //         updateStock.isEdit = 0;
+    //         newStock.splice(idn, 1, updateStock);
+    //         dispatch(setStocks(newStock));
+
+    //         const single = {
+    //             id: -2,
+    //             stock_name: null,
+    //             stock_price: null,
+    //             stock_quantity: null,
+    //             isEdit: 0,
+    //             isComplete: 0,
+    //         };
+    //         dispatch(getStock(single));
+    //         console.log(singleStock);
+    //     }
+    // }
+
+    const addStock = (e) => {
+        e.preventDefault();
         const newStock = [...stocks];
-        let idn = newStock.findIndex((stock) => stock.isEdit == 1)
-
-        if (idn != -1) {
-            const updateStock = newStock.at(idn);
-            updateStock.stock_name = stockTitle;
-            updateStock.stock_price = stockPrice;
-            updateStock.isEdit = 0;
-            newStock.splice(idn, 1, updateStock);
-            dispatch(setStocks(newStock));
-
-            const single = {
-                id: -2,
-                stock_name: null,
-                stock_price: null,
-                stock_quantity: null,
-                isEdit: 0,
-                isComplete: 0,
-            };
-            dispatch(getStock(single));
-            console.log(singleStock);
-        }
-    }
-
-    const addStock = () => {
-        const newStock = [...stocks];
+        const formData = new FormData;
+        formData.append('image', stockPic);
 
         newStock.push({
             id: Math.floor(Math.random() * 20000),
-            stock_name: stockTitle,
-            stock_price: stockPrice,
-            stock_quantity: stockQuantity,
-            isEdit: 0,
-            isSold: 0,
+            menu_pic: stockPic,
+            menu_name: stockTitle,
+            menu_price: stockPrice,
+            menu_quantity: stockQuantity,
+            menu_isEdit: 0,
+            menu_isSold: 0,
         })
+
+        console.log(setStocks(newStock));
+
         dispatch(setStocks(newStock));
+        setStockPic('');
         setStockTitle('');
         SetStockPrice('');
         SetStockQuantity('');
@@ -83,7 +93,7 @@ function StockListCreate() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="mt-md-3">
-                        <div className="text-end">
+                        <div className="text-end me-3">
                             <button className="dese-btn-add btn btn-success btn-lg rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i className="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
@@ -92,21 +102,26 @@ function StockListCreate() {
 
             <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1">
                 <div className="offcanvas-header mb-0">
-                    <h3 className="offcanvas-title fw-bolder text-dark">Add a Product</h3>
+                    <h3 className="offcanvas-title fw-bolder text-dark">Add New Meal</h3>
                     <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
                 <div className="offcanvas-body small p-3">
 
                     <div className="container px-3">
-                        <form className="form-signup">
+
+                        <form onSubmit={addStock}>
 
                             <div className="mt-2 form-group">
                                 <div className="text-center mt-2">
                                     <input
                                         type="file"
                                         className="form-control"
-                                        placeholder="Add Photo" />
+                                        placeholder="Add Photo"
+                                        value={stockPic}
+                                        onChange={(e) => setStockPic(e.target.value)}
+                                        required={true}
+                                    />
                                 </div>
                             </div>
 
@@ -119,7 +134,8 @@ function StockListCreate() {
                                         value={stockTitle}
                                         onChange={(e) => setStockTitle(e.target.value)}
                                         className="form-control"
-                                        placeholder="Enter Meal" />
+                                        placeholder="Menu Name"
+                                        required />
                                 </div>
                             </div>
 
@@ -132,7 +148,8 @@ function StockListCreate() {
                                         value={stockPrice}
                                         onChange={(e) => SetStockPrice(e.target.value)}
                                         className="form-control"
-                                        placeholder="Enter Price" />
+                                        placeholder="Price"
+                                        required />
                                 </div>
                             </div>
 
@@ -145,18 +162,21 @@ function StockListCreate() {
                                         value={stockQuantity}
                                         onChange={(e) => SetStockQuantity(e.target.value)}
                                         className="form-control"
-                                        placeholder="Quantity" />
+                                        placeholder="Quantity"
+                                        required />
                                 </div>
                             </div>
 
-                            <div className="col-12 mt-2 d-flex justify-content-end">
+                            <div className="col-12 mt-2 d-flex justify-content-center">
 
                                 {
                                     singleStock.stock_name == null ?
-                                        <button onClick={() => addStock()} className="btn btn-success rounded-pill mt-4"><i className="fa-solid fa-plus"></i></button>
+                                        <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Add Meal" />
                                         :
-                                        <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
+                                        ""
+                                    // <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
                                 }
+
                             </div>
                         </form>
                     </div>
