@@ -66,7 +66,7 @@ function Login() {
                 }
             } else {   //WRONG PASSWORD OR EMAIL
                 // alert('Invalid Email or Password!');    //Alert will be changed
-                setInvprompt('Invalid Email or Password!');
+                setInvprompt('* Invalid Email or Password!');
                 setEmail('');
                 setPassword('');
             }

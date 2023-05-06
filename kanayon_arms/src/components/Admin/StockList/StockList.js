@@ -40,7 +40,7 @@ function StockList() {
                 <div className="dese-adminnav-content content">
                     <main>
                         <div className="container w-100 mt-4">
-                            <h1>Stock List</h1>
+                            <h1 className="text-center pt-4">List of Menu</h1>
                             <div className="container w-xl-50 w-md-100 w-sm-100 card card-shadow py-3 mt-4">
                                 <StockListCreate />
                                 <div className="dese-stock row">

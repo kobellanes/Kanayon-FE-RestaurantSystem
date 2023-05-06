@@ -12,6 +12,8 @@ import OrderList from './components/Admin/OrderList/OrderList';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import OrderHere from './components/Users/OrderHere/OrderHere';
+
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="admin" element={<AdminHomePage />} />
           <Route path="ordernow" element={<OrderNow />} />
+          <Route path="orderhere" element={<OrderHere />} />
           <Route path="login" element={<Login />} />
           <Route path="userlist" element={<UserPage />} />
           <Route path="stocklist" element={<StockList />} />
