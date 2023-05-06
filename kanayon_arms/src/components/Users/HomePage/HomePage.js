@@ -143,7 +143,7 @@ function HomePage() {
                                         </div>
 
                                         <div className="justify-content-center align-items-center text-center pt-2">
-                                            <a href="about" className="austriak-homepage-s3-btn btn fs-4 fw-bold align-items-center"><i class="fa-solid fa-play me-2"></i>Read More</a>
+                                            <a href="about" className="austriak-homepage-s3-btn btn fs-4 fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Read More</a>
                                         </div>
                                     </div>
                                 </div>

@@ -84,13 +84,13 @@ function StockListCreate() {
                 <div className="row">
                     <div className="mt-md-3">
                         <div className="text-end">
-                            <button className="dese-btn-add btn btn-success btn-lg rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i class="fa-solid fa-plus"></i></button>
+                            <button className="dese-btn-add btn btn-success btn-lg rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i className="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabindex="-1">
+            <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1">
                 <div className="offcanvas-header mb-0">
                     <h3 className="offcanvas-title fw-bolder text-dark">Add a Product</h3>
                     <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -153,7 +153,7 @@ function StockListCreate() {
 
                                 {
                                     singleStock.stock_name == null ?
-                                        <button onClick={() => addStock()} className="btn btn-success rounded-pill mt-4"><i class="fa-solid fa-plus"></i></button>
+                                        <button onClick={() => addStock()} className="btn btn-success rounded-pill mt-4"><i className="fa-solid fa-plus"></i></button>
                                         :
                                         <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
                                 }

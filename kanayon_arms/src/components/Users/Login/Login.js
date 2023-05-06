@@ -429,8 +429,6 @@ function Login() {
                                             mask="+63 999 999 9999"
                                             slotChar="+63             "
                                             placeholder="+63"
-                                            removeMaskOnSubmit={true}
-
                                             required
                                         >
                                         </InputMask>
@@ -487,6 +485,7 @@ function Login() {
                     </div>
                 </div >
             </div >
+
         </>
 
     );
