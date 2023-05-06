@@ -32,8 +32,8 @@ function StockListCreate() {
     const menus = useSelector((state) => state.allMenus.menus)
 
     // const updateStock = () => {
-    //     const newMenu = [...stocks];
-    //     let idn = newMenu.findIndex((stock) => stock.isEdit == 1)
+    //     const newMenu = [...menus];
+    //     let idn = newMenu.findIndex((menu) => menu.isEdit == 1)
 
     //     if (idn != -1) {
     //         const updateStock = newMenu.at(idn);
@@ -41,7 +41,7 @@ function StockListCreate() {
     //         updateStock.stock_price = menu_price;
     //         updateStock.isEdit = 0;
     //         newMenu.splice(idn, 1, updateStock);
-    //         dispatch(setStocks(newMenu));
+    //         dispatch(setMenus(newMenu));
 
     //         const single = {
     //             id: -2,
@@ -243,14 +243,14 @@ function StockListCreate() {
                                         <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Add Meal" />
                                         :
                                         ""
-                                    // <button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
+                                    // <button button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
                                 }
 
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
         </>
     );
 }

@@ -74,7 +74,7 @@ function StockListItem() {
                                     {
                                         menus.menu_isEdit == 0 ?
                                             <>
-                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => editStock(index)} data-bs-toggle="offcanvas2" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
+                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => editStock(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
                                                 <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-5"></i></button>
                                             </>
                                             :
@@ -86,9 +86,21 @@ function StockListItem() {
 
                                 </div>
 
+                                <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas2" tabIndex="-1">
+                                    <div className="offcanvas-header mb-0">
+                                        <h3 className="offcanvas-title fw-bolder text-dark">Update Meal</h3>
+                                        <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
 
+
+
+
+
+                                </div>
 
                             </div>
+
+
                         )
                     })
                     :
