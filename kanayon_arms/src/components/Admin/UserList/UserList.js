@@ -38,7 +38,7 @@ function UserPage() {
                     <main className="container-fluid ">
                         <div className="mt-2">
                             <div className="p-3">
-                                <h1 className="dese_title text-dark container-fluid text-start fs-2 fw-bold">LIST OF USERS</h1>
+                                <h1 className="dese_title text-dark container-fluid text-center pt-4">List of Users</h1>
                                 <hr />
 
                                 <div className="container-fluid">
