@@ -1,0 +1,10 @@
+.llanesk-stocklistitem-btn {
+    color: #fefefe;
+    width: 25%;
+}
+
+.llanesk-stocklistitem-btn:hover {
+    color: black;
+    background-color: #fbf39b;
+    border-radius: 50px;
+}

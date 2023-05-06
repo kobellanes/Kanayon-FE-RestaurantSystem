@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { setStocks, getStock } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
+import './StockListItem.css';
 
 function StockListItem() {
     const stocks = useSelector((state) => state.allStocks.stocks)
@@ -12,38 +13,18 @@ function StockListItem() {
         //Update the previous selection
         const newStock = [...stocks];
 
-        let idn = newStock.findIndex((stock) => stock.isEdit == 1)
+        let idn = newStock.findIndex((stock) => stock.menu_isEdit == 1)
 
         if (idn != -1) {
             const updateStock = newStock.at(idn);
-            updateStock.isEdit = 0;
+            updateStock.menu_isEdit = 0;
             newStock.splice(idn, 1, updateStock);
         }
 
         const stock = newStock.at(index);
-        stock.isEdit = 1;
+        stock.menu_isEdit = 1;
         dispatch(getStock(stock));
         newStock.splice(index, 1, stock);
-        dispatch(setStocks(newStock));
-    }
-
-    const soldStock = index => {
-        const newStock = [...stocks];
-        const stock = newStock.at(index);
-
-        stock.isSold = 1;
-        newStock.splice(index, 1, stock);
-
-        dispatch(setStocks(newStock));
-    }
-
-    const retrieveStock = index => {
-        const newStock = [...stocks];
-        const stock = newStock.at(index);
-
-        stock.isSold = 0;
-        newStock.splice(index, 1, stock);
-
         dispatch(setStocks(newStock));
     }
 
@@ -65,50 +46,35 @@ function StockListItem() {
                 stocks.length > 0 ?
                     stocks.map((stock, index) => {
                         return (
-                            <div className="card card shadow col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-around mt-5 m-2 p-4">
-                                {/* <div className="card border border-dark p-5 py-5">
+                            <div className="bg-black border-5 card card shadow col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 mt-3 p-4">
+                                <div className="card border border-dark p-5 pb-5 mb-3">
+                                    <img src={stock.menu_pic}></img>
+                                </div>
 
-                                </div> */}
-                                <div className="w-100 ms-1">
+                                <div className="">
+                                    <h3 className="text-light fw-bold mb-3 text-center"> {stock.menu_name}</h3>
+                                    <p className="text-light fw-light mb-3">Price: {stock.menu_price}</p>
+                                    <p className="text-light fw-light mb-3">Quantity: {stock.menu_quantity}</p>
+
+                                </div>
+
+                                <div className="d-flex text-center justify-content-around mb-0 mt-4">
                                     {
-                                        stock.isSold == 1 ?
+                                        stock.menu_isEdit == 0 ?
                                             <>
-                                                <h3 className="text-start text-decoration-line-through text-dark">{stock.stock_name}</h3>
-                                                <p className="text-start text-dark text-decoration-line-through">{stock.stock_price}</p>
-                                                <p className="text-start text-dark text-decoration-line-through">{stock.stock_quantity}</p>
+                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => editStock(index)}><i className="fa-regular fa-pen-to-square fs-5"></i></button>
+                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-5"></i></button>
                                             </>
                                             :
                                             <>
-                                                <h3 className="text-start text-dark">{stock.stock_name}</h3>
-                                                <p className="text-start text-dark">{stock.stock_price}</p>
-                                                <p className="text-start text-dark">{stock.stock_quantity}</p>
+                                                <button disabled className="llanesk-stocklistitem-btn btn text-light"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
+                                                <button disabled className="llanesk-stocklistitem-btn btn text-light" ><i className="fa-regular fa-trash-can fs-5"></i></button>
                                             </>
                                     }
 
                                 </div>
 
-                                <div className="d-flex text-center justify-content-center align-items-center">
-                                    {
-                                        stock.isEdit == 0 ?
-                                            <>
-                                                <button className="btn btn-primary me-2" onClick={() => editStock(index)}>EDIT</button>
-                                                <button onClick={() => deleteStock(index)} className="btn btn-danger">DELETE</button>
-                                            </>
-                                            :
-                                            <>
-                                                <button disabled className="btn btn-primary ms-3" onClick={() => editStock(index)}>EDIT</button>
-                                                <button disabled className="btn btn-danger ms-5">DELETE</button>
-                                            </>
-                                    }
 
-                                </div>
-
-                                {
-                                    stock.isSold == 0 ?
-                                        <button onClick={() => soldStock(index)} className="btn btn-dark mt-3">SOLD OUT</button>
-                                        :
-                                        <button onClick={() => retrieveStock(index)} className="btn btn-success mt-3">RETRIEVE</button>
-                                }
 
                             </div>
                         )
