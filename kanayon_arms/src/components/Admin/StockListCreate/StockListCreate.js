@@ -1,30 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { setStocks, getStock } from '../../../redux/actions/actions';
+import { setMenus, getStock } from '../../../redux/actions/actions';
 import "./StockListCreate.css"
+import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 
 function StockListCreate() {
+    const user_id = localStorage.getItem("user_id");
+
+    useEffect(() => {
+        if (user_id == null) {
+            window.location.href = '/login'
+        } else {
+
+        }
+    }, []);
+
+    const logout = (e) => {
+        localStorage.clear();
+
+        window.location.href = '/'
+    }
+
     const dispatch = useDispatch();
-    const [stockPic, setStockPic] = useState('');
-    const [stockTitle, setStockTitle] = useState('');
-    const [stockPrice, SetStockPrice] = useState('');
-    const [stockQuantity, SetStockQuantity] = useState('');
+    const [menu_pic, setMenu_pic] = useState('');
+    const [menu_name, setMenu_name] = useState('');
+    const [menu_price, setMenu_price] = useState('');
+    const [menu_quantity, setMenu_quantity] = useState('');
 
     const singleStock = useSelector((state) => state.getStock)
-    const stocks = useSelector((state) => state.allStocks.stocks)
+    const menus = useSelector((state) => state.allMenus.menus)
 
     // const updateStock = () => {
-    //     const newStock = [...stocks];
-    //     let idn = newStock.findIndex((stock) => stock.isEdit == 1)
+    //     const newMenu = [...stocks];
+    //     let idn = newMenu.findIndex((stock) => stock.isEdit == 1)
 
     //     if (idn != -1) {
-    //         const updateStock = newStock.at(idn);
-    //         updateStock.stock_name = stockTitle;
-    //         updateStock.stock_price = stockPrice;
+    //         const updateStock = newMenu.at(idn);
+    //         updateStock.stock_name = menu_name;
+    //         updateStock.stock_price = menu_price;
     //         updateStock.isEdit = 0;
-    //         newStock.splice(idn, 1, updateStock);
-    //         dispatch(setStocks(newStock));
+    //         newMenu.splice(idn, 1, updateStock);
+    //         dispatch(setStocks(newMenu));
 
     //         const single = {
     //             id: -2,
@@ -39,33 +56,57 @@ function StockListCreate() {
     //     }
     // }
 
-    const addStock = (e) => {
+    const addMenu = (e) => {
         e.preventDefault();
-        const newStock = [...stocks];
-        const formData = new FormData;
-        formData.append('image', stockPic);
 
-        newStock.push({
-            id: Math.floor(Math.random() * 20000),
-            menu_pic: stockPic,
-            menu_name: stockTitle,
-            menu_price: stockPrice,
-            menu_quantity: stockQuantity,
-            menu_isEdit: 0,
-            menu_isSold: 0,
-        })
+        http.get('menus').then(result => {
+            dispatch(setMenus(result.data));
+            const newMenu = result.data;
 
-        console.log(setStocks(newStock));
+            const menu = {
+                menu_pic: menu_pic,
+                menu_name: menu_name,
+                menu_price: menu_price,
+                menu_quantity: menu_quantity,
+                menu_isEdit: "0",
+                menu_isSold: "0",
+            }
 
-        dispatch(setStocks(newStock));
-        setStockPic('');
-        setStockTitle('');
-        SetStockPrice('');
-        SetStockQuantity('');
+            http.post('menus', menu).then((result) => {
+
+                let ind = newMenu.findIndex((menu) => menu.menu_name == menu_name);
+
+                if (ind != -1) {
+                    notifyError(result.data.message);
+                    setMenu_name('');
+
+                } else {
+
+                    if (result.data.prompt == 1) {
+                        notifySuccess(result.data.message);
+                        newMenu.push(menu);
+
+                        dispatch(setMenus(newMenu));
+                        setMenu_pic('');
+                        setMenu_name('');
+                        setMenu_price('');
+                        setMenu_quantity('');
+
+                        http.get('menus').then(result => {
+                            dispatch(setMenus(result.data));
+
+                        }).catch(err => console.log(err.message));
+                    }
+                }
+
+            });
+
+        });
+
     }
 
-    const notifySuccess = () => {
-        toast.success('You Successfully Added a Product!', {
+    const notifyError = (message) => {
+        toast.error(message, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -73,21 +114,35 @@ function StockListCreate() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "dark",
+            theme: "light",
         });
 
     }
 
-    useEffect(() => {
+    const notifySuccess = (message) => {
+        toast.success(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
 
-        if (singleStock.stock_name != null) {
-            setStockTitle(singleStock.stock_name);
-            SetStockPrice(singleStock.stock_price);
-            SetStockQuantity(singleStock.stock_quantity);
-            console.log(singleStock);
-        }
+    }
 
-    }, [singleStock]);
+    // useEffect(() => {
+
+    //     if (singleStock.stock_name != null) {
+    //         setMenu_name(singleStock.stock_name);
+    //         setMenu_price(singleStock.stock_price);
+    //         setMenu_quantity(singleStock.stock_quantity);
+    //         console.log(singleStock);
+    //     }
+
+    // }, [singleStock]);
     return (
         <>
             <div className="container-fluid">
@@ -110,16 +165,16 @@ function StockListCreate() {
 
                     <div className="container px-3">
 
-                        <form onSubmit={addStock}>
+                        <form onSubmit={addMenu}>
 
-                            <div className="mt-2 form-group">
-                                <div className="text-center mt-2">
+                            <div className="form-group">
+                                <div className="text-center">
                                     <input
                                         type="file"
                                         className="form-control"
                                         placeholder="Add Photo"
-                                        value={stockPic}
-                                        onChange={(e) => setStockPic(e.target.value)}
+                                        value={menu_pic}
+                                        onChange={(e) => setMenu_pic(e.target.value)}
                                         required={true}
                                     />
                                 </div>
@@ -131,8 +186,8 @@ function StockListCreate() {
                                         type="text"
                                         name="title"
                                         id="title"
-                                        value={stockTitle}
-                                        onChange={(e) => setStockTitle(e.target.value)}
+                                        value={menu_name}
+                                        onChange={(e) => setMenu_name(e.target.value)}
                                         className="form-control"
                                         placeholder="Menu Name"
                                         required />
@@ -145,8 +200,8 @@ function StockListCreate() {
                                         type="text"
                                         name="stock_price"
                                         id="stock_price"
-                                        value={stockPrice}
-                                        onChange={(e) => SetStockPrice(e.target.value)}
+                                        value={menu_price}
+                                        onChange={(e) => setMenu_price(e.target.value)}
                                         className="form-control"
                                         placeholder="Price"
                                         required />
@@ -159,15 +214,29 @@ function StockListCreate() {
                                         type="number"
                                         name="quantity"
                                         id="quantity"
-                                        value={stockQuantity}
-                                        onChange={(e) => SetStockQuantity(e.target.value)}
+                                        value={menu_quantity}
+                                        onChange={(e) => setMenu_quantity(e.target.value)}
                                         className="form-control"
                                         placeholder="Quantity"
                                         required />
                                 </div>
                             </div>
 
-                            <div className="col-12 mt-2 d-flex justify-content-center">
+                            {/* <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input
+                                        type="text"
+                                        name="stock_status"
+                                        id="stock_status"
+                                        value={menu_price}
+                                        onChange={(e) => setMenu_price(e.target.value)}
+                                        className="form-control"
+                                        placeholder="Variation"
+                                        required />
+                                </div>
+                            </div> */}
+
+                            <div className="col-12 d-flex justify-content-center">
 
                                 {
                                     singleStock.stock_name == null ?

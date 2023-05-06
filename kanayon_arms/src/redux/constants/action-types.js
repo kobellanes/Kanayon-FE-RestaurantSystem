@@ -1,6 +1,6 @@
 export const ActionTypes = {
     SET_USERS: "SET_USERS",
-    SET_STOCKS: "SET_STOCKS",
+    SET_MENUS: "SET_MENUS",
     GET_STOCK: "GET_STOCKS",
 
     SET_ORDERS: "SET_ORDERS",

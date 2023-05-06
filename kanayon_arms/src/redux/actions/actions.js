@@ -7,10 +7,10 @@ export const setUsers = (users) => {
     };
 }
 
-export const setStocks = (stocks) => {
+export const setMenus = (menus) => {
     return {
-        type: ActionTypes.SET_STOCKS,
-        payload: stocks,
+        type: ActionTypes.SET_MENUS,
+        payload: menus,
     };
 }
 

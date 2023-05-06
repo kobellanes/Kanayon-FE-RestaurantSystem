@@ -1,9 +1,9 @@
-import { getStockReducer, setAccountsReducer, setOrderReducer, setStockReducer, setUserReducer } from "./reducers";
+import { getStockReducer, setAccountsReducer, setMenusReducer, setOrderReducer, setUserReducer } from "./reducers";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
     allUsers: setUserReducer,
-    allStocks: setStockReducer,
+    allMenus: setMenusReducer,
     getStock: getStockReducer,
 
     allOrders: setOrderReducer,

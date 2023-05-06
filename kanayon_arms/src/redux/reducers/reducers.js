@@ -54,43 +54,16 @@ export const setUserReducer = (state = userInitialState, { type, payload }) => {
     }
 }
 
-const stockInitialState = {
-    stocks: [
-        {
-            id: 1,
-            menu_pic: "",
-            menu_name: "Paa Inasal",
-            menu_price: "₱99.00",
-            menu_quantity: "50",
-            menu_isEdit: 0,
-            menu_isSold: 0,
-        },
-        {
-            id: 2,
-            menu_pic: "",
-            menu_name: "Paa Inasal",
-            menu_price: "₱99.00",
-            menu_quantity: "50",
-            menu_isEdit: 0,
-            menu_isSold: 0,
-        },
-        {
-            id: 3,
-            menu_pic: "",
-            menu_name: "Paa Inasal",
-            menu_price: "₱99.00",
-            menu_quantity: "50",
-            menu_isEdit: 0,
-            menu_isSold: 0,
-        },
+const menuInitialState = {
+    menus: [
 
     ]
 }
 
-export const setStockReducer = (state = stockInitialState, { type, payload }) => {
+export const setMenusReducer = (state = menuInitialState, { type, payload }) => {
     switch (type) {
-        case ActionTypes.SET_STOCKS:
-            return { ...state, stocks: payload };
+        case ActionTypes.SET_MENUS:
+            return { ...state, menus: payload };
         default:
             return state;
     }

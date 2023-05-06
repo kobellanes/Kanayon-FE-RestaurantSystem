@@ -1,11 +1,11 @@
 .dese-offcanvas {
     position: fixed;
-    width: 30%;
-    top: 16%;
-    left: 40%;
+    width: 27%;
+    top: 15%;
+    left: 42%;
     transform: translate(10%, 40%);
-    min-height: 100px;
-    max-height: 450px;
+    min-height: 455px;
+    max-height: 455px;
     transition: all .3s ease;
     border-radius: 5px;
 }
