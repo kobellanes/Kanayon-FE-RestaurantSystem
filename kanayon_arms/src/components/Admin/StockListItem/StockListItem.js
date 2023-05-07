@@ -147,18 +147,9 @@ function StockListItem() {
                                 </div>
 
                                 <div className="d-flex text-center justify-content-around mb-0 mt-4">
-                                    {
-                                        menus.menu_isEdit == 0 ?
-                                            <>
-                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
-                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-5"></i></button>
-                                            </>
-                                            :
-                                            <>
-                                                <button disabled className="llanesk-stocklistitem-btn btn text-light"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
-                                                <button disabled className="llanesk-stocklistitem-btn btn text-light" ><i className="fa-regular fa-trash-can fs-5"></i></button>
-                                            </>
-                                    }
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-5"></i></button>
+
 
                                 </div>
 

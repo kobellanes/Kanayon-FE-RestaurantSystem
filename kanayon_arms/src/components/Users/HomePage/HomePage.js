@@ -181,7 +181,7 @@ function HomePage() {
                                     </div>
                                     <div className="col-6">
                                         <div className="austriakccol">
-                                            <h1 className="kylah1">"Satisfy your cravings, elevate your taste buds only at Kanayon Inasal"</h1>
+                                            <h1 className="kylah1">"Satisfy your cravings, elevate your taste buds"</h1>
                                             <p className="kylacol text-light fw-light px-xxl-5">
                                                 Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes where each bite is a journey to foodie paradise!
                                             </p>
@@ -220,8 +220,6 @@ function HomePage() {
                         </div>
 
                     </section> */}
-
-
 
                 </div >
 
