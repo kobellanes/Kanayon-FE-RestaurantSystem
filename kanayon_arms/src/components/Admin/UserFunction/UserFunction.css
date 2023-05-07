@@ -1,22 +1,19 @@
 table.table-striped tbody tr:nth-child(odd) {
-    background-color: #000000;
-}
-
-table.table-striped tbody tr:nth-child(odd) td {
-    color: #ffff;
+    background-color: #f2f3f4;
 }
 
 table.table-striped tbody tr:nth-child(odd) td h3 {
-    color: #ffff;
+    color: black;
 }
 
 
 table.table-striped tbody tr:nth-child(odd) .dese_function .dese_button_users {
-    color: white;
+    width: 40%;
 }
 
 table.table-striped tbody tr:nth-child(even) .dese_function .dese_button_users {
     color: black;
+    width: 40%;
 }
 
 table.table-striped tbody tr:nth-child(odd) .dese_function .dese_button_users:hover {
@@ -27,6 +24,6 @@ table.table-striped tbody tr:nth-child(odd) .dese_function .dese_button_users:ho
 
 table.table-striped tbody tr:nth-child(even) .dese_function .dese_button_users:hover {
     color: white;
-    background-color: #494626;
+    background-color: #fbf39b;
     border-radius: 50px;
 }

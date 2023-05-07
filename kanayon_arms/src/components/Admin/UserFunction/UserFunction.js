@@ -60,7 +60,7 @@ function UserFunction() {
                             <td className="dese_name">{users.isBan == 1 ?
                                 <h3 className="text-start text-decoration-line-through fs-6 fw-light">{users.user_name}</h3>
                                 :
-                                <h3 className="text-start fs-6">{users.user_name}</h3>}</td>
+                                <h3 className="text-start fs-6 fw-normal">{users.user_name}</h3>}</td>
                             <td className="dese_email">{users.isBan == 1 ?
                                 <h3 className="text-start text-decoration-line-through fs-6 fw-light">{users.email_add}</h3>
                                 :
@@ -76,13 +76,13 @@ function UserFunction() {
                             <td className="dese_function text-center">
                                 {users.isBan == 0 ?
                                     <>
-                                        <button onClick={() => BanUser(index)} className="dese_button_users btn"><i className="fa-solid fa-ban fs-5"></i></button>
-                                        <button disabled onClick={() => deleteUser(index)} className="dese_button_users btn"><i className="fa-regular fa-trash-can fs-5"></i></button>
+                                        <button onClick={() => BanUser(index)} className="dese_button_users btn text-dark"><i className="fa-solid fa-ban fs-5"></i></button>
+                                        <button disabled onClick={() => deleteUser(index)} className="dese_button_users btn text-dark"><i className="fa-regular fa-trash-can fs-5"></i></button>
                                     </>
                                     :
                                     <>
-                                        <button onClick={() => RetrieveUser(index)} className="dese_button_users btn"><i class="fa-solid fa-upload fs-5"></i></button>
-                                        <button onClick={() => deleteUser(index)} className="dese_button_users btn"><i className="fa-regular fa-trash-can fs-5"></i></button>
+                                        <button onClick={() => RetrieveUser(index)} className="dese_button_users btn text-dark"><i class="fa-solid fa-upload fs-5"></i></button>
+                                        <button onClick={() => deleteUser(index)} className="dese_button_users btn text-dark"><i className="fa-regular fa-trash-can fs-5"></i></button>
                                     </>
                                 }
                             </td>

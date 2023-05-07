@@ -13,33 +13,7 @@ function StockListCreate() {
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
 
-    const singleStock = useSelector((state) => state.getStock)
     const menus = useSelector((state) => state.allMenus.menus)
-
-    // const updateStock = () => {
-    //     const newMenu = [...menus];
-    //     let idn = newMenu.findIndex((menu) => menu.isEdit == 1)
-
-    //     if (idn != -1) {
-    //         const updateStock = newMenu.at(idn);
-    //         updateStock.stock_name = menu_name;
-    //         updateStock.stock_price = menu_price;
-    //         updateStock.isEdit = 0;
-    //         newMenu.splice(idn, 1, updateStock);
-    //         dispatch(setMenus(newMenu));
-
-    //         const single = {
-    //             id: -2,
-    //             stock_name: null,
-    //             stock_price: null,
-    //             stock_quantity: null,
-    //             isEdit: 0,
-    //             isComplete: 0,
-    //         };
-    //         dispatch(getStock(single));
-    //         console.log(singleStock);
-    //     }
-    // }
 
     const addMenu = (e) => {
         e.preventDefault();
@@ -118,16 +92,6 @@ function StockListCreate() {
 
     }
 
-    // useEffect(() => {
-
-    //     if (singleStock.stock_name != null) {
-    //         setMenu_name(singleStock.stock_name);
-    //         setMenu_price(singleStock.stock_price);
-    //         setMenu_quantity(singleStock.stock_quantity);
-    //         console.log(singleStock);
-    //     }
-
-    // }, [singleStock]);
     return (
         <>
             <div className="container-fluid">
@@ -182,7 +146,7 @@ function StockListCreate() {
                             <div className="mt-4 form-group">
                                 <div className="text-center">
                                     <input
-                                        type="text"
+                                        type="number"
                                         name="stock_price"
                                         id="stock_price"
                                         value={menu_price}
@@ -223,13 +187,7 @@ function StockListCreate() {
 
                             <div className="col-12 d-flex justify-content-center">
 
-                                {
-                                    singleStock.stock_name == null ?
-                                        <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Add Meal" />
-                                        :
-                                        ""
-                                    // <button button onClick={() => updateStock()} className="btn btn-success">UPDATE</button>
-                                }
+                                <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Add Meal" />
 
                             </div>
                         </form>

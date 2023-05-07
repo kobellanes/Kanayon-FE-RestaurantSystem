@@ -1,42 +1,100 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { setMenus, getStock } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import './StockListItem.css';
 import http from '../../../http';
+import { ToastContainer, toast } from 'react-toastify';
 
 function StockListItem() {
     const menus = useSelector((state) => state.allMenus.menus)
-    const singleStock = useSelector((state) => state.getStock)
+
+    const [menu_pic, setMenu_pic] = useState('');
+    const [menu_name, setMenu_name] = useState('');
+    const [menu_price, setMenu_price] = useState('');
+    const [menu_quantity, setMenu_quantity] = useState('');
+    const singleMenu = useSelector((state) => state.getStock)
 
     const dispatch = useDispatch();
 
-    const fetchMenus = async () => {
-        http.get('menus').then(result => {
-            dispatch(setMenus(result.data));
-
-        }).catch(err => console.log(err.message));
-    }
-    useEffect(() => {
-        fetchMenus();
-    }, []);
-
-    const editStock = index => {
+    const editMenu = (index) => {
         //Update the previous selection
-        const newStock = [...menus];
+        const newMenu = [...menus];
 
-        let idn = newStock.findIndex((menus) => menus.menu_isEdit == 1)
+        let idn = newMenu.findIndex((menu) => menu.menu_isEdit == 1)
 
         if (idn != -1) {
-            const updateStock = newStock.at(idn);
-            updateStock.menu_isEdit = 0;
-            newStock.splice(idn, 1, updateStock);
+            const updateMenu = newMenu.at(idn);
+            updateMenu.menu_isEdit = 0;
+            newMenu.splice(idn, 1, updateMenu);
         }
 
-        const stock = newStock.at(index);
-        stock.menu_isEdit = 1;
-        dispatch(getStock(stock));
-        newStock.splice(index, 1, stock);
-        dispatch(setMenus(newStock));
+        const menu = newMenu.at(index);
+        menu.menu_isEdit = 1;
+        dispatch(getStock(menu));
+        newMenu.splice(index, 1, menu);
+        dispatch(setMenus(newMenu));
+    }
+
+    const updateMenu = (e) => {
+        e.preventDefault();
+        const newMenu = [...menus];
+        let idn = newMenu.findIndex((menu) => menu.menu_isEdit == 1);
+        console.log(idn);
+
+        if (idn != -1) {
+            const data_update = {
+                // menu_pic: menu_pic,
+                menu_name: menu_name,
+                menu_price: menu_price,
+                menu_quantity: menu_quantity,
+            }
+            const updateMenu = newMenu.at(idn);
+
+            http.put(`menus/${updateMenu.id}`, data_update).then(result => {
+                if (result.data.status == 1) {
+                    notifySuccess(result.data.message);
+
+                    // updateMenu.menu_pic = menu_pic;
+                    updateMenu.menu_name = menu_name;
+                    updateMenu.menu_price = menu_price;
+                    updateMenu.menu_quantity = menu_quantity;
+                    updateMenu.menu_isEdit = 0;
+
+                    newMenu.splice(idn, 1, updateMenu);
+                    dispatch(setMenus(newMenu));
+
+                    const singleMen = {
+                        id: -2,
+                        menu_name: null,
+                        menu_price: null,
+                        menu_quantity: null,
+                        menu_isEdit: 0,
+                        menu_isSold: 0,
+                    };
+
+                    dispatch(getStock(singleMen));
+                    setMenu_name('');
+                    setMenu_pic('');
+                    setMenu_price('');
+                    setMenu_quantity('');
+                }
+            }).catch(err => console.log(err.message));
+
+        }
+    }
+
+    const notifySuccess = (message) => {
+        toast.success(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
     }
 
     const deleteStock = index => {
@@ -48,12 +106,30 @@ function StockListItem() {
         dispatch(setMenus(newStock));
     }
 
+    const fetchMenus = async () => {
+        http.get('menus').then(result => {
+            dispatch(setMenus(result.data));
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchMenus();
+    }, []);
+
     useEffect(() => {
 
-    }, [singleStock]);
+        if (singleMenu.menu_name != null) {
+
+            setMenu_pic(singleMenu.menu_pic);
+            setMenu_name(singleMenu.menu_name);
+            setMenu_price(singleMenu.menu_price);
+            setMenu_quantity(singleMenu.menu_quantity);
+        }
+
+    }, [singleMenu]);
+
     return (
         <>
-
             {
                 menus.length > 0 ?
                     menus.map((menus, index) => {
@@ -65,8 +141,8 @@ function StockListItem() {
 
                                 <div className="">
                                     <h3 className="text-light fw-bold mb-3 text-center"> {menus.menu_name}</h3>
-                                    <p className="text-light fw-light mb-3">Price: {menus.menu_price}</p>
-                                    <p className="text-light fw-light mb-3">Quantity: {menus.menu_quantity}</p>
+                                    <p className="text-light fw-light mb-3"><span className="fw-bold">Price: </span>  ₱{menus.menu_price}</p>
+                                    <p className="text-light fw-light mb-3"><span className="fw-bold">Quantity: </span>{menus.menu_quantity}</p>
 
                                 </div>
 
@@ -74,7 +150,7 @@ function StockListItem() {
                                     {
                                         menus.menu_isEdit == 0 ?
                                             <>
-                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => editStock(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
+                                                <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
                                                 <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-5"></i></button>
                                             </>
                                             :
@@ -92,7 +168,89 @@ function StockListItem() {
                                         <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                     </div>
 
+                                    <div className="offcanvas-body small p-3">
 
+                                        <div className="container px-3">
+
+                                            <form onSubmit={updateMenu}>
+
+                                                {/* <div className="form-group">
+                                                    <div className="text-center">
+                                                        <input
+                                                            type="file"
+                                                            className="form-control"
+                                                            placeholder="Add Photo"
+                                                            value={menu_pic}
+                                                            onChange={(e) => setMenu_pic(e.target.value)}
+                                                            required={true}
+                                                        />
+                                                    </div>
+                                                </div> */}
+
+                                                <div className="mt-4 form-group">
+                                                    <div className="text-center">
+                                                        <input
+                                                            type="text"
+                                                            name="title"
+                                                            id="title"
+                                                            value={menu_name}
+                                                            onChange={(e) => setMenu_name(e.target.value)}
+                                                            className="form-control"
+                                                            placeholder="Menu Name"
+                                                            required />
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-4 form-group">
+                                                    <div className="text-center">
+                                                        <input
+                                                            type="number"
+                                                            name="stock_price"
+                                                            id="stock_price"
+                                                            value={menu_price}
+                                                            onChange={(e) => setMenu_price(e.target.value)}
+                                                            className="form-control"
+                                                            placeholder="Price"
+                                                            required />
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-4 form-group">
+                                                    <div className="text-center">
+                                                        <input
+                                                            type="number"
+                                                            name="quantity"
+                                                            id="quantity"
+                                                            value={menu_quantity}
+                                                            onChange={(e) => setMenu_quantity(e.target.value)}
+                                                            className="form-control"
+                                                            placeholder="Quantity"
+                                                            required />
+                                                    </div>
+                                                </div>
+
+                                                {/* <div className="mt-4 form-group">
+                                                        <div className="text-center">
+                                                            <input
+                                                            type="text"
+                                                            name="stock_status"
+                                                            id="stock_status"
+                                                            value={menu_price}
+                                                            onChange={(e) => setMenu_price(e.target.value)}
+                                                            className="form-control"
+                                                            placeholder="Variation"
+                                                            required />
+                                                        </div>
+                                                    </div> */}
+
+                                                <div className="col-12 d-flex justify-content-center">
+
+                                                    <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Update Meal" />
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div >
 
 
 
