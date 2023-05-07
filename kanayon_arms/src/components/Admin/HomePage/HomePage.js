@@ -44,10 +44,10 @@ function AdminHomePage() {
                         <hr className="text-white mt-2" />
                         <div className="nav-item px-4">
                             {/* onCLick={logout}*/}
-                            {/* <a onClick={logout} className="dese-admin-nav-logout text-decoration-none dese-admin-nav-logout"> */}
-                            <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>
-                            <span>Log Out</span>
-                            {/* </a> */}
+                            <a className="dese-admin-nav-logout text-decoration-none dese-admin-nav-logout">
+                                <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>
+                                <span>Log Out</span>
+                            </a>
                         </div>
                     </div>
                 </div>
