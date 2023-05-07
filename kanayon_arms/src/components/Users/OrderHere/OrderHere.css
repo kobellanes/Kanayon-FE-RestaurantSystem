@@ -6,6 +6,7 @@
 .LucidoML-orderhere-title {
     font-size: 45px;
     text-align: center;
+    color: white;
 }
 
 .LucidoML-orderhere-span {
@@ -19,8 +20,8 @@
 
 .LucidoML-orderhere-img-thumbnail {
     border-color: #921E1E;
-    background-color: #FFAD01;
     background-color: #212529;
+    border-radius: 5%;
 }
 
 .LucidoML-orderhere-h1 {
@@ -28,29 +29,128 @@
     color: #921E1E;
 }
 
-.LucidoML-orderhere-orderhere {
-    background-color: green;
-    width: 35%;
-    padding: 30px;
-    font-size: 25px;
-    color: #fefefe;
-}
-
-.LucidoML-orderhere-orderhere:hover {
-    background-color: lightgreen;
+.LucidoML-orderhere-p {
     color: white;
 }
 
-
-
-
-
-/* p {
-    color: white;
-}
-.card-title {
-    color: white;
-}
-.card {
+.LucidoML-orderhere-card {
+    width: 100%;
+    height: 360px;
     background-color: #C23031;
-} */
+    border-radius: 10px;
+    background: white;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25),
+        -15px -15px 30px rgb(60, 60, 60);
+}
+
+.LucidoML-orderhere-card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+}
+
+/*Text*/
+.LucidoML-orderhere-card-title {
+    font-weight: 900;
+    font-size: 1.3em;
+    line-height: 1;
+    color: black;
+
+}
+
+.LucidoML-orderhere-text-title {
+    font-weight: 800;
+    font-size: 1.2em;
+    line-height: 1;
+    color: black;
+}
+
+.LucidoML_minus_btn {
+    height: 35px;
+    background-color: red;
+    transition: all .3s ease;
+}
+
+.LucidoML_minus_btn:hover {
+    height: 35px;
+    background-color: lightcoral;
+    transform: scale(1.0);
+}
+
+.LucidoML_minus_btn a i {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.LucidoML_plus_btn {
+    height: 35px;
+    background-color: green;
+    transition: all .3s ease;
+}
+
+.LucidoML_plus_btn:hover {
+    height: 35px;
+    background-color: lightgreen;
+    transform: scale(1.0);
+}
+
+.LucidoML_plus_btn a i {
+    text-align: center;
+    font-size: 15px;
+    color: white
+}
+
+@media(max-width: 1200px) {
+    .LucidoML-orderhere-card {
+        height: 300px;
+    }
+}
+
+@media(max-width: 992px) {
+    .LucidoML-orderhere-card {
+        height: 250px;
+    }
+}
+
+@media(max-width: 768px) {
+    .LucidoML-orderhere-card {
+        height: 350px;
+    }
+
+    .LucidoML-orderhere-title {
+        font-size: 40px;
+    }
+
+    .LucidoML-orderhere-card-title {
+        font-size: 18px;
+    }
+
+    .LucidoML-des {
+        font-size: 15px;
+    }
+
+    .LucidoML-talong img {
+        margin-top: -3px;
+    }
+}
+
+@media(max-width: 576px) {
+    .LucidoML-orderhere-card {
+        height: 350px;
+    }
+
+    .LucidoML-orderhere-title {
+        font-size: 30px;
+    }
+
+}
+
+@media(max-width: 414px) {
+    .LucidoML-orderhere-card {
+        height: 500px;
+    }
+
+    .LucidoML-orderhere-img-thumbnail {
+        height: 250px;
+    }
+}
