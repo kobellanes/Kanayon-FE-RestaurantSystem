@@ -35,7 +35,7 @@
 
 .LucidoML-orderhere-card {
     width: 100%;
-    height: 360px;
+    height: 230px;
     background-color: #C23031;
     border-radius: 10px;
     background: white;
@@ -102,7 +102,7 @@
 
 @media(max-width: 1200px) {
     .LucidoML-orderhere-card {
-        height: 300px;
+        height: 260px;
     }
 }
 
@@ -143,6 +143,16 @@
         font-size: 30px;
     }
 
+}
+
+@media(max-width: 575px) {
+    .LucidoML-orderhere-card {
+        height: 550px;
+    }
+
+    .LucidoML-orderhere-img-thumbnail {
+        height: 300px;
+    }
 }
 
 @media(max-width: 414px) {
