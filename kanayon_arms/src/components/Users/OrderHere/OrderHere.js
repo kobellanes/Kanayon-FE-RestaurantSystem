@@ -11,7 +11,7 @@ function OrderHere() {
 
             <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2 text-ligh">TULOY ANG BANGE! TARA TIKME!</h4>
             <div className="container m-10 mt-5">
-                <div className="row row-cols-1 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 g-5">
+                <div className="row row-cols-1 row-cols-xxl-3 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-xs-2 g-5">
 
 
                     <div className="col">
