@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 import "./HomePage.css"
 
 function AdminHomePage() {
-    const user_id = localStorage.getItem("user_id");
+    // const user_id = localStorage.getItem("user_id");
 
-    useEffect(() => {
-        if (user_id == null) {
-            window.location.href = '/login'
-        } else {
+    // useEffect(() => {
+    //     if (user_id == null) {
+    //         window.location.href = '/login'
+    //     } else {
 
-        }
-    }, []);
+    //     }
+    // }, []);
 
-    const logout = (e) => {
-        localStorage.clear();
+    // const logout = (e) => {
+    //     localStorage.clear();
 
-        window.location.href = '/'
-    }
+    //     window.location.href = '/'
+    // }
 
     return (
         <>
@@ -43,18 +43,20 @@ function AdminHomePage() {
                     <div>
                         <hr className="text-white mt-2" />
                         <div className="nav-item px-4">
-                            {/* */}
-                            <a onClick={logout} className="dese-admin-nav-logout text-decoration-none dese-admin-nav-logout">
-                                <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>
-                                <span>Log Out</span>
-                            </a>
+                            {/* onCLick={logout}*/}
+                            {/* <a onClick={logout} className="dese-admin-nav-logout text-decoration-none dese-admin-nav-logout"> */}
+                            <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>
+                            <span>Log Out</span>
+                            {/* </a> */}
                         </div>
                     </div>
                 </div>
 
                 <div className="dese-adminnav-content content">
                     <h4 className="austriahd">Welcome Admin!</h4>
-                    <p className="kylaadmin">You'll feel at home in no time.</p>
+                    <div className="adminhomek justify-content-center align-items-center text-center pt-2 mb-3">
+                        <a href="" className="austriak-homeadmin-s3-btn btn fs-4 fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Let's Get Started!</a>
+                    </div>
 
 
                 </div>
