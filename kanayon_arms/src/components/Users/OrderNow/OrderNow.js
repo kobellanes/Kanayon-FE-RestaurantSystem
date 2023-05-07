@@ -10,6 +10,64 @@ function OrderNow() {
 
             </Header>
 
+            <section className="dese_home-first mt-5 pt-2">
+
+                <div className="row">
+
+                    <div className="text-center">
+
+                        <div className=" carousel slide" id="dese_carousel" data-bs-ride="carousel" data-bs-interval="3000">
+
+                            <div className="carousel-inner">
+
+                                <div className="carousel-item active">
+                                    <div className="dese_images col-12 mb-3 mb-md-0">
+                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon" />
+                                    </div>
+
+                                </div>
+
+                                <div className="carousel-item">
+                                    <div className="dese_images col-12 mb-3 mb-md-0">
+                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
+                                    </div>
+
+                                </div>
+
+                                <div className="carousel-item">
+                                    <div className="dese_images col-12 mb-3 mb-md-0">
+                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
+                                    </div>
+
+                                </div>
+
+                                <div className="carousel-item">
+                                    <div className="dese_images col-12 mb-3 mb-md-0">
+                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
+                                    </div>
+
+                                </div>
+
+                                <div className="row">
+                                    <button className="carousel-control-prev" type="button" data-bs-target="#dese_carousel"
+                                        data-bs-slide="prev"><span className="carousel-control-prev-icon" aria-hidden="true"></span><span
+                                            className="visually-hidden">Previous</span></button>
+                                    <button className="carousel-control-next" type="button" data-bs-target="#dese_carousel"
+                                        data-bs-slide="next"><span className="carousel-control-next-icon" aria-hidden="true"></span><span
+                                            className="visually-hidden">Next </span></button>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
             <section className="llanesk-ordernow m-5 px-5 pb-4">
 
                 <div className="container-fluid d-flex flex-column justify-content-center align-items-center text-center pt-2">
