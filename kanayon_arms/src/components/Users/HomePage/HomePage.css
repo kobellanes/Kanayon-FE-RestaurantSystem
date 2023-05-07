@@ -25,7 +25,7 @@
 }
 
 .dese_img {
-    height: 350px;
+    height: 330px;
 }
 
 .llanesk-homepage-s2 {
@@ -43,7 +43,7 @@
 
 .llanesk-homepage-s3-customers img {
     width: 100%;
-    height: 260px;
+    height: 250px;
 }
 
 .llanesk-homepage-s3-cont h1 {
@@ -88,19 +88,194 @@
     margin-left: 30px;
 }
 
-p.kylacol {
+.austriakccol p {
     color: #f8f8f8;
     font-size: 23px;
     margin-top: 20px;
-    text-align: justify;
+    text-align: center;
 }
 
-h1.kylah1 {
+.austriakccol h1 {
     color: #f8f8f8;
     font-family: 'Shadows Into Light Two', cursive;
-    font-size: 60px;
+    font-size: 65px;
     margin-top: 30px;
     margin-left: 23px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .dese_img {
+        height: 270px;
+    }
+
+    .llanesk-homepage-border1 {
+        height: 27px;
+    }
+
+    .llanesk-homepage-border2 {
+        height: 27px;
+    }
+
+    .llanesk-homepage-border3 {
+        height: 27px;
+    }
+
+    .llanesk-homepage-s2-cont h1 {
+        font-size: 60px;
+    }
+
+    .llanesk-homepage-s2-cont p {
+        font-size: 19px;
+    }
+
+    .llanesk-homepage-s3-customers img {
+        height: 200px;
+    }
+
+    .llanesk-homepage-s3-cont h1 {
+        font-size: 60px;
+    }
+
+    .llanesk-homepage-s3-cont p {
+        font-size: 19px;
+    }
+
+    .austriak-homepage-s3-btn {
+        width: 200px;
+        background-color: green;
+        transition: all .5s ease;
+        color: white;
+    }
+
+    .austriapc {
+        height: 200px;
+    }
+
+    .austriakccol p {
+        font-size: 19px;
+    }
+
+    .austriakccol h1 {
+        font-size: 55px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .dese_img {
+        height: 230px;
+    }
+
+    .llanesk-homepage-border1 {
+        height: 24px;
+    }
+
+    .llanesk-homepage-border2 {
+        height: 24px;
+    }
+
+    .llanesk-homepage-border3 {
+        height: 24px;
+    }
+
+    .llanesk-homepage-s2-cont h1 {
+        font-size: 58px;
+    }
+
+    .llanesk-homepage-s2-cont p {
+        font-size: 17px;
+    }
+
+    .llanesk-homepage-s3-customers img {
+        height: 170px;
+    }
+
+    .llanesk-homepage-s3-cont h1 {
+        font-size: 58px;
+    }
+
+    .llanesk-homepage-s3-cont p {
+        font-size: 17px;
+    }
+
+    .austriak-homepage-s3-btn {
+        width: 200px;
+        background-color: green;
+        transition: all .5s ease;
+        color: white;
+    }
+
+    .austriapc {
+        height: 200px;
+    }
+
+    .austriakccol p {
+        font-size: 17px;
+    }
+
+    .austriakccol h1 {
+        font-size: 45px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dese_img {
+        height: 190px;
+    }
+
+    .llanesk-homepage-border1 {
+        border-bottom: 8px solid #fbf39b;
+        height: 21px;
+    }
+
+    .llanesk-homepage-border2 {
+        border-bottom: 8px solid #fbf39b;
+        height: 21px;
+    }
+
+    .llanesk-homepage-border3 {
+        border-bottom: 8px solid #fbf39b;
+        height: 21px;
+    }
+
+    .llanesk-homepage-s2-cont h1 {
+        font-size: 50px;
+    }
+
+    .llanesk-homepage-s2-cont p {
+        font-size: 15px;
+    }
+
+    .llanesk-homepage-s3-customers img {
+        height: 170px;
+        padding-top: 5px;
+    }
+
+    .llanesk-homepage-s3-cont h1 {
+        font-size: 50px;
+    }
+
+    .llanesk-homepage-s3-cont p {
+        font-size: 15px;
+    }
+
+    .austriak-homepage-s3-btn {
+        width: 200px;
+        background-color: green;
+        transition: all .5s ease;
+        color: white;
+    }
+
+    .austriapc {
+        height: 170px;
+    }
+
+    .austriakccol p {
+        font-size: 15px;
+    }
+
+    .austriakccol h1 {
+        font-size: 33px;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -108,10 +283,58 @@ h1.kylah1 {
         height: 120px;
     }
 
-}
+    .llanesk-homepage-border1 {
+        border-bottom: 7px solid #fbf39b;
+        height: 18px;
+    }
 
-@media only screen and (max-width: 414px) {
-    .dese_img {
-        height: 140px;
+    .llanesk-homepage-border2 {
+        border-bottom: 7px solid #fbf39b;
+        height: 18px;
+    }
+
+    .llanesk-homepage-border3 {
+        border-bottom: 7px solid #fbf39b;
+        height: 18px;
+    }
+
+    .llanesk-homepage-s2-cont h1 {
+        font-size: 40px;
+    }
+
+    .llanesk-homepage-s2-cont p {
+        font-size: 13px;
+    }
+
+    .llanesk-homepage-s3-customers img {
+        height: 170px;
+        padding-top: 5px;
+    }
+
+    .llanesk-homepage-s3-cont h1 {
+        font-size: 40px;
+    }
+
+    .llanesk-homepage-s3-cont p {
+        font-size: 13px;
+    }
+
+    .austriak-homepage-s3-btn {
+        width: 200px;
+        background-color: green;
+        transition: all .5s ease;
+        color: white;
+    }
+
+    .austriapc {
+        height: 120px;
+    }
+
+    .austriakccol p {
+        font-size: 13px;
+    }
+
+    .austriakccol h1 {
+        font-size: 25px;
     }
 }
