@@ -69,9 +69,9 @@ export const setMenusReducer = (state = menuInitialState, { type, payload }) => 
     }
 }
 
-export const getStockReducer = (state = {}, { type, payload }) => {
+export const getMenuReducer = (state = {}, { type, payload }) => {
     switch (type) {
-        case ActionTypes.GET_STOCK:
+        case ActionTypes.GET_MENU:
             return { ...state, ...payload };
         default:
             return state;

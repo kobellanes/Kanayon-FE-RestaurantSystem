@@ -1,62 +1,129 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../UserFunction/UserFunction.css';
-import { setUsers } from '../../../redux/actions/actions';
+import { setAccounts, setUsers } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
+import http from '../../../http';
+import Axios from 'axios';
 
 function UserFunction() {
-    const users = useSelector((state) => state.allUsers.users)
-    const singleUsers = useSelector((state) => state.getUser)
+    // const users = useSelector((state) => state.allUsers.users);
+    // const singleUsers = useSelector((state) => state.getUser);
 
     const dispatch = useDispatch();
 
-    const BanUser = index => {
-        const newUser = [...users];
-        const user = newUser.at(index);
+    const accounts = useSelector((state) => state.allAccounts.accounts);
 
-        user.isBan = 1;
-        newUser.splice(index, 1, user);
+    const fetchAccounts = async () => {
+        http.get('accounts').then(result => {
+            dispatch(setAccounts(result.data));
 
-        dispatch(setUsers(newUser));
-
+        }).catch(err => console.log(err.message));
     }
-
-    const RetrieveUser = index => {
-        const newUser = [...users];
-        const user = newUser.at(index);
-
-        user.isBan = 0;
-        newUser.splice(index, 1, user);
-
-        dispatch(setUsers(newUser));
-    }
-
-    const deleteUser = index => {
-        const newUser = [...users];
-        console.log("Before Deletion", newUser);
-        newUser.splice(index, 1);
-        console.log("After Deletion", newUser);
-
-        dispatch(setUsers(newUser));
-    }
-
     useEffect(() => {
+        fetchAccounts();
+    }, []);
 
-    }, [singleUsers]);
+
+
+    // const BanUser = index => {
+    //     const newUser = [...users];
+    //     const user = newUser.at(index);
+
+    //     user.isBan = 1;
+    //     newUser.splice(index, 1, user);
+
+    //     dispatch(setUsers(newUser));
+
+    // }
+
+    // const RetrieveUser = index => {
+    //     const newUser = [...users];
+    //     const user = newUser.at(index);
+
+    //     user.isBan = 0;
+    //     newUser.splice(index, 1, user);
+
+    //     dispatch(setUsers(newUser));
+    // }
+
+    // const deleteUser = index => {
+    //     const newUser = [...users];
+    //     console.log("Before Deletion", newUser);
+    //     newUser.splice(index, 1);
+    //     console.log("After Deletion", newUser);
+
+    //     dispatch(setUsers(newUser));
+    // }
+
+    // useEffect(() => {
+
+    // }, [singleUsers]);
+
     return (
         <>
             <table className="table table-striped mt-3">
                 <thead className="dese_thead">
                     <tr>
                         <th>NAME</th>
+                        <th>ADDRESS</th>
                         <th>EMAIL ADDRESS</th>
                         <th>GCASH NUMBER</th>
-                        <th>ADDRESS</th>
+                        <th>Status</th>
                         <th className="text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((users, index) => (
-                        <tr key={users.id}>
+                    {
+                        accounts.map((accounts, index) => {
+
+                            return (
+                                <tr>
+                                    {
+                                        accounts.isStatus != "ADMIN" ?
+                                            <>
+                                                <td>
+                                                    <h3 className="text-start fs-6 fw-light">{accounts.isFirst} {accounts.isLast}</h3>
+                                                </td>
+
+                                                <td>
+                                                    <h3 className="text-start fs-6 fw-normal">{accounts.isAddress}</h3>
+                                                </td>
+
+                                                <td>
+                                                    <h3 className="text-start fs-6 fw-normal">{accounts.isEmail}</h3>
+                                                </td>
+
+                                                <td>
+                                                    <h3 className="text-start fs-6 fw-normal">{accounts.isGcash}</h3>
+                                                </td>
+
+                                                <td>
+                                                    <h3 className="text-start fs-6 fw-normal">{accounts.isStatus}</h3>
+                                                </td>
+
+                                                <td className="dese_function text-center">
+                                                    <button className="dese_button_users btn text-dark"><i className="fa-solid fa-ban fs-5"></i></button>
+
+                                                    {/* onClick={() => BanUser(index)} */}
+                                                </td>
+                                            </>
+                                            :
+                                            ""
+
+                                    }
+
+                                </tr>
+
+
+                            )
+
+
+
+                        })
+
+                    }
+                    {/* {accounts.map((accounts, index) => (
+                        <tr key={accounts.id}>
                             <td className="dese_name">{users.isBan == 1 ?
                                 <h3 className="text-start text-decoration-line-through fs-6 fw-light">{users.user_name}</h3>
                                 :
@@ -87,9 +154,9 @@ function UserFunction() {
                                 }
                             </td>
                         </tr>
-                    ))}
+                    ))} */}
                 </tbody>
-            </table>
+            </table >
         </>
     );
 }

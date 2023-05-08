@@ -14,10 +14,10 @@ export const setMenus = (menus) => {
     };
 }
 
-export const getStock = (stock) => {
+export const getMenu = (menu) => {
     return {
-        type: ActionTypes.GET_STOCK,
-        payload: stock,
+        type: ActionTypes.GET_MENU,
+        payload: menu,
     };
 }
 

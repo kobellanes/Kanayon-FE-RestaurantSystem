@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setMenus, getStock } from '../../../redux/actions/actions';
+import { setMenus, getMenu } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import './StockListItem.css';
 import http from '../../../http';
@@ -10,13 +10,16 @@ import Axios from 'axios';
 function StockListItem() {
     const menus = useSelector((state) => state.allMenus.menus)
 
+    //delete Prompt
     const [delPrompt, setDelPrompt] = useState('');
     const [delOrig, setDelOrig] = useState('');
 
     const [menu_name, setMenu_name] = useState('');
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
-    const singleMenu = useSelector((state) => state.getStock)
+
+    //update
+    const singleMenu = useSelector((state) => state.getMenu);
 
     const dispatch = useDispatch();
 
@@ -34,7 +37,7 @@ function StockListItem() {
 
         const menu = newMenu.at(index);
         menu.menu_isEdit = 1;
-        dispatch(getStock(menu));
+        dispatch(getMenu(menu));
         newMenu.splice(index, 1, menu);
         dispatch(setMenus(newMenu));
     }
@@ -73,7 +76,7 @@ function StockListItem() {
                         menu_isSold: 0,
                     };
 
-                    dispatch(getStock(singleMen));
+                    dispatch(getMenu(singleMen));
                     setMenu_name('');
                     setMenu_price('');
                     setMenu_quantity('');
@@ -127,6 +130,8 @@ function StockListItem() {
 
 
     }
+
+    //load list
 
     const fetchMenus = async () => {
         http.get('menus').then(result => {

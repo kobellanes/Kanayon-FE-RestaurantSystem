@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setMenus, getStock } from '../../../redux/actions/actions';
+import { setMenus, getMenu } from '../../../redux/actions/actions';
 import "./StockListCreate.css"
 import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';

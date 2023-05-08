@@ -25,6 +25,7 @@ function Login() {
     //CREATE
     const [isFirst, setisFirst] = useState('');
     const [isLast, setisLast] = useState('');
+    const [isAddress, setisAddress] = useState('')
     const [isEmail, setisEmail] = useState('');
     const [isPassword, setisPassword] = useState('');
     const [isConfirmPassword, setisConfirmPassword] = useState('');
@@ -111,6 +112,7 @@ function Login() {
                         const account = {
                             isFirst: isFirst,
                             isLast: isLast,
+                            isAddress: isAddress,
                             isEmail: isEmail,
                             isPassword: isPassword,
                             isGcash: isGcash,
@@ -135,6 +137,7 @@ function Login() {
                                         dispatch(setAccounts(newAccount));
                                         setisFirst('');
                                         setisLast('');
+                                        setisAddress('');
                                         setisEmail('');
                                         setisPassword('');
                                         setisConfirmPassword('');
@@ -337,10 +340,18 @@ function Login() {
 
                             <div className="mt-3 form-group">
                                 <div className="text-center">
+                                    <input className="llanesk-login-form-control form-control col-8 fw-light" value={isAddress} onChange={(e) => setisAddress(e.target.value)} type="text" name="address" placeholder="House Address" required />
+                                </div>
+
+                            </div>
+
+                            <div className="mt-3 form-group">
+                                <div className="text-center">
                                     <input className="llanesk-login-form-control form-control col-8 fw-light" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
                                 </div>
 
                             </div>
+
 
                             <div className="mt-3 form-group">
                                 <div className="text-center d-flex flex-row align-items-center">
