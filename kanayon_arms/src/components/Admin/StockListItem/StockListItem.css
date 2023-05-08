@@ -36,6 +36,18 @@
     border-radius: 50px;
 }
 
+.llanesk-stocklistitem-update-offcanva {
+    position: fixed;
+    width: 25%;
+    top: 10%;
+    left: 42%;
+    transform: translate(10%, 40%);
+    min-height: 600px;
+    max-height: 600px;
+    transition: all .2s ease;
+    border-radius: 5px;
+}
+
 .llanesk-stocklist-item-delete-offcanva {
     position: fixed;
     width: 35%;
@@ -53,4 +65,10 @@
     font-size: 18px;
     color: #7B222B;
     border: 1px solid #E6C7CA;
+}
+
+.llanesk-stocklistitem-picupdate {
+    width: 70%;
+    height: 225px;
+    box-shadow: 0px 0px 5px 4px #D2D2D4;
 }

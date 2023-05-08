@@ -14,6 +14,7 @@ function StockListItem() {
     const [delPrompt, setDelPrompt] = useState('');
     const [delOrig, setDelOrig] = useState('');
 
+    const [menu_pic, setMenu_pic] = useState('');
     const [menu_name, setMenu_name] = useState('');
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
@@ -36,6 +37,9 @@ function StockListItem() {
         }
 
         const menu = newMenu.at(index);
+
+        setMenu_pic(menu.menu_pic);
+
         menu.menu_isEdit = 1;
         dispatch(getMenu(menu));
         newMenu.splice(index, 1, menu);
@@ -49,6 +53,7 @@ function StockListItem() {
 
         if (idn != -1) {
             const data_update = {
+                menu_pic: menu_pic,
                 menu_name: menu_name,
                 menu_price: menu_price,
                 menu_quantity: menu_quantity,
@@ -188,7 +193,7 @@ function StockListItem() {
 
                                 </div>
 
-                                <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas2" tabIndex="-1">
+                                <div className="llanesk-stocklistitem-update-offcanva offcanvas text-bg-light" id="offcanvas2" tabIndex="-1">
                                     <div className="offcanvas-header mb-1 py-0 mt-3">
                                         <h3 className="offcanvas-title fw-bolder text-dark px-2">Update Meal</h3>
 
@@ -199,11 +204,16 @@ function StockListItem() {
 
                                         <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder!</h6>
 
+
                                         <div className="container px-4">
+
+                                            <div className="container-fluid text-center">
+                                                <img className="llanesk-stocklistitem-picupdate w-75 rounded-3" src={menu_pic}></img>
+                                            </div>
 
                                             <form onSubmit={updateMenu}>
 
-                                                <div className="form-group">
+                                                <div className="mt-4 form-group">
                                                     <div className="text-center d-flex flex-row align-items-center col-12">
 
                                                         <label className="me-3 col-3 fw-bold">Menu Name</label>
