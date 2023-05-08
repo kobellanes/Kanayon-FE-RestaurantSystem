@@ -3,10 +3,15 @@ import './Header.css';
 
 function Header() {
     const user_status = localStorage.getItem("user_status");
+
     const logout = (e) => {
         localStorage.clear();
 
         window.location.href = '/'
+    }
+
+    const Manage = (e) => {
+        window.location.href = '/admin';
     }
 
     return (
@@ -44,10 +49,17 @@ function Header() {
                                     <div className="llanesk-item-button1 fs-4">
                                         <a onClick={logout} className="llanesk-log2 text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" type="button">Logout</a>
                                     </div>
+
                                     :
-                                    <div className="llanesk-item-button2 fs-4">
-                                        <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" href="/login" type="button">Login/Register</a>
-                                    </div>
+                                    user_status == "ADMIN" ?
+                                        <div className="llanesk-item-button1 fs-4">
+                                            <a onClick={Manage} className="llanesk-log2 text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" type="button">Main Page</a>
+                                        </div>
+                                        :
+
+                                        <div className="llanesk-item-button2 fs-4">
+                                            <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" href="/login" type="button">Login/Register</a>
+                                        </div>
                             }
 
 
@@ -93,8 +105,11 @@ function Header() {
                                     {
                                         user_status == "ACTIVE" ?
                                             <a onClick={logout} className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Logout</a>
-                                            :
-                                            <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
+                                            : user_status == "ADMIN" ?
+                                                <a onClick={Manage} className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Main Page</a>
+                                                :
+                                                <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
+
                                     }
 
 
@@ -112,7 +127,7 @@ function Header() {
                     </div>
                 </div>
 
-            </main>
+            </main >
 
         </>
     );

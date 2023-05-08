@@ -55,13 +55,15 @@ function Login() {
             if (ind != -1) {
                 const user_id = newAccount[ind].id;
                 const user_status = newAccount[ind].isStatus;
-                console.log(user_id);
-                console.log(user_status);
                 localStorage.setItem("user_id", user_id);
                 localStorage.setItem("user_status", user_status);
 
                 if (user_status == "ADMIN") {
                     window.location.href = '/admin';
+                } else if (user_status == "BANNED") {
+                    setInvprompt('* Your account has been banned due to multiple violations!');
+                    setEmail('');
+                    setPassword('');
                 } else {
                     window.location.href = '/';
                 }
