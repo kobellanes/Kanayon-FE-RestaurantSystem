@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import OrderFunction from '../OrderFunction/OrderFunction';
 
 function OrderList() {
+    const user_id = localStorage.getItem("user_id");
+
+    useEffect(() => {
+        if (user_id == null) {
+            window.location.href = '/login'
+        } else {
+
+        }
+    }, []);
+
+    const logout = (e) => {
+        localStorage.clear();
+
+        window.location.href = '/'
+    }
+
     return (
         <>
             <div className="dese-adminnav-main main-container d-flex">
@@ -26,13 +42,17 @@ function OrderList() {
 
                     <div>
                         <hr className="text-white mt-2" />
-                        <div className="nav-item px-4">
-                            <a href="/" className="dese-admin-nav-logout text-decoration-none dese-admin-nav-logout">
-                                <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>
-                                <span>Log Out</span>
-                            </a>
-                        </div>
+
+                        <ul className="list-unstyled nav-item px-4">
+                            <li>
+                                <a href="/" onClick={logout} className=" text-decoration-none ">
+                                    <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
 
                 <div className="dese-adminnav-content content">
