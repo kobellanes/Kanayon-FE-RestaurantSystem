@@ -117,14 +117,16 @@ function StockListCreate() {
             </div>
 
             <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1">
-                <div className="offcanvas-header mb-0">
-                    <h3 className="offcanvas-title fw-bolder text-dark">Add New Meal</h3>
+                <div className="offcanvas-header mb-1 py-0 mt-3">
+                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Add New Meal</h3>
                     <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
-                <div className="offcanvas-body small p-3">
+                <div className="offcanvas-body p-0">
 
-                    <div className="container px-3">
+                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder</h6>
+
+                    <div className="container px-4">
 
                         <form onSubmit={addMenu}>
 
@@ -199,7 +201,7 @@ function StockListCreate() {
                                 </div>
                             </div> */}
 
-                            <div className="col-12 d-flex justify-content-center">
+                            <div className="col-12 d-flex justify-content-end">
 
                                 <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Add Meal" />
 

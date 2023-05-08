@@ -29,11 +29,28 @@
 .llanesk-stocklistitem-menu_pic:hover {
     cursor: pointer;
     transform: scale(1.1);
-
 }
 
 .llanesk-stocklistitem-title {
     border-bottom: 2px solid #000;
     border-radius: 50px;
+}
 
+.llanesk-stocklist-item-delete-offcanva {
+    position: fixed;
+    width: 35%;
+    top: 15%;
+    left: 38%;
+    transform: translate(10%, 40%);
+    min-height: 255px;
+    max-height: 255px;
+    transition: all .2s ease;
+    border-radius: 5px;
+}
+
+.llanesk-stocklistitem-container-start {
+    background-color: #F8D7DA;
+    font-size: 18px;
+    color: #7B222B;
+    border: 1px solid #E6C7CA;
 }

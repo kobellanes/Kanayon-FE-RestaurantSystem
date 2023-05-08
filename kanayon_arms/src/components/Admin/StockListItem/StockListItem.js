@@ -6,10 +6,13 @@ import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
 import Axios from 'axios';
 
+
 function StockListItem() {
     const menus = useSelector((state) => state.allMenus.menus)
 
-    const [imageUrl, setImageUrl] = useState('')
+    const [delPrompt, setDelPrompt] = useState('');
+    const [delOrig, setDelOrig] = useState('');
+
     const [menu_name, setMenu_name] = useState('');
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
@@ -40,7 +43,6 @@ function StockListItem() {
         e.preventDefault();
         const newMenu = [...menus];
         let idn = newMenu.findIndex((menu) => menu.menu_isEdit == 1);
-        console.log(idn);
 
         if (idn != -1) {
             const data_update = {
@@ -95,17 +97,30 @@ function StockListItem() {
 
     }
 
+    const deletePrompt = (index) => {
+        const newMenu = [...menus];
+        const deleteMenu = newMenu.at(index);
+        console.log(deleteMenu);
+
+
+        setDelOrig(deleteMenu);
+        setDelPrompt(deleteMenu.menu_name);
+
+    }
 
     const deleteMenu = (index) => {
         const newMenu = [...menus];
-        const deleteMenu = newMenu.at(index);
+        const deleteMenu = delOrig;
+        console.log(deleteMenu);
 
         http.delete('http://localhost/Database_Kanayon/Kanayon_be/kanayon-be/public/api/menus/' + deleteMenu.id).then(result => {
             if (result.data.status == 1) {
                 notifySuccess(result.data.message);
 
-                newMenu.splice(index, 1);
-                dispatch(setMenus(newMenu));
+                newMenu.splice(index, delOrig);
+                http.get('menus').then(result => {
+                    dispatch(setMenus(result.data));
+                }).catch(err => console.log(err.message));
             }
 
         }).catch(err => console.log(err.message));
@@ -155,21 +170,31 @@ function StockListItem() {
                                 </div>
 
                                 <div className="d-flex text-center justify-content-around mb-0 mt-2">
-                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-4"></i></button>
-                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteMenu(index)} ><i className="fa-regular fa-trash-can fs-4"></i></button>
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2">
+                                        <i className="fa-regular fa-pen-to-square fs-4"></i>
+
+                                    </button>
+
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deletePrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas3" aria-controls="offcanvas3">
+                                        <i className="fa-regular fa-trash-can fs-4"></i>
+
+                                    </button>
 
 
                                 </div>
 
                                 <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas2" tabIndex="-1">
-                                    <div className="offcanvas-header mb-0">
-                                        <h3 className="offcanvas-title fw-bolder text-dark">Update Meal</h3>
+                                    <div className="offcanvas-header mb-1 py-0 mt-3">
+                                        <h3 className="offcanvas-title fw-bolder text-dark px-2">Update Meal</h3>
+
                                         <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                     </div>
 
-                                    <div className="offcanvas-body small p-3">
+                                    <div className="offcanvas-body p-0">
 
-                                        <div className="container px-3">
+                                        <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder!</h6>
+
+                                        <div className="container px-4">
 
                                             <form onSubmit={updateMenu}>
 
@@ -235,7 +260,7 @@ function StockListItem() {
 
                                                 <div className="mt-4 col-12 d-flex justify-content-center">
 
-                                                    <input className="btn btn-success text-center rounded-pill" type="submit" value="Update Meal" />
+                                                    <input data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-success text-center rounded-pill" type="submit" value="Update Meal" />
 
                                                 </div>
                                             </form>
@@ -246,9 +271,48 @@ function StockListItem() {
 
                                 </div>
 
-                            </div >
+                                <div className="llanesk-stocklist-item-delete-offcanva offcanvas text-bg-light" id="offcanvas3" tabIndex="-1" >
+                                    <div className="offcanvas-header mb-1 py-0 mt-3">
+                                        <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
+
+                                        <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
+
+                                    <div className="offcanvas-body p-0 mt-1">
+
+                                        <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
+
+                                        <div className="container ">
+
+                                            <div className="container">
+
+                                                <div className="llanesk-stocklistitem-container-start container p-3 rounded-2">
+                                                    <p className="text-start m-0">Are you sure you want to delete the meal "{delPrompt}"?</p>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
+
+                                        <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
+                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light mx-2">Cancel</button>
+
+                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => deleteMenu(index)} className="btn btn-danger rounded-1">Delete</button>
+
+                                        </div>
+                                    </div>
 
 
+
+
+                                </div>
+
+
+
+
+                            </div>
                         )
                     })
                     :
