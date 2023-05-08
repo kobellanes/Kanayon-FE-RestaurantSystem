@@ -1,11 +1,21 @@
 import { ActionTypes } from "../constants/action-types"
 
-export const setUsers = (users) => {
+export const setAccounts = (accounts) => {
     return {
-        type: ActionTypes.SET_USERS,
-        payload: users,
+        type: ActionTypes.SET_ACCOUNTS,
+        payload: accounts,
+    }
+}
+
+
+export const getAccount = (account) => {
+    return {
+        type: ActionTypes.GET_ACCOUNT,
+        payload: account,
     };
 }
+
+
 
 export const setMenus = (menus) => {
     return {
@@ -14,12 +24,14 @@ export const setMenus = (menus) => {
     };
 }
 
+
 export const getMenu = (menu) => {
     return {
         type: ActionTypes.GET_MENU,
         payload: menu,
     };
 }
+
 
 export const setOrders = (orders) => {
     return {
@@ -28,9 +40,3 @@ export const setOrders = (orders) => {
     };
 }
 
-export const setAccounts = (accounts) => {
-    return {
-        type: ActionTypes.SET_ACCOUNTS,
-        payload: accounts,
-    }
-}

@@ -39,8 +39,8 @@ function AdminHomePage() {
                             </a>
 
                             <ul className="dropdown-menu w-100">
-                                <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/userlist"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
-                                <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
+                                <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
+                                <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
                             </ul>
                         </li>
 

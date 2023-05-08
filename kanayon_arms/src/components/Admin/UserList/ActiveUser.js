@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import UserFunction from '../UserFunction/UserFunction';
+import ActiveUserFunction from '../UserFunction/ActiveUserFunction';
 import './UserList.css'
 
 function UserPage() {
@@ -40,8 +40,8 @@ function UserPage() {
                             </a>
 
                             <ul className="dropdown-menu w-100">
-                                <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/userlist"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
-                                <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="#"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
+                                <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
+                                <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
                             </ul>
                         </li>
 
@@ -72,7 +72,7 @@ function UserPage() {
                                 <div className="llanesk-stocklist-border mt-3" />
 
                                 <div className="container-fluid">
-                                    <UserFunction />
+                                    <ActiveUserFunction></ActiveUserFunction>
                                 </div>
                             </div>
                         </div>

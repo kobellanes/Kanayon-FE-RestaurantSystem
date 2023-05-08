@@ -1,0 +1,66 @@
+table.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f3f4;
+}
+
+table.table-striped tbody tr:nth-child(odd) td h3 {
+    color: black;
+}
+
+
+table.table-striped tbody tr:nth-child(odd) .dese_function .dese_button_users {
+    width: 40%;
+}
+
+table.table-striped tbody tr:nth-child(even) .dese_function .dese_button_users {
+    color: black;
+    width: 40%;
+}
+
+table.table-striped tbody tr:nth-child(odd) .dese_function .dese_button_users:hover {
+    color: black;
+    background-color: #fbf39b;
+    border-radius: 50px;
+}
+
+table.table-striped tbody tr:nth-child(even) .dese_function .dese_button_users:hover {
+    color: white;
+    background-color: #fbf39b;
+    border-radius: 50px;
+}
+
+.llanesk-activeuserfunction-ban {
+    width: 50%;
+    transition: all 0.5s ease;
+}
+
+.llanesk-activeuserfunction-ban:hover {
+    background-color: #fbf39b;
+    transform: scale(1.4);
+}
+
+.llanesk-activeuserfunction-user-ban-offcanva {
+    position: fixed;
+    width: 35%;
+    top: 15%;
+    left: 38%;
+    transform: translate(10%, 40%);
+    min-height: 310px;
+    max-height: 310px;
+    transition: all .2s ease;
+    border-radius: 5px;
+}
+
+.llanesk-stocklistitem-container-start {
+    background-color: #F8D7DA;
+    font-size: 18px;
+    color: #7B222B;
+    border: 1px solid #E6C7CA;
+}
+
+.llanesk-activeuserfunction-banbutt {
+    transition: all .5s ease;
+}
+
+.llanesk-activeuserfunction-banbutt:hover {
+    transform: scale(1.2);
+}

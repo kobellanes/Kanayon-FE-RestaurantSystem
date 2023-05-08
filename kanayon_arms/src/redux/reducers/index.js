@@ -1,14 +1,16 @@
-import { getMenuReducer, setAccountsReducer, setMenusReducer, setOrderReducer, setUserReducer } from "./reducers";
+import { getAccountReducer, getMenuReducer, setAccountsReducer, setMenusReducer, setOrderReducer } from "./reducers";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
-    allUsers: setUserReducer,
+    allAccounts: setAccountsReducer,
+    getAccount: getAccountReducer,
+
     allMenus: setMenusReducer,
     getMenu: getMenuReducer,
 
+
     allOrders: setOrderReducer,
 
-    allAccounts: setAccountsReducer,
 });
 
 export default reducers;

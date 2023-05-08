@@ -103,8 +103,6 @@ function StockListItem() {
     const deletePrompt = (index) => {
         const newMenu = [...menus];
         const deleteMenu = newMenu.at(index);
-        console.log(deleteMenu);
-
 
         setDelOrig(deleteMenu);
         setDelPrompt(deleteMenu.menu_name);
@@ -114,7 +112,7 @@ function StockListItem() {
     const deleteMenu = (index) => {
         const newMenu = [...menus];
         const deleteMenu = delOrig;
-        console.log(deleteMenu);
+
 
         http.delete('http://localhost/Database_Kanayon/Kanayon_be/kanayon-be/public/api/menus/' + deleteMenu.id).then(result => {
             if (result.data.status == 1) {
@@ -142,6 +140,8 @@ function StockListItem() {
     useEffect(() => {
         fetchMenus();
     }, []);
+
+    //UPDATE
 
     useEffect(() => {
 
@@ -302,26 +302,20 @@ function StockListItem() {
                                         <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
 
                                         <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
-                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light mx-2">Cancel</button>
+                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Cancel</button>
 
-                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => deleteMenu(index)} className="btn btn-danger rounded-1">Delete</button>
+                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => deleteMenu(index)} className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt">Delete</button>
 
                                         </div>
                                     </div>
 
-
-
-
                                 </div>
-
-
-
 
                             </div>
                         )
                     })
                     :
-                    <div className="spinner-border text-primary justify-content-center container-fluid" role="status">
+                    <div className="spinner-border justify-content-center container-fluid" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
 

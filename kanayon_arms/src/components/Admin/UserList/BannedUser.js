@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import OrderFunction from '../OrderFunction/OrderFunction';
 
-function OrderList() {
+function BannedUser() {
     const user_id = localStorage.getItem("user_id");
 
     useEffect(() => {
@@ -31,21 +30,21 @@ function OrderList() {
                     <ul className="list-unstyled px-2">
                         <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
 
-                        <li className=" nav-item dropdown">
-                            <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                        <li className="active nav-item dropdown">
+                            <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="fa-solid fa-users me-1"></i>
                                 List of Users
                                 <i className="dropdown-toggle ms-2"></i>
                             </a>
 
                             <ul className="dropdown-menu w-100">
-                                <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
-                                <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
+                                <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
+                                <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
                             </ul>
                         </li>
 
                         <li className=""><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
-                        <li className="active"><a href="/orderlist" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
+                        <li className=""><a href="/orderlist" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
                             <span><i className="fa-solid fa-basket-shopping me-2"></i>Order List</span>
                             <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
                         </a>
@@ -64,23 +63,22 @@ function OrderList() {
                 </div>
 
                 <div className="dese-adminnav-content content">
-                    <main className="container-fluid ">
+                    <main className="container">
                         <div className="mt-2">
                             <div className="p-3">
-                                <h1 className="dese_title text-dark container-fluid text-start fs-2 fw-bold">LIST OF ORDERS</h1>
-                                <hr />
+                                <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Banned Users</h1>
+                                <div className="llanesk-stocklist-border mt-3" />
 
                                 <div className="container-fluid">
-                                    <OrderFunction></OrderFunction>
+
                                 </div>
                             </div>
                         </div>
                     </main>
-
                 </div>
             </div >
         </>
     );
 }
 
-export default OrderList;
+export default BannedUser;

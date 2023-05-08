@@ -1,58 +1,30 @@
 import { ActionTypes } from "../constants/action-types"
 
-const userInitialState = {
-    users: [
-        {
-            id: 1,
-            user_name: "Khenn Kobe Llanes",
-            email_add: "khennkobe@gmail.com",
-            gcash_num: "09934726287",
-            address: "Brgy. San Vicente, Sto. Tomas, Batangas",
-            isBan: 0,
-        },
-        {
-            id: 2,
-            user_name: "Kyla Ciara Austria",
-            email_add: "kylaciara@gmail.com",
-            gcash_num: "09998867891",
-            address: "Brgy. Darasa, Tanauan City, Batangas",
-            isBan: 0,
-        },
-        {
-            id: 3,
-            user_name: "Sky Lucido",
-            email_add: "skyers@gmail.com",
-            gcash_num: "09164261711",
-            address: "Brgy. Natatas, Tanauan City, Batangas",
-            isBan: 0,
-        },
-        {
-            id: 4,
-            user_name: "Monique Aira Desengano",
-            email_add: "moniqueaira@gmail.com",
-            gcash_num: "09557265172",
-            address: "Brgy. Pagaspas, Tanauan City, Batangas",
-            isBan: 0,
-        },
-        {
-            id: 5,
-            user_name: "Lomi House atbp.",
-            email_add: "lomian@gmail.com",
-            gcash_num: "772-5643",
-            address: "Brgy. Santolan, Tanauan City, Batangas",
-            isBan: 0,
-        },
+const accountsInitialState = {
+    accounts: [
+
     ]
 }
 
-export const setUserReducer = (state = userInitialState, { type, payload }) => {
+export const setAccountsReducer = (state = accountsInitialState, { type, payload }) => {
     switch (type) {
-        case ActionTypes.SET_USERS:
-            return { ...state, users: payload };
+        case ActionTypes.SET_ACCOUNTS:
+            return { ...state, accounts: payload };
         default:
             return state;
     }
 }
+
+
+export const getAccountReducer = (state = {}, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.GET_ACCOUNT:
+            return { ...state, ...payload };
+        default:
+            return state;
+    }
+}
+
 
 const menuInitialState = {
     menus: [
@@ -69,6 +41,7 @@ export const setMenusReducer = (state = menuInitialState, { type, payload }) => 
     }
 }
 
+
 export const getMenuReducer = (state = {}, { type, payload }) => {
     switch (type) {
         case ActionTypes.GET_MENU:
@@ -77,6 +50,7 @@ export const getMenuReducer = (state = {}, { type, payload }) => {
             return state;
     }
 }
+
 
 const orderInitialState = {
     orders: [
@@ -111,21 +85,6 @@ export const setOrderReducer = (state = orderInitialState, { type, payload }) =>
     switch (type) {
         case ActionTypes.SET_ORDERS:
             return { ...state, orders: payload };
-        default:
-            return state;
-    }
-}
-
-const accountsInitialState = {
-    accounts: [
-
-    ]
-}
-
-export const setAccountsReducer = (state = accountsInitialState, { type, payload }) => {
-    switch (type) {
-        case ActionTypes.SET_ACCOUNTS:
-            return { ...state, accounts: payload };
         default:
             return state;
     }

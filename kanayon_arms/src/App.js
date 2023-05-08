@@ -6,7 +6,8 @@ import AboutUs from './components/Users/AboutUs/AboutUs';
 import OrderNow from './components/Users/OrderNow/OrderNow';
 import Login from './components/Users/Login/Login';
 import AdminHomePage from './components/Admin/HomePage/HomePage';
-import UserPage from './components/Admin/UserList/UserList';
+import ActiveUser from './components/Admin/UserList/ActiveUser';
+import BannedUser from './components/Admin/UserList/BannedUser';
 import StockList from './components/Admin/StockList/StockList';
 import OrderList from './components/Admin/OrderList/OrderList';
 import OrderHere from './components/Users/OrderHere/OrderHere';
@@ -29,7 +30,8 @@ function App() {
           <Route path="ordernow" element={<OrderNow />} />
           <Route path="orderhere" element={<OrderHere />} />
           <Route path="login" element={<Login />} />
-          <Route path="userlist" element={<UserPage />} />
+          <Route path="activeuser" element={<ActiveUser />} />
+          <Route path="banneduser" element={<BannedUser />} />
           <Route path="stocklist" element={<StockList />} />
           <Route path="orderlist" element={<OrderList />} />
         </Routes>
