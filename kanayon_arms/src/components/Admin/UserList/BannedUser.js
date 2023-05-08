@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
+import BannedUserFunction from '../UserFunction/BannedUserFunction';
 
 function BannedUser() {
     const user_id = localStorage.getItem("user_id");
+    const user_status = localStorage.getItem("user_status");
 
     useEffect(() => {
-        if (user_id == null) {
-            window.location.href = '/login'
-        } else {
+        if (user_status == "ADMIN") {
 
+        } else {
+            window.location.href = '/login'
         }
     }, []);
 
@@ -70,7 +72,7 @@ function BannedUser() {
                                 <div className="llanesk-stocklist-border mt-3" />
 
                                 <div className="container-fluid">
-
+                                    <BannedUserFunction></BannedUserFunction>
                                 </div>
                             </div>
                         </div>

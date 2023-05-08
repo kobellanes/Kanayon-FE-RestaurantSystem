@@ -3,12 +3,13 @@ import "./HomePage.css"
 
 function AdminHomePage() {
     const user_id = localStorage.getItem("user_id");
+    const user_status = localStorage.getItem("user_status");
 
     useEffect(() => {
-        if (user_id == null) {
-            window.location.href = '/login'
-        } else {
+        if (user_status == "ADMIN") {
 
+        } else {
+            window.location.href = '/login'
         }
     }, []);
 

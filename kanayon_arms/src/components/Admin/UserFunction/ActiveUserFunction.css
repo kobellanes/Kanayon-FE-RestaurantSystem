@@ -50,17 +50,9 @@ table.table-striped tbody tr:nth-child(even) .dese_function .dese_button_users:h
     border-radius: 5px;
 }
 
-.llanesk-stocklistitem-container-start {
+.llanesk-acitveuserfunction-container-start {
     background-color: #F8D7DA;
     font-size: 18px;
     color: #7B222B;
     border: 1px solid #E6C7CA;
-}
-
-.llanesk-activeuserfunction-banbutt {
-    transition: all .5s ease;
-}
-
-.llanesk-activeuserfunction-banbutt:hover {
-    transform: scale(1.2);
 }

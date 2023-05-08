@@ -39,7 +39,7 @@ function UserFunction() {
 
             http.put(`accounts/${updateAccount.id}`, data_update).then(result => {
                 if (result.data.status == 1) {
-                    notifySuccess(result.data.message);
+                    notifyWarn(result.data.message);
 
                     updateAccount.isStatus = "BANNED";
 
@@ -52,8 +52,8 @@ function UserFunction() {
 
     }
 
-    const notifySuccess = (message) => {
-        toast.success(message, {
+    const notifyWarn = (message) => {
+        toast.warn(message, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -138,7 +138,7 @@ function UserFunction() {
 
                                                                     <div className="container">
 
-                                                                        <div className="llanesk-acitveuserfucntion-container-start container p-3 rounded-2">
+                                                                        <div className="llanesk-acitveuserfunction-container-start container p-3 rounded-2">
                                                                             <p className="text-start m-0">Are you sure you want to ban the user "{bannedPrompt}"?</p>
 
                                                                         </div>
