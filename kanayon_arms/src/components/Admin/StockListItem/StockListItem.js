@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import './StockListItem.css';
 import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
+import Axios from 'axios';
 
 function StockListItem() {
     const menus = useSelector((state) => state.allMenus.menus)
 
-    const [menu_pic, setMenu_pic] = useState('');
+    const [imageUrl, setImageUrl] = useState('')
     const [menu_name, setMenu_name] = useState('');
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
@@ -43,7 +44,6 @@ function StockListItem() {
 
         if (idn != -1) {
             const data_update = {
-                // menu_pic: menu_pic,
                 menu_name: menu_name,
                 menu_price: menu_price,
                 menu_quantity: menu_quantity,
@@ -54,7 +54,6 @@ function StockListItem() {
                 if (result.data.status == 1) {
                     notifySuccess(result.data.message);
 
-                    // updateMenu.menu_pic = menu_pic;
                     updateMenu.menu_name = menu_name;
                     updateMenu.menu_price = menu_price;
                     updateMenu.menu_quantity = menu_quantity;
@@ -74,7 +73,6 @@ function StockListItem() {
 
                     dispatch(getStock(singleMen));
                     setMenu_name('');
-                    setMenu_pic('');
                     setMenu_price('');
                     setMenu_quantity('');
                 }
@@ -119,8 +117,6 @@ function StockListItem() {
     useEffect(() => {
 
         if (singleMenu.menu_name != null) {
-
-            setMenu_pic(singleMenu.menu_pic);
             setMenu_name(singleMenu.menu_name);
             setMenu_price(singleMenu.menu_price);
             setMenu_quantity(singleMenu.menu_quantity);
@@ -134,21 +130,24 @@ function StockListItem() {
                 menus.length > 0 ?
                     menus.map((menus, index) => {
                         return (
-                            <div className="bg-black border-5 card card shadow col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 mt-3 p-4">
-                                <div className="card border border-dark p-5 pb-5 mb-3">
+                            <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 mt-3 p-4">
+                                <div className="mb-3">
                                     <img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
                                 </div>
 
-                                <div className="">
-                                    <h3 className="text-light fw-bold mb-3 text-center"> {menus.menu_name}</h3>
-                                    <p className="text-light fw-light mb-3"><span className="fw-bold">Price: </span>  ₱{menus.menu_price}</p>
-                                    <p className="text-light fw-light mb-3"><span className="fw-bold">Quantity: </span>{menus.menu_quantity}</p>
+                                <div>
+                                    <h3 className="text-light fw-bold mb-2 text-center text-dark"> {menus.menu_name}</h3>
+
+                                    <p className="llanesk-stocklistitem-title mb-4"></p>
+
+                                    <p className="text-light fw-light mb-3 fs-5 text-dark"><span className="fw-normal">Price: </span>  ₱{menus.menu_price}</p>
+                                    <p className="text-light fw-light mb-3 fs-5 text-dark"><span className="fw-normal">Quantity: </span>{menus.menu_quantity}</p>
 
                                 </div>
 
-                                <div className="d-flex text-center justify-content-around mb-0 mt-4">
-                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-5"></i></button>
-                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-5"></i></button>
+                                <div className="d-flex text-center justify-content-around mb-0 mt-3">
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-4"></i></button>
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-4"></i></button>
 
 
                                 </div>
@@ -163,23 +162,14 @@ function StockListItem() {
 
                                         <div className="container px-3">
 
+
+
                                             <form onSubmit={updateMenu}>
 
-                                                {/* <div className="form-group">
-                                                    <div className="text-center">
-                                                        <input
-                                                            type="file"
-                                                            className="form-control"
-                                                            placeholder="Add Photo"
-                                                            value={menu_pic}
-                                                            onChange={(e) => setMenu_pic(e.target.value)}
-                                                            required={true}
-                                                        />
-                                                    </div>
-                                                </div> */}
-
                                                 <div className="mt-4 form-group">
-                                                    <div className="text-center">
+                                                    <div className="text-center d-flex flex-row align-items-center col-12">
+
+                                                        <label className="me-3 col-3 fw-bold">Menu Name</label>
                                                         <input
                                                             type="text"
                                                             name="title"
@@ -193,7 +183,8 @@ function StockListItem() {
                                                 </div>
 
                                                 <div className="mt-4 form-group">
-                                                    <div className="text-center">
+                                                    <div className="text-center d-flex flex-row align-items-center col-12">
+                                                        <label className="me-3 col-3 fw-bold">Price</label>
                                                         <input
                                                             type="number"
                                                             name="stock_price"
@@ -207,7 +198,8 @@ function StockListItem() {
                                                 </div>
 
                                                 <div className="mt-4 form-group">
-                                                    <div className="text-center">
+                                                    <div className="text-center d-flex flex-row align-items-center col-12">
+                                                        <label className="me-3 col-3 fw-bold">Quantity</label>
                                                         <input
                                                             type="number"
                                                             name="quantity"
@@ -247,15 +239,16 @@ function StockListItem() {
 
                                 </div>
 
-                            </div>
+                            </div >
 
 
                         )
                     })
                     :
-                    <div className="spinner-border text-primary" role="status">
+                    <div className="spinner-border text-primary justify-content-center container-fluid" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
+
             }
         </>
     );

@@ -4,16 +4,29 @@ import "./StockListCreate.css"
 import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
 
 function StockListCreate() {
+    const [imageUrl, setImageUrl] = useState('')
 
     const dispatch = useDispatch();
-    const [menu_pic, setMenu_pic] = useState('');
     const [menu_name, setMenu_name] = useState('');
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
 
     const menus = useSelector((state) => state.allMenus.menus)
+
+    const setMenu_pic = (files) => {
+        const formData = new FormData();
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "y7oc0qur");
+
+        Axios.post("https://api.cloudinary.com/v1_1/dkaekfiuz/image/upload", formData).then((res) => {
+            console.log(res.data.url);
+            setImageUrl(res.data.url);
+        }).catch((err) => console.log(err.message));
+    }
+
 
     const addMenu = (e) => {
         e.preventDefault();
@@ -23,7 +36,7 @@ function StockListCreate() {
             const newMenu = result.data;
 
             const menu = {
-                menu_pic: menu_pic,
+                menu_pic: imageUrl,
                 menu_name: menu_name,
                 menu_price: menu_price,
                 menu_quantity: menu_quantity,
@@ -46,7 +59,6 @@ function StockListCreate() {
                         newMenu.push(menu);
 
                         dispatch(setMenus(newMenu));
-                        setMenu_pic('');
                         setMenu_name('');
                         setMenu_price('');
                         setMenu_quantity('');
@@ -117,13 +129,15 @@ function StockListCreate() {
                         <form onSubmit={addMenu}>
 
                             <div className="form-group">
-                                <div className="text-center">
+
+                                <div className="text-center d-flex align-items-center justify-content-start">
+
                                     <input
                                         type="file"
                                         className="form-control"
-                                        placeholder="Add Photo"
-                                        value={menu_pic}
-                                        onChange={(e) => setMenu_pic(e.target.value)}
+                                        id="fileupload"
+                                        // value={menu_pic}
+                                        onChange={(e) => { setMenu_pic(e.target.files) }}
                                         required={true}
                                     />
                                 </div>
