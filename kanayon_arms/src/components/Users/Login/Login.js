@@ -199,7 +199,7 @@ function Login() {
 
     const notifySuccess = (message) => {
         toast.success(message, {
-            position: "top-center",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -212,7 +212,7 @@ function Login() {
 
     const notifyError = (message) => {
         toast.error(message, {
-            position: "top-center",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

@@ -44,7 +44,7 @@ function UserFunction() {
     }, [singleUsers]);
     return (
         <>
-            <table className="table table-striped">
+            <table className="table table-striped mt-3">
                 <thead className="dese_thead">
                     <tr>
                         <th>NAME</th>

@@ -35,11 +35,11 @@ function UserPage() {
                 </div>
 
                 <div className="dese-adminnav-content content">
-                    <main className="container-fluid ">
+                    <main className="container">
                         <div className="mt-2">
                             <div className="p-3">
-                                <h1 className="dese_title text-dark container-fluid text-center pt-4">List of Users</h1>
-                                <hr />
+                                <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Users</h1>
+                                <div className="llanesk-stocklist-border mt-3" />
 
                                 <div className="container-fluid">
                                     <UserFunction />

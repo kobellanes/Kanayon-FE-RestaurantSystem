@@ -95,13 +95,22 @@ function StockListItem() {
 
     }
 
-    const deleteStock = index => {
-        const newStock = [...menus];
-        console.log("Before Deletion", newStock);
-        newStock.splice(index, 1);
-        console.log("After Deletion", newStock);
 
-        dispatch(setMenus(newStock));
+    const deleteMenu = (index) => {
+        const newMenu = [...menus];
+        const deleteMenu = newMenu.at(index);
+
+        http.delete('http://localhost/Database_Kanayon/Kanayon_be/kanayon-be/public/api/menus/' + deleteMenu.id).then(result => {
+            if (result.data.status == 1) {
+                notifySuccess(result.data.message);
+
+                newMenu.splice(index, 1);
+                dispatch(setMenus(newMenu));
+            }
+
+        }).catch(err => console.log(err.message));
+
+
     }
 
     const fetchMenus = async () => {
@@ -130,24 +139,24 @@ function StockListItem() {
                 menus.length > 0 ?
                     menus.map((menus, index) => {
                         return (
-                            <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 mt-3 p-4">
-                                <div className="mb-3">
+                            <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 my-3 p-4">
+                                <div className="mb-2">
                                     <img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
                                 </div>
 
                                 <div>
-                                    <h3 className="text-light fw-bold mb-2 text-center text-dark"> {menus.menu_name}</h3>
+                                    <h3 className="text-light fw-bold mb-1 text-center text-dark"> {menus.menu_name}</h3>
 
-                                    <p className="llanesk-stocklistitem-title mb-4"></p>
+                                    <p className="llanesk-stocklistitem-title mb-3"></p>
 
                                     <p className="text-light fw-light mb-3 fs-5 text-dark"><span className="fw-normal">Price: </span>  ₱{menus.menu_price}</p>
                                     <p className="text-light fw-light mb-3 fs-5 text-dark"><span className="fw-normal">Quantity: </span>{menus.menu_quantity}</p>
 
                                 </div>
 
-                                <div className="d-flex text-center justify-content-around mb-0 mt-3">
+                                <div className="d-flex text-center justify-content-around mb-0 mt-2">
                                     <button className="llanesk-stocklistitem-btn btn" onClick={() => editMenu(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas"><i className="fa-regular fa-pen-to-square fs-4"></i></button>
-                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteStock(index)} ><i className="fa-regular fa-trash-can fs-4"></i></button>
+                                    <button className="llanesk-stocklistitem-btn btn" onClick={() => deleteMenu(index)} ><i className="fa-regular fa-trash-can fs-4"></i></button>
 
 
                                 </div>
@@ -162,11 +171,9 @@ function StockListItem() {
 
                                         <div className="container px-3">
 
-
-
                                             <form onSubmit={updateMenu}>
 
-                                                <div className="mt-4 form-group">
+                                                <div className="form-group">
                                                     <div className="text-center d-flex flex-row align-items-center col-12">
 
                                                         <label className="me-3 col-3 fw-bold">Menu Name</label>
@@ -226,9 +233,9 @@ function StockListItem() {
                                                         </div>
                                                     </div> */}
 
-                                                <div className="col-12 d-flex justify-content-center">
+                                                <div className="mt-4 col-12 d-flex justify-content-center">
 
-                                                    <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Update Meal" />
+                                                    <input className="btn btn-success text-center rounded-pill" type="submit" value="Update Meal" />
 
                                                 </div>
                                             </form>

@@ -1,6 +1,9 @@
 .dese-stock {
     margin-top: -40px;
-    margin-left: 10px;
+}
+
+.llanesk-stocklist-border {
+    border-bottom: 2px solid #E0E4E8;
 }
 
 .llanesk-stocklist-container {
