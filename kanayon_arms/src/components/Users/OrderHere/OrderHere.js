@@ -10,10 +10,18 @@ function OrderHere() {
     const menus = useSelector((state) => state.allMenus.menus);
     const dispatch = useDispatch();
 
+    var a = "", b = "";
+
     const [menu_pic, setMenu_pic] = useState('');
     const [menu_name, setMenu_name] = useState('');
     const [menu_description, setMenu_description] = useState('');
     const [menu_price, setMenu_price] = useState('');
+
+    const [newOrders, setNewOrders] = useState('');
+    const [oldOrders, setOldOrders] = useState('');
+    const [finalOrders, setFinalOrders] = useState('');
+
+    const [orderOrig, setOrderOrig] = useState('');
 
     const fetchMenus = async () => {
         http.get('menus').then(result => {
@@ -28,15 +36,39 @@ function OrderHere() {
     const confirmOrder = (index) => {
         //Update the previous selection
         const newMenu = [...menus];
-
         const menu = newMenu.at(index);
+
+        setOrderOrig(menu);
 
         setMenu_pic(menu.menu_pic);
         setMenu_name(menu.menu_name)
         setMenu_description(menu.menu_description);
         setMenu_price(menu.menu_price);
+    }
+
+    const addProduct = (index) => {
+        const newMenu = [...menus];
+
+        let idn = newMenu.findIndex((men) => men.id == orderOrig.id);
+
+        const addOrder = menus.at(idn);
+
+        var a = addOrder.menu_name;
+
+        setFinalOrders(a + " " + oldOrders);
+
+        setOldOrders(oldOrders + " " + a);
+
+        if (idn != -1) {
+
+
+
+        }
+
 
     }
+
+
 
 
     return (
@@ -58,7 +90,7 @@ function OrderHere() {
                                 return (
                                     <div className="col">
 
-                                        <div onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
+                                        <div type="button" onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
 
                                             <div className="row g-0">
 
@@ -105,7 +137,61 @@ function OrderHere() {
 
                                         </div>
 
+                                        <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
+                                            <div className="offcanvas-header mb-1 py-0 mt-3">
+                                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
+
+                                                <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            </div>
+
+                                            <div className="offcanvas-body p-0">
+
+                                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder!</h6>
+
+                                                <div className="container px-4">
+
+                                                    <div className="container-fluid text-center">
+                                                        <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
+                                                    </div>
+
+                                                    <div className="container-fluid text-center mt-2">
+                                                        <h3>{menu_name}</h3>
+
+                                                        <p className="llanesk-stocklistitem-title mb-3"></p>
+
+                                                        <h6 className='mt-2'>{menu_description}</h6>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div className="px-4 d-flex flex-row align-items-center justify-content-between pb-3">
+
+                                                <div className="LucidoML-orderhere-text-title container-fluid m-0">
+                                                    <p className="text-success m-0">₱{menu_price}</p>
+                                                </div>
+
+                                                <button data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
+                                                    Cancel
+                                                </button>
+
+                                                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas8" onClick={() => addProduct(index)} aria-controls="offcanvas8" className="btn btn-success text-light px-0 mx-2 container-fluid">
+                                                    Add to Order
+                                                </button>
+
+
+
+                                            </div>
+
+                                        </div>
+
+
                                     </div>
+
 
                                 )
                             })
@@ -116,40 +202,23 @@ function OrderHere() {
                             </div>
                     }
 
+
+
                 </div>
 
             </div>
 
-            <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
-                <div className="offcanvas-header mb-1 py-0 mt-3">
-                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
-
-                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvas8" aria-labelledby="offcanvas8">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvas8">Offcanvas</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas8" aria-label="Close"></button>
                 </div>
-
-                <div className="offcanvas-body p-0">
-
-                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder!</h6>
-
-                    <div className="container px-4">
-
-                        <div className="container-fluid text-center">
-                            <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
-                        </div>
-
-                    </div>
-
+                <div class="offcanvas-body">
+                    <p>{finalOrders}</p>
                 </div>
-
-
             </div>
 
-
-
-
-
-
-
+            <p className="text-light">{finalOrders}</p>
 
 
 

@@ -19,6 +19,7 @@ function UserFunction() {
         const banAccount = newAccount.at(index);
 
         setBanOrig(banAccount);
+
         setBannedPrompt(banAccount.isFirst + " " + banAccount.isLast);
 
     }

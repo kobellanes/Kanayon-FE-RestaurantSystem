@@ -218,9 +218,11 @@ function StockListCreate() {
                                 </div>
                             </div> */}
 
-                            <div className="col-12 d-flex justify-content-end">
+                            <div className="col-12 d-flex justify-content-end align-items-center mt-4">
 
-                                <input className="btn btn-success text-center rounded-pill mt-4" type="submit" value="Add Meal" />
+                                <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className=" btn btn-light rounded-pill mx-2">Cancel</button>
+
+                                <input className="btn btn-success text-center rounded-pill" type="submit" value="Add Meal" />
 
                             </div>
                         </form>

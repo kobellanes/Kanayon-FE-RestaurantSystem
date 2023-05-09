@@ -172,7 +172,7 @@ function StockListItem() {
                 menus.length > 0 ?
                     menus.map((menus, index) => {
                         return (
-                            <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2" onClick={() => editMenu(index)} className="llanesk-stocklistitem-card  rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 my-3 p-4">
+                            <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 my-3 p-4">
                                 <div className="mb-3">
                                     <a data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2" onClick={() => editMenu(index)} href=""><img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
                                     </a>
@@ -301,6 +301,8 @@ function StockListItem() {
                                                     </div> */}
 
                                                 <div className="mt-4 col-12 d-flex justify-content-end">
+
+                                                    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="rounded-pill btn btn-light mx-2">Cancel</button>
 
                                                     <input data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-success text-center rounded-pill" type="submit" value="Update Meal" />
 

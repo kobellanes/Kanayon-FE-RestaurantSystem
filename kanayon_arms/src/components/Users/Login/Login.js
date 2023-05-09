@@ -482,6 +482,7 @@ function Login() {
                             {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
 
                             <div className="col-12 text-center py-4">
+
                                 <input type="submit" className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" value="Sign Up"></input>
                             </div>
 
