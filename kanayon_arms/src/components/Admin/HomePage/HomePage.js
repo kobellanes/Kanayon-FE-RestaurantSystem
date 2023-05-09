@@ -2,22 +2,22 @@ import React, { useEffect } from 'react';
 import "./HomePage.css"
 
 function AdminHomePage() {
-    // const user_id = localStorage.getItem("user_id");
-    // const user_status = localStorage.getItem("user_status");
+    const user_id = localStorage.getItem("user_id");
+    const user_status = localStorage.getItem("user_status");
 
-    // useEffect(() => {
-    //     if (user_status == "ADMIN") {
+    useEffect(() => {
+        if (user_status == "ADMIN") {
 
-    //     } else {
-    //         window.location.href = '/login'
-    //     }
-    // }, []);
+        } else {
+            window.location.href = '/login'
+        }
+    }, []);
 
-    // const logout = (e) => {
-    //     localStorage.clear();
+    const logout = (e) => {
+        localStorage.clear();
 
-    //     window.location.href = '/'
-    // }
+        window.location.href = '/'
+    }
 
     return (
         <>
@@ -56,8 +56,8 @@ function AdminHomePage() {
                         <hr className="text-white mt-2" />
 
                         <li className="">
-                            {/* onClick={logout} */}
-                            <a href="/" className="text-decoration-none px-3 py-2 d-block">
+                            {/*  */}
+                            <a href="/" onClick={logout} className="text-decoration-none px-3 py-2 d-block">
                                 <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>Logout
                             </a>
                         </li>
