@@ -4,8 +4,8 @@
     top: 15%;
     left: 43%;
     transform: translate(10%, 40%);
-    min-height: 455px;
-    max-height: 455px;
+    min-height: 470px;
+    max-height: 470px;
     transition: all .2s ease;
     border-radius: 5px;
 }

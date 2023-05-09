@@ -11,6 +11,7 @@ function StockListCreate() {
 
     const dispatch = useDispatch();
     const [menu_name, setMenu_name] = useState('');
+    const [menu_description, setMenu_description] = useState('');
     const [menu_price, setMenu_price] = useState('');
     const [menu_quantity, setMenu_quantity] = useState('');
 
@@ -38,6 +39,7 @@ function StockListCreate() {
             const menu = {
                 menu_pic: imageUrl,
                 menu_name: menu_name,
+                menu_description: menu_description,
                 menu_price: menu_price,
                 menu_quantity: menu_quantity,
                 menu_isEdit: "0",
@@ -60,6 +62,7 @@ function StockListCreate() {
 
                         dispatch(setMenus(newMenu));
                         setMenu_name('');
+                        setMenu_description('');
                         setMenu_price('');
                         setMenu_quantity('');
 
@@ -155,6 +158,20 @@ function StockListCreate() {
                                         onChange={(e) => setMenu_name(e.target.value)}
                                         className="form-control"
                                         placeholder="Menu Name"
+                                        required />
+                                </div>
+                            </div>
+
+                            <div className="mt-4 form-group">
+                                <div className="text-center">
+                                    <input
+                                        type="text"
+                                        name="description"
+                                        id="description"
+                                        value={menu_description}
+                                        onChange={(e) => setMenu_description(e.target.value)}
+                                        className="form-control"
+                                        placeholder="Menu Description"
                                         required />
                                 </div>
                             </div>
