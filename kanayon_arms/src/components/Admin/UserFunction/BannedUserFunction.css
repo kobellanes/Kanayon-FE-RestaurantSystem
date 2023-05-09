@@ -1,12 +1,12 @@
 .llanesk-banneduserfunction-user-retrieve-offcanva {
     position: fixed;
     width: 35%;
-    top: 15%;
+    top: 20%;
     left: 38%;
-    transform: translate(10%, 40%);
+    /* transform: translate(10%, 40%); */
     min-height: 310px;
     max-height: 310px;
-    transition: all .2s ease;
+    /* transition: all .2s ease; */
     border-radius: 5px;
 }
 
@@ -15,4 +15,16 @@
     font-size: 18px;
     color: #033500;
     border: 1px solid #96D1B7;
+}
+
+.llanesk-banneduserfunction-account-delete-offcanva {
+    position: fixed;
+    width: 35%;
+    top: 20%;
+    left: 38%;
+    /* transform: translate(10%, 40%); */
+    min-height: 255px;
+    max-height: 255px;
+    /* transition: all .2s ease; */
+    border-radius: 5px;
 }

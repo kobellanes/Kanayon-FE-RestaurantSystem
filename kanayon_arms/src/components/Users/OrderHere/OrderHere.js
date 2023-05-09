@@ -10,6 +10,11 @@ function OrderHere() {
     const menus = useSelector((state) => state.allMenus.menus);
     const dispatch = useDispatch();
 
+    const [menu_pic, setMenu_pic] = useState('');
+    const [menu_name, setMenu_name] = useState('');
+    const [menu_description, setMenu_description] = useState('');
+    const [menu_price, setMenu_price] = useState('');
+
     const fetchMenus = async () => {
         http.get('menus').then(result => {
             dispatch(setMenus(result.data));
@@ -20,6 +25,18 @@ function OrderHere() {
         fetchMenus();
     }, []);
 
+    const confirmOrder = (index) => {
+        //Update the previous selection
+        const newMenu = [...menus];
+
+        const menu = newMenu.at(index);
+
+        setMenu_pic(menu.menu_pic);
+        setMenu_name(menu.menu_name)
+        setMenu_description(menu.menu_description);
+        setMenu_price(menu.menu_price);
+
+    }
 
 
     return (
@@ -41,7 +58,7 @@ function OrderHere() {
                                 return (
                                     <div className="col">
 
-                                        <div className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
+                                        <div onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
 
                                             <div className="row g-0">
 
@@ -73,7 +90,7 @@ function OrderHere() {
 
                                                                 </p>
 
-                                                                <button className="LucidoML_plus_btn btn text-light">
+                                                                <button onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML_plus_btn btn text-light">
                                                                     <i className="fa-solid fa-plus"></i>
                                                                 </button>
 
@@ -102,6 +119,36 @@ function OrderHere() {
                 </div>
 
             </div>
+
+            <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
+                <div className="offcanvas-header mb-1 py-0 mt-3">
+                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
+
+                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div className="offcanvas-body p-0">
+
+                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder!</h6>
+
+                    <div className="container px-4">
+
+                        <div className="container-fluid text-center">
+                            <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
 
 
 

@@ -3,10 +3,10 @@
     width: 25%;
     top: 15%;
     left: 43%;
-    transform: translate(10%, 40%);
+    /* transform: translate(10%, 40%); */
     min-height: 470px;
     max-height: 470px;
-    transition: all .2s ease;
+    /* transition: all .2s ease; */
     border-radius: 5px;
 }
 

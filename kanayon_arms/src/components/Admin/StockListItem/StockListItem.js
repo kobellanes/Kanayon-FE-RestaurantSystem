@@ -172,7 +172,7 @@ function StockListItem() {
                 menus.length > 0 ?
                     menus.map((menus, index) => {
                         return (
-                            <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 my-3 p-4">
+                            <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2" onClick={() => editMenu(index)} className="llanesk-stocklistitem-card  rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 my-3 p-4">
                                 <div className="mb-3">
                                     <a data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2" onClick={() => editMenu(index)} href=""><img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
                                     </a>
@@ -204,7 +204,7 @@ function StockListItem() {
 
                                 </div>
 
-                                <div className="llanesk-stocklistitem-update-offcanva offcanvas text-bg-light" id="offcanvas2" tabIndex="-1">
+                                <div className="llanesk-stocklistitem-update-offcanva offcanvas text-bg-light" id="offcanvas2" tabIndex="-1" data-bs-scroll="true">
                                     <div className="offcanvas-header mb-1 py-0 mt-3">
                                         <h3 className="offcanvas-title fw-bolder text-dark px-2">Update Meal</h3>
 
@@ -313,7 +313,7 @@ function StockListItem() {
 
                                 </div>
 
-                                <div className="llanesk-stocklist-item-delete-offcanva offcanvas text-bg-light" id="offcanvas3" tabIndex="-1" >
+                                <div className="llanesk-stocklist-item-delete-offcanva offcanvas text-bg-light" id="offcanvas3" tabIndex="-1" data-bs-scroll="true">
                                     <div className="offcanvas-header mb-1 py-0 mt-3">
                                         <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 

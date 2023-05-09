@@ -40,27 +40,27 @@
     position: fixed;
     width: 25%;
     top: 10%;
-    left: 41%;
-    transform: translate(10%, 40%);
+    left: 42%;
+    /* transform: translate(10%, 40%); */
     min-height: 660px;
     max-height: 660px;
-    transition: all .2s ease;
+    /* transition: all .2s ease; */
     border-radius: 5px;
 }
 
 .llanesk-stocklist-item-delete-offcanva {
     position: fixed;
     width: 35%;
-    top: 15%;
+    top: 30%;
     left: 38%;
-    transform: translate(10%, 40%);
+    /* transform: translate(10%, 40%); */
     min-height: 255px;
     max-height: 255px;
-    transition: all .2s ease;
+    /* transition: all .2s ease; */
     border-radius: 5px;
 }
 
-.llanesk-acitveuserfucntion-container-start {
+.llanesk-stocklistitem-container-start {
     background-color: #F8D7DA;
     font-size: 18px;
     color: #7B222B;

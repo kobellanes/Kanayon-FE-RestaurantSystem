@@ -173,7 +173,7 @@ function BannedUserFunction() {
                                                             <i className="fa-regular fa-trash-can fs-5"></i>
                                                         </button>
 
-                                                        <div className="llanesk-banneduserfunction-user-retrieve-offcanva offcanvas text-bg-light" id="offcanvas5" tabIndex="-1" >
+                                                        <div className="llanesk-banneduserfunction-user-retrieve-offcanva offcanvas text-bg-light" id="offcanvas5" tabIndex="-1" data-bs-scroll="true">
                                                             <div className="offcanvas-header mb-1 py-0 mt-3">
                                                                 <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 
@@ -203,7 +203,7 @@ function BannedUserFunction() {
                                                                 <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
                                                                     <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Cancel</button>
 
-                                                                    <button onClick={() => retrievingAccount(index)} type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-success rounded-1 llanesk-activeuserfunction-banbutt fw-normal">Retrieve User</button>
+                                                                    <button onClick={() => retrievingAccount(index)} type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-success rounded-1 llanesk-activeuserfunction-banbutt fw-normal">Retrieve</button>
 
 
                                                                 </div>
@@ -211,7 +211,7 @@ function BannedUserFunction() {
 
                                                         </div>
 
-                                                        <div className="llanesk-stocklist-item-delete-offcanva offcanvas text-bg-light" id="offcanvas6" tabIndex="-1" >
+                                                        <div className="llanesk-banneduserfunction-account-delete-offcanva offcanvas text-bg-light" id="offcanvas6" tabIndex="-1" data-bs-scroll="true">
                                                             <div className="offcanvas-header mb-1 py-0 mt-3">
                                                                 <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 
@@ -226,8 +226,8 @@ function BannedUserFunction() {
 
                                                                     <div className="container">
 
-                                                                        <div className="llanesk-stocklistitem-container-start container p-3 rounded-2">
-                                                                            <p className="text-start m-0">Are you sure you want to delete the user account named "{delPrompt}"?</p>
+                                                                        <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
+                                                                            <p className="text-start m-0">Are you sure you want to delete the account named "{delPrompt}"?</p>
 
                                                                         </div>
 

@@ -123,7 +123,7 @@ function UserFunction() {
                                                     <td className="dese_function text-center align-items-center py-2">
                                                         <button onClick={() => banPrompt(index)} className="llanesk-activeuserfunction-ban btn text-dark p-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas4" aria-controls="offcanvas4"><i className="fa-solid fa-ban fs-5"></i></button>
 
-                                                        <div className="llanesk-activeuserfunction-user-ban-offcanva offcanvas text-bg-light" id="offcanvas4" tabIndex="-1" >
+                                                        <div className="llanesk-activeuserfunction-user-ban-offcanva offcanvas text-bg-light" id="offcanvas4" tabIndex="-1" data-bs-scroll="true">
                                                             <div className="offcanvas-header mb-1 py-0 mt-3">
                                                                 <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 
@@ -138,7 +138,7 @@ function UserFunction() {
 
                                                                     <div className="container">
 
-                                                                        <div className="llanesk-acitveuserfunction-container-start container p-3 rounded-2">
+                                                                        <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
                                                                             <p className="text-start m-0">Are you sure you want to ban the user "{bannedPrompt}"?</p>
 
                                                                         </div>

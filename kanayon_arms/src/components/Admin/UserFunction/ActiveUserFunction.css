@@ -41,16 +41,16 @@ table.table-striped tbody tr:nth-child(even) .dese_function .dese_button_users:h
 .llanesk-activeuserfunction-user-ban-offcanva {
     position: fixed;
     width: 35%;
-    top: 15%;
+    top: 20%;
     left: 38%;
-    transform: translate(10%, 40%);
+    /* transform: translate(10%, 40%); */
     min-height: 310px;
     max-height: 310px;
-    transition: all .2s ease;
+    /* transition: all .2s ease; */
     border-radius: 5px;
 }
 
-.llanesk-acitveuserfunction-container-start {
+.llanesk-activeuserfunction-container-start {
     background-color: #F8D7DA;
     font-size: 18px;
     color: #7B222B;

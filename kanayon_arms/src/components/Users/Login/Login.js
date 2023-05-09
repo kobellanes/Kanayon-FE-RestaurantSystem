@@ -308,7 +308,7 @@ function Login() {
 
             </main >
 
-            <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1">
+            <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1" data-bs-scroll="true">
                 <div className="offcanvas-header mb-0 pb-2">
                     <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Register</h3>
                     <button type="button" className="llanesk-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
