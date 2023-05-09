@@ -10,18 +10,19 @@ function OrderHere() {
     const menus = useSelector((state) => state.allMenus.menus);
     const dispatch = useDispatch();
 
-    var a = "", b = "";
+    var a = "";
 
     const [menu_pic, setMenu_pic] = useState('');
     const [menu_name, setMenu_name] = useState('');
     const [menu_description, setMenu_description] = useState('');
     const [menu_price, setMenu_price] = useState('');
 
-    const [newOrders, setNewOrders] = useState('');
-    const [oldOrders, setOldOrders] = useState('');
-    const [finalOrders, setFinalOrders] = useState('');
-
     const [orderOrig, setOrderOrig] = useState('');
+
+    const [newOrders, setNewOrders] = useState('');
+    const [oldOrders, setOldOrders] = useState('\n');
+
+    const [orderPrompt, setOrderPrompt] = useState("No Orders");
 
     const fetchMenus = async () => {
         http.get('menus').then(result => {
@@ -55,9 +56,11 @@ function OrderHere() {
 
         var a = addOrder.menu_name;
 
-        setFinalOrders(a + " " + oldOrders);
+        setNewOrders(a + " " + oldOrders);
 
         setOldOrders(oldOrders + " " + a);
+
+        setOrderPrompt("Orders:");
 
         if (idn != -1) {
 
@@ -79,6 +82,14 @@ function OrderHere() {
             <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
                 <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Kanayon Inasal Menu</h4>
                 <div className="llanesk-orderhere-border mb-3 text-center"></div>
+            </div>
+
+            <div className="container-fluid text-center mt-2">
+                <button className="btn btn-secondary px-3 fs-4 rounded-3 fw-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvas8" aria-controls="offcanvas8">
+                    PAY ORDER
+                    <i className="ms-2 fa-solid fa-receipt"></i>
+                </button>
+
             </div>
             <div className="container mt-5">
 
@@ -146,7 +157,7 @@ function OrderHere() {
 
                                             <div className="offcanvas-body p-0">
 
-                                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder!</h6>
+                                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Placeholder!</h6>
 
                                                 <div className="container px-4">
 
@@ -179,7 +190,7 @@ function OrderHere() {
                                                     Cancel
                                                 </button>
 
-                                                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas8" onClick={() => addProduct(index)} aria-controls="offcanvas8" className="btn btn-success text-light px-0 mx-2 container-fluid">
+                                                <button onClick={() => addProduct(index)} data-bs-dismiss="offcanvas" className="btn btn-success text-light px-0 mx-2 container-fluid">
                                                     Add to Order
                                                 </button>
 
@@ -197,7 +208,7 @@ function OrderHere() {
                             })
 
                             :
-                            <div className="spinner-border justify-content-center container-fluid text-primary" role="status">
+                            <div className="spinner-border justify-content-center container-fluid text-light mt-4   " role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
                     }
@@ -208,17 +219,56 @@ function OrderHere() {
 
             </div>
 
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvas8" aria-labelledby="offcanvas8">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvas8">Offcanvas</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas8" aria-label="Close"></button>
+            <div className="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvas8" aria-labelledby="offcanvas8" data-bs-scroll="true">
+
+                <div className="offcanvas-header p-0 mt-3 mx-4">
+                    <h3 className="offcanvas-title" id="offcanvas8">Payment</h3>
+
+                    <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
                 </div>
-                <div class="offcanvas-body">
-                    <p>{finalOrders}</p>
+
+                <div className="offcanvas-body p-0 mt-1">
+
+                    <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-4">Placeholder!</h6>
+
+                    <div className="px-4 flex-flex-column">
+                        <p>{orderPrompt}</p>
+                        <p>{newOrders}<br></br></p>
+                    </div>
+
+                </div>
+
+                <div className="border-bottom text-light mb-3"></div>
+
+                <div className="mb-5 pb-5 container">
+                    <h6 className="fw-light">
+                        Note: Placeholder!
+                    </h6>
+                </div>
+
+                <div className="container my-3 col-12 d-flex flex-row">
+                    <div className="col-5">
+                        <button type="button" className="container-fluid btn btn-light">Cancel
+
+                        </button>
+                    </div>
+
+                    <div className="col-2">
+
+                    </div>
+
+                    <div className="col-5">
+                        <button type="button" className="container-fluid btn btn-primary">Pay Order
+                            <i className="ms-2 fa-solid fa-handshake"></i>
+                        </button>
+
+                    </div>
+
                 </div>
             </div>
 
-            <p className="text-light">{finalOrders}</p>
+
 
 
 
@@ -409,4 +459,4 @@ function OrderHere() {
     );
 }
 
-export default OrderHere;
+export default OrderHere;   
