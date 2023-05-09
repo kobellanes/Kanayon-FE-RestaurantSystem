@@ -22,31 +22,31 @@ function OrderNow() {
 
                                 <div className="carousel-item active">
                                     <div className="dese_images col-12 mb-3 mb-md-0">
-                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon" />
+                                        <img className="dese_order_img img-fluid rounded-5" src={require('../../../assets/order-carousel-img1.png')} alt="Kanayon" />
                                     </div>
 
                                 </div>
 
                                 <div className="carousel-item">
                                     <div className="dese_images col-12 mb-3 mb-md-0">
-                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
+                                        <img className="dese_order_img img-fluid rounded-5" src={require('../../../assets/order-carousel-img2.png')} alt="Kanayon..." />
                                     </div>
 
                                 </div>
 
                                 <div className="carousel-item">
                                     <div className="dese_images col-12 mb-3 mb-md-0">
-                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
+                                        <img className="dese_order_img img-fluid rounded-5" src={require('../../../assets/order-carousel-img3.png')} alt="Kanayon..." />
                                     </div>
 
                                 </div>
 
-                                <div className="carousel-item">
+                                {/* <div className="carousel-item">
                                     <div className="dese_images col-12 mb-3 mb-md-0">
-                                        <img className="dese_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
+                                        <img className="dese_order_img img-fluid rounded-5" src={require('../../../assets/menu.jpg')} alt="Kanayon..." />
                                     </div>
 
-                                </div>
+                                </div> */}
 
                                 <div className="row">
                                     <button className="carousel-control-prev" type="button" data-bs-target="#dese_carousel"
@@ -98,7 +98,7 @@ function OrderNow() {
                 <div className="mx-xl-5 px-xl-5">
                     <div className="mx-xl-5">
                         <div className="row g-4 mt-3 px-xl-5 mx-xl-5">
-                            <div className="col-12 col-lg-6 col-xl-3">
+                            <div className="col-12 col-lg-3 col-xl-3">
 
                                 <div className="">
                                     <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img>
@@ -106,7 +106,7 @@ function OrderNow() {
                                 </div>
                             </div>
 
-                            <div className="col-12 col-lg-6 col-xl-3">
+                            <div className="col-12 col-lg-3 col-xl-3">
                                 <div className="">
                                     <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img>
                                     <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Liempo</h4>
@@ -114,7 +114,7 @@ function OrderNow() {
 
                             </div>
 
-                            <div className="col-12 col-lg-6 col-xl-3">
+                            <div className="col-12 col-lg-3 col-xl-3">
                                 <div className="">
                                     <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img>
                                     <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Pork Barbecue</h4>
@@ -122,7 +122,7 @@ function OrderNow() {
 
                             </div>
 
-                            <div className="col-12 col-lg-6 col-xl-3">
+                            <div className="col-12 col-lg-3 col-xl-3">
                                 <div className="">
                                     <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img>
                                     <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Halo-Halo</h4>
