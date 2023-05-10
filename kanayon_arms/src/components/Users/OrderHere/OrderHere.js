@@ -10,8 +10,6 @@ function OrderHere() {
     const menus = useSelector((state) => state.allMenus.menus);
     const dispatch = useDispatch();
 
-    const a = "", b = "", c = "";
-
     const [menu_pic, setMenu_pic] = useState('');
     const [menu_name, setMenu_name] = useState('');
     const [menu_description, setMenu_description] = useState('');
@@ -19,6 +17,9 @@ function OrderHere() {
 
     const [orderOrig, setOrderOrig] = useState('');
 
+
+    const [numberOrder, setNumberOrder] = useState('');
+    const [finalNumber, setFinalNumber] = useState('');
     const [newOrders, setNewOrders] = useState('');
     const [oldOrders, setOldOrders] = useState('');
 
@@ -51,7 +52,8 @@ function OrderHere() {
         setMenu_price(menu.menu_price);
     }
 
-    const addProduct = (index) => {
+    const addProduct = (e) => {
+        e.preventDefault();
         const newMenu = [...menus];
 
         let idn = newMenu.findIndex((men) => men.id == orderOrig.id);
@@ -61,40 +63,46 @@ function OrderHere() {
         // const regEx = ['\n'];
         // let textValue = stringToReplace.replace(/\\n/g,'\n');
 
-        // const a = addOrder.menu_name;
+        const a = numberOrder + "x" + " " + addOrder.menu_name + ",";
 
-        // let textValue = a.replace(/\\n/g, '\n') + oldOrders;
+        setNumberOrder('');
 
-        // console.log(textValue);
+        // setFinalNumber(numberOrder + "x");
 
-        // setNewOrders(textValue);
-
-        const a = addOrder.menu_name;
-        setNewOrders(a + oldOrders);
-
+        setNewOrders(oldOrders + " " + a);
         setOldOrders(oldOrders + " " + a);
-
         setOrderPrompt("Orders:");
 
-        setPricePrompt("Total Price:")
 
-        const b = parseInt(addOrder.menu_price, 10);
 
-        const c = parseInt(oldPrice);
+        //TOTAL PRICE 
+        setPricePrompt("Total Price: ₱")
 
-        const d = b + c;
+        const b = parseInt(addOrder.menu_price);
+        const c = parseInt(numberOrder);
+        const d = b * c;
 
-        setNewPrice(d);
+        const f = parseInt(oldPrice) + d;
 
-        setOldPrice(d);
+        setNewPrice(f);
 
-        // c = c + b;
+        setOldPrice(f);
+
+
+        // const b = parseInt(addOrder.menu_price);
+        // const d = parseInt(numberOrder);
+        // const f = b * d;
+
+        // const c = parseInt(oldPrice) + f;
+
+        // setNewPrice(c);
+
+        // setOldPrice(c);
+
+
 
 
     }
-
-
-
 
     return (
         <>
@@ -174,7 +182,7 @@ function OrderHere() {
                                             <div className="offcanvas-header mb-1 py-0 mt-3">
                                                 <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
 
-                                                <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                <button type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                             </div>
 
                                             <div className="offcanvas-body p-0">
@@ -196,29 +204,42 @@ function OrderHere() {
 
 
 
+
                                                     </div>
 
                                                 </div>
 
                                             </div>
 
-                                            <div className="px-4 d-flex flex-row align-items-center justify-content-between pb-3">
+                                            <form onSubmit={addProduct} className="px-4">
+                                                <input
+                                                    type="number"
+                                                    className="form-control"
+                                                    placeholder="Number of Orders"
+                                                    value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
+                                                    required>
 
-                                                <div className="LucidoML-orderhere-text-title container-fluid m-0">
-                                                    <p className="text-success m-0">₱{menu_price}</p>
+                                                </input>
+
+                                                <h6 className="pb-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                <div className="d-flex flex-row align-items-center justify-content-between pt-1 pb-3">
+
+                                                    <div className="LucidoML-orderhere-text-title container-fluid m-0">
+                                                        <p className="text-success m-0">₱{menu_price}</p>
+                                                    </div>
+
+                                                    <button data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
+                                                        Cancel
+                                                    </button>
+
+                                                    <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order">
+
+                                                    </input>
+
                                                 </div>
 
-                                                <button data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
-                                                    Cancel
-                                                </button>
-
-                                                <button onClick={() => addProduct(index)} data-bs-dismiss="offcanvas" className="btn btn-success text-light px-0 mx-2 container-fluid">
-                                                    Add to Order
-                                                </button>
-
-
-
-                                            </div>
+                                            </form>
 
                                         </div>
 
@@ -241,7 +262,7 @@ function OrderHere() {
 
             </div>
 
-            <div className="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvas8" aria-labelledby="offcanvas8" data-bs-scroll="true">
+            <div className="llanesk-orderhere-pay-offcanvas offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvas8" aria-labelledby="offcanvas8" data-bs-scroll="true">
 
                 <div className="offcanvas-header p-0 mt-3 mx-4">
                     <h3 className="offcanvas-title" id="offcanvas8">Payment</h3>
@@ -256,10 +277,10 @@ function OrderHere() {
 
                     <div className="px-4 flex-flex-column">
                         <p>{orderPrompt}</p>
-                        <p>{newOrders}</p>
+                        <p>{finalNumber}{newOrders}</p>
 
                         <br></br>
-                        <p>{pricePrompt}{newPrice}</p>
+                        <p className="fw-bold">{pricePrompt}{newPrice}</p>
 
                     </div>
 
@@ -267,13 +288,13 @@ function OrderHere() {
 
                 <div className="border-bottom text-light mb-3"></div>
 
-                <div className="mb-5 pb-5 container">
+                <div className="px-4 container">
                     <h6 className="fw-light">
                         Note: Placeholder!
                     </h6>
                 </div>
 
-                <div className="container my-3 col-12 d-flex flex-row">
+                <div className="container p-3 px-4 col-12 d-flex flex-row">
                     <div className="col-5">
                         <button type="button" className="container-fluid btn btn-light">Cancel
 
@@ -292,7 +313,7 @@ function OrderHere() {
                     </div>
 
                 </div>
-            </div>
+            </div >
 
             <Footer>
             </Footer>

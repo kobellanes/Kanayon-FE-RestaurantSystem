@@ -88,16 +88,22 @@
 
 .llanesk-orderhere-confirmorder-offcanva {
     width: 26%;
-    top: 15%;
+    top: 22%;
     left: 37%;
-    min-height: 580px;
-    max-height: 580px;
+    min-height: 500px;
+    max-height: 500px;
     border-radius: 5px;
 }
 
+.llanesk-orderhere-pay-offcanvas {
+    min-height: 430px;
+    max-height: 430px;
+    border-radius: 20px;
+}
+
 .llanesk-orderhere-pic-order {
-    width: 90%;
-    height: 250px;
+    width: 50%;
+    height: 150px;
     border: 1px solid black;
 }
 
