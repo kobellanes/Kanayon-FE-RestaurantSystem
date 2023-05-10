@@ -173,7 +173,7 @@ function BannedUserFunction() {
                                                             <i className="fa-regular fa-trash-can fs-5"></i>
                                                         </button>
 
-                                                        <div className="llanesk-banneduserfunction-user-retrieve-offcanva offcanvas text-bg-light" id="offcanvas5" tabIndex="-1" data-bs-scroll="true">
+                                                        <div className="llanesk-banneduserfunction-user-retrieve-offcanva offcanvas text-bg-light" id="offcanvas5" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
                                                             <div className="offcanvas-header mb-1 py-0 mt-3">
                                                                 <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 
@@ -211,7 +211,7 @@ function BannedUserFunction() {
 
                                                         </div>
 
-                                                        <div className="llanesk-banneduserfunction-account-delete-offcanva offcanvas text-bg-light" id="offcanvas6" tabIndex="-1" data-bs-scroll="true">
+                                                        <div className="llanesk-banneduserfunction-account-delete-offcanva offcanvas text-bg-light" id="offcanvas6" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
                                                             <div className="offcanvas-header mb-1 py-0 mt-3">
                                                                 <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 

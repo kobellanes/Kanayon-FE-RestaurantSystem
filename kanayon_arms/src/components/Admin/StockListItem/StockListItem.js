@@ -315,7 +315,7 @@ function StockListItem() {
 
                                 </div>
 
-                                <div className="llanesk-stocklist-item-delete-offcanva offcanvas text-bg-light" id="offcanvas3" tabIndex="-1" data-bs-scroll="true">
+                                <div className="llanesk-stocklist-item-delete-offcanva offcanvas text-bg-light" id="offcanvas3" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
                                     <div className="offcanvas-header mb-1 py-0 mt-3">
                                         <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
 

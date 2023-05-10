@@ -117,6 +117,17 @@
     border: 1px solid black;
 }
 
+.llanesk-ordehere-cancel-order-offcanva {
+    width: 35%;
+    top: 22%;
+    left: 33%;
+    /* transform: translate(10%, 40%); */
+    min-height: 280px;
+    max-height: 280px;
+    /* transition: all .2s ease; */
+    border-radius: 5px;
+}
+
 @media(max-width: 1200px) {
     .LucidoML-orderhere-card {
         height: 260px;

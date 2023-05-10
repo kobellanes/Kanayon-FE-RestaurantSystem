@@ -406,7 +406,7 @@ function OrderHere() {
                     orderPrompt == "Your Order/s:" ?
                         <div className="container p-3 px-4 col-12 d-flex flex-row">
                             <div className="col-5">
-                                <button onClick={cancelOrder} type="button" className="container-fluid btn btn-dark" data-bs-dismiss="offcanvas" aria-label="Close">
+                                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas10" aria-controls="offcanvas10" type="button" className="container-fluid btn btn-dark">
                                     Cancel order
                                 </button>
                             </div>
@@ -427,7 +427,7 @@ function OrderHere() {
                         :
                         <div className="container p-3 px-4 col-12 d-flex flex-row">
                             <div className="col-5">
-                                <button onClick={cancelOrder} type="button" className="container-fluid btn btn-dark" data-bs-dismiss="offcanvas" aria-label="Close">
+                                <button type="button" className="container-fluid btn btn-dark" data-bs-dismiss="offcanvas" aria-label="Close">
                                     Cancel order
                                 </button>
                             </div>
@@ -449,7 +449,7 @@ function OrderHere() {
 
             </div>
 
-            <div className="llanesk-orderhere-lastpayment-offcanva offcanvas text-bg-light" id="offcanvas9" tabIndex="-1" data-bs-scroll="true">
+            <div className="llanesk-orderhere-lastpayment-offcanva offcanvas text-bg-light" id="offcanvas9" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
                 <div className="offcanvas-header mb-1 py-0 mt-3">
                     <h3 className="offcanvas-title fw-bolder text-dark px-2">Payment</h3>
 
@@ -554,6 +554,42 @@ function OrderHere() {
 
                     <button data-bs-dismiss="offcanvas" className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
 
+                </div>
+
+            </div>
+
+
+            <div className="llanesk-ordehere-cancel-order-offcanva offcanvas text-bg-light" id="offcanvas10" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
+                <div className="offcanvas-header mb-1 py-0 mt-3">
+                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
+
+                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div className="offcanvas-body p-0 mt-1">
+
+                    <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
+
+                    <div className="container ">
+
+                        <div className="container">
+
+                            <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
+                                <p className="text-start m-0">Note: Are you sure you want to cancel your order/s? If you do this action, all of your orders will be cleared.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
+
+                    <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
+                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Minimize</button>
+
+                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" onClick={cancelOrder} className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt">Cancel Order</button>
+
+                    </div>
                 </div>
 
             </div>
