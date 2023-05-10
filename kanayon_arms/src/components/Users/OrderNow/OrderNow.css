@@ -1,3 +1,7 @@
+.dese_order_img {
+    height: 330px;
+}
+
 .llanesk-ordernow {
     margin: 0;
     padding: 0;
@@ -53,4 +57,48 @@
 
 .llanesk-ordernow-featuredlabel {
     font-size: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .dese_order_img {
+        height: 270px;
+    }
+
+    .llanesk-ordernow-orderpage {
+        width: 60%;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .llanesk-ordernow-orderlist {
+        width: 60%;
+        font-size: 20px;
+    }
+
+    .llanesk-ordernow-featuredlabel {
+        font-size: 15px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    .dese_order_img {
+        height: 270px;
+    }
+
+    .llanesk-ordernow-orderpage {
+        width: 70%;
+        padding: 0;
+        font-size: 20px;
+    }
+
+    .llanesk-ordernow-orderlist {
+        width: 60%;
+        font-size: 20px;
+    }
+
+    .llanesk-ordernow-featuredlabel {
+        font-size: 15px;
+    }
+
 }
