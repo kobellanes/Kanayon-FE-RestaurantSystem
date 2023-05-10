@@ -26,7 +26,7 @@ function OrderHere() {
     const [newPrice, setNewPrice] = useState('');
     const [oldPrice, setOldPrice] = useState('0');
 
-    const [orderPrompt, setOrderPrompt] = useState("No Orders");
+    const [orderPrompt, setOrderPrompt] = useState("No order yet.");
     const [pricePrompt, setPricePrompt] = useState('');
 
     const fetchMenus = async () => {
@@ -60,49 +60,39 @@ function OrderHere() {
 
         const addOrder = menus.at(idn);
 
+        setNumberOrder('');
+
+        //ADD ORDER
+        setOrderPrompt("Orders:");
+        const a = numberOrder + "x" + " " + addOrder.menu_name;
+        setNewOrders(oldOrders + " " + a);
+        setOldOrders(a + "," + oldOrders);
+
+
+        // setFinalNumber(numberOrder + "x");
         // const regEx = ['\n'];
         // let textValue = stringToReplace.replace(/\\n/g,'\n');
 
-        const a = numberOrder + "x" + " " + addOrder.menu_name + ",";
-
-        setNumberOrder('');
-
-        // setFinalNumber(numberOrder + "x");
-
-        setNewOrders(oldOrders + " " + a);
-        setOldOrders(oldOrders + " " + a);
-        setOrderPrompt("Orders:");
-
-
-
         //TOTAL PRICE 
         setPricePrompt("Total Price: ₱")
-
         const b = parseInt(addOrder.menu_price);
         const c = parseInt(numberOrder);
         const d = b * c;
-
         const f = parseInt(oldPrice) + d;
-
         setNewPrice(f);
-
         setOldPrice(f);
 
-
-        // const b = parseInt(addOrder.menu_price);
-        // const d = parseInt(numberOrder);
-        // const f = b * d;
-
-        // const c = parseInt(oldPrice) + f;
-
-        // setNewPrice(c);
-
-        // setOldPrice(c);
-
-
-
-
     }
+
+    const cancelOrder = () => {
+        setNewPrice('');
+        setOldPrice('0');
+        setPricePrompt('')
+        setNewOrders('');
+        setOldOrders('');
+        setNumberOrder('');
+        setOrderPrompt("No order yet.");
+    };
 
     return (
         <>
@@ -198,48 +188,51 @@ function OrderHere() {
                                                     <div className="container-fluid text-center mt-2">
                                                         <h3>{menu_name}</h3>
 
-                                                        <p className="llanesk-stocklistitem-title mb-3"></p>
-
                                                         <h6 className='mt-2'>{menu_description}</h6>
 
-
-
-
                                                     </div>
+
+                                                </div>
+
+                                                <div className="px-4">
+                                                    <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                    <form onSubmit={addProduct} className="mt-4">
+                                                        <input
+                                                            type="number"
+                                                            className="form-control"
+                                                            placeholder="Number of Orders"
+                                                            min="1"
+                                                            value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
+                                                            required>
+
+                                                        </input>
+
+                                                        <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                        <div className="d-flex flex-row align-items-center justify-content-between mt-3 pb-3">
+
+                                                            <div className="LucidoML-orderhere-text-title container-fluid m-0">
+                                                                <p className="text-success m-0">₱{menu_price}</p>
+                                                            </div>
+
+                                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
+                                                                Cancel
+                                                            </button>
+
+                                                            <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order" data-bs-dismiss="offcanvas">
+
+                                                            </input>
+
+                                                        </div>
+
+                                                    </form>
 
                                                 </div>
 
                                             </div>
 
-                                            <form onSubmit={addProduct} className="px-4">
-                                                <input
-                                                    type="number"
-                                                    className="form-control"
-                                                    placeholder="Number of Orders"
-                                                    value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
-                                                    required>
 
-                                                </input>
-
-                                                <h6 className="pb-4 text-start border-bottom text-light fw-light"></h6>
-
-                                                <div className="d-flex flex-row align-items-center justify-content-between pt-1 pb-3">
-
-                                                    <div className="LucidoML-orderhere-text-title container-fluid m-0">
-                                                        <p className="text-success m-0">₱{menu_price}</p>
-                                                    </div>
-
-                                                    <button data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
-                                                        Cancel
-                                                    </button>
-
-                                                    <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order">
-
-                                                    </input>
-
-                                                </div>
-
-                                            </form>
 
                                         </div>
 
@@ -276,14 +269,19 @@ function OrderHere() {
                     <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-4">Placeholder!</h6>
 
                     <div className="px-4 flex-flex-column">
-                        <p>{orderPrompt}</p>
-                        <p>{finalNumber}{newOrders}</p>
 
-                        <br></br>
-                        <p className="fw-bold">{pricePrompt}{newPrice}</p>
+                        <p className="m-0 fs-4">{orderPrompt}</p>
+
+                        <p className="fs-4 m-0 mt-2">{finalNumber}{newOrders}</p>
+
+
 
                     </div>
 
+                </div>
+
+                <div className="text-center">
+                    <p className="fw-bold mt-2 m-0 fs-4">{pricePrompt}{newPrice}</p>
                 </div>
 
                 <div className="border-bottom text-light mb-3"></div>
@@ -296,8 +294,8 @@ function OrderHere() {
 
                 <div className="container p-3 px-4 col-12 d-flex flex-row">
                     <div className="col-5">
-                        <button type="button" className="container-fluid btn btn-light">Cancel
-
+                        <button onClick={cancelOrder} type="button" className="container-fluid btn btn-light" data-bs-dismiss="offcanvas" aria-label="Close">
+                            Cancel
                         </button>
                     </div>
 
