@@ -102,6 +102,15 @@
     transition: 0.3s ease;
 }
 
+.llanesk-orderhere-lastpayment-offcanva {
+    width: 28%;
+    top: 18%;
+    left: 38%;
+    min-height: 455px;
+    max-height: 455px;
+    border-radius: 5px;
+}
+
 .llanesk-orderhere-pic-order {
     width: 50%;
     height: 150px;
