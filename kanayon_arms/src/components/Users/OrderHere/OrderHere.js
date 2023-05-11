@@ -103,7 +103,7 @@ function OrderHere() {
             setAddressPrompt("* Order would be prepared after paying! Hoping to see you here our dear ka-Nayon!");
 
             const j = parseInt(newPrice);
-            setFinalPrice("Pay ₱" + j + ".00")
+            setFinalPrice("Paid ₱" + j + ".00")
         }
     };
 
@@ -116,7 +116,7 @@ function OrderHere() {
             const h = parseInt(newPrice);
             const i = h + 50;
 
-            setFinalPrice("Pay ₱" + i + ".00");
+            setFinalPrice("Paid ₱" + i + ".00");
         }
     };
 
@@ -133,16 +133,29 @@ function OrderHere() {
     }
 
     const confirmPayOrder = () => {
-        if ((verifier === "CHECKED") || (verifier2 === "CHECKED")) {
-            console.log("Try");
-        } else if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
-            console.log("NOT EQUAL");
-        }
+        if (verifierPrompt === "Selected Mode:") {
+            notifyCreated();
 
-        if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
-            console.log("NOT EQUAL");
-        } else if ((verifier === "CHECKED") || (verifier2 === "CHECKED")) {
-            console.log("Try");
+            setNewPrice('');
+            setOldPrice('0');
+            setPricePrompt('')
+
+            setNewOrders('');
+            setOldOrders('');
+            setNumberOrder('');
+
+            setOrderPrompt("No order yet.");
+            setVerifier('');
+            setVerifier2('');
+
+            setVerifierPrompt("* Please choose mode: ");
+
+            setAddressPrompt('');
+            setLastNote('');
+
+            setFinalPrice("Pay");
+        } else if (verifierPrompt != "Selected Mode:") {
+            setVerifierPrompt("* ERROR: PLEASE SELECT MODE!");
         }
 
         // if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
@@ -533,42 +546,82 @@ function OrderHere() {
                                         </div>
                                     </>
                                     :
-                                    <>
-                                        <h6 className="text-danger text-center mb-3">{verifierPrompt}</h6>
+                                    orderPrompt == "No order yet." ?
+                                        <>
+                                            <h6 className="text-dark text-center mb-3">No order yet.</h6>
 
-                                        <form>
+                                            <form>
 
-                                            <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
+                                                <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
 
-                                                <input
-                                                    type="radio"
-                                                    className="btn-check"
-                                                    name="options"
-                                                    id="option"
-                                                    value={checkbox1}
-                                                    onChange={handleChange}
-                                                    autoComplete="off" />
+                                                    <input
+                                                        type="radio"
+                                                        className="btn-check"
+                                                        name="options"
+                                                        id="option"
+                                                        value={checkbox1}
+                                                        onChange={handleChange}
+                                                        autoComplete="off"
+                                                        disabled />
 
-                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
+                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
 
-                                                <div className="col-1"></div>
+                                                    <div className="col-1"></div>
 
-                                                <input
-                                                    type="radio"
-                                                    className="btn-check"
-                                                    name="options"
-                                                    id="option2"
-                                                    autoComplete="off"
-                                                    value={checkbox2}
-                                                    onChange={handleChange2}
-                                                />
+                                                    <input
+                                                        type="radio"
+                                                        className="btn-check"
+                                                        name="options"
+                                                        id="option2"
+                                                        autoComplete="off"
+                                                        value={checkbox2}
+                                                        onChange={handleChange2}
+                                                        disabled
+                                                    />
 
-                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
 
-                                            </div>
+                                                </div>
 
-                                        </form>
-                                    </>
+                                            </form>
+                                        </>
+                                        :
+                                        <>
+                                            <h6 className="text-danger text-center mb-3">{verifierPrompt}</h6>
+
+                                            <form>
+
+                                                <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
+
+                                                    <input
+                                                        type="radio"
+                                                        className="btn-check"
+                                                        name="options"
+                                                        id="option"
+                                                        value={checkbox1}
+                                                        onChange={handleChange}
+                                                        autoComplete="off" />
+
+                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
+
+                                                    <div className="col-1"></div>
+
+                                                    <input
+                                                        type="radio"
+                                                        className="btn-check"
+                                                        name="options"
+                                                        id="option2"
+                                                        autoComplete="off"
+                                                        value={checkbox2}
+                                                        onChange={handleChange2}
+                                                    />
+
+                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+
+                                                </div>
+
+                                            </form>
+                                        </>
 
 
                         }
@@ -589,11 +642,17 @@ function OrderHere() {
 
                 <div className="container-fluid d-flex flex-row pb-3 px-3 mt-2">
 
-                    <button onClick={fixedFinalPrice} className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize{verifier}{verifier2}</button>
+                    <button onClick={fixedFinalPrice} className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize</button>
 
                     <div className="col-2"></div>
+                    {
+                        verifierPrompt === "Selected Mode:" ?
+                            <button className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
+                            :
+                            <button className="btn btn-primary col-5 fw-light" disabled>{finalPrice}</button>
+                    }
 
-                    <button className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
+
 
                 </div>
 
