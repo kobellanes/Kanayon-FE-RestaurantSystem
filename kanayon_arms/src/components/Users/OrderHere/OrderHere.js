@@ -32,7 +32,7 @@ function OrderHere() {
 
     const [checkbox1, setCheckbox1] = useState(false);
     const [checkbox2, setCheckbox2] = useState(false);
-    const [verifier1, setVerifier1] = useState('');
+    const [verifier, setVerifier] = useState('');
     const [verifier2, setVerifier2] = useState('');
 
     const [verifierPrompt, setVerifierPrompt] = useState("* Please choose mode: ");
@@ -96,9 +96,9 @@ function OrderHere() {
 
     }
 
-    const handleChange1 = event => {
+    const handleChange = event => {
         if (event.target.checked) {
-            setVerifier1("CHECKED");
+            setVerifier("CHECKED");
             setVerifierPrompt("Selected Mode:")
             setAddressPrompt("* Order would be prepared after paying! Hoping to see you here our dear ka-Nayon!");
 
@@ -120,30 +120,57 @@ function OrderHere() {
         }
     };
 
-    const confirmPayOrder = () => {
-        notifyCreated();
-
-        setNewPrice('');
-        setOldPrice('0');
-        setPricePrompt('')
-
-        setNewOrders('');
-        setOldOrders('');
-        setNumberOrder('');
-
-        setOrderPrompt("No order yet.");
-        setVerifier1('');
+    const fixedFinalPrice = () => {
+        setVerifier('');
         setVerifier2('');
 
-        setCheckbox1('')
-        setCheckbox2('');
 
         setVerifierPrompt("* Please choose mode: ");
-
         setAddressPrompt('');
         setLastNote('');
 
         setFinalPrice("Pay");
+    }
+
+    const confirmPayOrder = () => {
+        if ((verifier === "CHECKED") || (verifier2 === "CHECKED")) {
+            console.log("Try");
+        } else if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
+            console.log("NOT EQUAL");
+        }
+
+        if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
+            console.log("NOT EQUAL");
+        } else if ((verifier === "CHECKED") || (verifier2 === "CHECKED")) {
+            console.log("Try");
+        }
+
+        // if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
+        //     setVerifierPrompt("* ERROR: PLEASE SELECT MODE!");
+        // } else if ((verifier === "CHECKED") || (verifier2 === "CHECKED")) {
+        //     notifyCreated();
+
+        //     setNewPrice('');
+        //     setOldPrice('0');
+        //     setPricePrompt('')
+
+        //     setNewOrders('');
+        //     setOldOrders('');
+        //     setNumberOrder('');
+
+        //     setOrderPrompt("No order yet.");
+        //     setVerifier('');
+        //     setVerifier2('');
+
+        //     setVerifierPrompt("* Please choose mode: ");
+
+        //     setAddressPrompt('');
+        //     setLastNote('');
+
+        //     setFinalPrice("Pay");
+        // }
+
+
 
     };
 
@@ -170,8 +197,8 @@ function OrderHere() {
         setNumberOrder('');
 
         setOrderPrompt("No order yet.");
-        setVerifier1('');
-        setVerifier2('');
+        setVerifier('');
+        setVerifier('');
 
         setCheckbox1('')
         setCheckbox2('');
@@ -453,7 +480,7 @@ function OrderHere() {
                 <div className="offcanvas-header mb-1 py-0 mt-3">
                     <h3 className="offcanvas-title fw-bolder text-dark px-2">Payment</h3>
 
-                    <button type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button onClick={fixedFinalPrice} type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
                 <div className="offcanvas-body p-0">
@@ -463,28 +490,33 @@ function OrderHere() {
                     <div className="container px-4 mt-4">
 
                         {
-                            verifier1 == "CHECKED" ?
+                            verifier == "CHECKED" ?
                                 <>
                                     <h6 className="text-dark text-center mb-3">{verifierPrompt}</h6>
+
                                     <div className="text-center m-0 d-flex flex-row justify-content-center pe-2 col-12">
+
                                         <input
                                             type="radio"
                                             className="btn-check"
                                             name="options"
-                                            id="option1"
-                                            autoComplete="off"
+                                            id="option"
                                             value={checkbox1}
-                                            onChange={handleChange1}
-                                            disabled
-                                        />
-                                        <label type="button" className="btn btn-dark col-11 fw-bold" htmlFor="option1">Dine in</label>
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                            disabled />
+
+                                        <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
 
                                     </div>
                                 </>
-                                : verifier2 == "CHECKED" ?
+                                :
+                                verifier2 == "CHECKED" ?
                                     <>
                                         <h6 className="text-dark text-center mb-3">{verifierPrompt}</h6>
+
                                         <div className="text-center m-0 d-flex flex-row justify-content-center pe-2 col-12">
+
                                             <input
                                                 type="radio"
                                                 className="btn-check"
@@ -495,38 +527,47 @@ function OrderHere() {
                                                 onChange={handleChange2}
                                                 disabled
                                             />
-                                            <label className="btn btn-dark col-10 fw-bold" htmlFor="option2">Delivery</label>
+
+                                            <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+
                                         </div>
                                     </>
                                     :
                                     <>
                                         <h6 className="text-danger text-center mb-3">{verifierPrompt}</h6>
 
-                                        <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
-                                            <input
-                                                type="radio"
-                                                className="btn-check"
-                                                name="options"
-                                                id="option1"
-                                                autoComplete="off"
-                                                value={checkbox1}
-                                                onChange={handleChange1}
-                                            />
-                                            <label type="button" className="btn btn-dark col-5 fw-bold" htmlFor="option1">Dine in</label>
+                                        <form>
 
-                                            <div className="col-1"></div>
+                                            <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
 
-                                            <input
-                                                type="radio"
-                                                className="btn-check"
-                                                name="options"
-                                                id="option2"
-                                                autoComplete="off"
-                                                value={checkbox2}
-                                                onChange={handleChange2}
-                                            />
-                                            <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
-                                        </div>
+                                                <input
+                                                    type="radio"
+                                                    className="btn-check"
+                                                    name="options"
+                                                    id="option"
+                                                    value={checkbox1}
+                                                    onChange={handleChange}
+                                                    autoComplete="off" />
+
+                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
+
+                                                <div className="col-1"></div>
+
+                                                <input
+                                                    type="radio"
+                                                    className="btn-check"
+                                                    name="options"
+                                                    id="option2"
+                                                    autoComplete="off"
+                                                    value={checkbox2}
+                                                    onChange={handleChange2}
+                                                />
+
+                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+
+                                            </div>
+
+                                        </form>
                                     </>
 
 
@@ -548,15 +589,15 @@ function OrderHere() {
 
                 <div className="container-fluid d-flex flex-row pb-3 px-3 mt-2">
 
-                    <button className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize</button>
+                    <button onClick={fixedFinalPrice} className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize{verifier}{verifier2}</button>
 
                     <div className="col-2"></div>
 
-                    <button data-bs-dismiss="offcanvas" className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
+                    <button className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
 
                 </div>
 
-            </div>
+            </div >
 
 
             <div className="llanesk-ordehere-cancel-order-offcanva offcanvas text-bg-light" id="offcanvas10" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
