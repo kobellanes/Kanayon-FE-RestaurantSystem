@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
+import { setAccounts } from '../../../redux/actions/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import http from '../../../http';
 
 function Header() {
+    const accounts = useSelector((state) => state.allAccounts.account);
+    const user_id = localStorage.getItem("user_id");
+    const dispatch = useDispatch();
+    const [acc, setAcc] = useState('');
+
+    // const fetchAccount = async () => {
+    //     http.get('accounts').then(result => {
+    //         const filter = result.data.filter((account) => account.id == user_id);
+
+    //         dispatch(setAccounts(filter[0]));
+
+    //         console.log(accounts);
+
+    //     }).catch(err => console.log(err.message));
+    // }
+    // useEffect(() => {
+    //     fetchAccount();
+    // }, []);
+
     const user_status = localStorage.getItem("user_status");
 
     const logout = (e) => {

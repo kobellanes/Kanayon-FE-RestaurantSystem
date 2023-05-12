@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function OrderHere() {
     const menus = useSelector((state) => state.allMenus.menus);
+
     const dispatch = useDispatch();
 
     const [menu_pic, setMenu_pic] = useState('');
@@ -72,27 +73,66 @@ function OrderHere() {
 
         const addOrder = menus.at(idn);
 
-        setNumberOrder('');
-
         //ADD ORDER
         setOrderPrompt("Your Order/s:");
         const a = numberOrder + "x—" + addOrder.menu_name;
         setNewOrders(oldOrders + " " + a);
         setOldOrders(a + "," + " " + oldOrders);
 
+        if (idn != -1) {
+            const data_update = {
+                menu_name: addOrder.menu_name,
+                menu_description: addOrder.menu_description,
+                menu_price: addOrder.menu_price,
+                menu_quantity: addOrder.menu_quantity - parseInt(numberOrder),
+                menu_isSold: addOrder.menu_isSold + parseInt(numberOrder),
+            };
+
+            const updateMenu = newMenu.at(idn);
+            console.log(updateMenu.id);
+
+            http.put(`menus/${updateMenu.id}`, data_update).then(result => {
+                if (result.data.status == 1) {
+
+                    updateMenu.menu_quantity = addOrder.menu_quantity - parseInt(numberOrder);
+                    updateMenu.menu_isSold = addOrder.menu_isSold + parseInt(numberOrder);
+
+                    newMenu.splice(idn, 1, updateMenu);
+                    dispatch(setMenus(newMenu));
+
+                    const singleMen = {
+                        id: -2,
+                        menu_name: null,
+                        menu_description: null,
+                        menu_price: null,
+                        menu_quantity: null,
+                        menu_isEdit: 0,
+                        menu_isSold: 0,
+                    };
+
+                    dispatch(getMenu(singleMen));
+
+                    setPricePrompt("Total Price: ₱")
+                    const b = parseInt(addOrder.menu_price);
+                    const c = parseInt(numberOrder);
+                    const d = b * c;
+                    const f = parseInt(oldPrice) + d;
+                    setNewPrice(f + ".00");
+                    setOldPrice(f);
+
+                    setNumberOrder('');
+
+                    notifySuccess("");
+                }
+
+            }).catch(err => console.log(err.message));
+        }
+
+
         // const regEx = ['\n'];
         // let textValue = stringToReplace.replace(/\\n/g,'\n');
 
         //TOTAL PRICE 
-        setPricePrompt("Total Price: ₱")
-        const b = parseInt(addOrder.menu_price);
-        const c = parseInt(numberOrder);
-        const d = b * c;
-        const f = parseInt(oldPrice) + d;
-        setNewPrice(f + ".00");
-        setOldPrice(f);
-
-        notifySuccess("");
 
     }
 
@@ -158,33 +198,6 @@ function OrderHere() {
             setVerifierPrompt("* ERROR: PLEASE SELECT MODE!");
         }
 
-        // if ((verifier != "CHECKED") || (verifier2 != "CHECKED")) {
-        //     setVerifierPrompt("* ERROR: PLEASE SELECT MODE!");
-        // } else if ((verifier === "CHECKED") || (verifier2 === "CHECKED")) {
-        //     notifyCreated();
-
-        //     setNewPrice('');
-        //     setOldPrice('0');
-        //     setPricePrompt('')
-
-        //     setNewOrders('');
-        //     setOldOrders('');
-        //     setNumberOrder('');
-
-        //     setOrderPrompt("No order yet.");
-        //     setVerifier('');
-        //     setVerifier2('');
-
-        //     setVerifierPrompt("* Please choose mode: ");
-
-        //     setAddressPrompt('');
-        //     setLastNote('');
-
-        //     setFinalPrice("Pay");
-        // }
-
-
-
     };
 
     const notifyCreated = () => {
@@ -201,27 +214,70 @@ function OrderHere() {
     }
 
     const cancelOrder = () => {
-        setNewPrice('');
-        setOldPrice('0');
-        setPricePrompt('')
+        const newMenu = [...menus];
 
-        setNewOrders('');
-        setOldOrders('');
-        setNumberOrder('');
+        let idn = newMenu.findIndex((men) => men.id == orderOrig.id);
 
-        setOrderPrompt("No order yet.");
-        setVerifier('');
-        setVerifier('');
+        const cancelOrder = menus.at(idn);
 
-        setCheckbox1('')
-        setCheckbox2('');
+        if (idn != -1) {
+            const data_update = {
+                menu_name: cancelOrder.menu_name,
+                menu_description: cancelOrder.menu_description,
+                menu_price: cancelOrder.menu_price,
+                menu_quantity: cancelOrder.menu_quantity + parseInt(numberOrder),
+                menu_isSold: cancelOrder.menu_isSold - parseInt(numberOrder),
+            };
 
-        setVerifierPrompt("* Please choose mode: ");
+            const updateMenu = newMenu.at(idn);
+            console.log(updateMenu.id);
 
-        setAddressPrompt('');
-        setLastNote('');
+            http.put(`menus/${updateMenu.id}`, data_update).then(result => {
+                if (result.data.status == 1) {
 
-        setFinalPrice("Pay");
+                    updateMenu.menu_quantity = cancelOrder.menu_quantity + parseInt(numberOrder);
+                    updateMenu.menu_isSold = cancelOrder.menu_isSold - parseInt(numberOrder);
+
+                    newMenu.splice(idn, 1, updateMenu);
+                    dispatch(setMenus(newMenu));
+
+                    const singleMen = {
+                        id: -2,
+                        menu_name: null,
+                        menu_description: null,
+                        menu_price: null,
+                        menu_quantity: null,
+                        menu_isEdit: 0,
+                        menu_isSold: 0,
+                    };
+
+                    dispatch(getMenu(singleMen));
+                    setNewPrice('');
+                    setOldPrice('0');
+                    setPricePrompt('')
+
+                    setNewOrders('');
+                    setOldOrders('');
+                    setNumberOrder('');
+
+                    setOrderPrompt("No order yet.");
+                    setVerifier('');
+                    setVerifier('');
+
+                    setCheckbox1('')
+                    setCheckbox2('');
+
+                    setVerifierPrompt("* Please choose mode: ");
+
+                    setAddressPrompt('');
+                    setLastNote('');
+
+                    setFinalPrice("Pay");
+                }
+
+            }).catch(err => console.log(err.message));
+        }
+
     };
 
     const notifySuccess = () => {
@@ -261,126 +317,137 @@ function OrderHere() {
                     {
                         menus.length > 0 ?
                             menus.map((menus, index) => {
+
                                 return (
-                                    <div className="col">
+                                    <>
 
-                                        <div type="button" onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
+                                        {
+                                            menus.menu_quantity != 0 ?
+                                                <>
+                                                    <div className="col">
+                                                        <div type="button" onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
 
-                                            <div className="row g-0">
+                                                            <div className="row g-0">
 
-                                                <div className="col-md-6 col-sm-6 py-3 ps-2 text-center">
-                                                    <img src={menus.menu_pic} className="LucidoML-orderhere-img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                <div className="col-md-6 col-sm-6 py-3 ps-2 text-center">
+                                                                    <img src={menus.menu_pic} className="LucidoML-orderhere-img-thumbnail card card-span text-white card-img-top" alt="..."></img>
 
-                                                </div>
+                                                                </div>
 
-                                                <div className="col-md-6">
+                                                                <div className="col-md-6">
 
-                                                    <div className="card-body mt-2">
-                                                        <div className="container p-2 mb-4">
-                                                            <h5 className="LucidoML-orderhere-card-title text-center">{menus.menu_name}</h5>
+                                                                    <div className="card-body mt-2">
+                                                                        <div className="container p-2 mb-4">
+                                                                            <h5 className="LucidoML-orderhere-card-title text-center">{menus.menu_name}</h5>
 
-                                                            <p className="llanesk-stocklistitem-title mb-3"></p>
+                                                                            <p className="llanesk-stocklistitem-title mb-3"></p>
 
-                                                            <p className="card-text text-center LucidoML-orderhere-card-description">
-                                                                {menus.menu_description}
-                                                            </p>
+                                                                            <p className="card-text text-center LucidoML-orderhere-card-description">
+                                                                                {menus.menu_description}
+                                                                            </p>
 
-                                                        </div>
+                                                                        </div>
 
-                                                        <div className="card-text m-0">
+                                                                        <div className="card-text m-0">
 
-                                                            <div className="container-fluid d-flex flex-row align-items-center justify-content-between">
+                                                                            <div className="container-fluid d-flex flex-row align-items-center justify-content-between">
 
-                                                                <p className="card-text LucidoML-orderhere-text-title text-success fw-normal m-0">
-                                                                    ₱{menus.menu_price}
+                                                                                <p className="card-text LucidoML-orderhere-text-title text-success fw-normal m-0">
+                                                                                    ₱{menus.menu_price}
 
-                                                                </p>
+                                                                                </p>
 
-                                                                <button onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML_plus_btn btn text-light">
-                                                                    <i className="fa-solid fa-plus"></i>
-                                                                </button>
+                                                                                <button onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML_plus_btn btn text-light">
+                                                                                    <i className="fa-solid fa-plus"></i>
+                                                                                </button>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
 
                                                             </div>
+
                                                         </div>
 
-                                                    </div>
+                                                        <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
+                                                            <div className="offcanvas-header mb-1 py-0 mt-3">
+                                                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
 
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
-                                            <div className="offcanvas-header mb-1 py-0 mt-3">
-                                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
-
-                                                <button type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                            </div>
-
-                                            <div className="offcanvas-body p-0">
-
-                                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Placeholder!</h6>
-
-                                                <div className="container px-4">
-
-                                                    <div className="container-fluid text-center">
-                                                        <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
-                                                    </div>
-
-                                                    <div className="container-fluid text-center mt-2">
-                                                        <h3>{menu_name}</h3>
-
-                                                        <h6 className='mt-2'>{menu_description}</h6>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div className="px-4">
-                                                    <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
-
-                                                    <form onSubmit={addProduct} className="mt-4">
-                                                        <input
-                                                            type="number"
-                                                            className="form-control"
-                                                            placeholder="Number of Orders"
-                                                            min="1"
-                                                            value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
-                                                            required>
-                                                        </input>
-
-                                                        <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
-
-                                                        <div className="d-flex flex-row align-items-center justify-content-between mt-3 pb-3">
-
-                                                            <div className="LucidoML-orderhere-text-title container-fluid m-0">
-                                                                <p className="text-success m-0">₱{menu_price}</p>
+                                                                <button type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                                             </div>
 
-                                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
-                                                                Cancel
-                                                            </button>
+                                                            <div className="offcanvas-body p-0">
 
-                                                            <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order">
+                                                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Placeholder!</h6>
 
-                                                            </input>
+                                                                <div className="container px-4">
+
+                                                                    <div className="container-fluid text-center">
+                                                                        <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
+                                                                    </div>
+
+                                                                    <div className="container-fluid text-center mt-2">
+                                                                        <h3>{menu_name}</h3>
+
+                                                                        <h6 className='mt-2'>{menu_description}</h6>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div className="px-4">
+                                                                    <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                                    <form onSubmit={addProduct} className="mt-4">
+                                                                        <input
+                                                                            type="number"
+                                                                            className="form-control"
+                                                                            placeholder="Number of Orders"
+                                                                            min="1"
+                                                                            value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
+                                                                            required>
+                                                                        </input>
+
+                                                                        <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                                        <div className="d-flex flex-row align-items-center justify-content-between mt-3 pb-3">
+
+                                                                            <div className="LucidoML-orderhere-text-title container-fluid m-0">
+                                                                                <p className="text-success m-0">₱{menu_price}</p>
+                                                                            </div>
+
+                                                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
+                                                                                Cancel
+                                                                            </button>
+
+                                                                            <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order">
+
+                                                                            </input>
+
+
+                                                                        </div>
+
+                                                                    </form>
+
+                                                                </div>
+
+                                                            </div>
+
 
 
                                                         </div>
 
-                                                    </form>
-
-                                                </div>
-
-                                            </div>
-
-
-
-                                        </div>
+                                                    </div>
+                                                </>
+                                                :
+                                                ""
+                                        }
 
 
-                                    </div>
+                                    </>
 
 
                                 )
@@ -396,7 +463,7 @@ function OrderHere() {
 
                 </div>
 
-            </div>
+            </div >
 
             <div className="llanesk-orderhere-pay-offcanvas offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvas8" aria-labelledby="offcanvas8" data-bs-scroll="true">
 

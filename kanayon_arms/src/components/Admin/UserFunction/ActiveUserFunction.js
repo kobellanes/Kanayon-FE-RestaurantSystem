@@ -162,7 +162,7 @@ function UserFunction() {
 
                                                         </div>
 
-                                                        {/* onClick={() => BanUser(index)} */}
+
                                                     </td>
                                                 </>
                                                 :

@@ -6,7 +6,6 @@ import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
 import Axios from 'axios';
 
-
 function StockListItem() {
     const menus = useSelector((state) => state.allMenus.menus);
 
@@ -56,13 +55,15 @@ function StockListItem() {
         const newMenu = [...menus];
         let idn = newMenu.findIndex((menu) => menu.menu_isEdit == 1);
 
+        const noEditMenu = newMenu.at(idn);
+
         if (idn != -1) {
             const data_update = {
-                menu_pic: menu_pic,
                 menu_name: menu_name,
                 menu_description: menu_description,
                 menu_price: menu_price,
                 menu_quantity: menu_quantity,
+                menu_isSold: noEditMenu.menu_isSold,
             }
             const updateMenu = newMenu.at(idn);
 
@@ -171,6 +172,8 @@ function StockListItem() {
             {
                 menus.length > 0 ?
                     menus.map((menus, index) => {
+
+
                         return (
                             <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-5 my-3 p-4">
                                 <div className="mb-3">
