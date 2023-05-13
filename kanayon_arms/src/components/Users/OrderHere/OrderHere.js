@@ -67,7 +67,9 @@ function OrderHere() {
     const [lastNote, setLastNote] = useState('');
 
     const [finalPrice, setFinalPrice] = useState('Pay');
+
     const [getFinalPrice, setgetFinalPrice] = useState('');
+    const [getMethod, setgetMethod] = useState('');
 
     const fetchMenus = async () => {
         http.get('menus').then(result => {
@@ -132,6 +134,9 @@ function OrderHere() {
 
             const j = parseInt(newPrice);
             setFinalPrice("Paid ₱" + j + ".00")
+
+            setgetFinalPrice(j);
+            setgetMethod("Dine in");
         }
     };
 
@@ -144,8 +149,10 @@ function OrderHere() {
             const h = parseInt(newPrice);
             const i = h + 50;
 
-            setgetFinalPrice(i);
             setFinalPrice("Paid ₱" + i + ".00");
+
+            setgetFinalPrice(i);
+            setgetMethod("Delivery");
         }
     };
 
@@ -173,6 +180,7 @@ function OrderHere() {
                     user_isEmail: data.isEmail,
                     user_isGcash: data.isGcash,
                     order_isList: newOrders,
+                    order_isMethod: getMethod,
                     order_isPrice: getFinalPrice,
                     order_isStatus: "PENDING ORDER"
                 }
@@ -273,12 +281,12 @@ function OrderHere() {
 
     return (
         <>
-            <Header>
-            </Header>
 
             {
                 data.isStatus == "ACTIVE" || data.isStatus == "ADMIN" ?
                     <>
+                        <Header>
+                        </Header>
 
                         <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
                             <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Kanayon Inasal Menu</h4>
