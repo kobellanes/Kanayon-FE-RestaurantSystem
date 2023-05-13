@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setMenus, getMenu } from '../../../redux/actions/actions';
+import { setMenus, getMenu, setAccounts } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import "./OrderHere.css"
 import Header from '../Header/Header';
@@ -8,9 +8,36 @@ import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
 
 function OrderHere() {
-    const menus = useSelector((state) => state.allMenus.menus);
+    const user_id = localStorage.getItem("user_id");
+    const [data, setData] = useState('');
 
     const dispatch = useDispatch();
+
+    const fetchAccount = async () => {
+        http.get('accounts').then(result => {
+            const filter = result.data.filter((account) => account.id == user_id);
+
+            if (filter[0] === undefined) {
+                window.location.href = '/login';
+            } else {
+                setData(filter[0].isStatus);
+
+                if ((filter[0].isStatus == "ACTIVE") || filter[0].isStatus == "ADMIN") {
+
+                } else {
+                    window.location.href = '/login';
+                }
+            }
+
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchAccount();
+
+    }, []);
+
+    const menus = useSelector((state) => state.allMenus.menus);
 
     const [menu_pic, setMenu_pic] = useState('');
     const [menu_name, setMenu_name] = useState('');
@@ -79,60 +106,21 @@ function OrderHere() {
         setNewOrders(oldOrders + " " + a);
         setOldOrders(a + "," + " " + oldOrders);
 
-        if (idn != -1) {
-            const data_update = {
-                menu_name: addOrder.menu_name,
-                menu_description: addOrder.menu_description,
-                menu_price: addOrder.menu_price,
-                menu_quantity: addOrder.menu_quantity - parseInt(numberOrder),
-                menu_isSold: addOrder.menu_isSold + parseInt(numberOrder),
-            };
+        //TOTAL PRICE 
+        setPricePrompt("Total Price: ₱")
+        const b = parseInt(addOrder.menu_price);
+        const c = parseInt(numberOrder);
+        const d = b * c;
+        const f = parseInt(oldPrice) + d;
+        setNewPrice(f + ".00");
+        setOldPrice(f);
 
-            const updateMenu = newMenu.at(idn);
-            console.log(updateMenu.id);
+        setNumberOrder('');
 
-            http.put(`menus/${updateMenu.id}`, data_update).then(result => {
-                if (result.data.status == 1) {
-
-                    updateMenu.menu_quantity = addOrder.menu_quantity - parseInt(numberOrder);
-                    updateMenu.menu_isSold = addOrder.menu_isSold + parseInt(numberOrder);
-
-                    newMenu.splice(idn, 1, updateMenu);
-                    dispatch(setMenus(newMenu));
-
-                    const singleMen = {
-                        id: -2,
-                        menu_name: null,
-                        menu_description: null,
-                        menu_price: null,
-                        menu_quantity: null,
-                        menu_isEdit: 0,
-                        menu_isSold: 0,
-                    };
-
-                    dispatch(getMenu(singleMen));
-
-                    setPricePrompt("Total Price: ₱")
-                    const b = parseInt(addOrder.menu_price);
-                    const c = parseInt(numberOrder);
-                    const d = b * c;
-                    const f = parseInt(oldPrice) + d;
-                    setNewPrice(f + ".00");
-                    setOldPrice(f);
-
-                    setNumberOrder('');
-
-                    notifySuccess("");
-                }
-
-            }).catch(err => console.log(err.message));
-        }
-
+        notifySuccess("");
 
         // const regEx = ['\n'];
         // let textValue = stringToReplace.replace(/\\n/g,'\n');
-
-        //TOTAL PRICE 
 
     }
 
@@ -163,7 +151,6 @@ function OrderHere() {
     const fixedFinalPrice = () => {
         setVerifier('');
         setVerifier2('');
-
 
         setVerifierPrompt("* Please choose mode: ");
         setAddressPrompt('');
@@ -214,69 +201,27 @@ function OrderHere() {
     }
 
     const cancelOrder = () => {
-        const newMenu = [...menus];
+        setNewPrice('');
+        setOldPrice('0');
+        setPricePrompt('')
 
-        let idn = newMenu.findIndex((men) => men.id == orderOrig.id);
+        setNewOrders('');
+        setOldOrders('');
+        setNumberOrder('');
 
-        const cancelOrder = menus.at(idn);
+        setOrderPrompt("No order yet.");
+        setVerifier('');
+        setVerifier('');
 
-        if (idn != -1) {
-            const data_update = {
-                menu_name: cancelOrder.menu_name,
-                menu_description: cancelOrder.menu_description,
-                menu_price: cancelOrder.menu_price,
-                menu_quantity: cancelOrder.menu_quantity + parseInt(numberOrder),
-                menu_isSold: cancelOrder.menu_isSold - parseInt(numberOrder),
-            };
+        setCheckbox1('')
+        setCheckbox2('');
 
-            const updateMenu = newMenu.at(idn);
-            console.log(updateMenu.id);
+        setVerifierPrompt("* Please choose mode: ");
 
-            http.put(`menus/${updateMenu.id}`, data_update).then(result => {
-                if (result.data.status == 1) {
+        setAddressPrompt('');
+        setLastNote('');
 
-                    updateMenu.menu_quantity = cancelOrder.menu_quantity + parseInt(numberOrder);
-                    updateMenu.menu_isSold = cancelOrder.menu_isSold - parseInt(numberOrder);
-
-                    newMenu.splice(idn, 1, updateMenu);
-                    dispatch(setMenus(newMenu));
-
-                    const singleMen = {
-                        id: -2,
-                        menu_name: null,
-                        menu_description: null,
-                        menu_price: null,
-                        menu_quantity: null,
-                        menu_isEdit: 0,
-                        menu_isSold: 0,
-                    };
-
-                    dispatch(getMenu(singleMen));
-                    setNewPrice('');
-                    setOldPrice('0');
-                    setPricePrompt('')
-
-                    setNewOrders('');
-                    setOldOrders('');
-                    setNumberOrder('');
-
-                    setOrderPrompt("No order yet.");
-                    setVerifier('');
-                    setVerifier('');
-
-                    setCheckbox1('')
-                    setCheckbox2('');
-
-                    setVerifierPrompt("* Please choose mode: ");
-
-                    setAddressPrompt('');
-                    setLastNote('');
-
-                    setFinalPrice("Pay");
-                }
-
-            }).catch(err => console.log(err.message));
-        }
+        setFinalPrice("Pay");
 
     };
 
@@ -295,331 +240,292 @@ function OrderHere() {
 
     return (
         <>
-            <Header>
-            </Header>
 
-            <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
-                <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Kanayon Inasal Menu</h4>
-                <div className="llanesk-orderhere-border mb-3 text-center"></div>
-            </div>
+            {
+                data == "ACTIVE" || data == "ADMIN" ?
+                    <>
+                        <Header>
+                        </Header>
 
-            <div className="container-fluid text-center mt-2">
-                <button className="btn btn-danger px-3 py-2 fs-4 rounded-3 fw-normal" data-bs-toggle="offcanvas" data-bs-target="#offcanvas8" aria-controls="offcanvas8">
-                    SEE ORDER
-                    <i className="ms-2 fa-solid fa-receipt"></i>
-                </button>
+                        <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
+                            <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Kanayon Inasal Menu</h4>
+                            <div className="llanesk-orderhere-border mb-3 text-center"></div>
+                        </div>
 
-            </div>
-            <div className="container mt-5">
+                        <div className="container-fluid text-center mt-2">
+                            <button className="btn btn-danger px-3 py-2 fs-4 rounded-3 fw-normal" data-bs-toggle="offcanvas" data-bs-target="#offcanvas8" aria-controls="offcanvas8">
+                                SEE ORDER
+                                <i className="ms-2 fa-solid fa-receipt"></i>
+                            </button>
 
-                <div className="row row-cols-1 row-cols-xxl-3 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-xs-2 g-5">
+                        </div>
+                        <div className="container mt-5">
 
-                    {
-                        menus.length > 0 ?
-                            menus.map((menus, index) => {
+                            <div className="row row-cols-1 row-cols-xxl-3 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-xs-2 g-5">
 
-                                return (
-                                    <>
+                                {
+                                    menus.length > 0 ?
+                                        menus.map((menus, index) => {
 
-                                        {
-                                            menus.menu_quantity != 0 ?
+                                            return (
                                                 <>
-                                                    <div className="col">
-                                                        <div type="button" onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
 
-                                                            <div className="row g-0">
+                                                    {
+                                                        menus.menu_quantity != 0 ?
+                                                            <>
+                                                                <div className="col">
+                                                                    <div type="button" onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML-orderhere-card card d-flex align-items-center justify-content-center mb-3">
 
-                                                                <div className="col-md-6 col-sm-6 py-3 ps-2 text-center">
-                                                                    <img src={menus.menu_pic} className="LucidoML-orderhere-img-thumbnail card card-span text-white card-img-top" alt="..."></img>
+                                                                        <div className="row g-0">
 
-                                                                </div>
-
-                                                                <div className="col-md-6">
-
-                                                                    <div className="card-body mt-2">
-                                                                        <div className="container p-2 mb-4">
-                                                                            <h5 className="LucidoML-orderhere-card-title text-center">{menus.menu_name}</h5>
-
-                                                                            <p className="llanesk-stocklistitem-title mb-3"></p>
-
-                                                                            <p className="card-text text-center LucidoML-orderhere-card-description">
-                                                                                {menus.menu_description}
-                                                                            </p>
-
-                                                                        </div>
-
-                                                                        <div className="card-text m-0">
-
-                                                                            <div className="container-fluid d-flex flex-row align-items-center justify-content-between">
-
-                                                                                <p className="card-text LucidoML-orderhere-text-title text-success fw-normal m-0">
-                                                                                    ₱{menus.menu_price}
-
-                                                                                </p>
-
-                                                                                <button onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML_plus_btn btn text-light">
-                                                                                    <i className="fa-solid fa-plus"></i>
-                                                                                </button>
+                                                                            <div className="col-md-6 col-sm-6 py-3 ps-2 text-center">
+                                                                                <img src={menus.menu_pic} className="LucidoML-orderhere-img-thumbnail card card-span text-white card-img-top" alt="..."></img>
 
                                                                             </div>
-                                                                        </div>
 
-                                                                    </div>
+                                                                            <div className="col-md-6">
 
-                                                                </div>
+                                                                                <div className="card-body mt-2">
+                                                                                    <div className="container p-2 mb-4">
+                                                                                        <h5 className="LucidoML-orderhere-card-title text-center">{menus.menu_name}</h5>
 
-                                                            </div>
+                                                                                        <p className="llanesk-stocklistitem-title mb-3"></p>
 
-                                                        </div>
+                                                                                        <p className="card-text text-center LucidoML-orderhere-card-description">
+                                                                                            {menus.menu_description}
+                                                                                        </p>
 
-                                                        <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
-                                                            <div className="offcanvas-header mb-1 py-0 mt-3">
-                                                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
+                                                                                    </div>
 
-                                                                <button type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                            </div>
+                                                                                    <div className="card-text m-0">
 
-                                                            <div className="offcanvas-body p-0">
+                                                                                        <div className="container-fluid d-flex flex-row align-items-center justify-content-between">
 
-                                                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Placeholder!</h6>
+                                                                                            <p className="card-text LucidoML-orderhere-text-title text-success fw-normal m-0">
+                                                                                                ₱{menus.menu_price}
 
-                                                                <div className="container px-4">
+                                                                                            </p>
 
-                                                                    <div className="container-fluid text-center">
-                                                                        <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
-                                                                    </div>
+                                                                                            <button onClick={() => confirmOrder(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas7" aria-controls="offcanvas7" className="LucidoML_plus_btn btn text-light">
+                                                                                                <i className="fa-solid fa-plus"></i>
+                                                                                            </button>
 
-                                                                    <div className="container-fluid text-center mt-2">
-                                                                        <h3>{menu_name}</h3>
+                                                                                        </div>
+                                                                                    </div>
 
-                                                                        <h6 className='mt-2'>{menu_description}</h6>
+                                                                                </div>
 
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div className="px-4">
-                                                                    <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
-
-                                                                    <form onSubmit={addProduct} className="mt-4">
-                                                                        <input
-                                                                            type="number"
-                                                                            className="form-control"
-                                                                            placeholder="Number of Orders"
-                                                                            min="1"
-                                                                            value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
-                                                                            required>
-                                                                        </input>
-
-                                                                        <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
-
-                                                                        <div className="d-flex flex-row align-items-center justify-content-between mt-3 pb-3">
-
-                                                                            <div className="LucidoML-orderhere-text-title container-fluid m-0">
-                                                                                <p className="text-success m-0">₱{menu_price}</p>
                                                                             </div>
 
-                                                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
-                                                                                Cancel
-                                                                            </button>
+                                                                        </div>
 
-                                                                            <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order">
+                                                                    </div>
 
-                                                                            </input>
+                                                                    <div className="llanesk-orderhere-confirmorder-offcanva offcanvas text-bg-light" id="offcanvas7" tabIndex="-1" data-bs-scroll="true">
+                                                                        <div className="offcanvas-header mb-1 py-0 mt-3">
+                                                                            <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm Order</h3>
 
+                                                                            <button type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                                        </div>
+
+                                                                        <div className="offcanvas-body p-0">
+
+                                                                            <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Placeholder!</h6>
+
+                                                                            <div className="container px-4">
+
+                                                                                <div className="container-fluid text-center">
+                                                                                    <img className="llanesk-orderhere-pic-order rounded-3" src={menu_pic}></img>
+                                                                                </div>
+
+                                                                                <div className="container-fluid text-center mt-2">
+                                                                                    <h3>{menu_name}</h3>
+
+                                                                                    <h6 className='mt-2'>{menu_description}</h6>
+
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div className="px-4">
+                                                                                <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                                                <form onSubmit={addProduct} className="mt-4">
+                                                                                    <input
+                                                                                        type="number"
+                                                                                        className="form-control"
+                                                                                        placeholder="Number of Orders"
+                                                                                        min="1"
+                                                                                        max="20"
+                                                                                        value={numberOrder} onChange={(e) => setNumberOrder(e.target.value)}
+                                                                                        required>
+                                                                                    </input>
+
+                                                                                    <h6 className="mt-4 text-start border-bottom text-light fw-light"></h6>
+
+                                                                                    <div className="d-flex flex-row align-items-center justify-content-between mt-3 pb-3">
+
+                                                                                        <div className="LucidoML-orderhere-text-title container-fluid m-0">
+                                                                                            <p className="text-success m-0">₱{menu_price}</p>
+                                                                                        </div>
+
+                                                                                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-light text-dark px-0 mx-2 container-fluid">
+                                                                                            Cancel
+                                                                                        </button>
+
+                                                                                        <input type="submit" className="btn btn-success text-light px-0 mx-2 container-fluid" value="Add to order">
+
+                                                                                        </input>
+
+
+                                                                                    </div>
+
+                                                                                </form>
+
+                                                                            </div>
 
                                                                         </div>
 
-                                                                    </form>
+
+
+                                                                    </div>
 
                                                                 </div>
+                                                            </>
+                                                            :
+                                                            ""
+                                                    }
 
-                                                            </div>
 
-
-
-                                                        </div>
-
-                                                    </div>
                                                 </>
-                                                :
-                                                ""
-                                        }
 
 
-                                    </>
+                                            )
+                                        })
+
+                                        :
+                                        <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div>
+
+                                }
 
 
-                                )
-                            })
-
-                            :
-                            <div className="spinner-border justify-content-center container-fluid text-light mt-4   " role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                    }
-
-
-
-                </div>
-
-            </div >
-
-            <div className="llanesk-orderhere-pay-offcanvas offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvas8" aria-labelledby="offcanvas8" data-bs-scroll="true">
-
-                <div className="offcanvas-header p-0 mt-3 mx-4">
-                    <h3 className="offcanvas-title" id="offcanvas8">Confirm Order</h3>
-
-                    <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-
-                </div>
-
-                <div className="offcanvas-body p-0 mt-1">
-
-                    <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-3">Placeholder!</h6>
-
-                    <div className="px-4 flex-flex-column">
-
-                        <p className="m-0 fs-5">{orderPrompt}</p>
-
-                        <p className="fs-5 m-0 mt-2">{newOrders}</p>
-
-                    </div>
-
-                </div>
-
-                {
-                    orderPrompt == "Your Order/s:" ?
-                        <>
-                            <div className="d-flex flex-row p-0 m-0 mb-3 container-fluid align-items-center justify-content-center">
-                                <p className="fw-bold m-0 fs-4 d-flex">
-                                    {pricePrompt}{newPrice}
-                                </p>
-                            </div>
-                        </>
-                        :
-                        ""
-                }
-
-                <div className="border-bottom text-light mb-3"></div>
-
-                <div className="px-4 container">
-                    <h6 className="fw-light">
-                        Note: Placeholder!
-                    </h6>
-                </div>
-
-                {
-                    orderPrompt == "Your Order/s:" ?
-                        <div className="container p-3 px-4 col-12 d-flex flex-row">
-                            <div className="col-5">
-                                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas10" aria-controls="offcanvas10" type="button" className="container-fluid btn btn-dark">
-                                    Cancel order
-                                </button>
-                            </div>
-
-                            <div className="col-2">
 
                             </div>
 
-                            <div className="col-5">
-                                <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas9" aria-controls="offcanvas9" type="button" className="container-fluid btn btn-primary">
-                                    Pay order
-                                    <i className="ms-2 fa-solid fa-handshake"></i>
-                                </button>
+                        </div >
+
+                        <div className="llanesk-orderhere-pay-offcanvas offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvas8" aria-labelledby="offcanvas8" data-bs-scroll="true">
+
+                            <div className="offcanvas-header p-0 mt-3 mx-4">
+                                <h3 className="offcanvas-title" id="offcanvas8">Receipt</h3>
+
+                                <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 
                             </div>
 
-                        </div>
-                        :
-                        <div className="container p-3 px-4 col-12 d-flex flex-row">
-                            <div className="col-5">
-                                <button type="button" className="container-fluid btn btn-dark" data-bs-dismiss="offcanvas" aria-label="Close">
-                                    Cancel order
-                                </button>
-                            </div>
+                            <div className="offcanvas-body p-0 mt-1">
 
-                            <div className="col-2">
+                                <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-3">Placeholder!</h6>
 
-                            </div>
+                                <div className="px-4 flex-flex-column">
 
-                            <div className="col-5">
-                                <button disabled type="button" className="container-fluid btn btn-primary">
-                                    Pay order
-                                    <i className="ms-2 fa-solid fa-handshake"></i>
-                                </button>
+                                    <p className="m-0 fs-5">{orderPrompt}</p>
+
+                                    <p className="fs-5 m-0 mt-2">{newOrders}</p>
+
+                                </div>
 
                             </div>
 
-                        </div>
-                }
-
-            </div>
-
-            <div className="llanesk-orderhere-lastpayment-offcanva offcanvas text-bg-light" id="offcanvas9" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
-                <div className="offcanvas-header mb-1 py-0 mt-3">
-                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Payment</h3>
-
-                    <button onClick={fixedFinalPrice} type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-
-                <div className="offcanvas-body p-0">
-
-                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-3">Placeholder!</h6>
-
-                    <div className="container px-4 mt-4">
-
-                        {
-                            verifier == "CHECKED" ?
-                                <>
-                                    <h6 className="text-dark text-center mb-3">{verifierPrompt}</h6>
-
-                                    <div className="text-center m-0 d-flex flex-row justify-content-center pe-2 col-12">
-
-                                        <input
-                                            type="radio"
-                                            className="btn-check"
-                                            name="options"
-                                            id="option"
-                                            value={checkbox1}
-                                            onChange={handleChange}
-                                            autoComplete="off"
-                                            disabled />
-
-                                        <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
-
-                                    </div>
-                                </>
-                                :
-                                verifier2 == "CHECKED" ?
+                            {
+                                orderPrompt == "Your Order/s:" ?
                                     <>
-                                        <h6 className="text-dark text-center mb-3">{verifierPrompt}</h6>
-
-                                        <div className="text-center m-0 d-flex flex-row justify-content-center pe-2 col-12">
-
-                                            <input
-                                                type="radio"
-                                                className="btn-check"
-                                                name="options"
-                                                id="option2"
-                                                autoComplete="off"
-                                                value={checkbox2}
-                                                onChange={handleChange2}
-                                                disabled
-                                            />
-
-                                            <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
-
+                                        <div className="d-flex flex-row p-0 m-0 mb-3 container-fluid align-items-center justify-content-center">
+                                            <p className="fw-bold m-0 fs-4 d-flex">
+                                                {pricePrompt}{newPrice}
+                                            </p>
                                         </div>
                                     </>
                                     :
-                                    orderPrompt == "No order yet." ?
-                                        <>
-                                            <h6 className="text-dark text-center mb-3">No order yet.</h6>
+                                    ""
+                            }
 
-                                            <form>
+                            <div className="border-bottom text-light mb-3"></div>
 
-                                                <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
+                            <div className="px-4 container">
+                                <h6 className="fw-light">
+                                    Note: Placeholder!
+                                </h6>
+                            </div>
+
+                            {
+                                orderPrompt == "Your Order/s:" ?
+                                    <div className="container p-3 px-4 col-12 d-flex flex-row">
+                                        <div className="col-5">
+                                            <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas10" aria-controls="offcanvas10" type="button" className="container-fluid btn btn-dark">
+                                                Cancel order
+                                            </button>
+                                        </div>
+
+                                        <div className="col-2">
+
+                                        </div>
+
+                                        <div className="col-5">
+                                            <button data-bs-toggle="offcanvas" data-bs-target="#offcanvas9" aria-controls="offcanvas9" type="button" className="container-fluid btn btn-primary">
+                                                Pay order
+                                                <i className="ms-2 fa-solid fa-handshake"></i>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                    :
+                                    <div className="container p-3 px-4 col-12 d-flex flex-row">
+                                        <div className="col-5">
+                                            <button type="button" className="container-fluid btn btn-dark" data-bs-dismiss="offcanvas" aria-label="Close">
+                                                Cancel order
+                                            </button>
+                                        </div>
+
+                                        <div className="col-2">
+
+                                        </div>
+
+                                        <div className="col-5">
+                                            <button disabled type="button" className="container-fluid btn btn-primary">
+                                                Pay order
+                                                <i className="ms-2 fa-solid fa-handshake"></i>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                            }
+
+                        </div>
+
+                        <div className="llanesk-orderhere-lastpayment-offcanva offcanvas text-bg-light" id="offcanvas9" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
+                            <div className="offcanvas-header mb-1 py-0 mt-3">
+                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Payment</h3>
+
+                                <button onClick={fixedFinalPrice} type="button" className="btn-close btn-close-dark px-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+
+                            <div className="offcanvas-body p-0">
+
+                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-3">Placeholder!</h6>
+
+                                <div className="container px-4 mt-4">
+
+                                    {
+                                        verifier == "CHECKED" ?
+                                            <>
+                                                <h6 className="text-dark text-center mb-3">{verifierPrompt}</h6>
+
+                                                <div className="text-center m-0 d-flex flex-row justify-content-center pe-2 col-12">
 
                                                     <input
                                                         type="radio"
@@ -633,136 +539,187 @@ function OrderHere() {
 
                                                     <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
 
-                                                    <div className="col-1"></div>
-
-                                                    <input
-                                                        type="radio"
-                                                        className="btn-check"
-                                                        name="options"
-                                                        id="option2"
-                                                        autoComplete="off"
-                                                        value={checkbox2}
-                                                        onChange={handleChange2}
-                                                        disabled
-                                                    />
-
-                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
-
                                                 </div>
+                                            </>
+                                            :
+                                            verifier2 == "CHECKED" ?
+                                                <>
+                                                    <h6 className="text-dark text-center mb-3">{verifierPrompt}</h6>
 
-                                            </form>
-                                        </>
-                                        :
-                                        <>
-                                            <h6 className="text-danger text-center mb-3">{verifierPrompt}</h6>
+                                                    <div className="text-center m-0 d-flex flex-row justify-content-center pe-2 col-12">
 
-                                            <form>
+                                                        <input
+                                                            type="radio"
+                                                            className="btn-check"
+                                                            name="options"
+                                                            id="option2"
+                                                            autoComplete="off"
+                                                            value={checkbox2}
+                                                            onChange={handleChange2}
+                                                            disabled
+                                                        />
 
-                                                <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
+                                                        <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
 
-                                                    <input
-                                                        type="radio"
-                                                        className="btn-check"
-                                                        name="options"
-                                                        id="option"
-                                                        value={checkbox1}
-                                                        onChange={handleChange}
-                                                        autoComplete="off" />
+                                                    </div>
+                                                </>
+                                                :
+                                                orderPrompt == "No order yet." ?
+                                                    <>
+                                                        <h6 className="text-dark text-center mb-3">No order yet.</h6>
 
-                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
+                                                        <form>
 
-                                                    <div className="col-1"></div>
+                                                            <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
 
-                                                    <input
-                                                        type="radio"
-                                                        className="btn-check"
-                                                        name="options"
-                                                        id="option2"
-                                                        autoComplete="off"
-                                                        value={checkbox2}
-                                                        onChange={handleChange2}
-                                                    />
+                                                                <input
+                                                                    type="radio"
+                                                                    className="btn-check"
+                                                                    name="options"
+                                                                    id="option"
+                                                                    value={checkbox1}
+                                                                    onChange={handleChange}
+                                                                    autoComplete="off"
+                                                                    disabled />
 
-                                                    <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+                                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
 
-                                                </div>
+                                                                <div className="col-1"></div>
 
-                                            </form>
-                                        </>
+                                                                <input
+                                                                    type="radio"
+                                                                    className="btn-check"
+                                                                    name="options"
+                                                                    id="option2"
+                                                                    autoComplete="off"
+                                                                    value={checkbox2}
+                                                                    onChange={handleChange2}
+                                                                    disabled
+                                                                />
+
+                                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+
+                                                            </div>
+
+                                                        </form>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <h6 className="text-danger text-center mb-3">{verifierPrompt}</h6>
+
+                                                        <form>
+
+                                                            <div className="text-center m-0 d-flex flex-row justify-content-center p-0 col-12">
+
+                                                                <input
+                                                                    type="radio"
+                                                                    className="btn-check"
+                                                                    name="options"
+                                                                    id="option"
+                                                                    value={checkbox1}
+                                                                    onChange={handleChange}
+                                                                    autoComplete="off" />
+
+                                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option">Dine in</label>
+
+                                                                <div className="col-1"></div>
+
+                                                                <input
+                                                                    type="radio"
+                                                                    className="btn-check"
+                                                                    name="options"
+                                                                    id="option2"
+                                                                    autoComplete="off"
+                                                                    value={checkbox2}
+                                                                    onChange={handleChange2}
+                                                                />
+
+                                                                <label className="btn btn-dark col-5 fw-bold" htmlFor="option2">Delivery</label>
+
+                                                            </div>
+
+                                                        </form>
+                                                    </>
 
 
-                        }
+                                    }
 
-                        <div className="d-flex flex-column align-items-center justify-content-center text-center mt-4">
+                                    <div className="d-flex flex-column align-items-center justify-content-center text-center mt-4">
 
-                            <h6 className="text-danger fw-normal">{addressPrompt}</h6>
-                            <h6 className="text-danger fw-normal mt-4">{lastNote}</h6>
+                                        <h6 className="text-danger fw-normal">{addressPrompt}</h6>
+                                        <h6 className="text-danger fw-normal mt-4">{lastNote}</h6>
 
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-                <h6 className="mt-3 border-bottom"></h6>
-
-                <div className="container-fluid d-flex flex-row pb-3 px-3 mt-2">
-
-                    <button onClick={fixedFinalPrice} className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize</button>
-
-                    <div className="col-2"></div>
-                    {
-                        verifierPrompt === "Selected Mode:" ?
-                            <button className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
-                            :
-                            <button className="btn btn-primary col-5 fw-light" disabled>{finalPrice}</button>
-                    }
+                                    </div>
 
 
-
-                </div>
-
-            </div >
-
-
-            <div className="llanesk-ordehere-cancel-order-offcanva offcanvas text-bg-light" id="offcanvas10" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
-                <div className="offcanvas-header mb-1 py-0 mt-3">
-                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
-
-                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-
-                <div className="offcanvas-body p-0 mt-1">
-
-                    <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
-
-                    <div className="container ">
-
-                        <div className="container">
-
-                            <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
-                                <p className="text-start m-0">Note: Are you sure you want to cancel your order/s? If you do this action, all of your orders will be cleared.</p>
+                                </div>
 
                             </div>
 
+                            <h6 className="mt-3 border-bottom"></h6>
+
+                            <div className="container-fluid d-flex flex-row pb-3 px-3 mt-2">
+
+                                <button onClick={fixedFinalPrice} className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize</button>
+
+                                <div className="col-2"></div>
+                                {
+                                    verifierPrompt === "Selected Mode:" ?
+                                        <button className="btn btn-primary col-5 fw-light" onClick={confirmPayOrder}>{finalPrice}</button>
+                                        :
+                                        <button className="btn btn-primary col-5 fw-light" disabled>{finalPrice}</button>
+                                }
+
+
+
+                            </div>
+
+                        </div >
+
+
+                        <div className="llanesk-ordehere-cancel-order-offcanva offcanvas text-bg-light" id="offcanvas10" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
+                            <div className="offcanvas-header mb-1 py-0 mt-3">
+                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
+
+                                <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+
+                            <div className="offcanvas-body p-0 mt-1">
+
+                                <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
+
+                                <div className="container ">
+
+                                    <div className="container">
+
+                                        <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
+                                            <p className="text-start m-0">Note: Are you sure you want to cancel your order/s? If you do this action, all of your orders will be cleared.</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
+
+                                <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
+                                    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Minimize</button>
+
+                                    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" onClick={cancelOrder} className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt">Cancel Order</button>
+
+                                </div>
+                            </div>
+
                         </div>
+
+                        <Footer>
+                        </Footer>
+                    </>
+                    :
+                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
-
-                    <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
-
-                    <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
-                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Minimize</button>
-
-                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" onClick={cancelOrder} className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt">Cancel Order</button>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <Footer>
-            </Footer>
+            }
 
         </>
 

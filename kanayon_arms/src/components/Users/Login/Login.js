@@ -35,6 +35,8 @@ function Login() {
     const [prompt2, setPrompt2] = useState('');
     const [prompt3, setPrompt3] = useState('');
 
+    const [counter, setCounter] = useState('');
+
     const Login = (e) => {
         e.preventDefault();
 
@@ -54,19 +56,37 @@ function Login() {
             let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
             if (ind != -1) {
                 const user_id = newAccount[ind].id;
-                const user_status = newAccount[ind].isStatus;
                 localStorage.setItem("user_id", user_id);
-                localStorage.setItem("user_status", user_status);
 
-                if (user_status == "ADMIN") {
-                    window.location.href = '/admin';
-                } else if (user_status == "BANNED") {
-                    setInvprompt('* Your account has been banned due to multiple violations!');
-                    setEmail('');
-                    setPassword('');
-                } else {
-                    window.location.href = '/';
-                }
+                http.get('accounts').then(result => {
+                    setCounter("LOAD");
+                    const filter = result.data.filter((account) => account.id == user_id);
+                    // dispatch(setAccounts(filter[0]));
+
+                    console.log(filter[0]);
+
+                    if (filter[0].isStatus == "ACTIVE") {
+                        window.location.href = '/';
+                    } else if (filter[0].isStatus == "ADMIN") {
+                        window.location.href = '/admin';
+                    } else if (filter[0].isStatus == "BANNED") {
+                        setInvprompt('* Your account has been banned due to multiple violations!');
+                        setEmail('');
+                        setPassword('');
+                    }
+
+                })
+
+                // if (user_status == "ADMIN") {
+                //     window.location.href = '/admin';
+                // } else if (user_status == "BANNED") {
+                //     setInvprompt('* Your account has been banned due to multiple violations!');
+                //     setEmail('');
+                //     setPassword('');
+                // } else {
+                //     window.location.href = '/';
+                // }
+
             } else {   //WRONG PASSWORD OR EMAIL
                 // alert('Invalid Email or Password!');    //Alert will be changed
                 setInvprompt('* Invalid Email or Password!');
@@ -230,6 +250,7 @@ function Login() {
 
     return (
         <>
+
             <Header></Header>
 
             <main className="llanesk-login container-fluid pt-4 pb-0">

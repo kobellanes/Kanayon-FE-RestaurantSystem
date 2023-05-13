@@ -67,3 +67,9 @@
     transform: scale(1.2);
     color: black;
 }
+
+.llanesk-admin-loading {
+    background-color: white;
+    min-height: 1000px;
+    max-height: 1000px;
+}
