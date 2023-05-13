@@ -1,4 +1,4 @@
-import { getAccountReducer, getMenuReducer, setAccountsReducer, setMenusReducer, setOrderReducer } from "./reducers";
+import { getAccountReducer, getMenuReducer, setAccountsReducer, setMenusReducer, setOrdersReducer } from "./reducers";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
@@ -9,7 +9,7 @@ const reducers = combineReducers({
     getMenu: getMenuReducer,
 
 
-    allOrders: setOrderReducer,
+    allOrders: setOrdersReducer,
 
 });
 

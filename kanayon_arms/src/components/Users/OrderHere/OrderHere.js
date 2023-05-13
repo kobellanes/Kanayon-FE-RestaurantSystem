@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setMenus, getMenu, setAccounts } from '../../../redux/actions/actions';
+import { setMenus, setOrders } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import "./OrderHere.css"
 import Header from '../Header/Header';
@@ -20,7 +20,7 @@ function OrderHere() {
             if (filter[0] === undefined) {
                 window.location.href = '/login';
             } else {
-                setData(filter[0].isStatus);
+                setData(filter[0]);
 
                 if ((filter[0].isStatus == "ACTIVE") || filter[0].isStatus == "ADMIN") {
 
@@ -57,7 +57,6 @@ function OrderHere() {
     const [orderPrompt, setOrderPrompt] = useState("No order yet.");
     const [pricePrompt, setPricePrompt] = useState('');
 
-
     const [checkbox1, setCheckbox1] = useState(false);
     const [checkbox2, setCheckbox2] = useState(false);
     const [verifier, setVerifier] = useState('');
@@ -68,6 +67,7 @@ function OrderHere() {
     const [lastNote, setLastNote] = useState('');
 
     const [finalPrice, setFinalPrice] = useState('Pay');
+    const [getFinalPrice, setgetFinalPrice] = useState('');
 
     const fetchMenus = async () => {
         http.get('menus').then(result => {
@@ -144,6 +144,7 @@ function OrderHere() {
             const h = parseInt(newPrice);
             const i = h + 50;
 
+            setgetFinalPrice(i);
             setFinalPrice("Paid ₱" + i + ".00");
         }
     };
@@ -161,34 +162,66 @@ function OrderHere() {
 
     const confirmPayOrder = () => {
         if (verifierPrompt === "Selected Mode:") {
-            notifyCreated();
 
-            setNewPrice('');
-            setOldPrice('0');
-            setPricePrompt('')
+            http.get('orders').then(result => {
+                dispatch(setOrders(result.data));
+                const newOrder = result.data;
 
-            setNewOrders('');
-            setOldOrders('');
-            setNumberOrder('');
+                const order = {
+                    user_isName: data.isFirst + " " + data.isLast,
+                    user_isAddress: data.isAddress,
+                    user_isEmail: data.isEmail,
+                    user_isGcash: data.isGcash,
+                    order_isList: newOrders,
+                    order_isPrice: getFinalPrice,
+                    order_isStatus: "PENDING ORDER"
+                }
 
-            setOrderPrompt("No order yet.");
-            setVerifier('');
-            setVerifier2('');
+                http.post('orders', order).then((result) => {
+                    if (result.data.prompt == 1) {
+                        notifyCreated(result.data.message);
+                        newOrder.push(order);
 
-            setVerifierPrompt("* Please choose mode: ");
+                        dispatch(setOrders(newOrder));
 
-            setAddressPrompt('');
-            setLastNote('');
+                        http.get('orders').then(result => {
+                            dispatch(setOrders(result.data));
+                            setNewPrice('');
+                            setOldPrice('0');
+                            setPricePrompt('')
 
-            setFinalPrice("Pay");
+                            setNewOrders('');
+                            setOldOrders('');
+                            setNumberOrder('');
+
+                            setOrderPrompt("No order yet.");
+                            setVerifier('');
+                            setVerifier2('');
+
+                            setVerifierPrompt("* Please choose mode: ");
+
+                            setAddressPrompt('');
+                            setLastNote('');
+
+                            setFinalPrice("Pay");
+                            setgetFinalPrice('');
+
+                        }).catch(err => console.log(err.message));
+                    }
+
+                }).catch(err => console.log(err.message));
+
+            }).catch(err => console.log(err.message));
+
+
         } else if (verifierPrompt != "Selected Mode:") {
             setVerifierPrompt("* ERROR: PLEASE SELECT MODE!");
         }
 
     };
 
-    const notifyCreated = () => {
-        toast.success("You successfully ordered a meal!", {
+    const notifyCreated = (message) => {
+        toast.success(message, {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -240,12 +273,12 @@ function OrderHere() {
 
     return (
         <>
+            <Header>
+            </Header>
 
             {
-                data == "ACTIVE" || data == "ADMIN" ?
+                data.isStatus == "ACTIVE" || data.isStatus == "ADMIN" ?
                     <>
-                        <Header>
-                        </Header>
 
                         <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
                             <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Kanayon Inasal Menu</h4>
