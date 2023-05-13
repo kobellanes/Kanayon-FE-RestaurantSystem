@@ -28,8 +28,6 @@ function BannedUserFunction() {
 
         let idn = newAccount.findIndex((account) => account.id == retrieveOrig.id);
 
-        console.log(idn);
-
         if (idn != -1) {
             const data_update = {
                 isStatus: "ACTIVE",

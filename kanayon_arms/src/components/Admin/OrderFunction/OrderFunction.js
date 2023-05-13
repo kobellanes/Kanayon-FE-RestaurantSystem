@@ -1,171 +1,391 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OrderFunction.css';
-import { setOrders } from '../../../redux/actions/actions';
+import { setOrders, setMenus, getMenu } from '../../../redux/actions/actions';
+import http from '../../../http';
 import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import Axios from 'axios';
 
 function OrderFunction() {
-    const orders = useSelector((state) => state.allOrders.orders)
-    const singleOrder = useSelector((state) => state.getOrder)
+    const orders = useSelector((state) => state.allOrders.orders);
+    const singleMenu = useSelector((state) => state.getMenu);
+
+    const [confPrompt, setConfPrompt] = useState('');
+    const [confOrig, setConfOrig] = useState('');
+
+    const [getId, setGetId] = useState('');
+
+    const [menu_name, setMenu_name] = useState('');
+    const [menu_quantity, setMenu_quantity] = useState('');
+    const [menu_isSold, setMenu_isSold] = useState('');
+
     const dispatch = useDispatch();
 
-    const orderAccept = (index) => {
+    const fetchOrders = async () => {
+        http.get('orders').then(result => {
+            dispatch(setOrders(result.data));
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchOrders();
+    }, []);
+
+    const orderPrompt = (index) => {
         const newOrder = [...orders];
-        const order = newOrder.at(index);
+        const confOrder = newOrder.at(index);
 
-        order.isStatus = 1;
-        newOrder.splice(index, 1, order);
+        setConfOrig(confOrder);
 
-        dispatch(setOrders(newOrder));
+        setConfPrompt(confOrder.user_isGcash);
 
     }
 
-    const orderReject = (index) => {
+    const updateOrderStatus = () => {
         const newOrder = [...orders];
-        const order = newOrder.at(index);
 
-        order.isStatus = 3;
-        newOrder.splice(index, 1, order);
+        let idn = newOrder.findIndex((order) => order.id == confOrig.id);
 
-        dispatch(setOrders(newOrder));
+        if (idn != -1) {
+            const data_update = {
+                isStatus: "RECEIVED PAYMENT",
+            }
+
+            const updateOrder = newOrder.at(idn);
+
+            http.put(`orders/${updateOrder.id}`, data_update).then(result => {
+                if (result.data.status == 1) {
+                    notifySuccess(result.data.message);
+
+                    updateOrder.isStatus = "RECEIVED PAYMENT";
+
+                    newOrder.splice(idn, 1, updateOrder);
+                    dispatch(setOrders(newOrder));
+                }
+            }).catch(err => console.log(err.message));
+
+        }
 
     }
 
-    const orderConfirm = (index) => {
-        const newOrder = [...orders];
-        const order = newOrder.at(index);
+    const menus = useSelector((state) => state.allMenus.menus);
 
-        order.isStatus = 4;
-        newOrder.splice(index, 1, order);
+    const fetchMenus = async () => {
+        http.get('menus').then(result => {
+            dispatch(setMenus(result.data));
 
-        dispatch(setOrders(newOrder));
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchMenus();
+    }, []);
+
+    const editMeal = () => {
+        const newMenu = [...menus];
+
+        let idn = newMenu.findIndex((menu) => menu.menu_name == getId);
+
+        if (idn != -1) {
+            const updateMenu = newMenu.at(idn);
+            updateMenu.menu_isEdit = 0;
+            newMenu.splice(idn, 1, updateMenu);
+            const menu = newMenu.at(idn);
+
+            setMenu_name(menu.menu_name);
+            setMenu_quantity(menu.menu_quantity);
+            setMenu_isSold(menu.menu_isSold);
+
+        } else {
+            setMenu_name('');
+            setMenu_quantity('');
+            setMenu_isSold('');
+
+        }
+
     }
 
-    const retrieveOrder = (index) => {
-        const newOrder = [...orders];
-        const order = newOrder.at(index);
+    const handleChange = event => {
+        setGetId(event.target.value);
+    };
 
-        order.isStatus = 0;
-        newOrder.splice(index, 1, order);
+    const updateMeal = (e) => {
+        e.preventDefault();
 
-        dispatch(setOrders(newOrder));
-    }
+        const newMenu = [...menus];
+        let idn = newMenu.findIndex((menu) => menu.menu_name == getId);
 
-    const incompleteOrder = (index) => {
-        const newOrder = [...orders];
-        const order = newOrder.at(index);
+        const noEditMenu = newMenu.at(idn);
 
-        order.isStatus = 2;
-        newOrder.splice(index, 1, order);
+        if (idn != -1) {
+            const data_update = {
+                menu_name: noEditMenu.menu_name,
+                menu_description: noEditMenu.menu_description,
+                menu_price: noEditMenu.menu_price,
+                menu_quantity: menu_quantity,
+                menu_isSold: menu_isSold,
+            }
+            const updateMenu = newMenu.at(idn);
 
-        dispatch(setOrders(newOrder));
+            http.put(`menus/${updateMenu.id}`, data_update).then(result => {
+                if (result.data.status == 1) {
+                    newMenu.splice(idn, 1, updateMenu);
+                    dispatch(setMenus(newMenu));
+                    notifySuccess(result.data.message);
+                    updateMenu.menu_isEdit = 0;
+
+                    const singleMen = {
+                        id: -2,
+                        menu_name: null,
+                        menu_description: null,
+                        menu_price: null,
+                        menu_quantity: null,
+                        menu_isEdit: 0,
+                        menu_isSold: 0,
+                    };
+
+                    dispatch(getMenu(singleMen));
+
+                    setGetId('');
+                    setMenu_name('');
+                    setMenu_quantity('');
+                    setMenu_isSold('');
+
+                }
+
+            }).catch(err => console.log(err.message));
+        }
     }
 
     useEffect(() => {
 
-    }, [singleOrder]);
+        if (singleMenu.menu_name != null) {
+            setMenu_name(singleMenu.menu_name);
+            setMenu_quantity(singleMenu.menu_quantity);
+            setMenu_isSold(singleMenu.menu_isSold);
+        }
+
+    }, [singleMenu]);
+
+    const notifySuccess = (message) => {
+        toast.success(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
+    }
 
     return (
         <>
-            <table className="table table-stripped">
+            <p className="text-dark">
+
+            </p>
+            <table className="table table-stripped mt-3">
+
                 <thead className="dese_thead">
+
                     <tr>
                         <th>NAME</th>
+                        <th>ADDRESS</th>
+                        <th>EMAIL ADDRESS</th>
                         <th>GCASH NUMBER</th>
-                        <th>ORDER</th>
-                        <th>QUANTITY</th>
+                        <th>ORDERS</th>
+                        <th>PRICE</th>
+                        <th>MODE</th>
                         <th>STATUS</th>
                         <th className="text-center">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map((orders, index) => (
-
-                        <tr>
-                            <td className="llanesk-orderfunc-name">
-                                {orders.isStatus == 3 || orders.isStatus == 4 ?
-                                    <h3 className="text-start fs-6 fs-6 text-decoration-line-through fw-light">{orders.user_name}</h3>
-                                    :
-                                    <h3 className="text-start fs-6 fs-6 fw-light">{orders.user_name}</h3>
-                                }
-                            </td>
-
-                            <td className="llanesk-orderfunc-numb">
-                                {orders.isStatus == 3 || orders.isStatus == 4 ?
-                                    <h3 className="text-start fs-6 text-decoration-line-through fs-6 fw-light">{orders.gcash_num}</h3>
-                                    :
-                                    <h3 className="text-start fs-6 fs-6 fw-light">{orders.gcash_num}</h3>
-                                }
-                            </td>
-
-                            <td className="llanesk-orderfunc-order">
-                                {orders.isStatus == 3 || orders.isStatus == 4 && orders.order_num == 1 ?
-                                    <h3 className="text-start text-decoration-line-through fs-6 fs-6 fw-light">Paa Inasal</h3>
-                                    : orders.isStatus == 3 || orders.isStatus == 4 && orders.order_num == 2 ?
-                                        <h3 className="text-start text-decoration-line-through fs-6 fs-6 fw-light">Pecho Inasal</h3>
-                                        : orders.isStatus == 3 || orders.isStatus == 4 && orders.order_num == 3 ?
-                                            <h3 className="text-start text-decoration-line-through fs-6 fs-6 fw-light">Liempo</h3>
-                                            : orders.order_num == 1 ?
-                                                <h3 className="text-start fs-6 fs-6 fw-light">Paa Inasal</h3>
-                                                : orders.order_num == 2 ?
-                                                    <h3 className="text-start fs-6 fs-6 fw-light">Pecho Inasal</h3>
-                                                    :
-                                                    <h3 className="text-start fs-6 fs-6 fw-light">Liempo</h3>
-
-                                }
-                            </td>
-
-                            <td className="llanesk-orderfunc-quant">
-                                {orders.isStatus == 3 || orders.isStatus == 4 ?
-                                    <h3 className="text-start text-decoration-line-through fs-6 fs-6 fw-light">{orders.quantity}</h3>
-                                    :
-                                    <h3 className="text-start fs-6 fs-6 fw-light">{orders.quantity}</h3>
-                                }
-                            </td>
-
-                            <td className="llanesk-orderfunc-status">
-                                {orders.isStatus == 0 ?
-                                    <h3 className="text-start fs-6 fs-6 fw-light">Pending Order</h3>
-                                    : orders.isStatus == 1 ?
-                                        <h3 className="text-start fs-6 fs-6 fw-light">Waiting for Payment</h3>
-                                        : orders.isStatus == 2 ?
-                                            <h3 className="text-start fs-6 fs-6 fw-light">Confirm Order</h3>
-                                            : orders.isStatus == 3 ?
-                                                <h3 className="text-start fs-6 fs-6 fw-light">Rejected</h3>
-                                                :
-                                                <h3 className="text-start fs-6 fs-6 fw-light">COMPLETED</h3>
-                                }
-                            </td>
-
-                            <td className="text-center">
-                                {orders.isStatus == 0 ?
-                                    <>
-                                        <button onClick={() => orderAccept(index)} className="llanesk-orderfunc-button bg-success btn btn-success me-1" type="button"><i className="fa-solid fa-check"></i></button>
-                                        <button onClick={() => orderReject(index)} className="llanesk-orderfunc-button bg-danger btn btn-danger ms-1" type="button"><i className="fa-solid fa-x"></i></button>
-                                    </>
-                                    : orders.isStatus == 1 ?
-                                        <>
-                                            <button disabled className="llanesk-orderfunc-button bg-success btn btn-success me-1" type="button"><i className="fa-solid fa-check"></i></button>
-                                            <button disabled className="llanesk-orderfunc-button bg-danger btn btn-danger ms-1" type="button"><i className="fa-solid fa-x"></i></button>
-                                        </>
-                                        : orders.isStatus == 2 ?
-                                            <>
-                                                <button onClick={() => orderConfirm(index)} className="llanesk-orderfunc-button bg-dark btn btn-dark" type="button">ORDER COMPLETED</button>
-                                            </>
-                                            : orders.isStatus == 3 ?
+                    {
+                        orders.length > 0 ?
+                            orders.map((orders, index) => {
+                                return (
+                                    <tr>
+                                        {
+                                            orders.isStatus == "PENDING ORDER" ?
                                                 <>
-                                                    <button onClick={() => retrieveOrder(index)} className="llanesk-orderfunc-button bg-info btn btn-info" type="button">Retrieve</button>
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isName}</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isAddress}</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isEmail}</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isGcash}</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isList}</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isMethod}</h3>
+                                                    </td>
+
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
+                                                    </td>
+
+                                                    <td className="py-3 d-flex justify-content-center">
+                                                        <button onClick={() => orderPrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas11" aria-controls="offcanvas11" type="button" className="btn btn-success">
+                                                            <i className="fa-solid fa-coins"></i>
+                                                        </button>
+                                                    </td>
                                                 </>
                                                 :
-                                                <button onClick={() => incompleteOrder(index)} className="llanesk-orderfunc-button bg-warning btn btn-warning" type="button">Incomplete Order</button>
-                                }
+                                                ""
+                                        }
 
-                            </td>
-                        </tr>
-                    ))}
+
+
+
+                                    </tr>
+                                )
+                            })
+                            :
+                            ""
+                    }
+
                 </tbody>
 
-
             </table >
+
+            <div className="llanesk-orderfunction-offcanvas offcanvas text-bg-light" id="offcanvas11" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
+                <div className="offcanvas-header mb-1 py-0 mt-3">
+                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
+                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div className="offcanvas-body p-0">
+
+                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder</h6>
+
+                    <div className="container px-4">
+
+                        <div className="llanesk-orderfunction-container-start container p-3 rounded-2">
+
+                            <p className="fw-bold m-0">Order/s: </p>
+                            <p className="m-0 p-0 fw-normal">{confOrig.order_isList}</p>
+
+                            <p className="my-2 p-0 fw-bold text-center fs-4">Meal Report</p>
+
+                            <form onSubmit={updateMeal} className="col-12">
+
+                                <select onClick={editMeal} className="w-100 form-select" onChange={handleChange} required>
+
+                                    <option value="">Select Menu</option>
+                                    {
+                                        menus.length > 0 ?
+                                            menus.map((menus, index) => {
+                                                return (
+                                                    <>
+                                                        <option>
+                                                            {menus.menu_name}
+                                                        </option>
+
+                                                    </>
+                                                )
+
+                                            })
+                                            :
+                                            ""
+                                    }
+
+                                </select>
+
+                                <div className="form-group">
+
+                                    <div className="d-flex align-items-center col-12 mt-3">
+
+                                        <p className="ms-2 text-start col-3 m-0 fw-bold">{menu_name}</p>
+
+                                        <input
+                                            type="number"
+                                            className="form-control"
+                                            value={menu_quantity}
+                                            onChange={(e) => setMenu_quantity(e.target.value)}
+                                            placeholder='Meal Stocks'
+                                            required
+                                        />
+
+                                        <input
+                                            type="number"
+                                            className="form-control ms-2"
+                                            value={menu_isSold}
+                                            onChange={(e) => setMenu_isSold(e.target.value)}
+                                            placeholder='Meal Total Sold'
+                                            required
+                                        />
+
+                                    </div>
+
+                                </div>
+
+                                <div className="mt-3 col-12 d-flex justify-content-end">
+
+                                    {/* <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="rounded-pill btn btn-light mx-2">Cancel</button> */}
+
+                                    <input className="btn btn-success text-center rounded-pill" type="submit" value="Add to Inventory" />
+
+                                </div>
+
+                            </form>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                    <h6 className="border-bottom text-secondary fw-light mt-3"></h6>
+
+                    <div className="mt-4 px-4">
+                        <div className="llanesk-orderfunction-container-start container p-3 rounded-2">
+                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
+                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
+                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
+                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
+
+                            <div className="mt-3 col-12 d-flex justify-content-end">
+
+                                <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="rounded-pill btn btn-light mx-2">Cancel</button>
+
+                                <button data-bs-dismiss="offcanvas" aria-label="Close" onClick={updateOrderStatus} className="btn btn-success text-end rounded-pill" type="button">Received Payment</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 className="border-bottom text-secondary fw-light mt-3"></h6>
+
+
+
+                </div>
+
+
+
+
+            </div >
+
+
+
         </>
     );
 }

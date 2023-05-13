@@ -86,8 +86,8 @@ function OrderList() {
                                 <main className="container-fluid ">
                                     <div className="mt-2">
                                         <div className="p-3">
-                                            <h1 className="dese_title text-dark container-fluid text-start fs-2 fw-bold">LIST OF ORDERS</h1>
-                                            <hr />
+                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Pending Orders</h1>
+                                            <div className="llanesk-stocklist-border mt-3" />
 
                                             <div className="container-fluid">
                                                 <OrderFunction></OrderFunction>

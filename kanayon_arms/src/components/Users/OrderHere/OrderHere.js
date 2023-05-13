@@ -212,6 +212,8 @@ function OrderHere() {
                             setLastNote('');
 
                             setFinalPrice("Pay");
+
+                            setgetMethod('');
                             setgetFinalPrice('');
 
                         }).catch(err => console.log(err.message));
@@ -242,6 +244,7 @@ function OrderHere() {
     }
 
     const cancelOrder = () => {
+        notifyDanger('');
         setNewPrice('');
         setOldPrice('0');
         setPricePrompt('')
@@ -265,6 +268,19 @@ function OrderHere() {
         setFinalPrice("Pay");
 
     };
+
+    const notifyDanger = () => {
+        toast.error("You cancelled an order.", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
 
     const notifySuccess = () => {
         toast.success("You successfully added a meal to your payment list.", {

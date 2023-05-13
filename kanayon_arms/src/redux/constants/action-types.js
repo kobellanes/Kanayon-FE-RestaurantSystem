@@ -8,6 +8,7 @@ export const ActionTypes = {
 
 
     SET_ORDERS: "SET_ORDERS",
+    GET_ORDER: "GET_ORDER",
 
 
 }

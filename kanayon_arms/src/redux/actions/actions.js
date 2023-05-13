@@ -40,3 +40,9 @@ export const setOrders = (orders) => {
     };
 }
 
+export const GET_ORDER = (order) => {
+    return {
+        type: ActionTypes.GET_ACCOUNT,
+        payload: order
+    }
+}

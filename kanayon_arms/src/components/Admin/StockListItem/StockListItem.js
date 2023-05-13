@@ -156,7 +156,6 @@ function StockListItem() {
     }, []);
 
     //UPDATE
-
     useEffect(() => {
 
         if (singleMenu.menu_name != null) {

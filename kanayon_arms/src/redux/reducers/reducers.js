@@ -66,3 +66,12 @@ export const setOrdersReducer = (state = ordersInitialState, { type, payload }) 
             return state;
     }
 }
+
+export const getOrderReducer = (state = {}, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.GET_ORDER:
+            return { ...state, ...payload };
+        default:
+            return state;
+    }
+}

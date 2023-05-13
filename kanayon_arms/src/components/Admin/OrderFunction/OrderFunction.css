@@ -5,3 +5,21 @@
 .llanesk-orderfunc-button:hover {
     color: yellow;
 }
+
+.llanesk-orderfunction-offcanvas {
+    width: 35%;
+    top: 9%;
+    left: 39%;
+    /* transform: translate(10%, 40%); */
+    min-height: 680px;
+    max-height: 680px;
+    /* transition: all .2s ease; */
+    border-radius: 5px;
+}
+
+.llanesk-orderfunction-container-start {
+    background-color: #ABEFD1;
+    font-size: 18px;
+    color: #033500;
+    border: 1px solid #96D1B7;
+}

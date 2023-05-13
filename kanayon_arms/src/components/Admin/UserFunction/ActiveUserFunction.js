@@ -24,12 +24,10 @@ function UserFunction() {
 
     }
 
-    const banningAccount = (index) => {
+    const banningAccount = () => {
         const newAccount = [...accounts];
 
         let idn = newAccount.findIndex((account) => account.id == banOrig.id);
-
-        console.log(idn);
 
         if (idn != -1) {
             const data_update = {
@@ -92,6 +90,7 @@ function UserFunction() {
                     </tr>
                 </thead>
                 <tbody>
+
                     {
                         accounts.length > 0 ?
                             accounts.map((accounts, index) => {
@@ -124,46 +123,9 @@ function UserFunction() {
                                                     <td className="dese_function text-center align-items-center py-2">
                                                         <button onClick={() => banPrompt(index)} className="llanesk-activeuserfunction-ban btn text-dark p-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas4" aria-controls="offcanvas4"><i className="fa-solid fa-ban fs-5"></i></button>
 
-                                                        <div className="llanesk-activeuserfunction-user-ban-offcanva offcanvas text-bg-light" id="offcanvas4" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
-                                                            <div className="offcanvas-header mb-1 py-0 mt-3">
-                                                                <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
-
-                                                                <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                            </div>
-
-                                                            <div className="offcanvas-body p-0 mt-1">
-
-                                                                <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
-
-                                                                <div className="container ">
-
-                                                                    <div className="container">
-
-                                                                        <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
-                                                                            <p className="text-start m-0">Are you sure you want to ban the user "{bannedPrompt}"?</p>
-
-                                                                        </div>
-
-                                                                        <h6 className="text-start mt-3 ms-2 text-secondary fw-light">Note: You should only restrict users that violates multiple Kanayon community standards.</h6>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
-
-                                                                <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
-                                                                    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Cancel</button>
-
-                                                                    <button onClick={() => banningAccount(index)} type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt fw-normal">Ban User</button>
-
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-
                                                     </td>
+
+
                                                 </>
                                                 :
                                                 ""
@@ -176,15 +138,50 @@ function UserFunction() {
 
                             })
                             :
-
                             <div className="mt-3 container-fluid spinner-border text-center justify-content-center" role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
-
-
                     }
                 </tbody>
             </table >
+
+            <div className="llanesk-activeuserfunction-user-ban-offcanva offcanvas text-bg-light" id="offcanvas4" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
+                <div className="offcanvas-header mb-1 py-0 mt-3">
+                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
+
+                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div className="offcanvas-body p-0 mt-1">
+
+                    <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
+
+                    <div className="container ">
+
+                        <div className="container">
+
+                            <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
+                                <p className="text-start m-0">Are you sure you want to ban the user "{bannedPrompt}"?</p>
+
+                            </div>
+
+                            <h6 className="text-start mt-3 ms-2 text-secondary fw-light">Note: You should only restrict users that violates multiple Kanayon community standards.</h6>
+
+                        </div>
+                    </div>
+
+                    <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
+
+                    <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
+                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Cancel</button>
+
+                        <button onClick={banningAccount} type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt fw-normal">Ban User</button>
+
+
+                    </div>
+                </div>
+
+            </div>
 
         </>
     );
