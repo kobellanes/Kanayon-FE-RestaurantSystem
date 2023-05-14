@@ -79,7 +79,7 @@ function OrderNow() {
                             <i className="fa-sharp fa-solid fa-bag-shopping me-2"></i>
                             ORDER HERE
                         </a>
-                        <a href="#" className="llanesk-ordernow-orderlist btn fw-light mx-xl-4 mx-3 p-4  text-light" tabIndex="-1" role="button" aria-disabled="true">
+                        <a href="vieworder" className="llanesk-ordernow-orderlist btn fw-light mx-xl-4 mx-3 p-4  text-light" tabIndex="-1" role="button" aria-disabled="true">
                             <i className="fa-solid fa-magnifying-glass me-2"></i>
                             VIEW ORDER LIST
                         </a>

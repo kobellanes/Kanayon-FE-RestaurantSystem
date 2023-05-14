@@ -1,0 +1,143 @@
+import React, { useState, useEffect } from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import "./ViewOrder.css"
+import { setMenus, setOrders } from '../../../redux/actions/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import http from '../../../http';
+import { ToastContainer, toast } from 'react-toastify';
+
+function ViewOrder() {
+    const user_id = localStorage.getItem("user_id");
+    const [data, setData] = useState('');
+
+    const dispatch = useDispatch();
+
+    const fetchAccount = async () => {
+        http.get('accounts').then(result => {
+            const filter = result.data.filter((account) => account.id == user_id);
+
+            if (filter[0] === undefined) {
+                window.location.href = '/login';
+            } else {
+                setData(filter[0]);
+
+                if ((filter[0].isStatus == "ACTIVE") || filter[0].isStatus == "ADMIN") {
+
+                } else {
+                    window.location.href = '/login';
+                }
+            }
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchAccount();
+
+    }, []);
+
+    const orders = useSelector((state) => state.allOrders.orders);
+
+    const fetchOrders = async () => {
+        http.get('orders').then(result => {
+            dispatch(setOrders(result.data));
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchOrders();
+    }, []);
+
+
+    return (
+
+        <>
+            <Header>
+            </Header>
+
+            {
+                data.isStatus == "ACTIVE" || data.isStatus == "ADMIN" ?
+                    <>
+
+                        <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
+                            <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Your Order/s</h4>
+                            <div className="llanesk-orderhere-border mb-3 text-center"></div>
+                        </div>
+
+
+                        <table className="table table-striped mt-3 text-light">
+                            <thead className="dese_thead">
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Order List</th>
+                                    <th>Total Price</th>
+                                    <th>Mode</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {
+                                    orders.length > 0 ?
+                                        orders.map((orders, index) => {
+
+                                            return (
+
+                                                <tr className="text-light">
+
+                                                    {
+                                                        orders.user_isEmail == data.isEmail ?
+                                                            <>
+                                                                <td className="py-3">
+                                                                    <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
+                                                                </td>
+
+                                                                <td className="py-3">
+                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isList}</h3>
+                                                                </td>
+
+                                                                <td className="py-3">
+                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isPrice}</h3>
+                                                                </td>
+
+                                                                <td className="py-3">
+                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isMethod}</h3>
+                                                                </td>
+
+                                                                <td className="py-3">
+                                                                    <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
+                                                                </td>
+                                                            </>
+                                                            :
+                                                            ""
+                                                    }
+
+                                                </tr>
+
+                                            )
+
+                                        })
+
+                                        :
+
+                                        ""
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                        <Footer>
+                        </Footer>
+                    </>
+                    :
+                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+            }
+
+        </>
+    );
+}
+
+export default ViewOrder;

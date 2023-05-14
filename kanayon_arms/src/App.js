@@ -15,6 +15,7 @@ import OrderHere from './components/Users/OrderHere/OrderHere';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ViewOrder from './components/Users/ViewOrder/ViewOrder';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="admin" element={<AdminHomePage />} />
           <Route path="ordernow" element={<OrderNow />} />
           <Route path="orderhere" element={<OrderHere />} />
+          <Route path="vieworder" element={<ViewOrder />} />
           <Route path="login" element={<Login />} />
           <Route path="activeuser" element={<ActiveUser />} />
           <Route path="banneduser" element={<BannedUser />} />
