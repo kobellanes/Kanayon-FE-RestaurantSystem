@@ -166,16 +166,16 @@ function HomePage() {
                                     <div className="col-6">
                                         <div className="austria_firstcol row row-cols-2">
                                             <div className="col">
-                                                <img className="austriapc" src={require('../../../assets/1KatakamtakamS4.jpg')} />
+                                                <img className="austriapc ms-5" src={require('../../../assets/1KatakamtakamS4.jpg')} />
                                             </div>
                                             <div className="col">
-                                                <img className="austriapc" src={require('../../../assets/2KatakamtakamS4.jpg')} />
+                                                <img className="austriapc me-5" src={require('../../../assets/4KatakamtakamS4.jpg')} />
                                             </div>
                                             <div className="col">
-                                                <img className="austriapc mt-2" src={require('../../../assets/3KatakamtakamS4.jpg')} />
+                                                <img className="austriapc ms-5 mt-2" src={require('../../../assets/3KatakamtakamS4.jpg')} />
                                             </div>
                                             <div className="col">
-                                                <img className="austriapc mt-2" src={require('../../../assets/4KatakamtakamS4.jpg')} />
+                                                <img className="austriapc me-5 mt-2" src={require('../../../assets/2KatakamtakamS4.jpg')} />
                                             </div>
                                         </div>
                                     </div>
@@ -186,40 +186,16 @@ function HomePage() {
                                                 Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes where each bite is a journey to foodie paradise!
                                             </p>
                                         </div>
+                                        <div className="justify-content-center align-items-center text-center mt-5 pb-3">
+
+                                            <a href="ordernow" className="austriak-aboutus-btn btn btn-dark"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</a>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-
-                    {/* <section className="gallery">
-                        <div className="container-lg">
-                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/1KatakamtakamS4.jpg')} />
-                                </div>
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/2KatakamtakamS4.jpg')} />
-                                </div>
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/3KatakamtakamS4.jpg')} />
-                                </div>
-                                <div className="austcol">
-                                    <img className="austriapc" src={require('../../../assets/4KatakamtakamS4.jpg')} />
-                                </div>
-                            </div>
-
-                            <div className="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3 mt-5">
-                                <div className="austriakccol">
-                                    <p className="kylacol">
-                                        Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes - where each bite is a journey to foodie paradise!
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </section> */}
 
                 </div >
 
