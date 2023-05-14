@@ -93,14 +93,31 @@ function AdminHomePage() {
 
                             </div>
 
-                            <div className="dese-adminnav-content content">
+
+                            <div className="dese-adminnav-content content ">
                                 <h4 className="austriahd">Welcome Admin!</h4>
-                                <div className="adminhomek justify-content-center align-items-center text-center pt-2 mb-3">
-                                    <a href="" className="austriak-homeadmin-s3-btn btn fs-4 fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Let's Get Started!</a>
+
+                                <button className="austriakyla btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Let's Get Started!</button>
+                                <div className="austriakyla offcanvas offcanvas-bottom p-5" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot">
+                                    <div className="austriakyla offcanvas-header">
+                                        <h5 className="austriakyla offcanvas-title" id="offcanvasBottomLabel"> We have prepared this user's manual. Please take a moment to read through it before placing your order. </h5>
+                                        <button type="button" class="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
+                                    <div className="austriakyla offcanvas-body medium">
+                                        <li>Our menu on the online ordering platform is the same as our physical menu. You can choose from a variety of inasal dishes, other Filipino favorites, sides, and beverages. </li>
+                                        <li>Once you have selected your desired items, add them to your cart and proceed to checkout. You may be required to create an account and provide your name and address.</li>
+                                        <li>Payment can be made through the online platform using gcash.</li>
+                                        <li>We offer both dine-in and take-out services. For take-out orders, you may call ahead to place your order and avoid waiting in line.</li>
+                                        <li>We value your feedback and suggestions, as they help us improve our service and menu offerings. If you have any comments or concerns about your online ordering experience, please contact us in Facebook or visit Kanayon Inasal to inform our staff.</li>
+                                        <p className="kylakylap">Thank you for choosing Kanayon Inasal. We hope you enjoy your meal and come back to visit us soon!</p>
+                                    </div>
                                 </div>
 
-
                             </div>
+
+
+
+
                         </>
                         :
                         <div className="llanesk-admin-loading m-0 p-0 container-fluid">
