@@ -88,9 +88,9 @@ function AdminHomePage() {
                                 <div className="adminhomek justify-content-center align-items-center text-center pt-2 mb-3">
                                     <a href="" className="austriak-homeadmin-s3-btn btn fs-4 fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Let's Get Started!</a>
                                 </div>
-
-
                             </div>
+
+
                         </>
                         :
                         <div className="llanesk-admin-loading m-0 p-0 container-fluid">

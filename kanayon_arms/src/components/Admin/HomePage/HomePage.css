@@ -57,15 +57,16 @@
 
 .austriak-homeadmin-s3-btn {
     width: 250px;
-    background-color: green;
-    transition: all .5s ease;
+    background-color: blue;
+    font-size: 25px;
+    transition: all .4s ease;
     color: white;
 }
 
 .austriak-homeadmin-s3-btn:hover {
-    background-color: lightgreen;
+    background-color: darkblue;
     transform: scale(1.2);
-    color: black;
+    color: white;
 }
 
 .llanesk-admin-loading {
