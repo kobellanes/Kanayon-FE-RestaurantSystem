@@ -55,17 +55,53 @@
     font-weight: 100;
 }
 
-.austriak-homeadmin-s3-btn {
+.austriakyla.btn.btn-primary {
     width: 250px;
-    background-color: green;
-    transition: all .5s ease;
+    background-color: blue;
+    font-size: 25px;
+    transition: all .4s ease;
+    color: white;
+    margin-left: 680px;
+}
+
+.austriakyla.btn.btn-primary:hover {
+    background-color: darkblue;
+    transform: scale(1.2);
     color: white;
 }
 
-.austriak-homeadmin-s3-btn:hover {
-    background-color: lightgreen;
-    transform: scale(1.2);
-    color: black;
+.austriahomeh1 {
+    font-size: 17px;
+    text-align: justify;
+}
+
+.kylakylap {
+    font-size: 30px;
+    margin-top: 18px;
+    font-style: italic;
+    font-weight: 400;
+    text-align: center;
+}
+
+.austriakyla.offcanvas-body.medium {
+    font-size: 20px;
+
+}
+
+.austriakyla.offcanvas.offcanvas-bottom {
+    width: 1600px;
+    margin-left: 250px;
+    height: 500px;
+}
+
+.austriakyla.offcanvas-title {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.austriakyla.offcanvas-header {
+    height: 75px;
+    padding: 0px 0px 0px 0px;
 }
 
 .llanesk-admin-loading {
