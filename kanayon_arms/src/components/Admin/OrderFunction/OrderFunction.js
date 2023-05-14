@@ -216,12 +216,12 @@ function OrderFunction() {
             <p className="text-dark">
 
             </p>
-            <table className="table table-stripped mt-3">
+            <table className="table table-striped table-hover mt-3">
 
                 <thead className="dese_thead">
 
                     <tr>
-                        <th>Order Number</th>
+                        <th className="text-wrap">Order Number</th>
                         <th>NAME</th>
                         <th>ADDRESS</th>
                         <th>EMAIL ADDRESS</th>
@@ -278,7 +278,7 @@ function OrderFunction() {
                                                         <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
                                                     </td>
 
-                                                    <td className="py-3 d-flex justify-content-center">
+                                                    <td className="text-center align-items-center py-2">
                                                         <button onClick={() => orderPrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas11" aria-controls="offcanvas11" type="button" className="btn btn-success">
                                                             <i className="fa-solid fa-coins"></i>
                                                         </button>
@@ -312,7 +312,7 @@ function OrderFunction() {
 
                 <div className="offcanvas-body p-0">
 
-                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder</h6>
+                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Do not forget to add the orders to your Meal Report. Let's keep you on track Kanayon! </h6>
 
                     <div className="container px-4">
 
@@ -394,12 +394,12 @@ function OrderFunction() {
 
                     <h6 className="border-bottom text-secondary fw-light mt-3"></h6>
 
-                    <div className="mt-4 px-4">
+                    <div className="mt-4 px-4 mb-4">
                         <div className="llanesk-orderfunction-container-start container p-3 rounded-2">
                             <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
+                            {/* <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
                             <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
-                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
-                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
+                            <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p> */}
 
                             <div className="mt-3 col-12 d-flex justify-content-end">
 
@@ -411,7 +411,7 @@ function OrderFunction() {
                         </div>
                     </div>
 
-                    <h6 className="border-bottom text-secondary fw-light mt-3"></h6>
+
 
 
 
