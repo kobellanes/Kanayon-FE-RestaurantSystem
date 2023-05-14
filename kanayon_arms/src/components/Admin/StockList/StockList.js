@@ -66,11 +66,21 @@ function StockList() {
                                     </li>
 
                                     <li className="active"><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
-                                    <li className=""><a href="/orderlist" className="text-decoration-none px-3 py-2 d-flex justify-content-between">
-                                        <span><i className="fa-solid fa-basket-shopping me-2"></i>Order List</span>
-                                        <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
-                                    </a>
+
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i className="fa-solid fa-basket-shopping me-2"></i>
+                                            Order List
+                                            <i className="dropdown-toggle ms-2"></i>
+                                        </a>
+
+                                        <ul className="dropdown-menu w-100">
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="orderlist"><i className="fa-solid fa-pen me-2"></i>Pending Orders</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
+                                        </ul>
                                     </li>
+
                                     <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
 
                                     <hr className="text-white mt-2" />

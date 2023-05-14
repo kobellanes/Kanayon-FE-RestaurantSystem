@@ -180,6 +180,37 @@ function OrderFunction() {
 
     }
 
+    const [datech, setDatech] = useState('');
+
+    const fetchDate = async () => {
+        const date = new Date();
+
+        let day = date.getDate();
+
+        if (day <= 9) {
+            day = '0' + day;
+        } else {
+            day = date.getDate();
+        }
+
+        let month = date.getMonth() + 1;
+
+        if (month <= 9) {
+            month = '0' + month;
+        } else {
+            month = date.getMonth() + 1;
+        }
+
+        let year = date.getFullYear();
+
+        let fullDate = `${year}-${month}-${day}`
+
+        setDatech(fullDate);
+    }
+    useEffect(() => {
+        fetchDate();
+    }, []);
+
     return (
         <>
             <p className="text-dark">
@@ -190,6 +221,7 @@ function OrderFunction() {
                 <thead className="dese_thead">
 
                     <tr>
+                        <th>Order Number</th>
                         <th>NAME</th>
                         <th>ADDRESS</th>
                         <th>EMAIL ADDRESS</th>
@@ -208,8 +240,12 @@ function OrderFunction() {
                                 return (
                                     <tr>
                                         {
-                                            orders.isStatus == "PENDING ORDER" ?
+                                            orders.isStatus == "PENDING ORDER" && orders.date == datech ?
                                                 <>
+                                                    <td className="py-3">
+                                                        <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
+                                                    </td>
+
                                                     <td className="py-3">
                                                         <h3 className="text-start fs-6 fw-light">{orders.user_isName}</h3>
                                                     </td>
@@ -259,7 +295,9 @@ function OrderFunction() {
                                 )
                             })
                             :
-                            ""
+                            <div className="mt-3 container-fluid spinner-border text-center justify-content-center" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
                     }
 
                 </tbody>

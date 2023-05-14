@@ -11,6 +11,8 @@ function ViewOrder() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
 
+    const [datech, setDatech] = useState('');
+
     const dispatch = useDispatch();
 
     const fetchAccount = async () => {
@@ -48,6 +50,35 @@ function ViewOrder() {
         fetchOrders();
     }, []);
 
+    const fetchDate = async () => {
+        const date = new Date();
+
+        let day = date.getDate();
+
+        if (day <= 9) {
+            day = '0' + day;
+        } else {
+            day = date.getDate();
+        }
+
+        let month = date.getMonth() + 1;
+
+        if (month <= 9) {
+            month = '0' + month;
+        } else {
+            month = date.getMonth() + 1;
+        }
+
+        let year = date.getFullYear();
+
+        let fullDate = `${year}-${month}-${day}`
+
+        setDatech(fullDate);
+    }
+    useEffect(() => {
+        fetchDate();
+    }, []);
+
 
     return (
 
@@ -63,7 +94,6 @@ function ViewOrder() {
                             <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Your Order/s</h4>
                             <div className="llanesk-orderhere-border mb-3 text-center"></div>
                         </div>
-
 
                         <table className="table table-striped mt-3 text-light">
                             <thead className="dese_thead">
@@ -86,7 +116,7 @@ function ViewOrder() {
                                                 <tr className="text-light">
 
                                                     {
-                                                        orders.user_isEmail == data.isEmail ?
+                                                        orders.user_isEmail == data.isEmail && orders.date == datech ?
                                                             <>
                                                                 <td className="py-3">
                                                                     <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
@@ -120,7 +150,7 @@ function ViewOrder() {
 
                                         :
 
-                                        ""
+                                        "No Orders"
                                 }
 
                             </tbody>

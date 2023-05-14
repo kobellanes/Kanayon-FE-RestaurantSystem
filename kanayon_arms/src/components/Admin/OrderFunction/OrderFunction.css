@@ -8,11 +8,11 @@
 
 .llanesk-orderfunction-offcanvas {
     width: 35%;
-    top: 9%;
+    top: 15%;
     left: 39%;
     /* transform: translate(10%, 40%); */
-    min-height: 680px;
-    max-height: 680px;
+    min-height: 500px;
+    max-height: 500px;
     /* transition: all .2s ease; */
     border-radius: 5px;
 }
