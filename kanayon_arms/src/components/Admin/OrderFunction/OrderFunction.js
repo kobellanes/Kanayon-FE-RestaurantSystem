@@ -312,7 +312,7 @@ function OrderFunction() {
 
                 <div className="offcanvas-body p-0">
 
-                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Do not forget to add the orders to your Meal Report. Let's keep you on track Kanayon! </h6>
+                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-3 mb-3">Do not forget to add the orders to your Meal Report. Let's keep you on track Kanayon! </h6>
 
                     <div className="container px-4">
 
@@ -394,7 +394,7 @@ function OrderFunction() {
 
                     <h6 className="border-bottom text-secondary fw-light mt-3"></h6>
 
-                    <div className="mt-4 px-4 mb-4">
+                    <div className="mt-3 px-4 mb-3">
                         <div className="llanesk-orderfunction-container-start container p-3 rounded-2">
                             <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>
                             {/* <p className="text-center m-0">Are you sure you recieve the payment from "{confOrig.user_isGcash}"?</p>

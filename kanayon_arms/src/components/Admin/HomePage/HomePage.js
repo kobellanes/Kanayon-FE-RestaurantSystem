@@ -97,21 +97,33 @@ function AdminHomePage() {
                             <div className="dese-adminnav-content content ">
                                 <h4 className="austriahd">Welcome Admin!</h4>
 
-                                <button className="austriakyla btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Let's Get Started!</button>
-                                <div className="austriakyla offcanvas offcanvas-bottom p-5" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot">
-                                    <div className="austriakyla offcanvas-header">
-                                        <h5 className="austriakyla offcanvas-title" id="offcanvasBottomLabel"> We have prepared this user's manual. Please take a moment to read through it before placing your order. </h5>
-                                        <button type="button" class="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                    </div>
-                                    <div className="austriakyla offcanvas-body medium">
-                                        <li>Our menu on the online ordering platform is the same as our physical menu. You can choose from a variety of inasal dishes, other Filipino favorites, sides, and beverages. </li>
-                                        <li>Once you have selected your desired items, add them to your cart and proceed to checkout. You may be required to create an account and provide your name and address.</li>
-                                        <li>Payment can be made through the online platform using gcash.</li>
-                                        <li>We offer both dine-in and take-out services. For take-out orders, you may call ahead to place your order and avoid waiting in line.</li>
-                                        <li>We value your feedback and suggestions, as they help us improve our service and menu offerings. If you have any comments or concerns about your online ordering experience, please contact us in Facebook or visit Kanayon Inasal to inform our staff.</li>
-                                        <p className="kylakylap">Thank you for choosing Kanayon Inasal. We hope you enjoy your meal and come back to visit us soon!</p>
+                                <div className="justify-content-center align-items-center text-center">
+                                    <button className="austriakyla btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Let's Get Started!</button>
+                                </div>
+
+                                <div className="justify-content-start align-items-start text-start">
+                                    <div className="austriakyla offcanvas offcanvas-bottom p-3" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot">
+                                        <div className="austriakyla offcanvas-header border-bottom">
+
+                                            <h5 className="austriakyla offcanvas-title fw-bold" id="offcanvasBottomLabel">User's Manual</h5>
+
+                                            <button type="button" class="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div className="austriakyla offcanvas-body medium mt-2">
+                                            <ol>
+                                                <li>To log in to the admin panel, go to the login page and enter your username and password.</li>
+                                                <li>After logging in, you will see the dashboard. This page provides an overview of the restaurant's performance, including list of users, stock list, order list and inventory report.</li>
+                                                <li>To manage users, click on the "List of users". Here, you can see active users and you can ban the selected user.</li>
+                                                <li>To manage the menu, click on the "Stock list". Here, you can add, edit, and delete menu items.</li>
+                                                <li>To manage orders, click on the "Orders List". Here, you can view all the orders placed by customers. You can also update the status of the orders, such as "processing" or "completed."</li>
+                                                <li>To view reports, click on the "Inventory Report". Here, you can view sales report.</li>
+                                                <li>To log out of the admin panel, click on the "Logout" button at the left side of the screen.</li>
+                                            </ol>
+                                            <p className="kylakylap">Thank you for choosing Kanayon Inasal. We hope you enjoy your meal and come back to visit us soon!</p>
+                                        </div>
                                     </div>
                                 </div>
+
 
                             </div>
 

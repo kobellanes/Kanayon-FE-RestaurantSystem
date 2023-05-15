@@ -7,12 +7,12 @@
 }
 
 .llanesk-orderfunction-offcanvas {
-    width: 35%;
-    top: 3%;
+    width: 37%;
+    top: 2%;
     left: 39%;
     /* transform: translate(10%, 40%); */
-    min-height: 630px;
-    max-height: 630px;
+    min-height: 640px;
+    max-height: 640px;
     /* transition: all .2s ease; */
     border-radius: 5px;
 }
@@ -22,4 +22,69 @@
     font-size: 18px;
     color: #033500;
     border: 1px solid #96D1B7;
+}
+
+@media(max-width: 1300px) {
+    .llanesk-orderfunction-offcanvas {
+        top: 2%;
+        left: 39%;
+        min-height: 600px;
+        max-height: 600px;
+    }
+
+    .llanesk-orderfunction-container-start {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 1280px) {
+    .llanesk-orderfunction-offcanvas {
+        top: 3%;
+        left: 39%;
+        min-height: 600px;
+        max-height: 600px;
+    }
+
+    .llanesk-orderfunction-container-start {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .llanesk-orderfunction-offcanvas {
+        top: 2%;
+        left: 39%;
+        min-height: 590px;
+        max-height: 590px;
+    }
+
+    .llanesk-orderfunction-container-start {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 1210px) {
+    .llanesk-orderfunction-offcanvas {
+        top: 2%;
+        left: 39%;
+        min-height: 610px;
+        max-height: 610px;
+    }
+
+    .llanesk-orderfunction-container-start {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .llanesk-orderfunction-offcanvas {
+        top: 1%;
+        left: 40%;
+        min-height: 620px;
+        max-height: 620px;
+    }
+
+    .llanesk-orderfunction-container-start {
+        font-size: 15px;
+    }
 }
