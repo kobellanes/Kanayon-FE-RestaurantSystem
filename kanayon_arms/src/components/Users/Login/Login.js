@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Login.css"
 import Header from '../Header/Header';
 import { ToastContainer, toast } from 'react-toastify';
@@ -15,10 +15,37 @@ import { InputMask } from "primereact/inputmask";
 import bcrypt from "bcryptjs";
 
 function Login() {
-
-
+    const user_id = localStorage.getItem("user_id");
+    const [data, setData] = useState('');
+    const [counter, setCounter] = useState('');
 
     const dispatch = useDispatch();
+
+    const fetchAccount = async () => {
+        http.get('accounts').then(result => {
+            setCounter('LOAD');
+            const filter = result.data.filter((account) => account.id == user_id);
+
+            if (filter[0] === undefined) {
+
+            } else {
+                setData(filter[0]);
+
+                if (filter[0].isStatus == "ACTIVE") {
+                    window.location.href = '/';
+                } else if (filter[0].isStatus == "ADMIN") {
+                    window.location.href = '/admin';
+                }
+            }
+
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchAccount();
+
+    }, []);
+
     const accounts = useSelector((state) => state.allAccounts.account);
 
     //SIGNIN
@@ -283,275 +310,286 @@ function Login() {
     return (
         <>
 
-            <Header></Header>
 
-            <main className="llanesk-login container-fluid pt-4 pb-0">
+            {
+                counter == "LOAD" && data == '' ?
+                    <>
+                        <Header></Header>
+                        <main className="llanesk-login container-fluid pt-4 pb-0">
 
-                <div className="py-0">
+                            <div className="py-0">
 
-                    <div className="d-flex justify-content-center align-items-center mt-5 pt-1">
-                        <div className="row llanesk-row rounded-4 shadow p-2 mb-5 position-relative">
+                                <div className="d-flex justify-content-center align-items-center mt-5 pt-1">
+                                    <div className="row llanesk-row rounded-4 shadow p-2 mb-5 position-relative">
 
-                            <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill z-2">
-                                <img className="rounded-pill llanesk-badge" src={require('../../../assets/logo.jpg')} />
-                            </span>
+                                        <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill z-2">
+                                            <img className="rounded-pill llanesk-badge" src={require('../../../assets/logo.jpg')} />
+                                        </span>
 
-                            <div className="col-md-6 llanesk-side-img rounded-2">
+                                        <div className="col-md-6 llanesk-side-img rounded-2">
 
-                                <div className="llanesk-text position-absolute text-md-center">
-                                    <p className="text-center fs-5 fst-italic fw-normal text-light ">Ala Eh! Ay bat ga kasarap dine!</p>
-                                </div>
-                            </div>
+                                            <div className="llanesk-text position-absolute text-md-center">
+                                                <p className="text-center fs-5 fst-italic fw-normal text-light ">Ala Eh! Ay bat ga kasarap dine!</p>
+                                            </div>
+                                        </div>
 
-                            <div className="col-md-6 right d-flex justify-content-center align-items-center position-relative">
-                                <div className="llanesk-box">
-                                    <header className="mb-4 fw-bold text-center">
-                                        Sign in
+                                        <div className="col-md-6 right d-flex justify-content-center align-items-center position-relative">
+                                            <div className="llanesk-box">
+                                                <header className="mb-4 fw-bold text-center">
+                                                    Sign in
 
-                                    </header>
+                                                </header>
 
-                                    {/* FORM SIGN IN */}
-                                    <form className="pt-4" onSubmit={Login}>
-                                        <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
+                                                {/* FORM SIGN IN */}
+                                                <form className="pt-4" onSubmit={Login}>
+                                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
 
-                                            <input type="email" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
+                                                        <input type="email" className="input llanesk-input bg-light bg-gradient form-control mb-2" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required />
 
-                                            <label className="position-absolute fs-6 ms-1" htmlFor="email"><i className="fa-solid fa-envelope me-1"></i>Email</label>
+                                                        <label className="position-absolute fs-6 ms-1" htmlFor="email"><i className="fa-solid fa-envelope me-1"></i>Email</label>
+
+                                                    </div>
+
+                                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
+                                                        <input type="password" className="input llanesk-input bg-light bg-gradient mb-2 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
+                                                        <label className="position-absolute fs-6 ms-1" htmlFor="password"><i className="fa-solid fa-lock me-1"></i>Password</label>
+
+                                                    </div>
+
+                                                    {
+                                                        invprompt && email.length <= 0 && password.length <= 0 ?
+                                                            <h6 className="text-center llanesk-login-prompt mt-0 pb-2 text-danger text-wrap fw-bold">{invprompt}</h6>
+                                                            :
+                                                            ""
+                                                    }
+
+                                                    <div className="llanesk-input-field d-flex flex-column position-relative px-2">
+                                                        <input className="btn btn-primary fw-bold" type="submit" value="Sign In" />
+                                                    </div>
+
+                                                </form>
+
+                                                {/* FORM EXIT */}
+
+                                                <div className="mt-md-5">
+                                                    <div className="mt-4 text-center">
+                                                        <span className="llanesk-register fw-light text-dark">Don't have an account yet?<a className="ps-1 llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Register here</a></span>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
 
                                         </div>
 
-                                        <div className="llanesk-input-field d-flex flex-column position-relative px-2 mb-4 form-group">
-                                            <input type="password" className="input llanesk-input bg-light bg-gradient mb-2 form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="password" required />
-                                            <label className="position-absolute fs-6 ms-1" htmlFor="password"><i className="fa-solid fa-lock me-1"></i>Password</label>
+                                    </div>
 
+                                </div>
+
+                            </div>
+
+                        </main >
+
+                        <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1" data-bs-scroll="true">
+                            <div className="offcanvas-header mb-0 pb-2">
+                                <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Register</h3>
+                                <button type="button" className="llanesk-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+
+                            <div className="offcanvas-body small p-0">
+
+                                <h6 className="llanesk-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary fw-light">Parine't Sumali, Pusong Kanayon!</h6>
+
+                                <div className="container px-3">
+
+                                    {/* FORM REGISTER */}
+
+                                    <form className="form-signup" onSubmit={Create}>
+
+                                        <div className="mt-4 form-group">
+                                            <div className="row">
+                                                <div className="text-center d-flex flex-row">
+                                                    <input className="llanesk-login-form-control form-control w-50 me-2 fw-light" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First Name" required />
+                                                    <input className="llanesk-login-form-control form-control w-50 ms-2 fw-light" value={isLast} onChange={(e) => setisLast(e.target.value)} type="text" name="lastname" placeholder="Last Name" required />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {
-                                            invprompt && email.length <= 0 && password.length <= 0 ?
-                                                <h6 className="text-center llanesk-login-prompt mt-0 pb-2 text-danger text-wrap fw-bold">{invprompt}</h6>
+                                            error && (isFirst == "" || isLast == "") ?
+                                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{error}</h6>
                                                 :
                                                 ""
                                         }
 
-                                        <div className="llanesk-input-field d-flex flex-column position-relative px-2">
-                                            <input className="btn btn-primary fw-bold" type="submit" value="Sign In" />
-                                        </div>
-
-                                    </form>
-
-                                    {/* FORM EXIT */}
-
-                                    <div className="mt-md-5">
-                                        <div className="mt-4 text-center">
-                                            <span className="llanesk-register fw-light text-dark">Don't have an account yet?<a className="ps-1 llanesk-reg fw-bold text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Register here</a></span>
+                                        <div className="mt-3 form-group">
+                                            <div className="text-center">
+                                                <input className="llanesk-login-form-control form-control col-8 fw-light" value={isAddress} onChange={(e) => setisAddress(e.target.value)} type="text" name="address" placeholder="House Address" required />
+                                            </div>
 
                                         </div>
-                                    </div>
+
+                                        <div className="mt-3 form-group">
+                                            <div className="text-center">
+                                                <input className="llanesk-login-form-control form-control col-8 fw-light" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
+                                            </div>
+
+                                        </div>
 
 
-                                </div>
+                                        <div className="mt-3 form-group">
+                                            <div className="text-center d-flex flex-row align-items-center">
+                                                <input className="llanesk-login-form-control form-control l col-12 fw-light" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password" required />
 
-                            </div>
+                                                <div className="llanesk-login-validate col-0">
 
-                        </div>
+                                                    {
+                                                        isPassword.length <= 0 ?
+                                                            ""
+                                                            :
+                                                            isPassword.length <= 7 ?
+                                                                <i className="text-danger fa-solid fa-x"></i>
+                                                                :
+                                                                <i className="text-success fa-solid fa-check"></i>
+                                                    }
+                                                </div>
 
-                    </div>
+                                            </div>
 
-                </div>
-
-            </main >
-
-            <div className="llanesk-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1" data-bs-scroll="true">
-                <div className="offcanvas-header mb-0 pb-2">
-                    <h3 className="llanesk-offcanvas-title offcanvas-title fw-bolder text-dark">Register</h3>
-                    <button type="button" className="llanesk-offcanvas-btn-close btn-close btn-close-dark " data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-
-                <div className="offcanvas-body small p-0">
-
-                    <h6 className="llanesk-offcanvas-description text-start px-3 pb-3 border-bottom text-secondary fw-light">Parine't Sumali, Pusong Kanayon!</h6>
-
-                    <div className="container px-3">
-
-                        {/* FORM REGISTER */}
-
-                        <form className="form-signup" onSubmit={Create}>
-
-                            <div className="mt-4 form-group">
-                                <div className="row">
-                                    <div className="text-center d-flex flex-row">
-                                        <input className="llanesk-login-form-control form-control w-50 me-2 fw-light" value={isFirst} onChange={(e) => setisFirst(e.target.value)} type="text" name="firstname" placeholder="First Name" required />
-                                        <input className="llanesk-login-form-control form-control w-50 ms-2 fw-light" value={isLast} onChange={(e) => setisLast(e.target.value)} type="text" name="lastname" placeholder="Last Name" required />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {
-                                error && (isFirst == "" || isLast == "") ?
-                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{error}</h6>
-                                    :
-                                    ""
-                            }
-
-                            <div className="mt-3 form-group">
-                                <div className="text-center">
-                                    <input className="llanesk-login-form-control form-control col-8 fw-light" value={isAddress} onChange={(e) => setisAddress(e.target.value)} type="text" name="address" placeholder="House Address" required />
-                                </div>
-
-                            </div>
-
-                            <div className="mt-3 form-group">
-                                <div className="text-center">
-                                    <input className="llanesk-login-form-control form-control col-8 fw-light" value={isEmail} onChange={(e) => setisEmail(e.target.value)} type="email" name="email" placeholder="Email Address" required />
-                                </div>
-
-                            </div>
-
-
-                            <div className="mt-3 form-group">
-                                <div className="text-center d-flex flex-row align-items-center">
-                                    <input className="llanesk-login-form-control form-control l col-12 fw-light" type="password" name="password" value={isPassword} onChange={(e) => setisPassword(e.target.value)} placeholder="Password" required />
-
-                                    <div className="llanesk-login-validate col-0">
+                                        </div>
 
                                         {
                                             isPassword.length <= 0 ?
                                                 ""
-                                                :
-                                                isPassword.length <= 7 ?
-                                                    <i className="text-danger fa-solid fa-x"></i>
+                                                : isPassword.length <= 7 ?
+                                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Password must contain at least 8 characters.</h6>
                                                     :
-                                                    <i className="text-success fa-solid fa-check"></i>
+                                                    ""
+
                                         }
-                                    </div>
 
-                                </div>
+                                        {/* SHOW PASSWORD FEATURE NEXT TIME<i className="fa-regular fa-eye-slash" id="togglePassword"></i> */}
 
-                            </div>
+                                        {
+                                            prompt1 && isPassword == "" ?
+                                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
+                                                :
+                                                ""
+                                        }
 
-                            {
-                                isPassword.length <= 0 ?
-                                    ""
-                                    : isPassword.length <= 7 ?
-                                        <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Password must contain at least 8 characters.</h6>
-                                        :
-                                        ""
+                                        <div className="mt-3 form-group">
+                                            <div className="text-center d-flex flex-row align-items-center">
+                                                <input className="llanesk-login-form-control form-control l col-12 " type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Repeat Password" required />
 
-                            }
+                                                <div className="llanesk-login-validate col-0">
 
-                            {/* SHOW PASSWORD FEATURE NEXT TIME<i className="fa-regular fa-eye-slash" id="togglePassword"></i> */}
+                                                    {
+                                                        isConfirmPassword.length <= 0 ?
+                                                            ""
+                                                            :
+                                                            isConfirmPassword == isPassword ?
+                                                                <i className="text-success fa-solid fa-check"></i>
+                                                                :
+                                                                <i className="text-danger fa-solid fa-x"></i>
 
-                            {
-                                prompt1 && isPassword == "" ?
-                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt1}</h6>
-                                    :
-                                    ""
-                            }
+                                                    }
+                                                </div>
+                                            </div>
 
-                            <div className="mt-3 form-group">
-                                <div className="text-center d-flex flex-row align-items-center">
-                                    <input className="llanesk-login-form-control form-control l col-12 " type="password" name="password" value={isConfirmPassword} onChange={(e) => setisConfirmPassword(e.target.value)} placeholder="Repeat Password" required />
-
-                                    <div className="llanesk-login-validate col-0">
+                                        </div>
 
                                         {
                                             isConfirmPassword.length <= 0 ?
                                                 ""
-                                                :
-                                                isConfirmPassword == isPassword ?
-                                                    <i className="text-success fa-solid fa-check"></i>
+                                                : isConfirmPassword != isPassword ?
+                                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Password is not the same.</h6>
                                                     :
-                                                    <i className="text-danger fa-solid fa-x"></i>
+                                                    ""
 
                                         }
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            {
-                                isConfirmPassword.length <= 0 ?
-                                    ""
-                                    : isConfirmPassword != isPassword ?
-                                        <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">* Password is not the same.</h6>
-                                        :
-                                        ""
-
-                            }
-
-                            {
-                                prompt2 && isConfirmPassword == "" ?
-                                    <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt2}</h6>
-                                    :
-                                    ""
-                            }
-
-                            <div className="mt-3 form-group ">
-                                <div className="text-center d-flex flex-row align-items-center">
-
-                                    <div className="col-12">
-
-                                        <InputMask type="tel" className="InputMask form-control rounded-2 opacity-75 mb-1" value={isGcash} onChange={(e) => setisGcash(e.target.value)}
-                                            mask="+63 999 999 9999"
-                                            slotChar="+63             "
-                                            placeholder="+63"
-                                            required
-                                        >
-                                        </InputMask>
-                                    </div>
-
-                                    <div className="llanesk-login-validate">
 
                                         {
-                                            isGcash.length <= 0 ?
-                                                ""
+                                            prompt2 && isConfirmPassword == "" ?
+                                                <h6 className="llanesk-login-prompt mt-2 text-danger text-wrap fw-light text-center">{prompt2}</h6>
                                                 :
-                                                isGcash && isValidPhoneNumber(isGcash) ?
-                                                    <i className="text-success fa-solid fa-check"></i>
-                                                    :
-                                                    <i className="text-danger fa-solid fa-x"></i>
+                                                ""
                                         }
+
+                                        <div className="mt-3 form-group ">
+                                            <div className="text-center d-flex flex-row align-items-center">
+
+                                                <div className="col-12">
+
+                                                    <InputMask type="tel" className="InputMask form-control rounded-2 opacity-75 mb-1" value={isGcash} onChange={(e) => setisGcash(e.target.value)}
+                                                        mask="+63 999 999 9999"
+                                                        slotChar="+63             "
+                                                        placeholder="+63"
+                                                        required
+                                                    >
+                                                    </InputMask>
+                                                </div>
+
+                                                <div className="llanesk-login-validate">
+
+                                                    {
+                                                        isGcash.length <= 0 ?
+                                                            ""
+                                                            :
+                                                            isGcash && isValidPhoneNumber(isGcash) ?
+                                                                <i className="text-success fa-solid fa-check"></i>
+                                                                :
+                                                                <i className="text-danger fa-solid fa-x"></i>
+                                                    }
+                                                </div>
+
+                                            </div>
+
+                                            {
+                                                isGcash.length != 0 && isValidPhoneNumber(isGcash) ?
+                                                    ""
+                                                    : isGcash.length != 0 ?
+                                                        <h6 className="llanesk-login-prompt mt-0 text-danger text-wrap fw-light text-center">* Please input a valid Gcash number.</h6>
+                                                        :
+                                                        <h6 className="llanesk-login-prompt mt-0 text-danger text-wrap fw-light text-center">{prompt3}</h6>
+                                            }
+
+
+
+                                        </div>
+
+                                        {/* <PhoneInput
+                        defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={(e) => setisGcash(e.target.value)} placeholder=" Gash Number"
+                        mask="+63" /> */}
+
+                                        {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
+
+                                        <div className="col-12 text-center py-4">
+
+                                            <input type="submit" className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" value="Sign Up"></input>
+                                        </div>
+
+                                    </form>
+
+                                    <div className="mt-2 pb-3 form-group text-center">
+                                        <label className="">
+                                            By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
+                                        </label>
+
                                     </div>
 
+
                                 </div>
-
-                                {
-                                    isGcash.length != 0 && isValidPhoneNumber(isGcash) ?
-                                        ""
-                                        : isGcash.length != 0 ?
-                                            <h6 className="llanesk-login-prompt mt-0 text-danger text-wrap fw-light text-center">* Please input a valid Gcash number.</h6>
-                                            :
-                                            <h6 className="llanesk-login-prompt mt-0 text-danger text-wrap fw-light text-center">{prompt3}</h6>
-                                }
-
-
-
-                            </div>
-
-                            {/* <PhoneInput
-                                        defaultCountry="PH" className="d-flex flex-row phoneInput" value={isGcash} onChange={(e) => setisGcash(e.target.value)} placeholder=" Gash Number"
-                                        mask="+63" /> */}
-
-                            {/* <input className="form-control col-8" value={isGcash} onChange={(e) => setisGcash(e.target.value)} type="number" name="number" placeholder="GCash Number" required /> */}
-
-                            <div className="col-12 text-center py-4">
-
-                                <input type="submit" className="col-6 btn btn-success llanesk-register-signup fw-bolder" name="submit" value="Sign Up"></input>
-                            </div>
-
-                        </form>
-
-                        <div className="mt-2 pb-3 form-group text-center">
-                            <label className="">
-                                By clicking sign up, I accept the <a className="text-decoration-none" href="#">Terms of Use</a> and <a className="text-decoration-none" href="#">Privacy Policy</a>.
-                            </label>
-
-                        </div>
-
-
+                            </div >
+                        </div >
+                    </>
+                    :
+                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-5 mb-5" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
-                </div >
-            </div >
+            }
+
+
 
         </>
 

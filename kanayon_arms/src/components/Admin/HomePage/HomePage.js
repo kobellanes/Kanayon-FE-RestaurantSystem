@@ -102,12 +102,12 @@ function AdminHomePage() {
                                 </div>
 
                                 <div className="justify-content-start align-items-start text-start">
-                                    <div className="austriakyla offcanvas offcanvas-bottom p-3" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot">
+                                    <div className="austriakyla offcanvas offcanvas-bottom p-3" tabIndex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot">
                                         <div className="austriakyla offcanvas-header border-bottom">
 
                                             <h5 className="austriakyla offcanvas-title fw-bold" id="offcanvasBottomLabel">User's Manual</h5>
 
-                                            <button type="button" class="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            <button type="button" className="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div className="austriakyla offcanvas-body medium mt-2">
                                             <ol>

@@ -297,12 +297,13 @@ function OrderHere() {
 
     return (
         <>
+            <Header>
+            </Header>
 
             {
                 data.isStatus == "ACTIVE" || data.isStatus == "ADMIN" ?
                     <>
-                        <Header>
-                        </Header>
+
 
                         <div className="d-flex flex-column container-fluid justify-content-center align-items-center">
                             <h4 className="LucidoML-orderhere-title fw-light mt-5 pb-2">Kanayon Inasal Menu</h4>
@@ -774,9 +775,10 @@ function OrderHere() {
                         </Footer>
                     </>
                     :
-                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
+                    ""
+                // <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
+                //     <span className="visually-hidden">Loading...</span>
+                // </div>
             }
 
         </>
