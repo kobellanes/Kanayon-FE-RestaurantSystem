@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import OrderFunction from '../OrderFunction/OrderFunction';
+import ReceiveFunction from '../OrderFunction/ReceiveFunction';
 import { useState } from 'react';
 import http from '../../../http';
 import { setAccounts } from '../../../redux/actions/actions';
 
-function OrderList() {
+function Received() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
 
@@ -98,11 +98,11 @@ function OrderList() {
                                 <main className="container-fluid ">
                                     <div className="mt-2">
                                         <div className="p-3">
-                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Pending Orders</h1>
+                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Paid Orders</h1>
                                             <div className="llanesk-stocklist-border mt-3" />
 
                                             <div className="container-fluid">
-                                                <OrderFunction></OrderFunction>
+                                                <ReceiveFunction></ReceiveFunction>
                                             </div>
                                         </div>
                                     </div>
@@ -123,4 +123,4 @@ function OrderList() {
     );
 }
 
-export default OrderList;
+export default Received;

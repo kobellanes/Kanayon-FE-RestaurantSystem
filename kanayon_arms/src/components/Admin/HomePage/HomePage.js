@@ -74,7 +74,7 @@ function AdminHomePage() {
 
                                         <ul className="dropdown-menu w-100">
                                             <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="orderlist"><i className="fa-solid fa-pen me-2"></i>Pending Orders</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="receive"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</a></li>
                                             <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
                                         </ul>
                                     </li>
@@ -102,12 +102,12 @@ function AdminHomePage() {
                                 </div>
 
                                 <div className="justify-content-start align-items-start text-start">
-                                    <div className="austriakyla offcanvas offcanvas-bottom p-3" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot">
+                                    <div className="austriakyla offcanvas offcanvas-bottom p-3 pb-0" tabIndex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot" data-bs-scroll="true" data-bs-backdrop="false">
                                         <div className="austriakyla offcanvas-header border-bottom">
 
                                             <h5 className="austriakyla offcanvas-title fw-bold" id="offcanvasBottomLabel">User's Manual</h5>
 
-                                            <button type="button" class="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            <button type="button" className="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div className="austriakyla offcanvas-body medium mt-1">
                                             <div className="container px-3">

@@ -127,7 +127,7 @@ function ViewOrder() {
                                                                 </td>
 
                                                                 <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isPrice}</h3>
+                                                                    <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
                                                                 </td>
 
                                                                 <td className="py-3">
@@ -161,9 +161,7 @@ function ViewOrder() {
                         </Footer>
                     </>
                     :
-                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
+                    ""
             }
 
         </>
