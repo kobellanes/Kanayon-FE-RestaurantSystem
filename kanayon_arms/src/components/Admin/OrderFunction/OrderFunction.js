@@ -180,6 +180,20 @@ function OrderFunction() {
 
     }
 
+    const notifyError = () => {
+        toast.error("You cancelled an order!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
+    }
+
     const [datech, setDatech] = useState('');
 
     const fetchDate = async () => {
@@ -210,6 +224,33 @@ function OrderFunction() {
     useEffect(() => {
         fetchDate();
     }, []);
+
+    const cancelOrder = () => {
+        const newOrder = [...orders];
+
+        let idn = newOrder.findIndex((order) => order.id == confOrig.id);
+
+        if (idn != -1) {
+            const data_update = {
+                isStatus: "ORDER CANCELLED",
+            }
+
+            const updateOrder = newOrder.at(idn);
+
+            http.put(`orders/${updateOrder.id}`, data_update).then(result => {
+                if (result.data.status == 1) {
+                    notifyError();
+
+                    updateOrder.isStatus = "ORDER CANCELLED";
+
+                    newOrder.splice(idn, 1, updateOrder);
+                    dispatch(setOrders(newOrder));
+                }
+            }).catch(err => console.log(err.message));
+
+        }
+
+    }
 
     return (
         <>
@@ -275,20 +316,24 @@ function OrderFunction() {
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
+                                                        <h3 className="text-start fs-6 fw-bold text-danger">{orders.isStatus}</h3>
                                                     </td>
 
                                                     <td className="text-center align-items-center py-2">
-                                                        <button onClick={() => orderPrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas11" aria-controls="offcanvas11" type="button" className="btn btn-success">
+                                                        <button onClick={() => orderPrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas12" aria-controls="offcanvas12" type="button" className="btn btn-danger me-2">
+                                                            <i className="fa-regular fa-circle-xmark"></i>
+                                                        </button>
+
+                                                        <button onClick={() => orderPrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas11" aria-controls="offcanvas11" type="button" className="btn btn-success ms-2">
                                                             <i className="fa-solid fa-coins"></i>
                                                         </button>
                                                     </td>
+
+
                                                 </>
                                                 :
                                                 ""
                                         }
-
-
 
 
                                     </tr>
@@ -303,6 +348,45 @@ function OrderFunction() {
                 </tbody>
 
             </table >
+
+            <div className="llanesk-orderlistfunction-user-ban-offcanva offcanvas text-bg-light" id="offcanvas12" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
+                <div className="offcanvas-header mb-1 py-0 mt-3">
+                    <h3 className="offcanvas-title fw-bolder text-dark px-2">Confirm the action</h3>
+
+                    <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div className="offcanvas-body p-0 mt-1">
+
+                    <div className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4"></div>
+
+                    <div className="container ">
+
+                        <div className="container">
+
+                            <div className="llanesk-activeuserfunction-container-start container p-3 rounded-2">
+                                <p className="text-start m-0">Are you sure you want to did not receive the payment from "{confPrompt}"?</p>
+
+                            </div>
+
+                            <h6 className="text-start mt-3 ms-2 text-secondary fw-light">Note: This action cannot be undone. Are you sure you want to cancel this order?</h6>
+
+                        </div>
+                    </div>
+
+                    <div className="px-4 text-start border-bottom text-secondary fw-light mt-4"></div>
+
+                    <div className="d-flex flex-row py-3 align-items-end justify-content-end mx-4">
+                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="llanesk-activeuserfunction-banbutt btn btn-light mx-2">Cancel</button>
+
+                        <button onClick={cancelOrder} type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="btn btn-danger rounded-1 llanesk-activeuserfunction-banbutt fw-normal">Cancel Order</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+
 
             <div className="llanesk-orderfunction-offcanvas offcanvas text-bg-light" id="offcanvas11" tabIndex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel">
                 <div className="offcanvas-header mb-1 py-0 mt-3">

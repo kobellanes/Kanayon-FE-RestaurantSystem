@@ -24,6 +24,18 @@
     border: 1px solid #96D1B7;
 }
 
+.llanesk-orderlistfunction-user-ban-offcanva {
+    position: fixed;
+    width: 35%;
+    top: 20%;
+    left: 38%;
+    /* transform: translate(10%, 40%); */
+    min-height: 335px;
+    max-height: 335px;
+    /* transition: all .2s ease; */
+    border-radius: 5px;
+}
+
 @media(max-width: 1300px) {
     .llanesk-orderfunction-offcanvas {
         top: 2%;

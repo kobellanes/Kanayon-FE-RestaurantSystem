@@ -159,7 +159,7 @@ function BannedUserFunction() {
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-normal">{accounts.isStatus}</h3>
+                                                        <h3 className="text-start fs-6 text-danger fw-bold">{accounts.isStatus}</h3>
                                                     </td>
 
                                                     <td className="dese_function text-center align-items-center py-2">

@@ -99,6 +99,10 @@ function Login() {
                     setInvprompt('* Your account has been banned due to multiple violations!');
                     setEmail('');
                     setPassword('');
+                } else {
+                    setInvprompt('* Invalid Email or Password!');
+                    setEmail('');
+                    setPassword('');
                 }
 
             } else {   //WRONG PASSWORD OR EMAIL
