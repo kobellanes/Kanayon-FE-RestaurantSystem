@@ -40,19 +40,21 @@
     top: 10px;
     left: 10px;
     pointer-events: none;
-    transition: .5s;
-
+    transition: .3s;
 }
 
 .llanesk-input-field .input:focus~label {
-    top: -12px;
-    color: gray;
+    top: -14px;
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #5a5c59;
+    background-color: white;
 }
-
 
 .llanesk-input-field .input:valid~label {
     top: -15px;
-    color: black;
+    color: #5a5c59;
+    background-color: white;
 }
 
 

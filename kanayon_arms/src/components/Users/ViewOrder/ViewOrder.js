@@ -161,9 +161,7 @@ function ViewOrder() {
                         </Footer>
                     </>
                     :
-                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-4" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
+                    ""
             }
 
         </>
