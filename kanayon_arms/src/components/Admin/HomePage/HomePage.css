@@ -61,7 +61,6 @@
     font-size: 25px;
     transition: all .4s ease;
     color: white;
-    margin-left: 680px;
 }
 
 .austriakyla.btn.btn-primary:hover {
@@ -76,7 +75,7 @@
 }
 
 .kylakylap {
-    font-size: 30px;
+    font-size: 24px;
     margin-top: 18px;
     font-style: italic;
     font-weight: 400;
@@ -84,19 +83,17 @@
 }
 
 .austriakyla.offcanvas-body.medium {
-    font-size: 20px;
-
+    font-size: 15px;
 }
 
 .austriakyla.offcanvas.offcanvas-bottom {
-    width: 1600px;
+    width: 1150px;
     margin-left: 250px;
-    height: 500px;
+    height: 420px;
 }
 
 .austriakyla.offcanvas-title {
-    font-size: 30px;
-    font-weight: 400;
+    font-size: 27px;
 }
 
 .austriakyla.offcanvas-header {
@@ -109,3 +106,10 @@
     min-height: 1000px;
     max-height: 1000px;
 }
+
+/* @media(max-width: 1300px) {
+    .austriak-col-6 p {
+        font-size: 25px;
+        text-align: justify;
+    }
+} */
