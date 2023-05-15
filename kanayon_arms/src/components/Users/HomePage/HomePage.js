@@ -185,13 +185,13 @@ function HomePage() {
                                                             <img className="austriapc ms-5" src={require('../../../assets/1KatakamtakamS4.jpg')} />
                                                         </div>
                                                         <div className="col">
-                                                            <img className="austriapc me-5" src={require('../../../assets/4KatakamtakamS4.jpg')} />
+                                                            <img className="austriapc ms-4 " src={require('../../../assets/4KatakamtakamS4.jpg')} />
                                                         </div>
                                                         <div className="col">
-                                                            <img className="austriapc ms-5 mt-2" src={require('../../../assets/3KatakamtakamS4.jpg')} />
+                                                            <img className="austriapc ms-5" src={require('../../../assets/3KatakamtakamS4.jpg')} />
                                                         </div>
                                                         <div className="col">
-                                                            <img className="austriapc me-5 mt-2" src={require('../../../assets/2KatakamtakamS4.jpg')} />
+                                                            <img className="austriapc ms-4" src={require('../../../assets/2KatakamtakamS4.jpg')} />
                                                         </div>
                                                     </div>
                                                 </div>
