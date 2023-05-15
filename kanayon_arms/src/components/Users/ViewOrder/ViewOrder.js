@@ -127,7 +127,7 @@ function ViewOrder() {
                                                                 </td>
 
                                                                 <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isPrice}</h3>
+                                                                    <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
                                                                 </td>
 
                                                                 <td className="py-3">

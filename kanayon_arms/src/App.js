@@ -16,6 +16,7 @@ import OrderHere from './components/Users/OrderHere/OrderHere';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ViewOrder from './components/Users/ViewOrder/ViewOrder';
+import Received from './components/Admin/OrderList/Received';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="banneduser" element={<BannedUser />} />
           <Route path="stocklist" element={<StockList />} />
           <Route path="orderlist" element={<OrderList />} />
+          <Route path="receive" element={<Received />} />
         </Routes>
       </BrowserRouter>
     </>
