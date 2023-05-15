@@ -83,13 +83,13 @@
 }
 
 .austriakyla.offcanvas-body.medium {
-    font-size: 15px;
+    font-size: 19px;
 }
 
 .austriakyla.offcanvas.offcanvas-bottom {
     width: 1150px;
     margin-left: 250px;
-    height: 420px;
+    height: 437px;
 }
 
 .austriakyla.offcanvas-title {
@@ -105,6 +105,13 @@
     background-color: white;
     min-height: 1000px;
     max-height: 1000px;
+}
+
+.austria-orderfunction-container-start {
+    background-color: #efb5ab;
+    font-size: 18px;
+    color: #350f00;
+    border: 1px solid #d19896;
 }
 
 /* @media(max-width: 1300px) {

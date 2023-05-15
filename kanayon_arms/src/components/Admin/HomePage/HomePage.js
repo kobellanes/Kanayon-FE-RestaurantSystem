@@ -109,17 +109,20 @@ function AdminHomePage() {
 
                                             <button type="button" class="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
-                                        <div className="austriakyla offcanvas-body medium mt-2">
-                                            <ol>
-                                                <li>To log in to the admin panel, go to the login page and enter your username and password.</li>
-                                                <li>After logging in, you will see the dashboard. This page provides an overview of the restaurant's performance, including list of users, stock list, order list and inventory report.</li>
-                                                <li>To manage users, click on the "List of users". Here, you can see active users and you can ban the selected user.</li>
-                                                <li>To manage the menu, click on the "Stock list". Here, you can add, edit, and delete menu items.</li>
-                                                <li>To manage orders, click on the "Orders List". Here, you can view all the orders placed by customers. You can also update the status of the orders, such as "processing" or "completed."</li>
-                                                <li>To view reports, click on the "Inventory Report". Here, you can view sales report.</li>
-                                                <li>To log out of the admin panel, click on the "Logout" button at the left side of the screen.</li>
-                                            </ol>
-                                            <p className="kylakylap">Thank you for choosing Kanayon Inasal. We hope you enjoy your meal and come back to visit us soon!</p>
+                                        <div className="austriakyla offcanvas-body medium mt-1">
+                                            <div className="container px-3">
+                                                <div className="austria-orderfunction-container-start lh-5 container p-3 rounded-2">
+                                                    <ol>
+                                                        <li>To log in to the admin panel, go to the login page and enter your username and password.</li>
+                                                        <li>After logging in, you will see the dashboard. This page provides an overview of the restaurant's performance, including list of users, stock list, order list and inventory report.</li>
+                                                        <li>To manage users, click on the "List of users". Here, you can see active users and you can ban the selected user.</li>
+                                                        <li>To manage the menu, click on the "Stock list". Here, you can add, edit, and delete menu items.</li>
+                                                        <li>To manage orders, click on the "Orders List". Here, you can view all the orders placed by customers. You can also update the status of the orders, such as "processing" or "completed."</li>
+                                                        <li>To view reports, click on the "Inventory Report". Here, you can view sales report.</li>
+                                                        <li>To log out of the admin panel, click on the "Logout" button at the left side of the screen.</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
