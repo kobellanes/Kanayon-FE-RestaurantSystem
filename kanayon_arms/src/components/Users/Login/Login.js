@@ -12,8 +12,12 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { InputMask } from "primereact/inputmask";
+import bcrypt from "bcryptjs";
 
 function Login() {
+
+
+
     const dispatch = useDispatch();
     const accounts = useSelector((state) => state.allAccounts.account);
 
@@ -35,8 +39,6 @@ function Login() {
     const [prompt2, setPrompt2] = useState('');
     const [prompt3, setPrompt3] = useState('');
 
-    const [counter, setCounter] = useState('');
-
     const Login = (e) => {
         e.preventDefault();
 
@@ -52,40 +54,25 @@ function Login() {
             dispatch(setAccounts(result.data));
 
             const newAccount = result.data;
+            const hash = bcrypt.hashSync(password, 10);
+            let user = newAccount.find((user) => user.isEmail === email);
 
-            let ind = newAccount.findIndex((acc) => acc.isPassword == password && acc.isEmail == email);
-            if (ind != -1) {
-                const user_id = newAccount[ind].id;
-                localStorage.setItem("user_id", user_id);
+            if (user) {
+                const isValid = bcrypt.compareSync(password, user.isPassword);
 
-                http.get('accounts').then(result => {
-                    setCounter("LOAD");
-                    const filter = result.data.filter((account) => account.id == user_id);
-                    // dispatch(setAccounts(filter[0]));
-
-                    console.log(filter[0]);
-
-                    if (filter[0].isStatus == "ACTIVE") {
-                        window.location.href = '/';
-                    } else if (filter[0].isStatus == "ADMIN") {
-                        window.location.href = '/admin';
-                    } else if (filter[0].isStatus == "BANNED") {
-                        setInvprompt('* Your account has been banned due to multiple violations!');
-                        setEmail('');
-                        setPassword('');
-                    }
-
-                })
-
-                // if (user_status == "ADMIN") {
-                //     window.location.href = '/admin';
-                // } else if (user_status == "BANNED") {
-                //     setInvprompt('* Your account has been banned due to multiple violations!');
-                //     setEmail('');
-                //     setPassword('');
-                // } else {
-                //     window.location.href = '/';
-                // }
+                if (user && isValid && user.isStatus == "ADMIN") {
+                    const user_id = user.id;
+                    localStorage.setItem("user_id", user_id);
+                    window.location.href = '/admin';
+                } else if (user && isValid && user.isStatus == "ACTIVE") {
+                    const user_id = user.id;
+                    localStorage.setItem("user_id", user_id);
+                    window.location.href = '/';
+                } else if (user && isValid && user.isStatus == "BANNED") {
+                    setInvprompt('* Your account has been banned due to multiple violations!');
+                    setEmail('');
+                    setPassword('');
+                }
 
             } else {   //WRONG PASSWORD OR EMAIL
                 // alert('Invalid Email or Password!');    //Alert will be changed
@@ -93,6 +80,47 @@ function Login() {
                 setEmail('');
                 setPassword('');
             }
+
+            // let ind = newAccount.findIndex((acc) => acc.isPassword == hash && acc.isEmail == email);
+
+            // if (ind != -1) {
+            //     const user_id = newAccount[ind].id;
+            //     localStorage.setItem("user_id", user_id);
+
+            //     http.get('accounts').then(result => {
+            //         const filter = result.data.filter((account) => account.id == user_id);
+            //         // dispatch(setAccounts(filter[0]));
+
+            //         console.log(filter[0]);
+
+            //         if (filter[0].isStatus == "ACTIVE") {
+            //             window.location.href = '/';
+            //         } else if (filter[0].isStatus == "ADMIN") {
+            //             window.location.href = '/admin';
+            //         } else if (filter[0].isStatus == "BANNED") {
+            //             setInvprompt('* Your account has been banned due to multiple violations!');
+            //             setEmail('');
+            //             setPassword('');
+            //         }
+
+            //     })
+
+            //     // if (user_status == "ADMIN") {
+            //     //     window.location.href = '/admin';
+            //     // } else if (user_status == "BANNED") {
+            //     //     setInvprompt('* Your account has been banned due to multiple violations!');
+            //     //     setEmail('');
+            //     //     setPassword('');
+            //     // } else {
+            //     //     window.location.href = '/';
+            //     // }
+
+            // } else {   //WRONG PASSWORD OR EMAIL
+            //     // alert('Invalid Email or Password!');    //Alert will be changed
+            //     setInvprompt('* Invalid Email or Password!');
+            //     setEmail('');
+            //     setPassword('');
+            // }
 
         }).catch(error => console.log(error.message));
 
@@ -131,12 +159,16 @@ function Login() {
                         dispatch(setAccounts(result.data));
                         const newAccount = result.data;
 
+                        //hash
+                        const password = isPassword;
+                        const hash = bcrypt.hashSync(password, 10);
+
                         const account = {
                             isFirst: isFirst,
                             isLast: isLast,
                             isAddress: isAddress,
                             isEmail: isEmail,
-                            isPassword: isPassword,
+                            isPassword: hash,
                             isGcash: isGcash,
                             isStatus: "ACTIVE",
                         }

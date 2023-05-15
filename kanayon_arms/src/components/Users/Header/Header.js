@@ -14,7 +14,7 @@ function Header() {
     const fetchAccount = async () => {
 
         http.get('accounts').then(result => {
-            setCounter("LOAD");
+            setCounter('LOAD');
             const filter = result.data.filter((account) => account.id == user_id);
 
             if (filter[0] === undefined) {
@@ -22,11 +22,6 @@ function Header() {
             } else {
                 setData(filter[0].isStatus);
 
-                if ((filter[0].isStatus == "ACTIVE") || filter[0].isStatus == "ADMIN") {
-
-                } else {
-                    window.location.href = '/login';
-                }
             }
 
         }).catch(err => console.log(err.message));
@@ -161,13 +156,11 @@ function Header() {
 
                     </main >
                     :
-                    <div className="py-5">
-                        <div className="d-flex spinner-border justify-content-center container-fluid text-light" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
+                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-5 mb-5" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
-
             }
+
 
         </>
     );
