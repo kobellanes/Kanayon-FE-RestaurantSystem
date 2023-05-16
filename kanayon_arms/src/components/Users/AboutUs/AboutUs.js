@@ -41,14 +41,14 @@ function AboutUs() {
 
                             </div>
 
-                            <div className="container-fluid mt-4 d-flex flex-column flex-lg-row mx-lg-5 px-5 me-md-5 mb-5" >
+                            <div className="container-fluid mt-4 d-flex flex-column flex-lg-row mx-lg-5 px-5 me-md-5" >
                                 <div className="austriak-col-6 col-lg-6 col-12 align-items-center mb-4">
                                     <p className="fw-light text-light">The idea came about when the founder, Tatay Mio felt the need and the urge to feed and inspire people with this dish they so loved, chicken inasal. His family put a lot of effort into serving the best and quality food they could offer, from selecting the freshest meat up to adding the special, flavorful and authentic ingredients make our inasal become different from the others.</p>
                                     <p className="fw-light text-light"> Kanayon Inasal is perfect for the budget concious or what we called the budgetarian because of its cheap price for a complete dinner or lunch. </p>
                                 </div>
 
-                                <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end">
-                                    <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/founder.jpg')} alt="Kanayon" />
+                                <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end mb-5">
+                                    <img className="austriak-aboutus-img-fluid rounded-5 col-12 mb-5" src={require('../../../assets/founder.jpg')} alt="Kanayon" />
 
                                 </div>
 
