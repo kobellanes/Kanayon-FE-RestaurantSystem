@@ -80,7 +80,7 @@ function UserPage() {
                                         </ul>
                                     </li>
 
-                                    <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
+                                    <li className=""><a href="inventory" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
 
                                     <hr className="text-white mt-2" />
 
@@ -98,6 +98,12 @@ function UserPage() {
                                     <div className="mt-2">
                                         <div className="p-3">
                                             <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Active Users</h1>
+
+                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0">
+                                                <a href="banneduser" type="button" className="btn btn-light">Banned Users<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></a>
+
+                                            </div>
+
                                             <div className="llanesk-stocklist-border mt-3" />
 
                                             <div className="container-fluid">

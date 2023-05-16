@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import BannedUserFunction from '../UserFunction/BannedUserFunction';
-import http from '../../../http';
+import InventoryFunction from '../InventoryFunction/InventoryFunction';
 import { useState } from 'react';
+import http from '../../../http';
 import { setAccounts } from '../../../redux/actions/actions';
 
-function BannedUser() {
+function Inventory() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
 
@@ -34,6 +34,7 @@ function BannedUser() {
         window.location.href = '/'
     }
 
+
     return (
         <>
             <div className="dese-adminnav-main main-container d-flex">
@@ -50,20 +51,21 @@ function BannedUser() {
                                 <ul className="list-unstyled px-2">
                                     <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
 
-                                    <li className="active nav-item dropdown">
-                                        <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <li className=" nav-item dropdown">
+                                        <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                                             <i className="fa-solid fa-users me-1"></i>
                                             List of Users
                                             <i className="dropdown-toggle ms-2"></i>
                                         </a>
 
                                         <ul className="dropdown-menu w-100">
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
                                         </ul>
                                     </li>
 
                                     <li className=""><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
+
 
                                     <li className="nav-item dropdown">
                                         <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,7 +81,8 @@ function BannedUser() {
                                         </ul>
                                     </li>
 
-                                    <li className=""><a href="inventory" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
+
+                                    <li className="active"><a href="inventory" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
 
                                     <hr className="text-white mt-2" />
 
@@ -93,24 +96,26 @@ function BannedUser() {
                             </div>
 
                             <div className="dese-adminnav-content content">
-                                <main className="container">
+                                <main className="container-fluid ">
                                     <div className="mt-2">
                                         <div className="p-3">
-                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Banned Users</h1>
+                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">Inventory Report</h1>
 
                                             <div className="container-fluid d-flex justify-content-end pt-0 mt-0">
-                                                <a href="activeuser" type="button" className="btn btn-light">Active Users<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></a>
+                                                <a href="#" type="button" className="btn btn-light">Download PDF<i className="ms-2 fa-solid fa-download"></i></a>
 
                                             </div>
+
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
                                             <div className="container-fluid">
-                                                <BannedUserFunction></BannedUserFunction>
+                                                <InventoryFunction />
                                             </div>
                                         </div>
                                     </div>
                                 </main>
+
                             </div>
 
                         </>
@@ -126,4 +131,4 @@ function BannedUser() {
     );
 }
 
-export default BannedUser;
+export default Inventory;

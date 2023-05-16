@@ -11,14 +11,13 @@ import BannedUser from './components/Admin/UserList/BannedUser';
 import StockList from './components/Admin/StockList/StockList';
 import OrderList from './components/Admin/OrderList/OrderList';
 import OrderHere from './components/Users/OrderHere/OrderHere';
-
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ViewOrder from './components/Users/ViewOrder/ViewOrder';
 import Received from './components/Admin/OrderList/Received';
 import Completed from './components/Admin/OrderList/Completed';
+import Inventory from './components/Admin/Inventory/Inventory';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -40,6 +39,7 @@ function App() {
           <Route path="orderlist" element={<OrderList />} />
           <Route path="receive" element={<Received />} />
           <Route path="completed" element={<Completed />} />
+          <Route path="inventory" element={<Inventory />} />
         </Routes>
       </BrowserRouter>
     </>

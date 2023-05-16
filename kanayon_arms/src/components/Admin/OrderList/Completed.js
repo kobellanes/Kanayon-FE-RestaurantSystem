@@ -82,7 +82,7 @@ function Completed() {
                                     </li>
 
 
-                                    <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
+                                    <li className=""><a href="inventory" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
 
                                     <hr className="text-white mt-2" />
 
@@ -100,7 +100,6 @@ function Completed() {
                                     <div className="mt-2">
                                         <div className="p-3">
                                             <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Completed Orders</h1>
-
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
