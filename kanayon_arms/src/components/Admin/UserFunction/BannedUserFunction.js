@@ -121,7 +121,7 @@ function BannedUserFunction() {
 
     return (
         <>
-            <table className="table table-striped mt-3">
+            <table className="table table-striped mt-2">
                 <thead className="dese_thead">
                     <tr>
                         <th>NAME</th>

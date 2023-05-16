@@ -1,8 +1,8 @@
 .dese-offcanvas {
     position: fixed;
-    width: 25%;
+    width: 40%;
     top: 15%;
-    left: 43%;
+    left: 39%;
     /* transform: translate(10%, 40%); */
     min-height: 470px;
     max-height: 470px;
@@ -14,13 +14,13 @@
     margin-top: -90px;
 }
 
-@media only screen and (max-width:1400px) {
+/* @media only screen and (max-width:1400px) {
     .dese-offcanvas {
         width: 40%;
         left: 30%;
     }
 
-}
+} */
 
 @media only screen and (max-width: 768px) {
     .dese-offcanvas {

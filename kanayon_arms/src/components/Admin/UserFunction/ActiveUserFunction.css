@@ -26,3 +26,13 @@
     color: #7B222B;
     border: 1px solid #E6C7CA;
 }
+
+@media(max-width: 1350px) {
+    .llanesk-activeuserfunction-user-ban-offcanva {
+        width: 38%;
+        top: 20%;
+        left: 38%;
+        min-height: 325px;
+        max-height: 325px;
+    }
+}

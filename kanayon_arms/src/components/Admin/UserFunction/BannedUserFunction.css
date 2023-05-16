@@ -1,11 +1,11 @@
 .llanesk-banneduserfunction-user-retrieve-offcanva {
     position: fixed;
-    width: 35%;
+    width: 37%;
     top: 20%;
     left: 38%;
     /* transform: translate(10%, 40%); */
-    min-height: 310px;
-    max-height: 310px;
+    min-height: 325px;
+    max-height: 325px;
     /* transition: all .2s ease; */
     border-radius: 5px;
 }
@@ -27,4 +27,14 @@
     max-height: 280px;
     /* transition: all .2s ease; */
     border-radius: 5px;
+}
+
+@media(max-width: 1350px) {
+    .llanesk-banneduserfunction-user-retrieve-offcanva {
+        width: 38%;
+        top: 20%;
+        left: 38%;
+        min-height: 335px;
+        max-height: 335px;
+    }
 }

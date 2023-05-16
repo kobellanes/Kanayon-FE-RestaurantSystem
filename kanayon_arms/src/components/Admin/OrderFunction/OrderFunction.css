@@ -7,8 +7,9 @@
 }
 
 .llanesk-orderfunction-offcanvas {
+    position: fixed;
     width: 37%;
-    top: 2%;
+    top: 5%;
     left: 39%;
     /* transform: translate(10%, 40%); */
     min-height: 640px;

@@ -98,19 +98,19 @@ function AdminHomePage() {
                                 <h4 className="austriahd">Welcome Admin!</h4>
 
                                 <div className="justify-content-center align-items-center text-center">
-                                    <button className="austriakyla btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Let's Get Started!</button>
+                                    <button className="austriakyla btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"><i class="fa-solid fa-play pe-2"></i>Let's Get Started!</button>
                                 </div>
 
                                 <div className="justify-content-start align-items-start text-start">
                                     <div className="austriakyla offcanvas offcanvas-bottom p-3 pb-0" tabIndex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBot" data-bs-scroll="true" data-bs-backdrop="false">
                                         <div className="austriakyla offcanvas-header border-bottom">
 
-                                            <h5 className="austriakyla offcanvas-title fw-bold" id="offcanvasBottomLabel">User's Manual</h5>
+                                            <h3 className="austriakyla offcanvas-title fw-bold" id="offcanvasBottomLabel">User's Manual</h3>
 
                                             <button type="button" className="btn-close text-reset mb-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div className="austriakyla offcanvas-body medium mt-1">
-                                            <div className="container px-3">
+                                            <div className="container">
                                                 <div className="austria-orderfunction-container-start lh-5 container p-3 rounded-2">
                                                     <ol>
                                                         <li>To log in to the admin panel, go to the login page and enter your username and password.</li>
