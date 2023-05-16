@@ -76,7 +76,7 @@ function OrderList() {
                                         <ul className="dropdown-menu w-100">
                                             <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="orderlist"><i className="fa-solid fa-pen me-2"></i>Pending Orders</a></li>
                                             <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="receive"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="completed"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
                                         </ul>
                                     </li>
 
