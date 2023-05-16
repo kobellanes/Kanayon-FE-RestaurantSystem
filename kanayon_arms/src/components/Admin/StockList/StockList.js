@@ -102,7 +102,7 @@ function StockList() {
                                         <div className="llanesk-stocklist-container container-fluid col-12 card border border-2 py-4 my-4">
 
                                             <StockListCreate />
-                                            <div className="dese-stock row">
+                                            <div className="dese-stock row justify-content-center">
 
                                                 <StockListItem />
                                             </div>
