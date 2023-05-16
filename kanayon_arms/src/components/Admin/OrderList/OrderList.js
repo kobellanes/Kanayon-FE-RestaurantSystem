@@ -107,9 +107,7 @@ function OrderList() {
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
-                                            <div className="container-fluid">
-                                                <OrderFunction></OrderFunction>
-                                            </div>
+                                            <OrderFunction></OrderFunction>
                                         </div>
                                     </div>
                                 </main>

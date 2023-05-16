@@ -74,14 +74,6 @@
     text-align: justify;
 }
 
-.kylakylap {
-    font-size: 24px;
-    margin-top: 18px;
-    font-style: italic;
-    font-weight: 400;
-    text-align: center;
-}
-
 .austriakyla.offcanvas-body.medium {
     font-size: 19px;
 }
@@ -89,7 +81,7 @@
 .austriakyla.offcanvas.offcanvas-bottom {
     width: 1150px;
     margin-left: 250px;
-    height: 447px;
+    height: 430px;
     transition: all .5s ease;
 }
 
@@ -109,15 +101,66 @@
 }
 
 .austria-orderfunction-container-start {
-    background-color: #efb5ab;
+    background-color: #dbdada;
     font-size: 18px;
-    color: #350f00;
-    border: 1px solid #d19896;
+    color: #000000;
+    border: 1px solid #817b7b;
 }
 
-/* @media(max-width: 1300px) {
-    .austriak-col-6 p {
-        font-size: 25px;
-        text-align: justify;
+@media(max-width: 1350px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1100px;
     }
-} */
+}
+
+@media(max-width: 1330px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1090px;
+    }
+}
+
+@media(max-width: 1320px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1080px;
+        height: 420px;
+    }
+
+    .austria-orderfunction-container-start {
+        font-size: 17px;
+    }
+}
+
+@media(max-width: 1300px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1060px;
+        height: 420px;
+    }
+
+    .austria-orderfunction-container-start {
+        font-size: 17px;
+    }
+}
+
+@media(max-width: 1280px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1040px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1020px;
+        height: 410px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 950px;
+        height: 400px;
+    }
+
+    .austria-orderfunction-container-start {
+        font-size: 16px;
+    }
+}

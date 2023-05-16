@@ -105,9 +105,7 @@ function BannedUser() {
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
-                                            <div className="container-fluid">
-                                                <BannedUserFunction></BannedUserFunction>
-                                            </div>
+                                            <BannedUserFunction></BannedUserFunction>
                                         </div>
                                     </div>
                                 </main>

@@ -106,12 +106,7 @@ function Inventory() {
 
                                             </div>
 
-
-                                            <div className="llanesk-stocklist-border mt-3" />
-
-                                            <div className="container-fluid">
-                                                <InventoryFunction />
-                                            </div>
+                                            <InventoryFunction />
                                         </div>
                                     </div>
                                 </main>

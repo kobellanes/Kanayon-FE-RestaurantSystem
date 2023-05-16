@@ -254,15 +254,12 @@ function OrderFunction() {
 
     return (
         <>
-            <p className="text-dark">
-
-            </p>
-            <table className="table table-striped table-hover mt-3">
+            <table className="table table-striped table-hover mt-1">
 
                 <thead className="dese_thead">
 
                     <tr>
-                        <th className="text-wrap">Order Number</th>
+                        <th>#</th>
                         <th>NAME</th>
                         <th>ADDRESS</th>
                         <th>EMAIL ADDRESS</th>

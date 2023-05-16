@@ -107,9 +107,7 @@ function Received() {
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
-                                            <div className="container-fluid">
-                                                <ReceiveFunction></ReceiveFunction>
-                                            </div>
+                                            <ReceiveFunction></ReceiveFunction>
                                         </div>
                                     </div>
                                 </main>

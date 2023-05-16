@@ -106,9 +106,8 @@ function UserPage() {
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
-                                            <div className="container-fluid">
-                                                <ActiveUserFunction></ActiveUserFunction>
-                                            </div>
+                                            <ActiveUserFunction></ActiveUserFunction>
+
                                         </div>
                                     </div>
                                 </main>
