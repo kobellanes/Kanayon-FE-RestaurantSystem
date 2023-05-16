@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import OrderFunction from '../OrderFunction/OrderFunction';
+import CompletedFunction from '../OrderFunction/CompletedFunction';
 import { useState } from 'react';
 import http from '../../../http';
 import { setAccounts } from '../../../redux/actions/actions';
 
-function OrderList() {
+function Completed() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
 
@@ -33,6 +33,7 @@ function OrderList() {
 
         window.location.href = '/'
     }
+
 
     return (
         <>
@@ -76,7 +77,7 @@ function OrderList() {
                                         <ul className="dropdown-menu w-100">
                                             <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="orderlist"><i className="fa-solid fa-pen me-2"></i>Pending Orders</a></li>
                                             <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="receive"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="#"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
+                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="completed"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
                                         </ul>
                                     </li>
 
@@ -98,17 +99,13 @@ function OrderList() {
                                 <main className="container-fluid ">
                                     <div className="mt-2">
                                         <div className="p-3">
-                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Pending Orders</h1>
+                                            <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Completed Orders</h1>
 
-                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0">
-                                                <a href="receive" type="button" className="btn btn-light">Paid Orders<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></a>
-
-                                            </div>
 
                                             <div className="llanesk-stocklist-border mt-3" />
 
                                             <div className="container-fluid">
-                                                <OrderFunction></OrderFunction>
+                                                <CompletedFunction />
                                             </div>
                                         </div>
                                     </div>
@@ -129,4 +126,4 @@ function OrderList() {
     );
 }
 
-export default OrderList;
+export default Completed;

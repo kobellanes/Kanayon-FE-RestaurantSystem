@@ -89,7 +89,8 @@
 .austriakyla.offcanvas.offcanvas-bottom {
     width: 1150px;
     margin-left: 250px;
-    height: 437px;
+    height: 447px;
+    transition: all .5s ease;
 }
 
 .austriakyla.offcanvas-title {

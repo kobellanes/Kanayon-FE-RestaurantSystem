@@ -1,0 +1,10 @@
+.llanesk-receivefunction-complete-offcanva {
+    width: 35%;
+    top: 20%;
+    left: 38%;
+    /* transform: translate(10%, 40%); */
+    min-height: 320px;
+    max-height: 320px;
+    /* transition: all .2s ease; */
+    border-radius: 5px;
+}

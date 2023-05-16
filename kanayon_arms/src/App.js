@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ViewOrder from './components/Users/ViewOrder/ViewOrder';
 import Received from './components/Admin/OrderList/Received';
+import Completed from './components/Admin/OrderList/Completed';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="stocklist" element={<StockList />} />
           <Route path="orderlist" element={<OrderList />} />
           <Route path="receive" element={<Received />} />
+          <Route path="completed" element={<Completed />} />
         </Routes>
       </BrowserRouter>
     </>

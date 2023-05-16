@@ -284,42 +284,42 @@ function OrderFunction() {
                                             orders.isStatus == "PENDING ORDER" && orders.date == datech ?
                                                 <>
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.id}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isName}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.user_isName}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isAddress}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.user_isAddress}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isEmail}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.user_isEmail}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.user_isGcash}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.user_isGcash}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isList}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.order_isList}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isMethod}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-light">{orders.order_isMethod}</h3>
                                                     </td>
 
                                                     <td className="py-3">
-                                                        <h3 className="text-start fs-6 fw-bold text-danger">{orders.isStatus}</h3>
+                                                        <h3 className="m-0 text-start fs-6 fw-bold text-danger">{orders.isStatus}</h3>
                                                     </td>
 
-                                                    <td className="text-center align-items-center py-2">
+                                                    <td className="text-center align-items-center py-4 d-flex flex-row">
                                                         <button onClick={() => orderPrompt(index)} data-bs-toggle="offcanvas" data-bs-target="#offcanvas12" aria-controls="offcanvas12" type="button" className="btn btn-danger me-2">
                                                             <i className="fa-regular fa-circle-xmark"></i>
                                                         </button>
