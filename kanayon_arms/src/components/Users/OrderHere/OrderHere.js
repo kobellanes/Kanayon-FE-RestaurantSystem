@@ -389,7 +389,7 @@ function OrderHere() {
 
                                                                         <div className="offcanvas-body p-0">
 
-                                                                            <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Placeholder!</h6>
+                                                                            <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4 ms-1">Please list your orders.</h6>
 
                                                                             <div className="container px-4">
 
@@ -486,7 +486,7 @@ function OrderHere() {
 
                             <div className="offcanvas-body p-0 mt-1">
 
-                                <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-3">Placeholder!</h6>
+                                <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-3">🧾 Payment Details</h6>
 
                                 <div className="px-4 flex-flex-column">
 
@@ -515,7 +515,10 @@ function OrderHere() {
 
                             <div className="px-4 container">
                                 <h6 className="fw-light">
-                                    Note: Placeholder!
+                                    Orders can be paid with Gcash.
+                                    <br></br>
+                                    Details: KE••••H M. (09071031759).
+
                                 </h6>
                             </div>
 
@@ -575,7 +578,7 @@ function OrderHere() {
 
                             <div className="offcanvas-body p-0">
 
-                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-3">Placeholder!</h6>
+                                <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-3">Checkout</h6>
 
                                 <div className="container px-4 mt-4">
 
