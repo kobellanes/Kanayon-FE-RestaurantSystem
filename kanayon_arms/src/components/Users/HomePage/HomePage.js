@@ -181,18 +181,11 @@ function HomePage() {
                                             <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center mb-3">
                                                 <div className="col-6">
                                                     <div className="austria_firstcol row row-cols-2">
-                                                        <div className="col">
-                                                            <img className="austriapc ms-5" src={require('../../../assets/1KatakamtakamS4.jpg')} />
+                                                        <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end mb-5">
+                                                            <img className="austriak-homepagek-img-fluid mb-5" src={require('../../../assets/5KatakamtakamS4.jpg')} alt="Katakamtakam" />
+
                                                         </div>
-                                                        <div className="col">
-                                                            <img className="austriapc ms-4 " src={require('../../../assets/4KatakamtakamS4.jpg')} />
-                                                        </div>
-                                                        <div className="col">
-                                                            <img className="austriapc ms-5" src={require('../../../assets/3KatakamtakamS4.jpg')} />
-                                                        </div>
-                                                        <div className="col">
-                                                            <img className="austriapc ms-4" src={require('../../../assets/2KatakamtakamS4.jpg')} />
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                                 <div className="col-6">
