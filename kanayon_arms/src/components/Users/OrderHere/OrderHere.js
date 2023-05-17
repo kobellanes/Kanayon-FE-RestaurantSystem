@@ -130,7 +130,7 @@ function OrderHere() {
         if (event.target.checked) {
             setVerifier("CHECKED");
             setVerifierPrompt("Selected Mode:")
-            setAddressPrompt("* Order would be prepared after paying! Hoping to see you here our dear ka-Nayon!");
+            setAddressPrompt("* Order would be prepared after paying! Hoping to see you here our dear Kanayon!");
 
             const j = parseInt(newPrice);
             setFinalPrice("Paid ₱" + j + ".00")
@@ -145,7 +145,7 @@ function OrderHere() {
             setVerifier2("CHECKED");
             setVerifierPrompt("Selected Mode:")
             setAddressPrompt("* We only deliver at Tanauan City, Batangas Area and also make sure the address that you use in the registration page is the address where you'll pick up the order! If not, kindly message us directly on our Facebook Page!");
-            setLastNote("* We've also added a ₱50.00 for shipping fee! We'll be there in a momment ka-Nayon!");
+            setLastNote("* We've also added a ₱50.00 for shipping fee! We'll be there in a moment Kanayon!");
             const h = parseInt(newPrice);
             const i = h + 50;
 
@@ -486,7 +486,7 @@ function OrderHere() {
 
                             <div className="offcanvas-body p-0 mt-1">
 
-                                <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-3">🧾 Payment Details</h6>
+                                <h6 className="px-4 text-start border-bottom text-light fw-light pb-2 mb-3">Payment Details</h6>
 
                                 <div className="px-4 flex-flex-column">
 
@@ -515,10 +515,9 @@ function OrderHere() {
 
                             <div className="px-4 container">
                                 <h6 className="fw-light">
-                                    Orders can be paid with Gcash.
+                                    Kindly pay your order thru GCash
                                     <br></br>
                                     Details: KE••••H M. (09071031759).
-
                                 </h6>
                             </div>
 
