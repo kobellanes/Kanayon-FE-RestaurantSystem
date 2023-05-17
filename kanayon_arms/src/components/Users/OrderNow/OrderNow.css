@@ -1,5 +1,6 @@
 .dese_order_img {
     height: 330px;
+    width: 1300px;
 }
 
 .llanesk-ordernow {
@@ -23,8 +24,7 @@
 
 .llanesk-ordernow-orderpage {
     background-color: green;
-    width: 45%;
-    padding: 30px;
+    width: 400px;
     font-size: 25px;
     transition: all .4s ease;
 }
@@ -36,7 +36,7 @@
 
 .llanesk-ordernow-orderlist {
     background-color: blue;
-    width: 45%;
+    width: 400px;
     font-size: 25px;
     transition: all .4s ease;
 }
@@ -47,6 +47,8 @@
 }
 
 .llanesk-ordernow-featuredpic {
+    width: 200px;
+    height: 200px;
     transition: all .5s ease;
 }
 
@@ -61,18 +63,8 @@
 
 @media only screen and (max-width: 1200px) {
     .dese_order_img {
+        width: 1100px;
         height: 270px;
-    }
-
-    .llanesk-ordernow-orderpage {
-        width: 60%;
-        padding: 20px;
-        font-size: 20px;
-    }
-
-    .llanesk-ordernow-orderlist {
-        width: 60%;
-        font-size: 20px;
     }
 
     .llanesk-ordernow-featuredlabel {
@@ -83,22 +75,108 @@
 
 @media only screen and (max-width: 992px) {
     .dese_order_img {
+        width: 930px;
         height: 270px;
     }
 
     .llanesk-ordernow-orderpage {
-        width: 70%;
-        padding: 0;
+        width: 370px;
+        font-size: 23px;
+    }
+
+    .llanesk-ordernow-orderlist {
+        width: 370px;
+        font-size: 23px;
+    }
+
+    .llanesk-ordernow-featuredpic {
+        width: 170px;
+        height: 170px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dese_order_img {
+        width: 700px;
+        height: 230px;
+    }
+
+    .llanesk-ordernow-orderpage {
+        width: 270px;
         font-size: 20px;
     }
 
     .llanesk-ordernow-orderlist {
-        width: 60%;
+        width: 270px;
         font-size: 20px;
+    }
+
+    .llanesk-ordernow-title {
+        font-size: 36px;
+    }
+
+    .llanesk-ordernow-featuredpic {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .dese_order_img {
+        width: 550px;
+        height: 180px;
+    }
+
+    .llanesk-ordernow-orderpage {
+        width: 250px;
+        font-size: 20px;
+    }
+
+    .llanesk-ordernow-orderlist {
+        width: 250px;
+        font-size: 20px;
+    }
+
+    .llanesk-ordernow-title {
+        font-size: 36px;
+    }
+
+    .llanesk-ordernow-featuredpic {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .dese_order_img {
+        width: 550px;
+        height: 180px;
+    }
+
+    .llanesk-ordernow-orderpage {
+        width: 150px;
+        font-size: 10px;
+    }
+
+    .llanesk-ordernow-orderlist {
+        width: 150px;
+        font-size: 10px;
+    }
+
+    .llanesk-ordernow-title {
+        font-size: 17px;
+    }
+
+    .llanesk-ordernow-featured {
+        font-size: 17px;
+    }
+
+    .llanesk-ordernow-featuredpic {
+        width: 180px;
+        height: 180px;
     }
 
     .llanesk-ordernow-featuredlabel {
         font-size: 15px;
     }
-
 }
