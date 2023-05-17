@@ -59,13 +59,11 @@
     width: 250px;
     background-color: blue;
     font-size: 25px;
-    transition: all .4s ease;
     color: white;
 }
 
 .austriakyla.btn.btn-primary:hover {
     background-color: darkblue;
-    transform: scale(1.2);
     color: white;
 }
 
@@ -76,6 +74,7 @@
 
 .austriakyla.offcanvas-body.medium {
     font-size: 19px;
+
 }
 
 .austriakyla.offcanvas.offcanvas-bottom {
@@ -106,6 +105,11 @@
     color: #000000;
     border: 1px solid #817b7b;
 }
+
+.austriakyla.offcanvas.offcanvas-bottom {
+    width: 1612px;
+}
+
 
 @media(max-width: 1350px) {
     .austriakyla.offcanvas.offcanvas-bottom {

@@ -36,7 +36,7 @@ function AboutUs() {
                                 </div>
 
                                 <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center">
-                                    <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/owner.jpg')} alt="Kanayon" />
+                                    <img className="austriak-aboutus-img-fluid rounded-4 col-12" src={require('../../../assets/owner.jpg')} alt="Kanayon" />
                                 </div>
 
                             </div>
@@ -48,7 +48,7 @@ function AboutUs() {
                                 </div>
 
                                 <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end mb-5">
-                                    <img className="austriak-aboutus-img-fluid rounded-5 col-12 mb-5" src={require('../../../assets/founder.jpg')} alt="Kanayon" />
+                                    <img className="austriak-aboutus-img-fluid rounded-4 col-12 mb-5 mt-2" src={require('../../../assets/founder.jpg')} alt="Kanayon" />
 
                                 </div>
 
@@ -60,7 +60,7 @@ function AboutUs() {
                                 </div>
 
                                 <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-start">
-                                    <img className="austriak-aboutus-img-fluid rounded-5 col-12" src={require('../../../assets/logo.jpg')} alt="Kanayon" />
+                                    <img className="austriak-aboutus-img-fluid rounded-4 col-12" src={require('../../../assets/logo.jpg')} alt="Kanayon" />
 
                                 </div>
 
