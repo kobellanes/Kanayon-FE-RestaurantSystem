@@ -39,7 +39,7 @@
 .llanesk-stocklistitem-update-offcanva {
     position: fixed;
     width: 35%;
-    top: 0%;
+    top: 8%;
     left: 40%;
     /* transform: translate(10%, 40%); */
     min-height: 660px;
@@ -75,7 +75,7 @@
 
 @media(max-width: 1300px) {
     .llanesk-stocklistitem-update-offcanva {
-        top: 3%;
+        top: 8%;
     }
 }
 
@@ -87,7 +87,7 @@
     .llanesk-stocklistitem-update-offcanva {
         position: fixed;
         width: 35%;
-        top: 2%;
+        top: 8%;
         left: 42%;
         /* transform: translate(10%, 40%); */
         min-height: 640px;
@@ -105,7 +105,7 @@
     .llanesk-stocklistitem-update-offcanva {
         position: fixed;
         width: 35%;
-        top: 0%;
+        top: 8%;
         left: 42%;
         /* transform: translate(10%, 40%); */
         min-height: 640px;
