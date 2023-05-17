@@ -23,7 +23,7 @@ function CompletedFunction() {
 
     return (
         <>
-            <table className="table table-striped table-hover mt-1">
+            <table className="table table-striped table-bordered table-hover mt-1">
 
                 <thead className="dese_thead">
 

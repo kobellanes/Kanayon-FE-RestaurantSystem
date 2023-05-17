@@ -90,20 +90,24 @@ function OrderNow() {
                                 <h1 className="llanesk-ordernow-title fw-light pb-2 text-light">Tuloy tuloy ang bange! Tara Tikme!</h1>
                                 <div className="llanesk-ordernow-border mb-3 text-center"></div>
 
-                                <div className="d-flex flex-row mt-4 col-6">
-                                    <a href="/orderhere" className="llanesk-ordernow-orderpage btn fw-light mx-xl-4 mx-3 fw-light p-4 px-5 text-center text-light" tabIndex="-1" role="button" aria-disabled="true">
-                                        <i className="fa-sharp fa-solid fa-bag-shopping me-2"></i>
-                                        ORDER HERE
-                                    </a>
-                                    <a href="vieworder" className="llanesk-ordernow-orderlist btn fw-light mx-xl-4 mx-3 p-4  text-light" tabIndex="-1" role="button" aria-disabled="true">
-                                        <i className="fa-solid fa-magnifying-glass me-2"></i>
-                                        VIEW ORDER LIST
-                                    </a>
+                                <div className="d-flex justify-content-center align-items-center flex-row mt-4 col-6">
+                                    <div>
+                                        <a href="/orderhere" className="llanesk-ordernow-orderpage btn fw-light fw-light text-center text-light justify-content-center p-4 p-md-3 mx-3" tabIndex="-1" role="button" aria-disabled="true">
+                                            <i className="fa-sharp fa-solid fa-bag-shopping me-2"></i>
+                                            ORDER HERE
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="vieworder" className="llanesk-ordernow-orderlist btn fw-light text-light justify-content-center p-4 p-md-3 mx-3" tabIndex="-1" role="button" aria-disabled="true">
+                                            <i className="fa-solid fa-magnifying-glass me-2"></i>
+                                            VIEW ORDER LIST
+                                        </a>
+                                    </div>
                                 </div>
 
                             </div>
 
-                            <div className="mx-xl-5 px-xl-5 mt-4">
+                            <div className="mt-4">
                                 <div className="container-fluid d-flex mx-xl-5 px-xl-5">
                                     <div className="container-fluid mx-xl-4 text-center text-xl-start">
                                         <h4 className="llanesk-ordernow-featured fw-light text-light mt-4">Featured Items</h4>
@@ -111,36 +115,44 @@ function OrderNow() {
                                 </div>
                             </div>
 
-                            <div className="mx-xl-5 px-xl-5">
-                                <div className="mx-xl-5">
-                                    <div className="row g-4 mt-3 px-xl-5 mx-xl-5">
-                                        <div className="col-12 col-lg-3 col-xl-3">
+                            <div className="">
+                                <div className="mx-xl-5 mx-lg-0 mx-md-3">
+                                    <div className="row g-4 mt-3 px-xxl-5 mx-xxl-5 px-xl-3 mx-xl-3 px-lg-1 mx-md-0 px-md-0">
 
-                                            <div className="">
-                                                <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img>
+                                        <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <div>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img></a>
+                                                </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Paa Inasal</h4>
                                             </div>
                                         </div>
 
-                                        <div className="col-12 col-lg-3 col-xl-3">
+                                        <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div className="">
-                                                <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img></a>
+                                                </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Liempo</h4>
                                             </div>
 
                                         </div>
 
-                                        <div className="col-12 col-lg-3 col-xl-3">
+                                        <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div className="">
-                                                <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img></a>
+                                                </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Pork Barbecue</h4>
                                             </div>
 
                                         </div>
 
-                                        <div className="col-12 col-lg-3 col-xl-3">
+                                        <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div className="">
-                                                <img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img></a>
+                                                </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Halo-Halo</h4>
                                             </div>
 

@@ -127,7 +127,7 @@ function StockListCreate() {
 
                 <div className="offcanvas-body p-0">
 
-                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Placeholder</h6>
+                    <h6 className="px-4 text-start border-bottom text-secondary fw-light pb-1 mb-4">Incorporate a fresh menu item</h6>
 
                     <div className="container px-4">
 

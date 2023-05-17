@@ -177,36 +177,24 @@ function HomePage() {
 
                                 <section className="austriak-homepage-s4">
                                     <div className="mt-3">
-                                        <div className="row">
-                                            <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center mb-3">
-                                                <div className="col-6">
-                                                    <div className="austria_firstcol row row-cols-2">
-                                                        <div className="col">
-                                                            <img className="austriapc ms-5" src={require('../../../assets/1KatakamtakamS4.jpg')} />
-                                                        </div>
-                                                        <div className="col">
-                                                            <img className="austriapc ms-4 " src={require('../../../assets/4KatakamtakamS4.jpg')} />
-                                                        </div>
-                                                        <div className="col">
-                                                            <img className="austriapc ms-5" src={require('../../../assets/3KatakamtakamS4.jpg')} />
-                                                        </div>
-                                                        <div className="col">
-                                                            <img className="austriapc ms-4" src={require('../../../assets/2KatakamtakamS4.jpg')} />
-                                                        </div>
-                                                    </div>
+                                        <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center">
+                                            {/* <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center mb-3"> */}
+                                            <div className="container d-flex flex-row justify-content-center align-items-center text-center">
+                                                {/* <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end mb-5"> */}
+                                                <img className="austriak-homepagek-img-fluid" src={require('../../../assets/5KatakamtakamS4.jpg')} alt="Katakamtakam" />
+                                                {/* </div> */}
+                                            </div>
+
+                                            <div className="container justify-content-center align-items-center text-center">
+                                                <div className="austriakccol ms-3">
+                                                    <h1 className="kylah1">"Satisfy your cravings, elevate your taste buds"</h1>
+                                                    <p className="kylacol text-light fw-light pt-3">
+                                                        Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes where each bite is a journey to foodie paradise!
+                                                    </p>
                                                 </div>
-                                                <div className="col-6">
-                                                    <div className="austriakccol">
-                                                        <h1 className="kylah1">"Satisfy your cravings, elevate your taste buds"</h1>
-                                                        <p className="kylacol text-light fw-light px-xxl-5">
-                                                            Experience a taste of heaven with Kanayon Inasal's mouthwatering dishes where each bite is a journey to foodie paradise!
-                                                        </p>
-                                                    </div>
-                                                    <div className="justify-content-center align-items-center text-center mt-5 pb-3">
 
-                                                        <a href="ordernow" className="austriak-aboutus-btn btn btn-dark"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</a>
-
-                                                    </div>
+                                                <div className="justify-content-center align-items-center text-center mt-5 pb-3">
+                                                    <a href="ordernow" className="austriak-ordernow-btn btn btn-dark fw-bold"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</a>
                                                 </div>
                                             </div>
                                         </div>

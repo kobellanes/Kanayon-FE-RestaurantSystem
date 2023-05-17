@@ -95,68 +95,69 @@ function ViewOrder() {
                             <div className="llanesk-orderhere-border mb-3 text-center"></div>
                         </div>
 
-                        <table className="table table-striped mt-3 text-light">
-                            <thead className="dese_thead">
-                                <tr>
-                                    <th>Order Number</th>
-                                    <th>Order List</th>
-                                    <th>Total Price</th>
-                                    <th>Mode</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div className="d-flex flex-column container-fluid justify-content-center align-items-center px-5">
+                            <table className="table table-striped table-bordered mt-3 text-light">
+                                <thead className="dese_thead">
+                                    <tr>
+                                        <th>Order Number</th>
+                                        <th>Order List</th>
+                                        <th>Total Price</th>
+                                        <th>Mode</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                {
-                                    orders.length > 0 ?
-                                        orders.map((orders, index) => {
+                                    {
+                                        orders.length > 0 ?
+                                            orders.map((orders, index) => {
 
-                                            return (
+                                                return (
 
-                                                <tr className="text-light">
+                                                    <tr className="text-light">
 
-                                                    {
-                                                        orders.user_isEmail == data.isEmail && orders.date == datech ?
-                                                            <>
-                                                                <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
-                                                                </td>
+                                                        {
+                                                            orders.user_isEmail == data.isEmail && orders.date == datech ?
+                                                                <>
+                                                                    <td className="py-3">
+                                                                        <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
+                                                                    </td>
 
-                                                                <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isList}</h3>
-                                                                </td>
+                                                                    <td className="py-3">
+                                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isList}</h3>
+                                                                    </td>
 
-                                                                <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
-                                                                </td>
+                                                                    <td className="py-3">
+                                                                        <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
+                                                                    </td>
 
-                                                                <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">{orders.order_isMethod}</h3>
-                                                                </td>
+                                                                    <td className="py-3">
+                                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isMethod}</h3>
+                                                                    </td>
 
-                                                                <td className="py-3">
-                                                                    <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
-                                                                </td>
-                                                            </>
-                                                            :
-                                                            ""
-                                                    }
+                                                                    <td className="py-3">
+                                                                        <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
+                                                                    </td>
+                                                                </>
+                                                                :
+                                                                ""
+                                                        }
 
-                                                </tr>
+                                                    </tr>
 
-                                            )
+                                                )
 
-                                        })
+                                            })
 
-                                        :
+                                            :
 
-                                        "No Orders"
-                                }
+                                            "No Orders"
+                                    }
 
-                            </tbody>
+                                </tbody>
 
-                        </table>
-
+                            </table>
+                        </div>
                         <Footer>
                         </Footer>
                     </>
