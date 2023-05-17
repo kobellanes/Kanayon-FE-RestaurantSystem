@@ -110,6 +110,11 @@
     width: 1612px;
 }
 
+@media(max-width: 1400px) {
+    .austriakyla.offcanvas.offcanvas-bottom {
+        width: 1150px;
+    }
+}
 
 @media(max-width: 1350px) {
     .austriakyla.offcanvas.offcanvas-bottom {
