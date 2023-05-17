@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import InventoryFunction from '../InventoryFunction/InventoryFunction';
-import { useState } from 'react';
 import http from '../../../http';
 import { setAccounts } from '../../../redux/actions/actions';
+import { setMenus, setOrders } from '../../../redux/actions/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function Inventory() {
     const user_id = localStorage.getItem("user_id");
@@ -32,6 +35,74 @@ function Inventory() {
         localStorage.clear();
 
         window.location.href = '/'
+    }
+
+    const menus = useSelector((state) => state.allMenus.menus);
+    const dispatch = useDispatch();
+
+    const [total, setTotal] = useState('');
+
+    const fetchMenus = async () => {
+        http.get('menus').then(result => {
+            dispatch(setMenus(result.data));
+
+            const filter = result.data;
+            let c = 0;
+
+            for (let i = 0; i < filter.length; i++) {
+                const a = filter[i].menu_price;
+                const b = filter[i].menu_isSold;
+
+                if (a && b != 0) {
+                    const d = c + a * b;
+
+                    c = d;
+                    setTotal(d);
+                }
+
+            }
+
+
+        }).catch(err => console.log(err.message));
+    }
+    useEffect(() => {
+        fetchMenus();
+    }, []);
+
+
+    const pdfreport = () => {
+        const unit = "pt";
+        const size = "A4";
+        const orientation = "portrait";
+
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+
+        doc.setFontSize(20);
+
+        console.log(total);
+
+        const title = "Kanayon - Inventory Report";
+        const headers = [["Menu Name", "Price", "Sold", "Total Price"]];
+
+        const data = menus.map((menu) =>
+            [
+                menu.menu_name,
+                menu.menu_price,
+                menu.menu_isSold,
+                menu.menu_price * menu.menu_isSold,
+            ]
+        );
+
+        let content = {
+            startY: 50,
+            head: headers,
+            body: data,
+        };
+
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("Kanayon - Inventory Report.pdf");
     }
 
 
@@ -87,10 +158,20 @@ function Inventory() {
                                     <hr className="text-white mt-2" />
 
                                     <li className="">
+                                        {/*  */}
+                                        <a href="acc-settings" className="text-decoration-none px-3 py-2 d-block">
+                                            <i className="fa-solid fa-unlock fs-5 me-2"></i>Change Password
+                                        </a>
+                                    </li>
+
+                                    <li className="">
+
                                         <a href="/" onClick={logout} className="text-decoration-none px-3 py-2 d-block">
                                             <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>Logout
                                         </a>
+
                                     </li>
+
                                 </ul>
 
                             </div>
@@ -101,8 +182,8 @@ function Inventory() {
                                         <div className="p-3">
                                             <h1 className="dese_title text-dark container-fluid text-center mt-4">Inventory Report</h1>
 
-                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0">
-                                                <a href="#" type="button" className="btn btn-light">Download PDF<i className="ms-2 fa-solid fa-download"></i></a>
+                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0 mb-3">
+                                                <button onClick={() => pdfreport()} type="button" className="btn btn-light">Download PDF<i className="ms-2 fa-solid fa-download"></i></button>
 
                                             </div>
 

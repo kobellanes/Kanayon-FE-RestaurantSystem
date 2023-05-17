@@ -85,10 +85,20 @@ function UserPage() {
                                     <hr className="text-white mt-2" />
 
                                     <li className="">
+                                        {/*  */}
+                                        <a href="acc-settings" className="text-decoration-none px-3 py-2 d-block">
+                                            <i className="fa-solid fa-unlock fs-5 me-2"></i>Change Password
+                                        </a>
+                                    </li>
+
+                                    <li className="">
+
                                         <a href="/" onClick={logout} className="text-decoration-none px-3 py-2 d-block">
                                             <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>Logout
                                         </a>
+
                                     </li>
+
                                 </ul>
 
                             </div>

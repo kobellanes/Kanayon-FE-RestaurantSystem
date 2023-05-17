@@ -39,7 +39,7 @@
 .llanesk-stocklistitem-update-offcanva {
     position: fixed;
     width: 35%;
-    top: 0%;
+    top: 5%;
     left: 40%;
     /* transform: translate(10%, 40%); */
     min-height: 660px;
