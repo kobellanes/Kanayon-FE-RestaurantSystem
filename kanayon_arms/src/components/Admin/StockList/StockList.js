@@ -98,7 +98,7 @@ function StockList() {
                                 <main>
                                     <div className="container mt-4">
                                         <h1 className="text-center pt-4">List of Menu</h1>
-                                        <div className="llanesk-stocklist-border mt-3" />
+
                                         <div className="llanesk-stocklist-container container-fluid col-12 card border border-2 py-4 my-4">
 
                                             <StockListCreate />

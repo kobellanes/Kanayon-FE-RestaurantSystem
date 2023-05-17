@@ -7,9 +7,28 @@ function InventoryFunction() {
     const menus = useSelector((state) => state.allMenus.menus);
     const dispatch = useDispatch();
 
+    const [total, setTotal] = useState('');
+
     const fetchMenus = async () => {
         http.get('menus').then(result => {
             dispatch(setMenus(result.data));
+
+            const filter = result.data;
+            let c = 0;
+
+            for (let i = 0; i < filter.length; i++) {
+                const a = filter[i].menu_price;
+                const b = filter[i].menu_isSold;
+
+                if (a && b != 0) {
+                    const d = c + a * b;
+
+                    c = d;
+                    setTotal(d);
+                }
+
+            }
+
 
         }).catch(err => console.log(err.message));
     }
@@ -39,30 +58,35 @@ function InventoryFunction() {
                             menus.map((menus, index) => {
 
                                 return (
-                                    <tr>
-                                        {
-                                            menus.menu_isSold > 0 ?
-                                                <>
-                                                    <td className="py-3">
-                                                        <h3 className="text-center fs-6 fw-light">{menus.menu_name}</h3>
-                                                    </td>
+                                    <>
+                                        <tr>
+                                            {
+                                                menus.menu_isSold > 0 ?
+                                                    <>
+                                                        <td className="py-3">
+                                                            <h3 className="text-center fs-6 fw-light">{menus.menu_name}</h3>
+                                                        </td>
 
-                                                    <td className="py-3">
-                                                        <h3 className="text-center fs-6 fw-light">{menus.menu_price}</h3>
-                                                    </td>
+                                                        <td className="py-3">
+                                                            <h3 className="text-center fs-6 fw-light">₱{menus.menu_price}.00</h3>
+                                                        </td>
 
-                                                    <td className="py-3">
-                                                        <h3 className="text-center fs-6 fw-light">{menus.menu_isSold}</h3>
-                                                    </td>
+                                                        <td className="py-3">
+                                                            <h3 className="text-center fs-6 fw-light">{menus.menu_isSold}</h3>
+                                                        </td>
 
-                                                    <td className="py-3">
-                                                        <h3 className="text-center fs-6 fw-light">{menus.menu_price * menus.menu_isSold}</h3>
-                                                    </td>
-                                                </>
-                                                :
-                                                ""
-                                        }
-                                    </tr>
+                                                        <td className="py-3">
+                                                            <h3 className="text-center fs-6 fw-light">₱{menus.menu_price * menus.menu_isSold}.00</h3>
+                                                        </td>
+
+
+                                                    </>
+                                                    :
+                                                    ""
+                                            }
+                                        </tr>
+
+                                    </>
 
                                 )
 
@@ -73,7 +97,25 @@ function InventoryFunction() {
 
                     }
 
-                </tbody>
+                    <tr>
+                        <td className="py-3">
+                            <h3 className="text-center fs-6 fw-light"></h3>
+                        </td>
+
+                        <td className="py-3">
+                            <h3 className="text-center fs-6 fw-light"></h3>
+                        </td>
+
+                        <td className="py-3">
+                            <h3 className="text-center fs-6 fw-bold">TOTAL</h3>
+                        </td>
+
+                        <td className="py-3">
+                            <h3 className="text-center fs-6 fw-bold">₱{total}.00</h3>
+                        </td>
+                    </tr>
+
+                </tbody >
             </table>
 
         </>
