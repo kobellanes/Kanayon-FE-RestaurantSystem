@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import "../StockList/StockList.css"
-import StockListCreate from '../StockListCreate/StockListCreate';
-import StockListItem from '../StockListItem/StockListItem';
 import http from '../../../http';
 import { useState } from 'react';
 import { setAccounts } from '../../../redux/actions/actions';
 
-function StockList() {
+function Settings() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
 
@@ -65,7 +62,7 @@ function StockList() {
                                         </ul>
                                     </li>
 
-                                    <li className="active"><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
+                                    <li className=""><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
 
                                     <li className="nav-item dropdown">
                                         <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,7 +82,7 @@ function StockList() {
 
                                     <hr className="text-white mt-2" />
 
-                                    <li className="">
+                                    <li className="active">
                                         {/*  */}
                                         <a href="acc-settings" className="text-decoration-none px-3 py-2 d-block">
                                             <i className="fa-solid fa-unlock fs-5 me-2"></i>Change Password
@@ -104,23 +101,23 @@ function StockList() {
 
                             </div>
 
+
                             <div className="dese-adminnav-content content">
-                                <main>
-                                    <div className="container mt-4">
-                                        <h1 className="text-center pt-4">List of Menu</h1>
 
-                                        <div className="llanesk-stocklist-container container-fluid col-12 card border border-2 py-4 my-4">
+                                <div className="m-5">
+                                    <form className="form-control p-3">
 
-                                            <StockListCreate />
-                                            <div className="dese-stock row justify-content-center">
+                                        <div className="llanesk-banneduserfunction-container-start container p-3 rounded-2">
+                                            <p className="text-start m-0 fs-6">Please fill out all the required fields.</p>
 
-                                                <StockListItem />
-                                            </div>
                                         </div>
 
-                                    </div>
-                                </main>
+                                    </form>
+                                </div>
                             </div>
+
+
+
 
                         </>
                         :
@@ -130,10 +127,9 @@ function StockList() {
                             </div>
                         </div>
                 }
-            </div >
-
+            </div>
         </>
     );
 }
 
-export default StockList;
+export default Settings;

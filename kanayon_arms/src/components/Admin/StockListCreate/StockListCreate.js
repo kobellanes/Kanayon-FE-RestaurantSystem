@@ -119,7 +119,7 @@ function StockListCreate() {
                 </div>
             </div>
 
-            <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1" data-bs-scroll="true">
+            <div className="dese-offcanvas offcanvas text-bg-light" id="offcanvas" tabIndex="-1" data-bs-scroll="true" data-bs-backdrop="static">
                 <div className="offcanvas-header mb-1 py-0 mt-3">
                     <h3 className="offcanvas-title fw-bolder text-dark px-2">Add New Meal</h3>
                     <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>

@@ -18,6 +18,7 @@ import Inventory from './components/Admin/Inventory/Inventory';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Settings from './components/Admin/Settings/Settings';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="receive" element={<Received />} />
           <Route path="completed" element={<Completed />} />
           <Route path="inventory" element={<Inventory />} />
+          <Route path="acc-settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -206,7 +206,7 @@ function StockListItem() {
 
                                 </div>
 
-                                <div className="llanesk-stocklistitem-update-offcanva offcanvas text-bg-light" id="offcanvas2" tabIndex="-1" data-bs-scroll="true">
+                                <div className="llanesk-stocklistitem-update-offcanva offcanvas text-bg-light" id="offcanvas2" tabIndex="-1" data-bs-scroll="true" data-bs-backdrop="static">
                                     <div className="offcanvas-header mb-1 py-0 mt-3">
                                         <h3 className="offcanvas-title fw-bolder text-dark px-2">Update Meal</h3>
 
@@ -227,6 +227,7 @@ function StockListItem() {
                                             <form onSubmit={updateMenu}>
 
                                                 <div className="mt-4 form-group">
+
                                                     <div className="text-center d-flex flex-row align-items-center col-12">
 
                                                         <label className="me-3 col-3 fw-bold">Menu Name</label>
@@ -287,20 +288,6 @@ function StockListItem() {
                                                             required />
                                                     </div>
                                                 </div>
-
-                                                {/* <div className="mt-4 form-group">
-                                                        <div className="text-center">
-                                                            <input
-                                                            type="text"
-                                                            name="stock_status"
-                                                            id="stock_status"
-                                                            value={menu_price}
-                                                            onChange={(e) => setMenu_price(e.target.value)}
-                                                            className="form-control"
-                                                            placeholder="Variation"
-                                                            required />
-                                                        </div>
-                                                    </div> */}
 
                                                 <div className="mt-4 col-12 d-flex justify-content-end">
 
