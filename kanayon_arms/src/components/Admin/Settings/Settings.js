@@ -55,7 +55,6 @@ function Settings() {
 
         const isValid = bcrypt.compareSync(oldPass, user.isPassword);
 
-
         if (isValid) {
             setOldPassPrompt('');
 
@@ -85,8 +84,6 @@ function Settings() {
                     }).catch(err => console.log(err.message));
 
 
-
-
                 } else {
                     setNewPass('');
                     setconfNewPass('');
@@ -105,6 +102,7 @@ function Settings() {
             }
 
         } else {
+            setOldPass('');
             setOldPassPrompt("* Incorrect Password.");
         }
 
@@ -232,11 +230,15 @@ function Settings() {
                                                     className="form-control"
                                                     required />
                                             </div>
+                                            {
+                                                oldPass.length == 0 ?
+                                                    <h6 className="text-danger text-center fw-normal mt-2">{oldPassPrompt}</h6>
+                                                    :
+                                                    ""
+                                            }
 
-                                            <h6 className="text-danger text-center fw-normal mt-2">{oldPassPrompt}</h6>
 
                                         </div>
-
 
 
                                         <div className="mt-4 form-group">
