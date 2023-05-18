@@ -2,10 +2,24 @@ import React, { useEffect } from 'react';
 import http from '../../../http';
 import { useState } from 'react';
 import { setAccounts } from '../../../redux/actions/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import bcrypt from "bcryptjs";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Settings() {
+    const accounts = useSelector((state) => state.allAccounts.account);
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
+
+    const [user, setUser] = useState('');
+
+    const [oldPass, setOldPass] = useState('');
+    const [newPass, setNewPass] = useState('');
+    const [confNewPass, setconfNewPass] = useState('');
+
+    const [oldPassPrompt, setOldPassPrompt] = useState('');
+    const [newPassPrompt, setNewPassPrompt] = useState('');
+    const [confPassPrompt, setConfPassPrompt] = useState('');
 
     const fetchAccount = async () => {
         http.get('accounts').then(result => {
@@ -15,6 +29,7 @@ function Settings() {
                 window.location.href = '/login';
             } else if (filter[0].isStatus === "ADMIN") {
                 setData(filter[0].isStatus);
+                setUser(filter[0]);
             } else {
                 window.location.href = '/login';
             }
@@ -31,6 +46,83 @@ function Settings() {
         localStorage.clear();
 
         window.location.href = '/'
+    }
+
+    const updateAccount = (e) => {
+        e.preventDefault();
+
+        const noEditAccount = user;
+
+        const isValid = bcrypt.compareSync(oldPass, user.isPassword);
+
+
+        if (isValid) {
+            setOldPassPrompt('');
+
+            const regExp = /.{8,}/;
+
+            if (regExp.test(newPass)) {
+
+                if (newPass == confNewPass) {
+                    const password = newPass;
+                    const hash = bcrypt.hashSync(password, 10);
+
+                    const updatepass = {
+                        isStatus: noEditAccount.isStatus,
+                        isPassword: hash,
+                    }
+
+                    http.put(`accounts/${user.id}`, updatepass).then(result => {
+                        notifySuccess();
+
+                        setNewPassPrompt('');
+                        setConfPassPrompt('');
+
+                        setOldPass('');
+                        setNewPass('');
+                        setconfNewPass('')
+
+                    }).catch(err => console.log(err.message));
+
+
+
+
+                } else {
+                    setNewPass('');
+                    setconfNewPass('');
+
+                    setNewPassPrompt('* Password is not the same.');
+                    setConfPassPrompt('* Password is not the same.');
+                }
+
+            } else {
+                setNewPassPrompt("* Password must contain at least 8 characters.");
+                setConfPassPrompt('* Password must contain at least 8 characters.');
+
+                setNewPass('');
+                setconfNewPass('');
+
+            }
+
+        } else {
+            setOldPassPrompt("* Incorrect Password.");
+        }
+
+    }
+
+
+    const notifySuccess = () => {
+        toast.success("Password Updated", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
     }
 
     return (
@@ -105,19 +197,105 @@ function Settings() {
                             <div className="dese-adminnav-content content">
 
                                 <div className="m-5">
-                                    <form className="form-control p-3">
+                                    <form className="form-control p-3" onSubmit={updateAccount}>
 
                                         <div className="llanesk-banneduserfunction-container-start container p-3 rounded-2">
                                             <p className="text-start m-0 fs-6">Please fill out all the required fields.</p>
+                                        </div>
+
+                                        <div className="mt-4 form-group">
+
+                                            <div className="text-center d-flex flex-row align-items-center col-12">
+
+                                                <label className="me-3 col-2 fw-bold">Email</label>
+                                                <input
+                                                    type="text"
+                                                    name="title"
+                                                    id="title"
+                                                    value={user.isEmail}
+                                                    className="form-control"
+                                                    placeholder="Menu Name"
+                                                    disabled />
+                                            </div>
+
+                                        </div>
+
+                                        <div className="mt-4 form-group">
+
+                                            <div className="text-center d-flex flex-row align-items-center col-12">
+
+                                                <label className="me-3 col-2 fw-bold">Current Password</label>
+                                                <input
+                                                    type="password"
+                                                    value={oldPass}
+                                                    onChange={(e) => setOldPass(e.target.value)}
+                                                    className="form-control"
+                                                    required />
+                                            </div>
+
+                                            <h6 className="text-danger text-center fw-normal mt-2">{oldPassPrompt}</h6>
+
+                                        </div>
+
+
+
+                                        <div className="mt-4 form-group">
+
+                                            <div className="text-center d-flex flex-row align-items-center col-12">
+
+                                                <label className="me-3 col-2 fw-bold">New Password</label>
+                                                <input
+                                                    type="password"
+                                                    value={newPass}
+                                                    onChange={(e) => setNewPass(e.target.value)}
+                                                    className="form-control"
+                                                    required />
+                                            </div>
+
+                                            {
+                                                newPass.length == 0 ?
+                                                    <h6 className="text-danger text-center fw-normal mt-2">{newPassPrompt}</h6>
+                                                    :
+                                                    ""
+                                            }
+
+
+                                        </div>
+
+                                        <div className="mt-4 form-group">
+
+                                            <div className="text-center d-flex flex-row align-items-center col-12">
+
+                                                <label className="me-3 col-2 fw-bold">Confirm New Password</label>
+                                                <input
+                                                    type="password"
+                                                    value={confNewPass}
+                                                    onChange={(e) => setconfNewPass(e.target.value)}
+                                                    className="form-control"
+                                                    required />
+                                            </div>
+
+                                            {
+                                                confNewPass.length == 0 ?
+                                                    <h6 className="text-danger text-center fw-normal mt-2">{confPassPrompt}</h6>
+                                                    :
+                                                    ""
+                                            }
+
+
+
+                                        </div>
+
+
+                                        <div className="mt-4 col-12 d-flex justify-content-end">
+
+                                            <input className="btn btn-primary text-center rounded-1" type="submit" value="Submit" />
 
                                         </div>
 
                                     </form>
                                 </div>
                             </div>
-
-
-
 
                         </>
                         :

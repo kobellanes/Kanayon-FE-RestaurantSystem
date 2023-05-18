@@ -110,12 +110,10 @@ function Received() {
                                         <div className="p-3">
                                             <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Paid Orders</h1>
 
-                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0">
+                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0 mb-3">
                                                 <a href="completed" type="button" className="btn btn-light">Completed Orders<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></a>
 
                                             </div>
-
-                                            <div className="llanesk-stocklist-border mt-3" />
 
                                             <ReceiveFunction></ReceiveFunction>
                                         </div>
