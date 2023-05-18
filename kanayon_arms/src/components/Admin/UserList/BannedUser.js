@@ -108,12 +108,10 @@ function BannedUser() {
                                         <div className="p-3">
                                             <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Banned Users</h1>
 
-                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0">
+                                            <div className="container-fluid d-flex justify-content-end pt-0 mt-0 mb-3">
                                                 <a href="activeuser" type="button" className="btn btn-light">Active Users<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></a>
 
                                             </div>
-
-                                            <div className="llanesk-stocklist-border mt-3" />
 
                                             <BannedUserFunction></BannedUserFunction>
                                         </div>

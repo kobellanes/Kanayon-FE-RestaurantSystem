@@ -28,9 +28,12 @@ function BannedUserFunction() {
 
         let idn = newAccount.findIndex((account) => account.id == retrieveOrig.id);
 
+        const noEditAccount = newAccount.at(idn);
+
         if (idn != -1) {
             const data_update = {
                 isStatus: "ACTIVE",
+                isPassword: noEditAccount.isPassword,
             }
 
             const updateAccount = newAccount.at(idn);
