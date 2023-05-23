@@ -5,6 +5,7 @@ import './StockListItem.css';
 import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function StockListItem() {
     const menus = useSelector((state) => state.allMenus.menus);
@@ -176,8 +177,8 @@ function StockListItem() {
                         return (
                             <div className="llanesk-stocklistitem-card rounded-3 card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mx-4 my-3 p-4">
                                 <div className="mb-3">
-                                    <a data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2" onClick={() => editMenu(index)} href=""><img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
-                                    </a>
+                                    <Link data-bs-toggle="offcanvas" data-bs-target="#offcanvas2" aria-controls="offcanvas2" onClick={() => editMenu(index)} to=""><img className="llanesk-stocklistitem-menu_pic" src={menus.menu_pic}></img>
+                                    </Link>
                                 </div>
 
                                 <div>

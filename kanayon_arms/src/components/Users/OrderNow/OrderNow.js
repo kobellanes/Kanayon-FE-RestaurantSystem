@@ -3,6 +3,7 @@ import "./OrderNow.css"
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import http from '../../../http';
+import { Link } from 'react-router-dom';
 
 function OrderNow() {
     const [counter, setCounter] = useState('');
@@ -92,16 +93,16 @@ function OrderNow() {
 
                                 <div className="d-flex justify-content-center align-items-center flex-row mt-4 col-6">
                                     <div>
-                                        <a href="/orderhere" className="llanesk-ordernow-orderpage btn fw-light fw-light text-center text-light justify-content-center p-4 p-md-3 mx-3" tabIndex="-1" role="button" aria-disabled="true">
+                                        <Link to="/orderhere" className="llanesk-ordernow-orderpage btn fw-light fw-light text-center text-light justify-content-center p-4 p-md-3 mx-3" tabIndex="-1" role="button" aria-disabled="true">
                                             <i className="fa-sharp fa-solid fa-bag-shopping me-2"></i>
                                             ORDER HERE
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div>
-                                        <a href="vieworder" className="llanesk-ordernow-orderlist btn fw-light text-light justify-content-center p-4 p-md-3 mx-3" tabIndex="-1" role="button" aria-disabled="true">
+                                        <Link to="/vieworder" className="llanesk-ordernow-orderlist btn fw-light text-light justify-content-center p-4 p-md-3 mx-3" tabIndex="-1" role="button" aria-disabled="true">
                                             <i className="fa-solid fa-magnifying-glass me-2"></i>
                                             VIEW ORDER LIST
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 
@@ -122,7 +123,7 @@ function OrderNow() {
                                         <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div>
                                                 <div className="d-flex justify-content-center align-items-center">
-                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img></a>
+                                                    <Link to="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/paa.jpg')} alt="Paa Inasal"></img></Link>
                                                 </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Paa Inasal</h4>
                                             </div>
@@ -131,7 +132,7 @@ function OrderNow() {
                                         <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div className="">
                                                 <div className="d-flex justify-content-center align-items-center">
-                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img></a>
+                                                    <Link to="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/liempo.jpg')} alt="Liempo"></img></Link>
                                                 </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Liempo</h4>
                                             </div>
@@ -141,7 +142,7 @@ function OrderNow() {
                                         <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div className="">
                                                 <div className="d-flex justify-content-center align-items-center">
-                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img></a>
+                                                    <Link to="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/barbeque.jpg')} alt="Pork Barbecue"></img></Link>
                                                 </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Pork Barbecue</h4>
                                             </div>
@@ -151,7 +152,7 @@ function OrderNow() {
                                         <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div className="">
                                                 <div className="d-flex justify-content-center align-items-center">
-                                                    <a href="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img></a>
+                                                    <Link to="/orderhere" tabIndex="-1" role="button" aria-disabled="true"><img className="llanesk-ordernow-featuredpic card-img h-100 rounded-5 rounded-top-3 rounded-end-3" src={require('../../../assets/halohalo.jpg')} alt="Halo-Halo"></img></Link>
                                                 </div>
                                                 <h4 className="llanesk-ordernow-featuredlabel mt-3 text-light fw-light text-center">Halo-Halo</h4>
                                             </div>

@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './HomePage.css';
 import http from '../../../http';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
     const [counter, setCounter] = useState('');
@@ -162,7 +163,7 @@ function HomePage() {
                                                     </div>
 
                                                     <div className="justify-content-center align-items-center text-center pt-2 pb-3">
-                                                        <a href="about" className="austriak-homepage-s3-btn btn fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Read More</a>
+                                                        <Link to="/about" className="austriak-homepage-s3-btn btn fw-bold align-items-center"><i className="fa-solid fa-play me-2"></i>Read More</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -194,7 +195,7 @@ function HomePage() {
                                                 </div>
 
                                                 <div className="justify-content-center align-items-center text-center mt-5 pb-3">
-                                                    <a href="ordernow" className="austriak-ordernow-btn btn btn-dark fw-bold"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</a>
+                                                    <Link to="/ordernow" className="austriak-ordernow-btn btn btn-dark fw-bold"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</Link>
                                                 </div>
                                             </div>
                                         </div>

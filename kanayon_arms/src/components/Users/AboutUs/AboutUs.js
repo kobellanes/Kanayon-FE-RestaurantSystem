@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './AboutUs.css';
 import http from '../../../http';
+import { Link } from 'react-router-dom';
 
 function AboutUs() {
     const [counter, setCounter] = useState('');
@@ -150,7 +151,7 @@ function AboutUs() {
 
                             <div className="justify-content-center align-items-center text-center mt-5 pb-3">
 
-                                <a href="ordernow" className="austriak-aboutus-btn btn btn-dark"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</a>
+                                <Link to="/ordernow" className="austriak-aboutus-btn btn btn-dark"><i className="fa-solid fa-basket-shopping me-2"></i> Order Now</Link>
 
                             </div>
                         </section>
