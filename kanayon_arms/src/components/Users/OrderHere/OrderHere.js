@@ -741,21 +741,25 @@ function OrderHere() {
 
                                     <div className="d-flex flex-column align-items-center justify-content-center text-center mt-4">
 
-                                        <h6 className="text-danger fw-normal">{addressPrompt}</h6>
-                                        <h6 className="text-danger fw-normal mt-4">{lastNote}</h6>
+                                        <h6 className="text-dark fw-normal">{addressPrompt}</h6>
+                                        <h6 className="text-dark fw-normal mt-4">{lastNote}</h6>
 
                                     </div>
-
 
                                 </div>
 
                             </div>
 
-                            <h6 className="mt-3 border-bottom"></h6>
+                            <div className="container-fluid justify-content-center d-flex">
+                                <h6 className="fw-light text-danger text-center">Note: Please pay before clicking the paid button! <br></br> <span className="text-dark fw-normal"> Gcash Number: 09071031759 "(KE••••H M.)"</span></h6>
+                            </div>
+
+                            <h6 className="mt-0 border-bottom"></h6>
 
                             <div className="container-fluid d-flex flex-row pb-3 px-3 mt-2">
 
                                 <button onClick={fixedFinalPrice} className="btn btn-light col-5" data-bs-dismiss="offcanvas" aria-label="Close">Minimize</button>
+
 
                                 <div className="col-2"></div>
                                 {
