@@ -100,6 +100,7 @@ function ViewOrder() {
                         <div className="d-flex flex-column container-fluid justify-content-center align-items-center px-5">
 
                             <table className="table table-bordered mt-4 text-light">
+
                                 <thead className="dese_thead">
                                     <tr className="fw-bolder fs-4">
                                         <th>Order Number</th>

@@ -179,11 +179,11 @@ function HomePage() {
                                 <section className="austriak-homepage-s4">
                                     <div className="mt-3">
                                         <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center">
-                                            {/* <div className="container-fluid d-flex flex-row justify-content-center align-items-center text-center mb-3"> */}
+
                                             <div className="container d-flex flex-row justify-content-center align-items-center text-center">
-                                                {/* <div className="austriak-col-6 col-lg-6 flex-column justify-content-center align-items-center text-center align-self-lg-end mb-5"> */}
+
                                                 <img className="austriak-homepagek-img-fluid" src={require('../../../assets/5KatakamtakamS4.jpg')} alt="Katakamtakam" />
-                                                {/* </div> */}
+
                                             </div>
 
                                             <div className="container justify-content-center align-items-center text-center">
