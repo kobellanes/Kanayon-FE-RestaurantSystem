@@ -13,11 +13,13 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { InputMask } from "primereact/inputmask";
 import bcrypt from "bcryptjs";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
     const [counter, setCounter] = useState('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -32,9 +34,9 @@ function Login() {
                 setData(filter[0]);
 
                 if (filter[0].isStatus == "ACTIVE") {
-                    window.location.href = '/';
+                    navigate("/");
                 } else if (filter[0].isStatus == "ADMIN") {
-                    window.location.href = '/admin';
+                    navigate("/admin");
                 }
             }
 
@@ -90,11 +92,11 @@ function Login() {
                 if (user && isValid && user.isStatus == "ADMIN") {
                     const user_id = user.id;
                     localStorage.setItem("user_id", user_id);
-                    window.location.href = '/admin';
+                    navigate("/admin");
                 } else if (user && isValid && user.isStatus == "ACTIVE") {
                     const user_id = user.id;
                     localStorage.setItem("user_id", user_id);
-                    window.location.href = '/';
+                    navigate("/");
                 } else if (user && isValid && user.isStatus == "BANNED") {
                     setInvprompt('* Your account has been banned due to multiple violations!');
                     setEmail('');
@@ -313,12 +315,12 @@ function Login() {
 
     return (
         <>
-
+            <Header></Header>
 
             {
                 counter == "LOAD" && data == '' ?
                     <>
-                        <Header></Header>
+
                         <main className="llanesk-login container-fluid pt-4 pb-0">
 
                             <div className="py-0">
@@ -588,9 +590,7 @@ function Login() {
                         </div >
                     </>
                     :
-                    <div className="d-flex spinner-border justify-content-center container-fluid text-light mt-5 mb-5" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
+                    ""
             }
 
 

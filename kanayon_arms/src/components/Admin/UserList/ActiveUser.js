@@ -4,21 +4,25 @@ import { setAccounts } from '../../../redux/actions/actions';
 import './UserList.css'
 import http from '../../../http';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function UserPage() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
+
+    const navigate = useNavigate();
 
     const fetchAccount = async () => {
         http.get('accounts').then(result => {
             const filter = result.data.filter((account) => account.id == user_id);
 
             if (filter[0] === undefined) {
-                window.location.href = '/login';
+                navigate("/login");
             } else if (filter[0].isStatus === "ADMIN") {
                 setData(filter[0].isStatus);
             } else {
-                window.location.href = '/login';
+                navigate("/login");
             }
 
         });
@@ -32,7 +36,7 @@ function UserPage() {
     const logout = (e) => {
         localStorage.clear();
 
-        window.location.href = '/'
+        navigate("/");
     }
 
     return (
@@ -49,53 +53,53 @@ function UserPage() {
                                 </div>
 
                                 <ul className="list-unstyled px-2">
-                                    <li className=""><a href="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</a></li>
+                                    <li className=""><Link to="/admin" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-house me-2"></i>Dashboard</Link></li>
 
                                     <li className="active nav-item dropdown">
-                                        <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <Link className="nav-link px-3 py-2 d-block" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i className="fa-solid fa-users me-1"></i>
                                             List of Users
                                             <i className="dropdown-toggle ms-2"></i>
-                                        </a>
+                                        </Link>
 
                                         <ul className="dropdown-menu w-100">
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item" href="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</a></li>
+                                            <li><Link className="llanesk-userlist-dropdown-item dropdown-item" to="/activeuser"><i className="fa-solid fa-circle me-2"></i>Active Users</Link></li>
+                                            <li><Link className="llanesk-userlist-dropdown-item dropdown-item" to="/banneduser"><i className="fa-solid fa-ban me-2"></i>Banned Users</Link></li>
                                         </ul>
                                     </li>
 
-                                    <li className=""><a href="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</a></li>
+                                    <li className=""><Link to="/stocklist" className="text-decoration-none px-3 py-2 d-block justify-content-between"><i className="fa-solid fa-boxes-stacked me-2"></i>Stock List</Link></li>
 
                                     <li className="nav-item dropdown">
-                                        <a className="nav-link px-3 py-2 d-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <Link className="nav-link px-3 py-2 d-block" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i className="fa-solid fa-basket-shopping me-2"></i>
                                             Order List
                                             <i className="dropdown-toggle ms-2"></i>
-                                        </a>
+                                        </Link>
 
                                         <ul className="dropdown-menu w-100">
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="orderlist"><i className="fa-solid fa-pen me-2"></i>Pending Orders</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="receive"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</a></li>
-                                            <li><a className="llanesk-userlist-dropdown-item dropdown-item text-dark" href="completed"><i className="fa-solid fa-check me-2"></i>Completed Orders</a></li>
+                                            <li><Link className="llanesk-userlist-dropdown-item dropdown-item text-dark" to="/orderlist"><i className="fa-solid fa-pen me-2"></i>Pending Orders</Link></li>
+                                            <li><Link className="llanesk-userlist-dropdown-item dropdown-item text-dark" to="/receive"><i className="fa-brands fa-google-pay me-2"></i>Paid Orders</Link></li>
+                                            <li><Link className="llanesk-userlist-dropdown-item dropdown-item text-dark" to="/completed"><i className="fa-solid fa-check me-2"></i>Completed Orders</Link></li>
                                         </ul>
                                     </li>
 
-                                    <li className=""><a href="inventory" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</a></li>
+                                    <li className=""><Link to="/inventory" className="text-decoration-none px-3 py-2 d-block"><i className="fa-solid fa-money-check-dollar me-2"></i>Inventory Report</Link></li>
 
                                     <hr className="text-white mt-2" />
 
                                     <li className="">
                                         {/*  */}
-                                        <a href="acc-settings" className="text-decoration-none px-3 py-2 d-block">
+                                        <Link to="/acc-settings" className="text-decoration-none px-3 py-2 d-block">
                                             <i className="fa-solid fa-unlock fs-5 me-2"></i>Change Password
-                                        </a>
+                                        </Link>
                                     </li>
 
                                     <li className="">
 
-                                        <a href="/" onClick={logout} className="text-decoration-none px-3 py-2 d-block">
+                                        <Link to="/" onClick={logout} className="text-decoration-none px-3 py-2 d-block">
                                             <i className="fa-solid fa-right-from-bracket fs-5 me-2"></i>Logout
-                                        </a>
+                                        </Link>
 
                                     </li>
 
@@ -110,7 +114,7 @@ function UserPage() {
                                             <h1 className="dese_title text-dark container-fluid text-center mt-4">List of Active Users</h1>
 
                                             <div className="container-fluid d-flex justify-content-end pt-0 mt-0 mb-3">
-                                                <a href="banneduser" type="button" className="btn btn-light">Banned Users<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></a>
+                                                <Link to="/banneduser" type="button" className="btn btn-light">Banned Users<i className="ms-2 fa-sharp fa-solid fa-right-to-bracket"></i></Link>
 
                                             </div>
 

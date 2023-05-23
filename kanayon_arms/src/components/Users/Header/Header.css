@@ -111,6 +111,9 @@
     opacity: 1;
 }
 
+.llanesk-mainmod {
+    transition: all .5s ease;
+}
 
 .llanesk-modal-body {
     width: 88%;

@@ -28,20 +28,20 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="about" element={<AboutUs />} />
-          <Route path="admin" element={<AdminHomePage />} />
-          <Route path="ordernow" element={<OrderNow />} />
-          <Route path="orderhere" element={<OrderHere />} />
-          <Route path="vieworder" element={<ViewOrder />} />
-          <Route path="login" element={<Login />} />
-          <Route path="activeuser" element={<ActiveUser />} />
-          <Route path="banneduser" element={<BannedUser />} />
-          <Route path="stocklist" element={<StockList />} />
-          <Route path="orderlist" element={<OrderList />} />
-          <Route path="receive" element={<Received />} />
-          <Route path="completed" element={<Completed />} />
-          <Route path="inventory" element={<Inventory />} />
-          <Route path="acc-settings" element={<Settings />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/admin" element={<AdminHomePage />} />
+          <Route path="/ordernow" element={<OrderNow />} />
+          <Route path="/orderhere" element={<OrderHere />} />
+          <Route path="/vieworder" element={<ViewOrder />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/activeuser" element={<ActiveUser />} />
+          <Route path="/banneduser" element={<BannedUser />} />
+          <Route path="/stocklist" element={<StockList />} />
+          <Route path="/orderlist" element={<OrderList />} />
+          <Route path="/receive" element={<Received />} />
+          <Route path="/completed" element={<Completed />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/acc-settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </>

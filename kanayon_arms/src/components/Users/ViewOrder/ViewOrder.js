@@ -6,12 +6,14 @@ import { setMenus, setOrders } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 function ViewOrder() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
 
     const [datech, setDatech] = useState('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -20,14 +22,14 @@ function ViewOrder() {
             const filter = result.data.filter((account) => account.id == user_id);
 
             if (filter[0] === undefined) {
-                window.location.href = '/login';
+                navigate("/login");
             } else {
                 setData(filter[0]);
 
                 if ((filter[0].isStatus == "ACTIVE") || filter[0].isStatus == "ADMIN") {
 
                 } else {
-                    window.location.href = '/login';
+                    navigate("/login");
                 }
             }
 
@@ -96,9 +98,11 @@ function ViewOrder() {
                         </div>
 
                         <div className="d-flex flex-column container-fluid justify-content-center align-items-center px-5">
-                            <table className="table table-bordered mt-3 text-light">
+
+                            <table className="table table-bordered mt-4 text-light">
+
                                 <thead className="dese_thead">
-                                    <tr>
+                                    <tr className="fw-bolder fs-4">
                                         <th>Order Number</th>
                                         <th>Order List</th>
                                         <th>Total Price</th>
@@ -120,23 +124,23 @@ function ViewOrder() {
                                                             orders.user_isEmail == data.isEmail && orders.date == datech ?
                                                                 <>
                                                                     <td className="py-3">
-                                                                        <h3 className="text-start fs-6 fw-light">{orders.id}</h3>
+                                                                        <h3 className="text-start fs-5 fw-light">{orders.id}</h3>
                                                                     </td>
 
                                                                     <td className="py-3">
-                                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isList}</h3>
+                                                                        <h3 className="text-start fs-5 fw-light">{orders.order_isList}</h3>
                                                                     </td>
 
                                                                     <td className="py-3">
-                                                                        <h3 className="text-start fs-6 fw-light">₱{orders.order_isPrice}.00</h3>
+                                                                        <h3 className="text-start fs-5 fw-light">₱{orders.order_isPrice}.00</h3>
                                                                     </td>
 
                                                                     <td className="py-3">
-                                                                        <h3 className="text-start fs-6 fw-light">{orders.order_isMethod}</h3>
+                                                                        <h3 className="text-start fs-5 fw-light">{orders.order_isMethod}</h3>
                                                                     </td>
 
                                                                     <td className="py-3">
-                                                                        <h3 className="text-start fs-6 fw-light">{orders.isStatus}</h3>
+                                                                        <h3 className="text-start fs-5 fw-light">{orders.isStatus}</h3>
                                                                     </td>
                                                                 </>
                                                                 :

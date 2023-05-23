@@ -3,11 +3,14 @@ import './Header.css';
 import { setAccounts } from '../../../redux/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import http from '../../../http';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Header() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
     const [counter, setCounter] = useState('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -33,11 +36,11 @@ function Header() {
     const logout = (e) => {
         localStorage.clear();
 
-        window.location.href = '/'
+        window.location.href = "/";
     }
 
     const Manage = (e) => {
-        window.location.href = '/admin';
+        navigate("/admin");
     }
 
     return (
@@ -58,18 +61,18 @@ function Header() {
                                 <div className="container-fluid llanesk-navb-items align-items-center d-none d-xl-flex d-lg-flex justify-content-end">
 
                                     <div className="llanesk-item fs-4 d-flex flex-row">
-                                        <a href="/" className="llanesk-links fa-solid fa-house d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
-                                        <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/">Home</a>
+                                        <Link to="/" className="llanesk-links fa-solid fa-house d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></Link>
+                                        <Link className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" to="/">Home</Link>
                                     </div>
 
                                     <div className="llanesk-item fs-4 d-flex flex-row">
-                                        <a href="about" className="llanesk-links fa-solid fa-address-card d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
-                                        <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/about">About</a>
+                                        <Link to="/about" className="llanesk-links fa-solid fa-address-card d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></Link>
+                                        <Link className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" to="/about">About</Link>
                                     </div>
 
                                     <div className="llanesk-item fs-4 d-flex flex-row">
-                                        <a href="ordernow" className="llanesk-links fa-solid fa-cart-shopping d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></a>
-                                        <a className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" href="/ordernow">Order Now</a>
+                                        <Link to="/ordernow" className="llanesk-links fa-solid fa-cart-shopping d-xxl-none d-xl-none d-lg-flex text-decoration-none fs-2"></Link>
+                                        <Link className="llanesk-links text-decoration-none fw-light d-lg-none d-xl-flex fs-2" to="/ordernow">Order Now</Link>
                                     </div>
 
                                     {
@@ -85,7 +88,7 @@ function Header() {
                                                 :
 
                                                 <div className="llanesk-item-button2 fs-4">
-                                                    <a className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" href="/login" type="button">Login/Register</a>
+                                                    <Link className="llanesk-log text-decoration-none d-flex justify-content-center fs-3 text-light align-items-center fw-light" to="/login" type="button">Login/Register</Link>
                                                 </div>
                                     }
 
@@ -94,7 +97,7 @@ function Header() {
                             </div>
 
                             <div className="llanesk-mobile-toggler fs-1 fw-light mobile-toggler d-lg-none px-3">
-                                <a className="llanesk-links text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#navbModal">
+                                <a className="llanesk-links text-decoration-none" to="#" data-bs-toggle="modal" data-bs-target="#navbModal">
                                     <i className="fa-solid fa-bars"></i>
                                 </a>
                             </div>
@@ -113,29 +116,56 @@ function Header() {
 
                                             <div className="llanesk-modal-line container-fluid pt-2">
                                                 <ul className="list-unstyled">
-                                                    <li className=""><a href="/" className="text-decoration-none fs-2 pb-1 me-3 d-block"><i className="fa-solid fa-house me-2"></i>Home</a></li>
+                                                    <li className="" data-bs-dismiss="modal" aria-label="Close">
+                                                        <Link to="/" className="text-decoration-none fs-2 pb-1 me-3 d-block" >
+                                                            <i className="fa-solid fa-house me-2"></i>
+                                                            Home
+                                                        </Link>
+                                                    </li>
                                                 </ul>
                                             </div>
 
                                             <div className="llanesk-modal-line container-fluid pt-2">
                                                 <ul className="list-unstyled">
-                                                    <li className=""><a href="/about" className="text-decoration-none fs-2 pb-1 me-3 d-block"><i className="fa-solid fa-address-card me-2"></i>About Us</a></li>
+                                                    <li className="" data-bs-dismiss="modal" aria-label="Close">
+                                                        <Link to="/about" className="text-decoration-none fs-2 pb-1 me-3 d-block">
+                                                            <i className="fa-solid fa-address-card me-2"></i>
+                                                            About Us
+                                                        </Link>
+                                                    </li>
                                                 </ul>
                                             </div>
 
                                             <div className="llanesk-modal-line container-fluid pt-2">
                                                 <ul className="list-unstyled">
-                                                    <li className=""><a href="/ordernow" className="text-decoration-none fs-2 pb-1 me-3 d-block"><i className="fa-solid fa-cart-shopping me-2"></i>Order Now</a></li>
+                                                    <li className="" data-bs-dismiss="modal" aria-label="Close">
+                                                        <Link to="/ordernow" className="text-decoration-none fs-2 pb-1 me-3 d-block">
+                                                            <i className="fa-solid fa-cart-shopping me-2"></i>
+                                                            Order Now
+                                                        </Link>
+                                                    </li>
                                                 </ul>
                                             </div>
 
                                             {
                                                 data == "ACTIVE" ?
-                                                    <a onClick={logout} className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Logout</a>
+                                                    <>
+                                                        <li className="" data-bs-dismiss="modal" aria-label="Close">
+                                                            <a onClick={logout} className="m-0 text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button" >Logout</a>
+                                                        </li>
+                                                    </>
                                                     : data == "ADMIN" ?
-                                                        <a onClick={Manage} className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Main Page</a>
+                                                        <>
+                                                            <li className="" data-bs-dismiss="modal" aria-label="Close">
+                                                                <a onClick={Manage} className="m-0 text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button" >Main Page</a>
+                                                            </li>
+                                                        </>
                                                         :
-                                                        <a href="/login" className="text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button">Login/Register</a>
+                                                        <>
+                                                            <li className="" data-bs-dismiss="modal" aria-label="Close">
+                                                                <Link to="/login" className="m-0 text-decoration-none llanesk-navb-button text-light d-flex justify-content-center align-items-center fs-5" type="button" >Login/Register</Link>
+                                                            </li>
+                                                        </>
 
                                             }
 
@@ -144,8 +174,8 @@ function Header() {
 
                                         <div className="llanesk-mobile-modal-footer mobile-modal-footer d-flex justify-content-center my-5 fs-2">
 
-                                            <a target="_blank" href="https://www.instagram.com/explore/locations/106845685483113/kanayon-inasal/"><i className="fa-brands fa-instagram me-5"></i></a>
-                                            <a target="_blank" href="https://www.facebook.com/kanayoninasal"><i className="fa-brands fa-facebook ms-5"></i></a>
+                                            <Link target="_blank" to="https://www.instagram.com/explore/locations/106845685483113/kanayon-inasal/"><i className="fa-brands fa-instagram me-5"></i></Link>
+                                            <Link target="_blank" to="https://www.facebook.com/kanayoninasal"><i className="fa-brands fa-facebook ms-5"></i></Link>
                                         </div>
                                     </div>
 

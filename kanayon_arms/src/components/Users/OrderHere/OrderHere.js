@@ -6,10 +6,12 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import http from '../../../http';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 function OrderHere() {
     const user_id = localStorage.getItem("user_id");
     const [data, setData] = useState('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -18,14 +20,14 @@ function OrderHere() {
             const filter = result.data.filter((account) => account.id == user_id);
 
             if (filter[0] === undefined) {
-                window.location.href = '/login';
+                navigate("/login");
             } else {
                 setData(filter[0]);
 
                 if ((filter[0].isStatus == "ACTIVE") || filter[0].isStatus == "ADMIN") {
 
                 } else {
-                    window.location.href = '/login';
+                    navigate("/login");
                 }
             }
 
@@ -182,7 +184,8 @@ function OrderHere() {
                     order_isList: newOrders,
                     order_isMethod: getMethod,
                     order_isPrice: getFinalPrice,
-                    order_isStatus: "PENDING ORDER"
+                    order_isStatus: "PENDING ORDER",
+                    date: datech,
                 }
 
                 http.post('orders', order).then((result) => {
@@ -294,6 +297,37 @@ function OrderHere() {
             theme: "light",
         });
     }
+
+    const [datech, setDatech] = useState('');
+
+    const fetchDate = async () => {
+        const date = new Date();
+
+        let day = date.getDate();
+
+        if (day <= 9) {
+            day = '0' + day;
+        } else {
+            day = date.getDate();
+        }
+
+        let month = date.getMonth() + 1;
+
+        if (month <= 9) {
+            month = '0' + month;
+        } else {
+            month = date.getMonth() + 1;
+        }
+
+        let year = date.getFullYear();
+
+        let fullDate = `${year}-${month}-${day}`
+
+        setDatech(fullDate);
+    }
+    useEffect(() => {
+        fetchDate();
+    }, []);
 
     return (
         <>

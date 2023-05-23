@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Footer.css"
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -21,9 +22,9 @@ function Footer() {
                         <div className="col-6 col-lg-3 mb-3">
                             <h5 className="lh-lg fw-bolder llanesk-headline">Explore</h5>
                             <ul className="list-unstyled mb-md-4 mb-lg-0">
-                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-underline" href="/about">About Us</a></li>
-                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-underline" href="/ordernow">Order Now</a></li>
-                                <li className="lh-lg"><a className="llanesk-contacts text-decoration-underline" href="/login">Register Now!</a></li>
+                                <li className="lh-lg"><Link className="llanesk-contacts text-decoration-underline" to="/about">About Us</Link></li>
+                                <li className="lh-lg"><Link className="llanesk-contacts text-decoration-underline" to="/ordernow">Order Now</Link></li>
+                                <li className="lh-lg"><Link className="llanesk-contacts text-decoration-underline" to="/login">Register Now!</Link></li>
                             </ul>
                         </div>
 
@@ -65,8 +66,8 @@ function Footer() {
                         </div>
 
                         <p className="llanesk-contacts d-flex justify-content-center">
-                            <a className="fs-5 me-5" href="https://www.facebook.com/kanayoninasal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg><span data-feather="facebook"></span></a>
-                            <a className="fs-5" href="https://www.instagram.com/explore/locations/106845685483113/kanayon-inasal/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span data-feather="instagram"></span></a>
+                            <Link className="fs-5 me-5" to="https://www.facebook.com/kanayoninasal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg><span data-feather="facebook"></span></Link>
+                            <Link className="fs-5" to="https://www.instagram.com/explore/locations/106845685483113/kanayon-inasal/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span data-feather="instagram"></span></Link>
                         </p>
 
                     </div>
